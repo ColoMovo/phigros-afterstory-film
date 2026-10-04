@@ -1,0 +1,42 @@
+[
+  {
+    "id": "music",
+    "type": "audio",
+    "title": "music",
+    "source": "User supplied original MP3",
+    "localPath": "public/music.mp3",
+    "sha256": "0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3",
+    "license": "See SOURCES.md",
+    "notes": "Bundled locally; no network during render"
+  },
+  {
+    "id": "cjk",
+    "type": "font",
+    "title": "cjk",
+    "source": "https://github.com/notofonts/noto-cjk",
+    "localPath": "public/fonts/CJK.woff2",
+    "sha256": "7fd164b4c59c125e5932a6217c99d9196c1d720fe77a62913ba674871f815d38",
+    "license": "See SOURCES.md",
+    "notes": "Bundled locally; no network during render"
+  },
+  {
+    "id": "display",
+    "type": "font",
+    "title": "display",
+    "source": "https://github.com/rsms/inter",
+    "localPath": "public/fonts/Display.woff2",
+    "sha256": "8685ec46cb262562ca32ebb3a08937048ee22f5a383f121af5bbfdcff633bccd",
+    "license": "See SOURCES.md",
+    "notes": "Bundled locally; no network during render"
+  },
+  {
+    "id": "text",
+    "type": "font",
+    "title": "text",
+    "source": "https://github.com/rsms/inter",
+    "localPath": "public/fonts/Text.woff2",
+    "sha256": "2c19a16152931a58eebbbb67c8ad38833be5d28e2808d07b9c8f67cf5ebdb7b6",
+    "license": "See SOURCES.md",
+    "notes": "Bundled locally; no network during render"
+  }
+]

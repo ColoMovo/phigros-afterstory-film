@@ -1,0 +1,6 @@
+{
+  "name":"phigros-afterstory-film","private":true,"version":"1.0.0","type":"module",
+  "scripts":{"studio":"remotion studio src/index.tsx","typecheck":"tsc --noEmit","analyze":"python3 scripts/analyze.py","fetch-assets":"node scripts/fetch-assets.mjs","verify-assets":"node scripts/verify-assets.mjs","render:test":"node scripts/render.mjs test","render:stills":"node scripts/render.mjs stills","render:preview":"node scripts/render.mjs preview","render:final":"node scripts/render.mjs final","verify-video":"python3 scripts/verify-video.py"},
+  "dependencies":{"@remotion/cli":"4.0.532","@remotion/bundler":"4.0.532","@remotion/renderer":"4.0.532","remotion":"4.0.532","react":"19.1.1","react-dom":"19.1.1","three":"0.180.0"},
+  "devDependencies":{"@types/react":"19.1.10","@types/three":"0.180.0","typescript":"5.9.3"}
+}

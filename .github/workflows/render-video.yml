@@ -1,0 +1,99 @@
+name: Render Afterstory
+on:
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: Render quality
+        required: true
+        default: preview
+        type: choice
+        options: [preview, final]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: afterstory-${{ github.workflow }}-${{ github.event_name }}-${{ inputs.quality || 'smoke' }}
+  cancel-in-progress: false
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Linux rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: npm run fetch-assets
+        env:
+          AUTHORIZED_AUDIO_URL: ${{ secrets.AUTHORIZED_AUDIO_URL }}
+      - run: npm run verify-assets
+      - run: npm run typecheck
+      - name: Complex sequence smoke test at 1080p60
+        run: node scripts/render.mjs test60
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-1080p60
+          path: output/test60-raw.mp4
+          retention-days: 7
+  render:
+    if: github.event_name == 'workflow_dispatch'
+    needs: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install renderer and verification dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
+          pip install numpy==2.2.6 pillow==11.3.0
+          npm ci --no-audit --no-fund
+          npx remotion browser ensure
+      - run: npm run fetch-assets && npm run verify-assets && npm run typecheck
+        env:
+          AUTHORIZED_AUDIO_URL: ${{ secrets.AUTHORIZED_AUDIO_URL }}
+      - name: Full length render
+        run: node scripts/render.mjs '${{ inputs.quality }}'
+        env:
+          RENDER_CONCURRENCY: 2
+      - name: Keyframe contact sheet
+        run: |
+          npm run render:stills
+          python scripts/contact-sheet.py
+      - name: Verify every video and audio stream
+        run: python scripts/verify-video.py
+      - name: Create preview alongside final
+        if: inputs.quality == 'final'
+        run: |
+          ffmpeg -v error -y -i output/phigros-main-story-celebration.mp4 -vf scale=960:540,fps=30 -c:v libx264 -preset fast -crf 23 -c:a copy -movflags +faststart output/preview.mp4
+          python scripts/verify-video.py
+      - name: Collect sources
+        run: cp assets/SOURCES.md output/SOURCES.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phigros-main-story-celebration-${{ inputs.quality }}
+          path: |
+            output/*.mp4
+            output/contact-sheet.jpg
+            output/SOURCES.md
+            output/verification.json
+            output/stills/*.png
+          retention-days: 30

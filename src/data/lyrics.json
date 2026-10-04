@@ -1,0 +1,1843 @@
+[
+  {
+    "time": 5.321,
+    "jp": "夜明けに祈る，寂の拡げる空",
+    "zh": "想黎明许愿，寂静漫过天空",
+    "wordTiming": [
+      {
+        "time": 5.321,
+        "duration": 0.126,
+        "text": "夜"
+      },
+      {
+        "time": 5.447,
+        "duration": 0.14,
+        "text": "明"
+      },
+      {
+        "time": 5.587,
+        "duration": 0.141,
+        "text": "け"
+      },
+      {
+        "time": 5.728,
+        "duration": 0.954,
+        "text": "に"
+      },
+      {
+        "time": 6.682,
+        "duration": 0.123,
+        "text": "祈"
+      },
+      {
+        "time": 6.805,
+        "duration": 0.824,
+        "text": "る"
+      },
+      {
+        "time": 7.629,
+        "duration": 0.261,
+        "text": "，"
+      },
+      {
+        "time": 7.89,
+        "duration": 0.238,
+        "text": "寂"
+      },
+      {
+        "time": 8.128,
+        "duration": 0.155,
+        "text": "の"
+      },
+      {
+        "time": 8.283,
+        "duration": 0.157,
+        "text": "拡"
+      },
+      {
+        "time": 8.44,
+        "duration": 0.133,
+        "text": "げ"
+      },
+      {
+        "time": 8.573,
+        "duration": 0.17,
+        "text": "る"
+      },
+      {
+        "time": 8.743,
+        "duration": 0.147,
+        "text": "空"
+      }
+    ]
+  },
+  {
+    "time": 9.09,
+    "jp": "無音が 闇かに囁かけていた",
+    "zh": "无声在暗处，正要低语",
+    "wordTiming": [
+      {
+        "time": 9.09,
+        "duration": 0.888,
+        "text": "無"
+      },
+      {
+        "time": 9.978,
+        "duration": 0.289,
+        "text": "音"
+      },
+      {
+        "time": 10.267,
+        "duration": 0.771,
+        "text": "が "
+      },
+      {
+        "time": 11.038,
+        "duration": 0.156,
+        "text": "闇"
+      },
+      {
+        "time": 11.194,
+        "duration": 0.82,
+        "text": "か"
+      },
+      {
+        "time": 12.014,
+        "duration": 0.6,
+        "text": "に"
+      },
+      {
+        "time": 12.614,
+        "duration": 0.185,
+        "text": "囁"
+      },
+      {
+        "time": 12.799,
+        "duration": 0.186,
+        "text": "か"
+      },
+      {
+        "time": 12.985,
+        "duration": 0.199,
+        "text": "け"
+      },
+      {
+        "time": 13.184,
+        "duration": 0.507,
+        "text": "て"
+      },
+      {
+        "time": 13.691,
+        "duration": 0.33,
+        "text": "い"
+      },
+      {
+        "time": 14.021,
+        "duration": 1.0,
+        "text": "た"
+      }
+    ]
+  },
+  {
+    "time": 15.191,
+    "jp": "忘れたくなぃ時間の約束に",
+    "zh": "不愿遗忘的时光之约",
+    "wordTiming": [
+      {
+        "time": 15.191,
+        "duration": 0.153,
+        "text": "忘"
+      },
+      {
+        "time": 15.344,
+        "duration": 0.186,
+        "text": "れ"
+      },
+      {
+        "time": 15.53,
+        "duration": 0.168,
+        "text": "た"
+      },
+      {
+        "time": 15.698,
+        "duration": 0.137,
+        "text": "く"
+      },
+      {
+        "time": 15.835,
+        "duration": 0.156,
+        "text": "な"
+      },
+      {
+        "time": 15.991,
+        "duration": 0.151,
+        "text": "ぃ"
+      },
+      {
+        "time": 16.142,
+        "duration": 0.391,
+        "text": "時"
+      },
+      {
+        "time": 16.533,
+        "duration": 0.29,
+        "text": "間"
+      },
+      {
+        "time": 16.823,
+        "duration": 0.505,
+        "text": "の"
+      },
+      {
+        "time": 17.328,
+        "duration": 0.558,
+        "text": "約"
+      },
+      {
+        "time": 17.886,
+        "duration": 1.041,
+        "text": "束"
+      },
+      {
+        "time": 18.927,
+        "duration": 0.724,
+        "text": "に"
+      }
+    ]
+  },
+  {
+    "time": 19.851,
+    "jp": "约束に震ゎせた心",
+    "zh": "让心颤抖之今",
+    "wordTiming": [
+      {
+        "time": 19.851,
+        "duration": 0.147,
+        "text": "约"
+      },
+      {
+        "time": 19.998,
+        "duration": 0.148,
+        "text": "束"
+      },
+      {
+        "time": 20.146,
+        "duration": 0.148,
+        "text": "に"
+      },
+      {
+        "time": 20.294,
+        "duration": 0.135,
+        "text": "震"
+      },
+      {
+        "time": 20.429,
+        "duration": 0.229,
+        "text": "ゎ"
+      },
+      {
+        "time": 20.658,
+        "duration": 0.216,
+        "text": "せ"
+      },
+      {
+        "time": 20.874,
+        "duration": 0.164,
+        "text": "た"
+      },
+      {
+        "time": 21.038,
+        "duration": 1.0,
+        "text": "心"
+      }
+    ]
+  },
+  {
+    "time": 33.84,
+    "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
+    "zh": "总追忆逝去的“时间”总在追忆",
+    "wordTiming": [
+      {
+        "time": 33.84,
+        "duration": 0.138,
+        "text": "過"
+      },
+      {
+        "time": 33.978,
+        "duration": 0.149,
+        "text": "ぎ"
+      },
+      {
+        "time": 34.127,
+        "duration": 0.156,
+        "text": "た"
+      },
+      {
+        "time": 34.283,
+        "duration": 0.141,
+        "text": "“"
+      },
+      {
+        "time": 34.424,
+        "duration": 0.23,
+        "text": "時"
+      },
+      {
+        "time": 34.654,
+        "duration": 0.149,
+        "text": "間"
+      },
+      {
+        "time": 34.803,
+        "duration": 0.148,
+        "text": "”"
+      },
+      {
+        "time": 34.951,
+        "duration": 0.207,
+        "text": "ば"
+      },
+      {
+        "time": 35.158,
+        "duration": 0.188,
+        "text": "か"
+      },
+      {
+        "time": 35.346,
+        "duration": 0.155,
+        "text": "り "
+      },
+      {
+        "time": 35.501,
+        "duration": 0.453,
+        "text": "想"
+      },
+      {
+        "time": 35.954,
+        "duration": 0.155,
+        "text": "い"
+      },
+      {
+        "time": 36.109,
+        "duration": 0.165,
+        "text": "馳"
+      },
+      {
+        "time": 36.274,
+        "duration": 0.155,
+        "text": "せ"
+      },
+      {
+        "time": 36.429,
+        "duration": 0.156,
+        "text": "る"
+      },
+      {
+        "time": 36.585,
+        "duration": 0.636,
+        "text": "ば"
+      },
+      {
+        "time": 37.221,
+        "duration": 0.211,
+        "text": "か"
+      },
+      {
+        "time": 37.432,
+        "duration": 0.444,
+        "text": "り"
+      }
+    ]
+  },
+  {
+    "time": 38.076,
+    "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
+    "zh": "快被叹息淹没的“时间”快看不清",
+    "wordTiming": [
+      {
+        "time": 38.076,
+        "duration": 0.181,
+        "text": "溜"
+      },
+      {
+        "time": 38.257,
+        "duration": 0.147,
+        "text": "息"
+      },
+      {
+        "time": 38.404,
+        "duration": 0.139,
+        "text": "に"
+      },
+      {
+        "time": 38.543,
+        "duration": 0.15,
+        "text": "埋"
+      },
+      {
+        "time": 38.693,
+        "duration": 0.151,
+        "text": "も"
+      },
+      {
+        "time": 38.844,
+        "duration": 0.369,
+        "text": "れ"
+      },
+      {
+        "time": 39.213,
+        "duration": 0.157,
+        "text": "そ"
+      },
+      {
+        "time": 39.37,
+        "duration": 0.17,
+        "text": "う"
+      },
+      {
+        "time": 39.54,
+        "duration": 0.179,
+        "text": "な"
+      },
+      {
+        "time": 39.719,
+        "duration": 0.504,
+        "text": "“"
+      },
+      {
+        "time": 40.223,
+        "duration": 0.163,
+        "text": "時"
+      },
+      {
+        "time": 40.386,
+        "duration": 0.17,
+        "text": "間"
+      },
+      {
+        "time": 40.556,
+        "duration": 0.164,
+        "text": "”"
+      },
+      {
+        "time": 40.72,
+        "duration": 0.276,
+        "text": "を"
+      },
+      {
+        "time": 40.996,
+        "duration": 0.147,
+        "text": "見"
+      },
+      {
+        "time": 41.143,
+        "duration": 0.233,
+        "text": "失"
+      },
+      {
+        "time": 41.376,
+        "duration": 0.139,
+        "text": "い"
+      },
+      {
+        "time": 41.515,
+        "duration": 0.23,
+        "text": "そ"
+      },
+      {
+        "time": 41.745,
+        "duration": 0.26,
+        "text": "ぅ"
+      },
+      {
+        "time": 42.005,
+        "duration": 0.225,
+        "text": "に"
+      },
+      {
+        "time": 42.23,
+        "duration": 0.465,
+        "text": "な"
+      },
+      {
+        "time": 42.695,
+        "duration": 0.589,
+        "text": "る"
+      }
+    ]
+  },
+  {
+    "time": 43.484,
+    "jp": "天柱1つずつ次へ次へついていく",
+    "zh": "天柱一根又一根，走向下一根，再下一根",
+    "wordTiming": [
+      {
+        "time": 43.484,
+        "duration": 0.149,
+        "text": "天"
+      },
+      {
+        "time": 43.633,
+        "duration": 0.152,
+        "text": "柱"
+      },
+      {
+        "time": 43.785,
+        "duration": 0.15,
+        "text": "1"
+      },
+      {
+        "time": 43.935,
+        "duration": 0.141,
+        "text": "つ"
+      },
+      {
+        "time": 44.076,
+        "duration": 0.14,
+        "text": "ず"
+      },
+      {
+        "time": 44.216,
+        "duration": 0.49,
+        "text": "つ"
+      },
+      {
+        "time": 44.706,
+        "duration": 0.684,
+        "text": "次"
+      },
+      {
+        "time": 45.39,
+        "duration": 0.18,
+        "text": "へ"
+      },
+      {
+        "time": 45.57,
+        "duration": 0.163,
+        "text": "次"
+      },
+      {
+        "time": 45.733,
+        "duration": 0.169,
+        "text": "へ"
+      },
+      {
+        "time": 45.902,
+        "duration": 0.17,
+        "text": "つ"
+      },
+      {
+        "time": 46.072,
+        "duration": 0.379,
+        "text": "い"
+      },
+      {
+        "time": 46.451,
+        "duration": 0.187,
+        "text": "て"
+      },
+      {
+        "time": 46.638,
+        "duration": 0.295,
+        "text": "い"
+      },
+      {
+        "time": 46.933,
+        "duration": 0.661,
+        "text": "く"
+      }
+    ]
+  },
+  {
+    "time": 47.794,
+    "jp": "たらればもう たらればもう",
+    "zh": "//",
+    "wordTiming": [
+      {
+        "time": 47.794,
+        "duration": 0.162,
+        "text": "た"
+      },
+      {
+        "time": 47.956,
+        "duration": 0.156,
+        "text": "ら"
+      },
+      {
+        "time": 48.112,
+        "duration": 0.149,
+        "text": "れ"
+      },
+      {
+        "time": 48.261,
+        "duration": 0.134,
+        "text": "ば"
+      },
+      {
+        "time": 48.395,
+        "duration": 0.094,
+        "text": "も"
+      },
+      {
+        "time": 48.489,
+        "duration": 0.083,
+        "text": "う "
+      },
+      {
+        "time": 48.572,
+        "duration": 0.252,
+        "text": "た"
+      },
+      {
+        "time": 48.824,
+        "duration": 0.186,
+        "text": "ら"
+      },
+      {
+        "time": 49.01,
+        "duration": 0.103,
+        "text": "れ"
+      },
+      {
+        "time": 49.113,
+        "duration": 0.142,
+        "text": "ば"
+      },
+      {
+        "time": 49.255,
+        "duration": 0.194,
+        "text": "も"
+      },
+      {
+        "time": 49.449,
+        "duration": 0.211,
+        "text": "う"
+      }
+    ]
+  },
+  {
+    "time": 49.86,
+    "jp": "意不の僕らがさ叫ぶよ",
+    "zh": "倘若命运逆意，我们便呼喊",
+    "wordTiming": [
+      {
+        "time": 49.86,
+        "duration": 0.115,
+        "text": "意"
+      },
+      {
+        "time": 49.975,
+        "duration": 0.149,
+        "text": "不"
+      },
+      {
+        "time": 50.124,
+        "duration": 0.148,
+        "text": "の"
+      },
+      {
+        "time": 50.272,
+        "duration": 0.269,
+        "text": "僕"
+      },
+      {
+        "time": 50.541,
+        "duration": 0.243,
+        "text": "ら"
+      },
+      {
+        "time": 50.784,
+        "duration": 0.254,
+        "text": "が"
+      },
+      {
+        "time": 51.038,
+        "duration": 0.132,
+        "text": "さ"
+      },
+      {
+        "time": 51.17,
+        "duration": 0.123,
+        "text": "叫"
+      },
+      {
+        "time": 51.293,
+        "duration": 0.15,
+        "text": "ぶ"
+      },
+      {
+        "time": 51.443,
+        "duration": 1.0,
+        "text": "よ"
+      }
+    ]
+  },
+  {
+    "time": 53.906,
+    "jp": "変わらない 代ゎらない 理解らない",
+    "zh": "什么都未曾改变，若无可替代，无法理解",
+    "wordTiming": [
+      {
+        "time": 53.906,
+        "duration": 0.092,
+        "text": "変"
+      },
+      {
+        "time": 53.998,
+        "duration": 0.148,
+        "text": "わ"
+      },
+      {
+        "time": 54.146,
+        "duration": 0.09,
+        "text": "ら"
+      },
+      {
+        "time": 54.236,
+        "duration": 0.105,
+        "text": "な"
+      },
+      {
+        "time": 54.341,
+        "duration": 0.11,
+        "text": "い "
+      },
+      {
+        "time": 54.451,
+        "duration": 0.086,
+        "text": "代"
+      },
+      {
+        "time": 54.537,
+        "duration": 0.085,
+        "text": "ゎ"
+      },
+      {
+        "time": 54.622,
+        "duration": 0.096,
+        "text": "ら"
+      },
+      {
+        "time": 54.718,
+        "duration": 0.097,
+        "text": "な"
+      },
+      {
+        "time": 54.815,
+        "duration": 0.231,
+        "text": "い "
+      },
+      {
+        "time": 55.046,
+        "duration": 0.104,
+        "text": "理"
+      },
+      {
+        "time": 55.15,
+        "duration": 0.095,
+        "text": "解"
+      },
+      {
+        "time": 55.245,
+        "duration": 0.09,
+        "text": "ら"
+      },
+      {
+        "time": 55.335,
+        "duration": 0.091,
+        "text": "な"
+      },
+      {
+        "time": 55.426,
+        "duration": 0.051,
+        "text": "い"
+      }
+    ]
+  },
+  {
+    "time": 55.677,
+    "jp": "じゃあ空くて",
+    "zh": "便只剩空虚",
+    "wordTiming": [
+      {
+        "time": 55.677,
+        "duration": 0.111,
+        "text": "じ"
+      },
+      {
+        "time": 55.788,
+        "duration": 0.112,
+        "text": "ゃ"
+      },
+      {
+        "time": 55.9,
+        "duration": 0.081,
+        "text": "あ"
+      },
+      {
+        "time": 55.981,
+        "duration": 0.105,
+        "text": "空"
+      },
+      {
+        "time": 56.086,
+        "duration": 0.326,
+        "text": "く"
+      },
+      {
+        "time": 56.412,
+        "duration": 1.0,
+        "text": "て"
+      }
+    ]
+  },
+  {
+    "time": 58.315,
+    "jp": "天使の梯子を探した",
+    "zh": "于是我寻找天使的阶梯",
+    "wordTiming": [
+      {
+        "time": 58.315,
+        "duration": 0.138,
+        "text": "天"
+      },
+      {
+        "time": 58.453,
+        "duration": 0.371,
+        "text": "使"
+      },
+      {
+        "time": 58.824,
+        "duration": 0.142,
+        "text": "の"
+      },
+      {
+        "time": 58.966,
+        "duration": 0.207,
+        "text": "梯"
+      },
+      {
+        "time": 59.173,
+        "duration": 0.252,
+        "text": "子"
+      },
+      {
+        "time": 59.425,
+        "duration": 0.201,
+        "text": "を"
+      },
+      {
+        "time": 59.626,
+        "duration": 0.352,
+        "text": "探"
+      },
+      {
+        "time": 59.978,
+        "duration": 0.433,
+        "text": "し"
+      },
+      {
+        "time": 60.411,
+        "duration": 1.0,
+        "text": "た"
+      }
+    ]
+  },
+  {
+    "time": 62.538,
+    "jp": "じゃがれた声 摇れ上擦る",
+    "zh": "嘶哑的声音，颤抖着拔高",
+    "wordTiming": [
+      {
+        "time": 62.538,
+        "duration": 0.176,
+        "text": "じ"
+      },
+      {
+        "time": 62.714,
+        "duration": 0.134,
+        "text": "ゃ"
+      },
+      {
+        "time": 62.848,
+        "duration": 0.112,
+        "text": "が"
+      },
+      {
+        "time": 62.96,
+        "duration": 0.133,
+        "text": "れ"
+      },
+      {
+        "time": 63.093,
+        "duration": 0.15,
+        "text": "た"
+      },
+      {
+        "time": 63.243,
+        "duration": 0.146,
+        "text": "声 "
+      },
+      {
+        "time": 63.389,
+        "duration": 0.588,
+        "text": "摇"
+      },
+      {
+        "time": 63.977,
+        "duration": 0.24,
+        "text": "れ"
+      },
+      {
+        "time": 64.217,
+        "duration": 0.28,
+        "text": "上"
+      },
+      {
+        "time": 64.497,
+        "duration": 0.444,
+        "text": "擦"
+      },
+      {
+        "time": 64.941,
+        "duration": 1.0,
+        "text": "る"
+      }
+    ]
+  },
+  {
+    "time": 66.872,
+    "jp": "一方通行の道程で贈れ往くよさが",
+    "zh": "在单向旅途上，一路赠与的美好",
+    "wordTiming": [
+      {
+        "time": 66.872,
+        "duration": 0.234,
+        "text": "一"
+      },
+      {
+        "time": 67.106,
+        "duration": 0.185,
+        "text": "方"
+      },
+      {
+        "time": 67.291,
+        "duration": 0.364,
+        "text": "通"
+      },
+      {
+        "time": 67.655,
+        "duration": 0.439,
+        "text": "行"
+      },
+      {
+        "time": 68.094,
+        "duration": 0.173,
+        "text": "の"
+      },
+      {
+        "time": 68.267,
+        "duration": 0.205,
+        "text": "道"
+      },
+      {
+        "time": 68.472,
+        "duration": 0.221,
+        "text": "程"
+      },
+      {
+        "time": 68.693,
+        "duration": 0.329,
+        "text": "で"
+      },
+      {
+        "time": 69.022,
+        "duration": 0.095,
+        "text": "贈"
+      },
+      {
+        "time": 69.117,
+        "duration": 1.0,
+        "text": "れ"
+      },
+      {
+        "time": 70.26,
+        "duration": 0.552,
+        "text": "往"
+      },
+      {
+        "time": 70.812,
+        "duration": 0.147,
+        "text": "く"
+      },
+      {
+        "time": 70.959,
+        "duration": 0.295,
+        "text": "よ"
+      },
+      {
+        "time": 71.254,
+        "duration": 0.521,
+        "text": "さ"
+      },
+      {
+        "time": 71.775,
+        "duration": 0.527,
+        "text": "が"
+      }
+    ]
+  },
+  {
+    "time": 72.502,
+    "jp": "春風へ奪われた言葉",
+    "zh": "在那些被春风夺走的话语",
+    "wordTiming": [
+      {
+        "time": 72.502,
+        "duration": 0.151,
+        "text": "春"
+      },
+      {
+        "time": 72.653,
+        "duration": 0.146,
+        "text": "風"
+      },
+      {
+        "time": 72.799,
+        "duration": 0.357,
+        "text": "へ"
+      },
+      {
+        "time": 73.156,
+        "duration": 0.147,
+        "text": "奪"
+      },
+      {
+        "time": 73.303,
+        "duration": 0.178,
+        "text": "わ"
+      },
+      {
+        "time": 73.481,
+        "duration": 0.266,
+        "text": "れ"
+      },
+      {
+        "time": 73.747,
+        "duration": 0.479,
+        "text": "た"
+      },
+      {
+        "time": 74.226,
+        "duration": 0.489,
+        "text": "言"
+      },
+      {
+        "time": 74.715,
+        "duration": 1.0,
+        "text": "葉"
+      }
+    ]
+  },
+  {
+    "time": 75.938,
+    "jp": "背中合わせ伝えた言葉",
+    "zh": "那些背靠着背传达的话语",
+    "wordTiming": [
+      {
+        "time": 75.938,
+        "duration": 0.127,
+        "text": "背"
+      },
+      {
+        "time": 76.065,
+        "duration": 0.14,
+        "text": "中"
+      },
+      {
+        "time": 76.205,
+        "duration": 0.156,
+        "text": "合"
+      },
+      {
+        "time": 76.361,
+        "duration": 0.156,
+        "text": "わ"
+      },
+      {
+        "time": 76.517,
+        "duration": 0.178,
+        "text": "せ"
+      },
+      {
+        "time": 76.695,
+        "duration": 0.178,
+        "text": "伝"
+      },
+      {
+        "time": 76.873,
+        "duration": 0.194,
+        "text": "え"
+      },
+      {
+        "time": 77.067,
+        "duration": 0.222,
+        "text": "た"
+      },
+      {
+        "time": 77.289,
+        "duration": 0.416,
+        "text": "言"
+      },
+      {
+        "time": 77.705,
+        "duration": 0.394,
+        "text": "葉"
+      }
+    ]
+  },
+  {
+    "time": 78.299,
+    "jp": "そしてまた，出会えますように",
+    "zh": "「只愿我们还能再相遇」",
+    "wordTiming": [
+      {
+        "time": 78.299,
+        "duration": 0.179,
+        "text": "そ"
+      },
+      {
+        "time": 78.478,
+        "duration": 0.133,
+        "text": "し"
+      },
+      {
+        "time": 78.611,
+        "duration": 0.117,
+        "text": "て"
+      },
+      {
+        "time": 78.728,
+        "duration": 0.238,
+        "text": "ま"
+      },
+      {
+        "time": 78.966,
+        "duration": 0.119,
+        "text": "た"
+      },
+      {
+        "time": 79.085,
+        "duration": 0.344,
+        "text": "，"
+      },
+      {
+        "time": 79.429,
+        "duration": 0.2,
+        "text": "出"
+      },
+      {
+        "time": 79.629,
+        "duration": 0.132,
+        "text": "会"
+      },
+      {
+        "time": 79.761,
+        "duration": 0.125,
+        "text": "え"
+      },
+      {
+        "time": 79.886,
+        "duration": 0.144,
+        "text": "ま"
+      },
+      {
+        "time": 80.03,
+        "duration": 0.124,
+        "text": "す"
+      },
+      {
+        "time": 80.154,
+        "duration": 0.12,
+        "text": "よ"
+      },
+      {
+        "time": 80.274,
+        "duration": 0.133,
+        "text": "う"
+      },
+      {
+        "time": 80.407,
+        "duration": 1.0,
+        "text": "に"
+      }
+    ]
+  },
+  {
+    "time": 98.076,
+    "jp": "回答の無い岐道の前",
+    "zh": "没有回答的岔路前",
+    "wordTiming": [
+      {
+        "time": 98.076,
+        "duration": 0.233,
+        "text": "回"
+      },
+      {
+        "time": 98.309,
+        "duration": 0.141,
+        "text": "答"
+      },
+      {
+        "time": 98.45,
+        "duration": 0.529,
+        "text": "の"
+      },
+      {
+        "time": 98.979,
+        "duration": 0.339,
+        "text": "無"
+      },
+      {
+        "time": 99.318,
+        "duration": 0.253,
+        "text": "い"
+      },
+      {
+        "time": 99.571,
+        "duration": 0.446,
+        "text": "岐"
+      },
+      {
+        "time": 100.017,
+        "duration": 0.291,
+        "text": "道"
+      },
+      {
+        "time": 100.308,
+        "duration": 0.54,
+        "text": "の"
+      },
+      {
+        "time": 100.848,
+        "duration": 1.0,
+        "text": "前"
+      }
+    ]
+  },
+  {
+    "time": 102.155,
+    "jp": "あの清月の下に今もわらないままで",
+    "zh": "在那清月之下，我至今仍不明白",
+    "wordTiming": [
+      {
+        "time": 102.155,
+        "duration": 0.245,
+        "text": "あ"
+      },
+      {
+        "time": 102.4,
+        "duration": 0.141,
+        "text": "の"
+      },
+      {
+        "time": 102.541,
+        "duration": 0.244,
+        "text": "清"
+      },
+      {
+        "time": 102.785,
+        "duration": 0.12,
+        "text": "月"
+      },
+      {
+        "time": 102.905,
+        "duration": 0.231,
+        "text": "の"
+      },
+      {
+        "time": 103.136,
+        "duration": 0.26,
+        "text": "下"
+      },
+      {
+        "time": 103.396,
+        "duration": 0.347,
+        "text": "に"
+      },
+      {
+        "time": 103.743,
+        "duration": 0.151,
+        "text": "今"
+      },
+      {
+        "time": 103.894,
+        "duration": 0.141,
+        "text": "も"
+      },
+      {
+        "time": 104.035,
+        "duration": 0.208,
+        "text": "わ"
+      },
+      {
+        "time": 104.243,
+        "duration": 0.162,
+        "text": "ら"
+      },
+      {
+        "time": 104.405,
+        "duration": 0.156,
+        "text": "な"
+      },
+      {
+        "time": 104.561,
+        "duration": 0.164,
+        "text": "い"
+      },
+      {
+        "time": 104.725,
+        "duration": 0.461,
+        "text": "ま"
+      },
+      {
+        "time": 105.186,
+        "duration": 0.432,
+        "text": "ま"
+      },
+      {
+        "time": 105.618,
+        "duration": 1.0,
+        "text": "で"
+      }
+    ]
+  },
+  {
+    "time": 108.55,
+    "jp": "変わらない 代ゎらない 理解らない",
+    "zh": "未曾改变，无可替代，无法理解",
+    "wordTiming": [
+      {
+        "time": 108.55,
+        "duration": 0.086,
+        "text": "変"
+      },
+      {
+        "time": 108.636,
+        "duration": 0.058,
+        "text": "わ"
+      },
+      {
+        "time": 108.694,
+        "duration": 0.098,
+        "text": "ら"
+      },
+      {
+        "time": 108.792,
+        "duration": 0.222,
+        "text": "な"
+      },
+      {
+        "time": 109.014,
+        "duration": 0.157,
+        "text": "い "
+      },
+      {
+        "time": 109.171,
+        "duration": 0.104,
+        "text": "代"
+      },
+      {
+        "time": 109.275,
+        "duration": 0.098,
+        "text": "ゎ"
+      },
+      {
+        "time": 109.373,
+        "duration": 0.072,
+        "text": "ら"
+      },
+      {
+        "time": 109.445,
+        "duration": 0.104,
+        "text": "な"
+      },
+      {
+        "time": 109.549,
+        "duration": 0.246,
+        "text": "い "
+      },
+      {
+        "time": 109.795,
+        "duration": 0.118,
+        "text": "理"
+      },
+      {
+        "time": 109.913,
+        "duration": 0.09,
+        "text": "解"
+      },
+      {
+        "time": 110.003,
+        "duration": 0.179,
+        "text": "ら"
+      },
+      {
+        "time": 110.182,
+        "duration": 0.138,
+        "text": "な"
+      },
+      {
+        "time": 110.32,
+        "duration": 0.073,
+        "text": "い"
+      }
+    ]
+  },
+  {
+    "time": 110.47,
+    "jp": "じゃあいられなくて",
+    "zh": "那便无法停留",
+    "wordTiming": [
+      {
+        "time": 110.47,
+        "duration": 0.12,
+        "text": "じ"
+      },
+      {
+        "time": 110.59,
+        "duration": 0.102,
+        "text": "ゃ"
+      },
+      {
+        "time": 110.692,
+        "duration": 0.074,
+        "text": "あ"
+      },
+      {
+        "time": 110.766,
+        "duration": 0.09,
+        "text": "い"
+      },
+      {
+        "time": 110.856,
+        "duration": 0.075,
+        "text": "ら"
+      },
+      {
+        "time": 110.931,
+        "duration": 0.096,
+        "text": "れ"
+      },
+      {
+        "time": 111.027,
+        "duration": 0.081,
+        "text": "な"
+      },
+      {
+        "time": 111.108,
+        "duration": 0.21,
+        "text": "く"
+      },
+      {
+        "time": 111.318,
+        "duration": 1.0,
+        "text": "て"
+      }
+    ]
+  },
+  {
+    "time": 113.098,
+    "jp": "帰属の行方を探した",
+    "zh": "于是我寻找归处",
+    "wordTiming": [
+      {
+        "time": 113.098,
+        "duration": 0.141,
+        "text": "帰"
+      },
+      {
+        "time": 113.239,
+        "duration": 0.282,
+        "text": "属"
+      },
+      {
+        "time": 113.521,
+        "duration": 0.206,
+        "text": "の"
+      },
+      {
+        "time": 113.727,
+        "duration": 0.165,
+        "text": "行"
+      },
+      {
+        "time": 113.892,
+        "duration": 0.304,
+        "text": "方"
+      },
+      {
+        "time": 114.196,
+        "duration": 0.21,
+        "text": "を"
+      },
+      {
+        "time": 114.406,
+        "duration": 0.472,
+        "text": "探"
+      },
+      {
+        "time": 114.878,
+        "duration": 0.262,
+        "text": "し"
+      },
+      {
+        "time": 115.14,
+        "duration": 1.0,
+        "text": "た"
+      }
+    ]
+  },
+  {
+    "time": 119.513,
+    "jp": "“時間”を積み重ねた悲斗",
+    "zh": "在“时间”层层叠叠得悲斗之中",
+    "wordTiming": [
+      {
+        "time": 119.513,
+        "duration": 0.13,
+        "text": "“"
+      },
+      {
+        "time": 119.643,
+        "duration": 0.126,
+        "text": "時"
+      },
+      {
+        "time": 119.769,
+        "duration": 0.156,
+        "text": "間"
+      },
+      {
+        "time": 119.925,
+        "duration": 0.185,
+        "text": "”"
+      },
+      {
+        "time": 120.11,
+        "duration": 0.163,
+        "text": "を"
+      },
+      {
+        "time": 120.273,
+        "duration": 0.156,
+        "text": "積"
+      },
+      {
+        "time": 120.429,
+        "duration": 0.44,
+        "text": "み"
+      },
+      {
+        "time": 120.869,
+        "duration": 0.183,
+        "text": "重"
+      },
+      {
+        "time": 121.052,
+        "duration": 0.178,
+        "text": "ね"
+      },
+      {
+        "time": 121.23,
+        "duration": 0.632,
+        "text": "た"
+      },
+      {
+        "time": 121.862,
+        "duration": 0.445,
+        "text": "悲"
+      },
+      {
+        "time": 122.307,
+        "duration": 1.0,
+        "text": "斗"
+      }
+    ]
+  },
+  {
+    "time": 123.746,
+    "jp": "君がもぅ知らない“世界”で",
+    "zh": "在你已不再知晓的“世界”",
+    "wordTiming": [
+      {
+        "time": 123.746,
+        "duration": 0.151,
+        "text": "君"
+      },
+      {
+        "time": 123.897,
+        "duration": 0.087,
+        "text": "が"
+      },
+      {
+        "time": 123.984,
+        "duration": 0.372,
+        "text": "も"
+      },
+      {
+        "time": 124.356,
+        "duration": 0.285,
+        "text": "ぅ"
+      },
+      {
+        "time": 124.641,
+        "duration": 0.169,
+        "text": "知"
+      },
+      {
+        "time": 124.81,
+        "duration": 0.348,
+        "text": "ら"
+      },
+      {
+        "time": 125.158,
+        "duration": 0.177,
+        "text": "な"
+      },
+      {
+        "time": 125.335,
+        "duration": 0.2,
+        "text": "い"
+      },
+      {
+        "time": 125.535,
+        "duration": 0.218,
+        "text": "“"
+      },
+      {
+        "time": 125.753,
+        "duration": 0.161,
+        "text": "世"
+      },
+      {
+        "time": 125.914,
+        "duration": 0.35,
+        "text": "界"
+      },
+      {
+        "time": 126.264,
+        "duration": 0.282,
+        "text": "”"
+      },
+      {
+        "time": 126.546,
+        "duration": 1.0,
+        "text": "で"
+      }
+    ]
+  },
+  {
+    "time": 128.193,
+    "jp": "洪星の1つに 僕の咆哮",
+    "zh": "向着一颗洪星，发出我的咆哮",
+    "wordTiming": [
+      {
+        "time": 128.193,
+        "duration": 0.163,
+        "text": "洪"
+      },
+      {
+        "time": 128.356,
+        "duration": 0.313,
+        "text": "星"
+      },
+      {
+        "time": 128.669,
+        "duration": 0.154,
+        "text": "の"
+      },
+      {
+        "time": 128.823,
+        "duration": 0.187,
+        "text": "1"
+      },
+      {
+        "time": 129.01,
+        "duration": 0.186,
+        "text": "つ"
+      },
+      {
+        "time": 129.196,
+        "duration": 0.232,
+        "text": "に "
+      },
+      {
+        "time": 129.428,
+        "duration": 0.198,
+        "text": "僕"
+      },
+      {
+        "time": 129.626,
+        "duration": 1.0,
+        "text": "の"
+      },
+      {
+        "time": 130.7,
+        "duration": 0.425,
+        "text": "咆"
+      },
+      {
+        "time": 131.125,
+        "duration": 1.0,
+        "text": "哮"
+      }
+    ]
+  },
+  {
+    "time": 132.997,
+    "jp": "最後まで",
+    "zh": "直到最后",
+    "wordTiming": [
+      {
+        "time": 132.997,
+        "duration": 1.011,
+        "text": "最"
+      },
+      {
+        "time": 134.008,
+        "duration": 0.654,
+        "text": "後"
+      },
+      {
+        "time": 134.662,
+        "duration": 0.527,
+        "text": "ま"
+      },
+      {
+        "time": 135.189,
+        "duration": 0.056,
+        "text": "で"
+      }
+    ]
+  },
+  {
+    "time": 135.258,
+    "jp": "残酷で幸福な結末を 生きてぃる",
+    "zh": "残酷而又幸福的结局，我正生活在其中",
+    "wordTiming": [
+      {
+        "time": 135.258,
+        "duration": 0.294,
+        "text": "残"
+      },
+      {
+        "time": 135.552,
+        "duration": 0.17,
+        "text": "酷"
+      },
+      {
+        "time": 135.722,
+        "duration": 0.631,
+        "text": "で"
+      },
+      {
+        "time": 136.353,
+        "duration": 0.202,
+        "text": "幸"
+      },
+      {
+        "time": 136.555,
+        "duration": 0.185,
+        "text": "福"
+      },
+      {
+        "time": 136.74,
+        "duration": 0.679,
+        "text": "な"
+      },
+      {
+        "time": 137.419,
+        "duration": 0.397,
+        "text": "結"
+      },
+      {
+        "time": 137.816,
+        "duration": 0.186,
+        "text": "末"
+      },
+      {
+        "time": 138.002,
+        "duration": 0.374,
+        "text": "を "
+      },
+      {
+        "time": 138.376,
+        "duration": 1.0,
+        "text": "生"
+      },
+      {
+        "time": 139.895,
+        "duration": 0.548,
+        "text": "き"
+      },
+      {
+        "time": 140.443,
+        "duration": 0.447,
+        "text": "て"
+      },
+      {
+        "time": 140.89,
+        "duration": 0.312,
+        "text": "ぃ"
+      },
+      {
+        "time": 141.202,
+        "duration": 1.0,
+        "text": "る"
+      }
+    ]
+  },
+  {
+    "time": 142.383,
+    "jp": "君を囁き去りに",
+    "zh": "低语着，离你而去",
+    "wordTiming": [
+      {
+        "time": 142.383,
+        "duration": 0.176,
+        "text": "君"
+      },
+      {
+        "time": 142.559,
+        "duration": 0.304,
+        "text": "を"
+      },
+      {
+        "time": 142.863,
+        "duration": 0.171,
+        "text": "囁"
+      },
+      {
+        "time": 143.034,
+        "duration": 0.163,
+        "text": "き"
+      },
+      {
+        "time": 143.197,
+        "duration": 0.424,
+        "text": "去"
+      },
+      {
+        "time": 143.621,
+        "duration": 0.341,
+        "text": "り"
+      },
+      {
+        "time": 143.962,
+        "duration": 1.0,
+        "text": "に"
+      }
+    ]
+  }
+]
