@@ -31,8 +31,13 @@ for s in shots:
  first=max(0,math.ceil((s['start']-meta['sourceStart'])*meta['fps']-1e-7))
  last=min(meta['frames']-1,math.ceil((s['end']-meta['sourceStart'])*meta['fps']-1e-7)-1)
  frame=max(first,min(last,round((s['sample']-meta['sourceStart'])*meta['fps'])));path=dir/f"{s['id']}-{s['family']}.png"
- subprocess.run(['ffmpeg','-v','error','-y','-i',str(p),'-vf',f'select=eq(n\\,{frame})','-frames:v','1',str(path)],check=True)
  samples.append(dict(id=s['id'],family=s['family'],world=s['world'],name=s['name'],reviewName=s.get('reviewName',s['family']),sourceTime=meta['sourceStart']+frame/meta['fps'],videoFrame=frame,image=path.name,function=s['function']))
+frames=sorted({s['videoFrame'] for s in samples})
+select='+'.join(f'eq(n\\,{frame})' for frame in frames)
+subprocess.run(['ffmpeg','-v','error','-y','-i',str(p),'-vf',f'select={select}','-fps_mode','vfr','-frames:v',str(len(frames)),str(dir/'encoded-%03d.png')],check=True)
+byframe={frame:dir/f'encoded-{i+1:03d}.png' for i,frame in enumerate(frames)}
+for sample in samples:(dir/sample['image']).write_bytes(byframe[sample['videoFrame']].read_bytes())
+for path in byframe.values():path.unlink()
 w,h=384,216;cols=5;rows=math.ceil(len(samples)/cols);sheet=Image.new('RGB',(w*cols,(h+74)*rows+76),'#101b27');draw=ImageDraw.Draw(sheet)
 draw.text((18,14),f"CI {'OPENING' if opening else 'FILM'} / ART DIRECTION REVIEW / {meta['sourceCommit'][:12]}",font=font,fill='#dce7eb')
 draw.text((18,43),'Original procedural visuals · UNOFFICIAL FAN TRIBUTE · samples decoded from MP4',font=small,fill='#91a9b6')

@@ -177,9 +177,9 @@ jobs:
         if: env.TARGET != 'smoke' && env.TARGET != 'physical-review'
         run: |
           case "$TARGET" in
-            opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 ;;
-            preview) python scripts/review-shots.py output/preview.mp4 ;;
-            final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 ;;
+            opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 && python scripts/review-anchors.py output/opening-review.mp4 ;;
+            preview) python scripts/review-shots.py output/preview.mp4 && python scripts/review-anchors.py output/preview.mp4 ;;
+            final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 ;;
           esac
       - name: Package source attribution and shot manifest
         run: |
@@ -211,6 +211,8 @@ jobs:
             output/SOURCES.md
             output/shot-manifest.json
             output/shot-language-audit.json
+            output/anchor-events/*.jpg
+            output/anchor-event-verification.json
           if-no-files-found: error
           retention-days: 14
       - name: Remove decrypted input from runner

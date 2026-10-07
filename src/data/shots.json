@@ -156,7 +156,7 @@
     "cameraBehavior": "Low oblique orbit followed by accelerated shell-gap entry",
     "shotEvent": "沿开口贴边进入，歌词被吸向内部",
     "exitTransition": "Hard spatial cut into interior",
-    "anchorId": "04"
+    "anchorId": "03"
   },
   {
     "id": "05",
@@ -1265,7 +1265,7 @@
     "cameraBehavior": "Rise and roll through folded warm mineral vault",
     "shotEvent": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
     "exitTransition": "Hard spatial cut into insert-white",
-    "anchorId": "labyrinth"
+    "anchorId": "30"
   },
   {
     "id": "31",
@@ -1525,7 +1525,7 @@
     "cameraBehavior": "Low perspective flight through the broken viaduct",
     "shotEvent": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
     "exitTransition": "Hard spatial cut into insert-black",
-    "anchorId": "bridge"
+    "anchorId": "36"
   },
   {
     "id": "37",
