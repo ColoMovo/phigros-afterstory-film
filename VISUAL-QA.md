@@ -23,3 +23,7 @@ Encoded four-stage CI review confirms the corrected mirror shot reveals a separa
 ## Acceptance scope
 
 No external policy or reference-video file is a runtime dependency. The prose Bible guides original work; official imagery remains absent. Final visual quality must be judged from the current encoded film and stage images, not manifest counts.
+
+## Quiet release refinement
+
+Local single-frame checks rejected a literal shoreline / large terrain experiment as a flat CG landscape. It was removed. The retained release is a quiet curved horizon with original procedural cloud layers, warm atmospheric glare, a small surviving sprout and dissolving 09. Camera stays continuous between release and sky. This is a graphic atmosphere, not claimed as a physically accurate landscape. Formal current-film validation remains in CI.

@@ -315,8 +315,26 @@ function finalMass(){
  w.moving.push(q=>{const split=smooth(.28,.69,q),burst=smooth(.75,1,q);halves.forEach((o,i)=>{o.position.x=(i?-1:1)*(split*26+burst*100);o.rotation.z=(i?1:-1)*burst*.07});fracture.position.x=-210-smooth(.05,.23,q)*220;line.position.z=290+q*240;ribbon.rotation.z=q*.16;inner.intensity=8000+split*9000+burst*23000;floor.position.y=-burst*7});
  w.camera=(q,c)=>look(c,[125-q*165,70+q*55,65+q*80+smooth(.63,1,q)*180],[45,135,660],52,-.16+q*.24);return w;
 }
+// A complete quiet landscape replaces the old tiny island on a flat gradient.
+// Cloud density is baked procedurally once; sunlight, water and camera are animated.
+function dawnAir(w:World){
+ const c=document.createElement('canvas');c.width=1024;c.height=512;const x=c.getContext('2d')!,im=x.createImageData(c.width,c.height);
+ const noise=(px:number,py:number)=>{const ix=Math.floor(px),iy=Math.floor(py),fx=px-ix,fy=py-iy,u=fx*fx*(3-2*fx),v=fy*fy*(3-2*fy),n=(a:number,b:number)=>hash(a*41+b*1237+730);return lerp(lerp(n(ix,iy),n(ix+1,iy),u),lerp(n(ix,iy+1),n(ix+1,iy+1),u),v)};
+ for(let y=0;y<512;y++)for(let xx=0;xx<1024;xx++){
+  const u=xx/1024,v=y/512,h=smooth(.02,.87,v),sun=Math.exp(-((u-.72)**2/.024+(v-.46)**2/.012));
+  let n=0,amp=.58;for(let k=0;k<4;k++){const scale=2**k;n+=amp*noise(u*5*scale,v*9*scale);amp*=.5}
+  const cloud=smooth(.44,.77,n+noise(u*2+1,v*4+8)*.1)*smooth(.64,.18,v),base=[lerp(83,239,h),lerp(139,232,h),lerp(179,206,h)];
+  const rim=smooth(.4,.57,n)*(1-smooth(.58,.76,n))*cloud;
+  for(let k=0;k<3;k++){const white=[238,224,212][k]+rim*20,idx=(y*1024+xx)*4;im.data[idx+k]=lerp(base[k]+sun*[24,16,4][k],white,cloud*.76);im.data[idx+3]=255}
+ }
+ x.putImageData(im,0,0);const tex=new T.CanvasTexture(c);tex.colorSpace=T.SRGBColorSpace;w.scene.background=tex;
+ // The curved horizon stays graphic: this is a quiet atmosphere, not a fake landscape demo.
+ const horizon=x.createLinearGradient(0,310,0,512);horizon.addColorStop(0,'#d4e0d8');horizon.addColorStop(.2,'#b1c5c8');horizon.addColorStop(1,'#819fae');x.fillStyle=horizon;x.beginPath();x.moveTo(0,356);for(let i=0;i<=1024;i+=8)x.lineTo(i,356-24*Math.sin(i/1024*Math.PI));x.lineTo(1024,512);x.lineTo(0,512);x.closePath();x.fill();
+ const glow=x.createRadialGradient(735,338,0,735,338,150);glow.addColorStop(0,'rgba(255,239,197,.75)');glow.addColorStop(1,'rgba(255,239,197,0)');x.fillStyle=glow;x.fillRect(500,190,450,320);tex.needsUpdate=true;
+}
+
 function lifeDawn(after=false){
- const w=world('#e4e9d5',180,1600);backdrop(w,[[0,'#88bfd6'],[.52,'#d9ede7'],[.82,'#fff3cc'],[1,'#f1eddd']]);rig(w,.45,'#ffe5ad',3.3,'#fffcef',1.2);
+ const w=world('#e4e9d5',180,1600);dawnAir(w);rig(w,.45,'#ffe5ad',3.3,'#fffcef',1.2);
  const platform=island(w.root,[0,-22,260],38,15,'stone',1904);const g=new T.Group();g.position.set(0,-20,260);w.root.add(g);
  cable(g,[[0,0,0],[1,8,0],[-.7,18,.5],[1,27,0]],.32,'navy');
  for(const side of [-1,1]){
@@ -327,7 +345,7 @@ function lifeDawn(after=false){
  const m=(mark.material as T.MeshStandardMaterial).clone();m.transparent=true;mark.material=m;
  roles(w,{stone:'#8b9481',navy:'#344e2e',gold:'#cfb476'},.9);
  w.moving.push(q=>{g.rotation.z=Math.sin(q*4)*.025;if(after){m.opacity=1-smooth(.1,.5,q);g.position.y=-20;platform.position.y=-22-q*3}});
- w.camera=(q,c)=>look(c,[after?7:25-q*18,after?18:3+q*15,after?-120+q*2:-140+smooth(0,.35,q)*20],[0,1,260],after?67-q*12:67,0);return w;
+ w.camera=(q,c)=>{const z=after?(7.042+q*9.101)/16.143:q*7.042/16.143;look(c,[25-z*36,5+z*13,-125+z*12],[0,1+z*8,280],58-z*10,0)};return w;
 }
 export function directedWorld(family:string):World|null{
  if(family.startsWith('physical-'))return graphicBlank('#090d11');
