@@ -120,7 +120,7 @@ jobs:
         run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
         if: env.TARGET != 'physical-review'
-        run: npm run fetch-assets && npm run verify-assets && npm run typecheck
+        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && npm run typecheck
       - name: Complex-world 1080p60 smoke (3 seconds)
         if: env.TARGET != 'physical-review'
         run: node scripts/render.mjs smoke
@@ -167,6 +167,7 @@ jobs:
             output/smoke-verification.json
             output/SOURCES.md
             output/shot-manifest.json
+            output/shot-language-audit.json
           if-no-files-found: error
           retention-days: 14
       - name: Remove decrypted input from runner

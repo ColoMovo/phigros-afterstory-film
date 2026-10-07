@@ -72,6 +72,13 @@ function cathedral(family:string){
  if(family==='impossible'){ns[0].rotation.z=-.4;ns[1].rotation.z=.7;beam(g,[-165,120,210],[145,200,450],29,28,'navy');}
  const line=beam(w.root,[-600,-25,100],[600,-25,100],.5,.5,'energy');
  roles(w,{navy:'#080808',white:'#f1eee7',stone:'#a7a199',energy:'#e63229',cyan:'#85adaf'},.95);
+ if(family==='monuments'){
+  w.scene.background=new T.Color('#010a10');if(w.scene.fog)w.scene.fog.color.set('#010a10');
+  rig(w,.025,'#a7e5ff',3.2,'#eaffff',4.0);
+  g.traverse(o=>{if(o instanceof T.Mesh){const m=(o.material as T.MeshStandardMaterial).clone();m.color.set('#89b9c5');m.roughness=.75;o.material=m}});
+  floor.material=new T.MeshStandardMaterial({color:'#01080c',roughness:.24,metalness:.83});
+  fragments(w,180,370,1000,'energy',1790);
+ }
  w.moving.push(q=>{line.position.z=70+q*850;if(family==='glass04')ns[0].rotation.z=-.15-smooth(.5,.8,q)*.25;if(family==='monuments')g.rotation.z=smooth(.3,.7,q)*Math.PI/2});
  w.camera=(q,c)=>{
   if(family==='macro09')look(c,[100-q*160,-22,125+q*85],[0,25,280],104,.17);
@@ -254,7 +261,7 @@ function lifeDawn(after=false){
  const m=(mark.material as T.MeshStandardMaterial).clone();m.transparent=true;mark.material=m;
  roles(w,{stone:'#8b9481',navy:'#344e2e',gold:'#cfb476'},.9);
  w.moving.push(q=>{g.rotation.z=Math.sin(q*4)*.025;if(after){m.opacity=1-smooth(.1,.5,q);g.position.y=-20;platform.position.y=-22-q*3}});
- w.camera=(q,c)=>look(c,[after?7:25-q*18,after?18:3+q*15,after?-120+q*2:-140+smooth(0,.35,q)*20],[0,1,260],after?55:67,0);return w;
+ w.camera=(q,c)=>look(c,[after?7:25-q*18,after?18:3+q*15,after?-120+q*2:-140+smooth(0,.35,q)*20],[0,1,260],after?67-q*12:67,0);return w;
 }
 export function directedWorld(family:string):World|null{
  if(family.startsWith('physical-'))return graphicBlank('#090d11');
