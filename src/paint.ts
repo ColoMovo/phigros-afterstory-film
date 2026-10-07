@@ -430,6 +430,7 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
  if(d){
   const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet;
   ctx.save();ctx.globalAlpha=a;ctx.shadowColor=dark?'#06121c':'#b5c5cc';ctx.shadowBlur=2;
+  if(shot.family==='gravity')ctx.shadowBlur=0;
   if(vertical){const sz=Math.min(44,780/d.l.jp.length);[...d.l.jp].forEach((ch,i)=>txt(ch,1770,130+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//')txt(d.l.zh,120,991,23,color,'CJK','left',.82)}
   else{const top=Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(Number(shot.id)%4===0?-.08:0)};timedLyric(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
   ctx.restore();

@@ -7,8 +7,8 @@ water.node_tree.nodes.get('Principled BSDF').inputs['IOR'].default_value=1.16
 # An impossible, partly transparent mirror. It reflects light but reveals a
 # different civilisation below; this is a designed portal, not a same-world copy.
 n=water.node_tree.nodes;l=water.node_tree.links;out=n.get('Material Output');bs=n.get('Principled BSDF');clear=n.new('ShaderNodeBsdfTransparent');mix=n.new('ShaderNodeMixShader');mix.inputs[0].default_value=.72;l.new(bs.outputs[0],mix.inputs[1]);l.new(clear.outputs[0],mix.inputs[2]);l.new(mix.outputs[0],out.inputs['Surface'])
-violet=mat('Reflected amethyst ceramic',(.16,.035,.34),.36,.36)
-silver=mat('Reflected pearl ribs',(.52,.42,.73),.45,.38)
+violet=mat('Reflected near-black ceramic',(.018,.009,.033),.82,.15)
+silver=mat('Reflected frosted ribs',(.32,.3,.39),.7,.24)
 white=mat('Aperture white',(.8,.94,1),.25,0,0,3)
 cyan=mat('Judgement horizon',(.04,.63,.7),.25,0,0,4)
 # The upper world is a single cropped, branching cantilever with weight.
@@ -27,14 +27,21 @@ for j in range(7):
   u=k/17;t=a+.8*math.sin(u*math.pi);r=8+u*19
   pts.append((math.cos(t)*r,25+u*46,-38+math.sin(t)*r))
  ob=curve('Reflected twisting rib',pts,.6 if j%2 else 1.05,silver);ob.parent=reflected
- poly=[(-21,-12),(-14,16),(-4,19),(-8,-8)]
- poly=[(x*math.cos(a)+z*math.sin(a),-38-x*math.sin(a)+z*math.cos(a)) for x,z in poly]
- ob=prism('Reflected folded petal',poly,28+j*7,2,violet);ob.parent=reflected
+for j in range(2):
+ vs=[];fs=[]
+ for i in range(49):
+  u=i/48;t=-.7+u*4.6+j*math.pi;r=7+u*24
+  for k in range(13):
+   v=k/12-.5;vs.append((math.cos(t)*r+v*8*math.sin(u*math.pi),26+u*49+v*v*12,-38+math.sin(t)*r+v*17*math.sin(u*math.pi)))
+   if i<48 and k<12:a=i*13+k;fs.append((a,a+1,a+14,a+13))
+ ob=mesh('Continuous folded underwater membrane',vs,fs,violet);ob.parent=reflected
+ for f in ob.data.polygons:f.use_smooth=True
 num=numeral('08',(21,54,-32),17,silver,.7);num.parent=reflected
 numeral('時',(-12,68,-33),10,silver,.15,'CJK').parent=reflected
 # Far aperture faces the approaching camera along Y, not an overhead light disc.
 outline=[(math.cos(i/24*math.tau)*12,math.sin(i/24*math.tau)*12-38) for i in range(25)]
 ap=curve('Far white aperture',[(x,95,z) for x,z in outline],.75,white);ap.parent=reflected
+prism('White exit beyond the reflection',outline[:-1],96,.04,white).parent=reflected
 for i in range(6):
  ob=prism('Broken submerged terrace',[(-38+i*12,-5),(-24+i*12,-8),(-27+i*12,-11),(-42+i*12,-7)],10+i*9,12,ink);ob.parent=reflected
 body('Thin water membrane',(0,38,0),(260,190,.08),water,0)
@@ -53,4 +60,5 @@ def animate(q):
  turn=ease((q-.32)/.30);dive=ease((q-.66)/.34)
  angle=turn*math.pi/2;reflected.rotation_euler[1]=angle;reflected.location=(38*math.sin(angle),0,-38+38*math.cos(angle));line.rotation_euler[1]=angle
  ramp=s.world.node_tree.nodes.get('Color Ramp');ramp.color_ramp.elements[0].color=(.25-dive*.22,.3-dive*.287,.38-dive*.29,1)
- look((-10+q*8,-35+q*29,12-dive*41),(0,55,10-dive*48),23,dive*.28)
+ forward=ease((q-.76)/.24)
+ look((-10+q*8,-35+q*29+forward*86,12-dive*41),(0,120,10-dive*48),23,dive*.28)

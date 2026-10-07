@@ -244,9 +244,16 @@ export function directExistingWorld(w:World,family:string){
   const destination=mesh(w.root,new T.PlaneGeometry(145,270),'white',[0,210,980]);destination.material=new T.MeshBasicMaterial({color:'#effff6',side:T.DoubleSide,toneMapped:false,fog:false});
  }
  if(family==='ringtemple'){
+  if(w.scene.fog instanceof T.Fog){w.scene.fog.near=650;w.scene.fog.far=1800;}
   if(w.primary)w.primary.scale.setScalar(2.1);
   const camera=w.camera;w.camera=(q,c)=>{camera(q,c);c.position.z+=100+q*115;c.updateMatrixWorld()};
   fragments(w,550,280,450,'silver',1850);
+  const rim=new T.DirectionalLight('#ffd7a0',4.5);rim.position.set(-140,70,590);w.scene.add(rim);
+  const breach=new T.PointLight('#ffbf73',24000,500,2);breach.position.set(-105,230,475);w.scene.add(breach);
+  const rake=new T.SpotLight('#ffcf9c',12000000,1500,.52,.25,2);rake.position.set(-320,370,120);rake.target.position.set(0,115,525);w.scene.add(rake,rake.target);
+  const seam=cable(w.root,[[-150,350,460],[-220,275,466],[-190,200,470]],.65,'gold');
+  const slab=profile(w.root,[[-110,-160],[-105,160],[-32,193],[21,20],[-15,-180]],24,[-265,10,180],[.1,.24,-.21],'navy','stone');
+  w.moving.push(q=>{breach.intensity=24000+smooth(.4,.68,q)*26000;seam.position.x=-smooth(.38,.7,q)*45;slab.position.x=-265-smooth(.05,.32,q)*140});
  }
  if(family==='quiet-shore'){
   surface(w.root,100,2,(u,v)=>{const a=(u-.5)*2.1,r=1350+v*3;return[Math.sin(a)*r,-930+Math.cos(a)*r,1900]},new T.MeshBasicMaterial({color:'#e8dfef',side:T.DoubleSide,transparent:true,opacity:.4}));
@@ -280,6 +287,34 @@ function goldEvent(){
  const core=mesh(w.root,new T.SphereGeometry(35,30,20),'energy',[0,0,300]);core.material=new T.MeshBasicMaterial({color:'#fffce1',toneMapped:false});
  roles(w,{gold:'#c28c31'},.6);w.camera=(q,c)=>look(c,[15-q*15,4,-80+q*430],[0,0,520],95,q*.16);return w;
 }
+function finalMass(){
+ const w=world('#e5e3db',1250,2500);w.scene.fog=null;rig(w,.015,'#a9c9cf',1.2,'#fff5dc',5);w.scene.userData.environmentIntensity=.025;
+ const shell=new T.MeshStandardMaterial({color:'#05090b',roughness:.94,metalness:.25,side:T.DoubleSide});
+ const halves:T.Mesh[]=[];
+ for(let side=0;side<2;side++){
+  halves.push(surface(w.root,100,40,(u,v)=>{const a=side*Math.PI+.025+u*(Math.PI-.05),p=.007+v*(Math.PI-.014),r=260+Math.sin(p*5+a*3)*2+Math.sin(a*11+p*8)*.5;return[Math.sin(a)*r*Math.sin(p),165+Math.cos(p)*r,610+Math.cos(a)*r*Math.sin(p)]},shell));
+ }
+ // The seam has depth: the black mass opens around a suspended internal
+ // civilisation, not a single cyan gemstone painted on its surface.
+ for(let i=0;i<5;i++){
+  const z=455+i*65,y=145+Math.sin(i*1.8)*45;
+  profile(w.root,[[-18,-50],[-28,15],[5,51],[23,29],[16,-32]],12,[i%2?-38:29,y,z],[0,i*.18,i*.2],'navy','silver');
+  cable(w.root,[[i%2?-25:22,50,z],[0,125,z+12],[i%2?19:-16,230,z+20]],.28,'energy');
+  text(w.root,String(i+5).padStart(2,'0'),[i%2?-31:24,y+30,z-9],14,'white',2);
+ }
+ const line=beam(w.root,[-350,-109,290],[350,-109,290],.35,.35,'energy');
+ const floor=surface(w.root,12,12,(u,v)=>[(u-.5)*1200,-115+Math.sin(u*5+v*7)*1.5,180+v*1400],new T.MeshStandardMaterial({color:'#dbdad4',roughness:.95,side:T.DoubleSide}));
+ // A minute original witness establishes scale without borrowed characters.
+ profile(w.root,[[-.8,0],[-1,3.5],[-1.6,6],[-.6,7.8],[.6,7.8],[1.4,5],[1,0]],.55,[-122,-114,355],[0,0,0],'navy','navy');
+ mesh(w.root,new T.SphereGeometry(.85,12,8),'navy',[-122,-105.4,355]);
+ text(w.root,'09',[370,-73,1010],190,'navy',45);
+ const fracture=profile(w.root,[[-46,-180],[-26,190],[24,145],[37,-60],[9,-230]],18,[-210,-20,100],[.1,.2,-.17],'navy','silver');
+ const ribbon=surface(w.root,70,4,(u,v)=>{const a=-.5+u*3.5,r=335+v*4;return[Math.cos(a)*r,165+Math.sin(a)*r,680+Math.sin(a*2)*80]},new T.MeshStandardMaterial({color:'#627077',roughness:.81,metalness:.65,side:T.DoubleSide}));
+ fragments(w,850,650,1300,'silver',2140);roles(w,{navy:'#020506',silver:'#77868a',white:'#b7d2cc',energy:'#62e8e1'},.87);
+ const inner=new T.PointLight('#24d8d3',8000,370,2);inner.position.set(0,155,510);w.scene.add(inner);
+ w.moving.push(q=>{const split=smooth(.28,.69,q),burst=smooth(.75,1,q);halves.forEach((o,i)=>{o.position.x=(i?-1:1)*(split*26+burst*100);o.rotation.z=(i?1:-1)*burst*.07});fracture.position.x=-210-smooth(.05,.23,q)*220;line.position.z=290+q*240;ribbon.rotation.z=q*.16;inner.intensity=8000+split*9000+burst*23000;floor.position.y=-burst*7});
+ w.camera=(q,c)=>look(c,[125-q*165,70+q*55,65+q*80+smooth(.63,1,q)*180],[45,135,660],52,-.16+q*.24);return w;
+}
 function lifeDawn(after=false){
  const w=world('#e4e9d5',180,1600);backdrop(w,[[0,'#88bfd6'],[.52,'#d9ede7'],[.82,'#fff3cc'],[1,'#f1eddd']]);rig(w,.45,'#ffe5ad',3.3,'#fffcef',1.2);
  const platform=island(w.root,[0,-22,260],38,15,'stone',1904);const g=new T.Group();g.position.set(0,-20,260);w.root.add(g);
@@ -299,6 +334,7 @@ export function directedWorld(family:string):World|null{
  if(family==='red-world')return redWorld();
  if(family==='cyan-storm')return cyanStorm();
  if(family==='gold-event')return goldEvent();
+ if(family==='gravity')return finalMass();
  if(family==='macro09')return inkWorld();
  if(family==='rebuild-gate')return galleryWorld();
  if(family==='release'||family==='sky')return lifeDawn(family==='sky');

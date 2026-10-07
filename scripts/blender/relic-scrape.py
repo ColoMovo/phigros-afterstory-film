@@ -29,13 +29,15 @@ for i,(x,y,z,r) in enumerate([(18,45,-8,12),(46,70,-18,20),(-35,125,-12,27)]):
 curve('Distant impossible beam',[(-65,160,50),(-15,161,77),(58,164,82),(99,164,67)],.7,white)
 body('Sky judgement line',(20,145,27),(290,.12,.06),cyan,0)
 dust('Surface abrasion fragments',(0,12,20),(26,23,27),210,white,.10)
-wipe=prism('Occluding continent return',[(-9,-28),(18,-18),(18,70),(-13,83),(-26,23)],-15,8,rock)
+darkside=mat('Unlit inward continent face',(0,0,0),1,0)
+darkside.node_tree.nodes.get('Principled BSDF').inputs['Specular IOR Level'].default_value=0
+wipe=prism('Occluding continent return',[(-9,-28),(18,-18),(18,70),(-13,83),(-26,23)],-15,8,darkside)
 light('Sky rim',(20,43,72),330000,28,(.57,.82,1),(-13,2,25))
 light('Front weathered surface',(-39,-30,40),27000,35,(.45,.58,.7),(-20,0,25))
 light('Thin warm edge',(7,25,19),29000,10,(1,.79,.5),(-6,1,15));fog(.00035,(.42,.63,.74))
 s.camera.data.dof.aperture_fstop=12
 def animate(q):
- occlude=ease((q-.60)/.32);wipe.location.x=76-occlude*79
+ occlude=ease((q-.60)/.32);wipe.location.x=76-occlude*70
  rush=ease((q-.42)/.46)
  # The first 0 becomes a room and then an opening, rather than a remote label.
  look((-5+q*14+rush*8,-29+q*12+rush*110,8+q*5+rush*11),(19,154,24),25,-.08+q*.08,40)

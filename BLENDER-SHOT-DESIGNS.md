@@ -1,6 +1,6 @@
 # Shot design before material
 
-The previous material-demo compositions are R&D ONLY and excluded from the timeline. These redesigned shots are sequence-review candidates. A passing script or still does not approve the moving image.
+Earlier material-demo compositions are R&D ONLY and excluded. These combined shots require encoded sequence inspection; scripts and stills do not approve the moving image.
 
 ## A: GLASS × GIANT ARCHITECTURE × PARTICLES — glass-gate
 
@@ -18,12 +18,12 @@ Physical idea: FRAGILE / FLOATING — hard refractive enclosure with soft tissue
 
 6. Entry: The previous numeric nave becomes a physically refractive architectural edge.
 
-7. Exit: The lower glass lip fills the image and becomes the following flat graphic cut.
+7. Exit: The opened glass threshold reveals distant architecture, then a hard cut flattens it into the following graphic geometry. No full-frame glass occlusion is claimed.
 
 8. Neighbour connection: 19.851–22.55s between numeric nave and exploded geometry; retain number + horizontal cut DNA.
 
 Palette: Cold smoke / near-black structure / cyan light seam. No rainbow.
-Graphic DNA: 04 architecture, judgement boundary, asymmetric framing, impossible time fault.
+Graphic DNA: 04 architecture, judgement boundary, asymmetric framing, impossible time fault
 
 ## B: WATER × JUDGEMENT LINE × REFLECTION WORLD — mirror-crossing
 
@@ -33,9 +33,9 @@ Physical idea: WET / HEAVY / INVERTED — a water film reveals a violet civilisa
 
 2. Visual centre: The white horizon; then the rotating violet world visible inside the film.
 
-3. Depth: foreground: A cropped submerged black shelf and refractive film edges. midground: Large fractured ivory cantilever overhead, broken dark terraces below. hero: Mirror horizon and the other world within it. background: Deep violet aperture, suspended rib cage and a far 08 silhouette.
+3. Depth: foreground: A cropped submerged black shelf and refractive film edges. midground: Large fractured ivory cantilever overhead, broken dark terraces below. hero: Mirror horizon and the other world within it. background: Two continuous folded dark membranes enclose matte silver ribs in violet fog; a filled white aperture and far 08 silhouette establish the destination.
 
-4. Camera: Skim at grazing angle → dive through the horizon → roll into the lower world.
+4. Camera: Skim at grazing angle → dive through the horizon → roll into the lower world → accelerate into the bright aperture.
 
 5. Event: REFLECT / INVERT / ENTER. At 0.65s only the underwater world turns 90 degrees while the upper cantilever remains still; at 1.3s the camera penetrates the film.
 
@@ -45,8 +45,8 @@ Physical idea: WET / HEAVY / INVERTED — a water film reveals a violet civilisa
 
 8. Neighbour connection: 44.7–46.5s between organic membrane and white graphic attack; lower world borrows the aperture language, not the upper reflection.
 
-Palette: Ivory / ink / lavender depth, concentrated white-cyan boundary.
-Graphic DNA: judgement horizon, different reflection world, 90-degree gravity fault, camera transition.
+Palette: Ivory / ink surfaces; violet fog and magenta bounce light, white rim and exit. Saturation belongs to the air and light.
+Graphic DNA: judgement horizon, different reflection world, 90-degree gravity fault, camera transition
 
 ## C: ORGANIC FIBERS × MECHANICAL APERTURE — fiber-aperture
 
@@ -69,7 +69,7 @@ Physical idea: TENSE / ORGANIC / MECHANICAL — bending nerves constrain a shutt
 8. Neighbour connection: 51.7–54.8s before the cyan scan and four-frame black boundary; organic weight + hard mechanical timing.
 
 Palette: Near-black / silver glass / white aperture, rare cyan strands.
-Graphic DNA: geometric iris, number cuts, sharp aperture mask, camera as transition.
+Graphic DNA: geometric iris, number cuts, sharp aperture mask, camera as transition
 
 ## D: ROCK / TERRAIN × NUMBER MONUMENT × SKY — relic-scrape
 
@@ -92,7 +92,7 @@ Physical idea: DRY / DUSTY / MASSIVE — eroded continent skin becomes a wipe wh
 8. Neighbour connection: 39.3–41s connecting seed threshold to tissue world; makes black a spatial transition, not just an overlay.
 
 Palette: Blue-white distance / rough navy-black terrain / thin cyan inlay.
-Graphic DNA: 08 civilisation, judgement sky line, extreme scale, physical occlusion.
+Graphic DNA: 08 civilisation, judgement sky line, extreme scale, physical occlusion
 
 ## E: PROCEDURAL LIFE × FINAL DAWN × MASSIVE SCALE — life-relic
 
@@ -115,4 +115,4 @@ Physical idea: LIVING / ROOTED / SUSPENDED — close leaves penetrate an enormou
 8. Neighbour connection: 12–14.591s between archipelago and macro leaf; revisited only as a small surviving sprout after final black at 135s.
 
 Palette: Cool dawn / near-black-green life / warm rims / one cyan seam.
-Graphic DNA: judgement horizon, impossible architecture, life versus scale, graphic negative space.
+Graphic DNA: judgement horizon, impossible architecture, life versus scale, graphic negative space
