@@ -1,6 +1,7 @@
 import {Euler,Matrix4,Vector3} from 'three';
 import audio from './data/audio-analysis.json';
 import lyrics from './data/lyrics.json';
+import {paintPrintWorld} from './graphic-worlds';
 import {heroClips} from './hero-clips';
 
 // NEW DAWN — an architectural film. All animation, camera paths, lighting,
@@ -376,7 +377,8 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 // as source history, but never drawn by this composition.
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
  ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
- const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','macro09','engine','deep','galaxy','gravity','storm','glitch'].includes(shot.family),color=dark?'#e5e9e8':'#132c40';
+ const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch'].includes(shot.family),color=dark?'#e5e9e8':'#132c40';
+ if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
  if(shot.family.startsWith('insert-')){
   const kind=shot.family.slice(7);if(kind==='black'){fill('#000000');return;}
   if(['circuit','negative','graphic'].includes(kind)){

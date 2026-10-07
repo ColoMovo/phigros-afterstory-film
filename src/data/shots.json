@@ -25,7 +25,8 @@
     "parentScene": "signal",
     "visualCategory": "VOID",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "signal"
   },
   {
     "id": "02",
@@ -53,7 +54,8 @@
     "parentScene": "rift",
     "visualCategory": "VOID",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "rift"
   },
   {
     "id": "03",
@@ -83,7 +85,8 @@
     "parentScene": "dawn",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "dawn"
   },
   {
     "id": "04",
@@ -114,7 +117,8 @@
     "parentScene": "dawn",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "dawn"
   },
   {
     "id": "05",
@@ -144,7 +148,8 @@
     "parentScene": "interior",
     "visualCategory": "MECHANICAL",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "interior"
   },
   {
     "id": "06",
@@ -153,14 +158,14 @@
     "family": "continent",
     "name": "黎明大陆",
     "function": "Reveal",
-    "event": "穿出狭缝，白色浮空大陆和远处断构展开",
+    "event": "Open sky gradient, atmospheric billboards, eroded terrain, living canopy, low-to-high flight",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 11.325,
     "world": "FLOATING ARCHIPELAGO",
     "heroObject": "suspended fractured continent",
-    "cameraMotion": "穿出狭缝，白色浮空大陆和远处断构展开",
-    "palette": "sky / charcoal / cyan-violet",
+    "cameraMotion": "Open sky gradient, atmospheric billboards, eroded terrain, living canopy, low-to-high flight",
+    "palette": "SKY BLUE / WHITE / DARK ROCK",
     "density": 6,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -174,7 +179,9 @@
     "parentScene": "continent",
     "visualCategory": "LANDSCAPE",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Open living continent"
   },
   {
     "id": "07",
@@ -183,14 +190,14 @@
     "family": "islands",
     "name": "群岛低空航路",
     "function": "Escalation",
-    "event": "断桥分离，数据逆流，近景岛缘掠过",
+    "event": "Open sky gradient, terrain layers, waterfall fibres, near rock obstruction, flight through terrain",
     "sourceStart": 0,
-    "sourceEnd": 3.6,
+    "sourceEnd": 1,
     "sample": 13.42505,
     "world": "FLOATING ARCHIPELAGO",
     "heroObject": "floating archipelago and broken bridges",
-    "cameraMotion": "断桥分离，数据逆流，近景岛缘掠过",
-    "palette": "sky / charcoal / cyan-violet",
+    "cameraMotion": "Open sky gradient, terrain layers, waterfall fibres, near rock obstruction, flight through terrain",
+    "palette": "SKY BLUE / WHITE / DARK ROCK",
     "density": 6,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -204,7 +211,9 @@
     "parentScene": "islands",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Terrain flight"
   },
   {
     "id": "08",
@@ -213,14 +222,14 @@
     "family": "insert-leaf",
     "name": "钴蓝叶片",
     "function": "Contrast / Transition",
-    "event": "单一叶片与发光叶脉，树冠轮廓匹配",
+    "event": "White entry, off-centre large leaf, vein activation, three depth layers, terrain breakup exit",
     "sourceStart": 0,
     "sourceEnd": 1,
-    "sample": 14.921000000000001,
+    "sample": 14.879000000000001,
     "world": "FLOATING ARCHIPELAGO",
     "heroObject": "钴蓝叶片",
-    "cameraMotion": "Static symbolic impact / brief contour match cut",
-    "palette": "grey-white / cobalt blue / silver veins",
+    "cameraMotion": "White entry, off-centre large leaf, vein activation, three depth layers, terrain breakup exit",
+    "palette": "WHITE / ULTRAMARINE / CYAN",
     "density": 1,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -234,7 +243,9 @@
     "parentScene": "insert-leaf",
     "visualCategory": "ORGANIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Leaf / vein / terrain"
   },
   {
     "id": "09",
@@ -243,14 +254,14 @@
     "family": "canopy",
     "name": "穿过数据树冠",
     "function": "Transition",
-    "event": "叶片贴脸公转，树冠开出通往数字空间的方向",
+    "event": "Living terrain, emerald canopy focus, diffuse sunlight, leaf-level camera",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 16.57095,
     "world": "FLOATING ARCHIPELAGO",
     "heroObject": "layered data-organism canopy",
-    "cameraMotion": "叶片贴脸公转，树冠开出通往数字空间的方向",
-    "palette": "sky / charcoal / cyan-violet",
+    "cameraMotion": "Living terrain, emerald canopy focus, diffuse sunlight, leaf-level camera",
+    "palette": "SKY BLUE / EMERALD / ULTRAMARINE",
     "density": 6,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -264,7 +275,9 @@
     "parentScene": "canopy",
     "visualCategory": "ORGANIC",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Inside living canopy"
   },
   {
     "id": "10",
@@ -273,14 +286,14 @@
     "family": "temple",
     "name": "01—03 数字建筑",
     "function": "Memory cue",
-    "event": "从巨大数字的内孔穿过，而非远看数字牌",
+    "event": "Warm neutral background, hard shadow, tall enclosed nave, giant digits, low camera",
     "sourceStart": 0,
-    "sourceEnd": 3.5,
+    "sourceEnd": 1,
     "sample": 18.718049999999998,
     "world": "NUMBER CATHEDRAL",
     "heroObject": "01–03 architectural negative spaces",
-    "cameraMotion": "从巨大数字的内孔穿过，而非远看数字牌",
-    "palette": "off-white / black / red seam",
+    "cameraMotion": "Warm neutral background, hard shadow, tall enclosed nave, giant digits, low camera",
+    "palette": "OFF-WHITE / BLACK / RED",
     "density": 7,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -294,7 +307,9 @@
     "parentScene": "temple",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Black number nave"
   },
   {
     "id": "11",
@@ -324,7 +339,8 @@
     "parentScene": "insert-aperture",
     "visualCategory": "SYMBOLIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-aperture"
   },
   {
     "id": "12",
@@ -333,14 +349,14 @@
     "family": "glass04",
     "name": "横卧的 04 与玻璃海",
     "function": "Contrast",
-    "event": "镜面裂谷被红线切开，04 露出破裂断面",
+    "event": "Architectural 04, black reflective floor, warm hard key, camera dive, cutting red plane",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 21.33545,
     "world": "NUMBER CATHEDRAL",
     "heroObject": "horizontal 04 over fractured mirror sea",
-    "cameraMotion": "镜面裂谷被红线切开，04 露出破裂断面",
-    "palette": "off-white / black / red seam",
+    "cameraMotion": "Architectural 04, black reflective floor, warm hard key, camera dive, cutting red plane",
+    "palette": "WARM GREY / BLACK / RED",
     "density": 7,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -354,7 +370,9 @@
     "parentScene": "glass04",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Horizontal 04 cut"
   },
   {
     "id": "13",
@@ -363,14 +381,14 @@
     "family": "impossible",
     "name": "05 / 06 不可能建筑",
     "function": "Space expansion",
-    "event": "沿折叠建筑边缘俯冲，下方立面变成天空",
+    "event": "Oblique 05/06 architecture, enclosing buttresses, hard shadow, extreme perspective and roll",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 23.3915,
     "world": "NUMBER CATHEDRAL",
     "heroObject": "continuous folded 05 / 06 architecture",
-    "cameraMotion": "沿折叠建筑边缘俯冲，下方立面变成天空",
-    "palette": "off-white / black / red seam",
+    "cameraMotion": "Oblique 05/06 architecture, enclosing buttresses, hard shadow, extreme perspective and roll",
+    "palette": "OFF-WHITE / BLACK / RED",
     "density": 7,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -384,7 +402,9 @@
     "parentScene": "impossible",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Impossible 05 / 06"
   },
   {
     "id": "14",
@@ -414,7 +434,8 @@
     "parentScene": "insert-circuit",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-circuit"
   },
   {
     "id": "15",
@@ -423,14 +444,14 @@
     "family": "monuments",
     "name": "07 / 08 重力纪念碑",
     "function": "Transition",
-    "event": "判定线改变重力，整个结构旋转 90 度",
+    "event": "Enclosed 07/08 nave, hard shadows, rotating gravity, low high-speed camera",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 25.325,
     "world": "NUMBER CATHEDRAL",
     "heroObject": "07 / 08 gravity monuments",
-    "cameraMotion": "判定线改变重力，整个结构旋转 90 度",
-    "palette": "off-white / black / red seam",
+    "cameraMotion": "Enclosed 07/08 nave, hard shadows, rotating gravity, low high-speed camera",
+    "palette": "OFF-WHITE / BLACK / RED",
     "density": 7,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -444,7 +465,9 @@
     "parentScene": "monuments",
     "visualCategory": "GLITCH_ABSTRACT",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "07 / 08 gravity inversion"
   },
   {
     "id": "16",
@@ -453,14 +476,14 @@
     "family": "macro09",
     "name": "09 的局部边缘",
     "function": "Hook",
-    "event": "贴脸掠过巨大字符断口，只让局部轮廓出现",
+    "event": "Oversized cropped number surface, near-black rough material, warm light and close traversal",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 26.495,
     "world": "NUMBER CATHEDRAL",
     "heroObject": "cropped architectural 09",
-    "cameraMotion": "贴脸掠过巨大字符断口，只让局部轮廓出现",
-    "palette": "off-white / black / red seam",
+    "cameraMotion": "Oversized cropped number surface, near-black rough material, warm light and close traversal",
+    "palette": "BLACK / OFF-WHITE",
     "density": 7,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -474,7 +497,9 @@
     "parentScene": "macro09",
     "visualCategory": "TYPOGRAPHIC",
     "shotType": "ATTACK",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "09 surface traversal"
   },
   {
     "id": "17",
@@ -483,14 +508,14 @@
     "family": "memory",
     "name": "章节档案断层",
     "function": "Memory cue",
-    "event": "裁切图像在独立深度中错位，镜头穿过档案碎片",
+    "event": "No 3D lighting, thresholded original prints, photocopy grain, halftone, rapid slicing",
     "sourceStart": 0,
-    "sourceEnd": 2.3,
+    "sourceEnd": 1,
     "sample": 28.165,
     "world": "ARCHIVE STORM",
     "heroObject": "original procedural archive shards",
-    "cameraMotion": "裁切图像在独立深度中错位，镜头穿过档案碎片",
-    "palette": "ink / cream / muted green",
+    "cameraMotion": "No 3D lighting, thresholded original prints, photocopy grain, halftone, rapid slicing",
+    "palette": "BLACK / WHITE / EMERALD SCAN",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -504,7 +529,9 @@
     "parentScene": "memory",
     "visualCategory": "ARCHIVE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Threshold print montage"
   },
   {
     "id": "18",
@@ -513,14 +540,14 @@
     "family": "exploded",
     "name": "记忆图像解体",
     "function": "Memory cue",
-    "event": "多深度图像片聚合成轮廓，再从内部散开",
+    "event": "Flat/2.5D torn original prints, threshold, frame cutting, paper grain, no conventional CG light",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 30.080000000000002,
     "world": "ARCHIVE STORM",
     "heroObject": "disassembling original memory planes",
-    "cameraMotion": "多深度图像片聚合成轮廓，再从内部散开",
-    "palette": "ink / cream / muted green",
+    "cameraMotion": "Flat/2.5D torn original prints, threshold, frame cutting, paper grain, no conventional CG light",
+    "palette": "BLACK / WHITE / EMERALD SCAN",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -534,7 +561,9 @@
     "parentScene": "exploded",
     "visualCategory": "ARCHIVE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Torn print explosion"
   },
   {
     "id": "19",
@@ -543,14 +572,14 @@
     "family": "insert-drop",
     "name": "一滴透明水",
     "function": "Contrast / Transition",
-    "event": "档案碎片忽然清空，只剩一滴液态核心",
+    "event": "Large close drop, original archive reflection, descent, judgment-line impact, spatial ripple exit",
     "sourceStart": 0,
     "sourceEnd": 1,
-    "sample": 31.075,
+    "sample": 31.02,
     "world": "ARCHIVE STORM",
     "heroObject": "一滴透明水",
-    "cameraMotion": "Static symbolic impact / brief contour match cut",
-    "palette": "mist grey / translucent aqua",
+    "cameraMotion": "Large close drop, original archive reflection, descent, judgment-line impact, spatial ripple exit",
+    "palette": "WARM GREY / CYAN",
     "density": 1,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -564,23 +593,25 @@
     "parentScene": "insert-drop",
     "visualCategory": "SYMBOLIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Drop / impact / ripple"
   },
   {
     "id": "20",
     "start": 31.3,
-    "end": 32.1,
+    "end": 31.9333333333333,
     "family": "poster",
     "name": "局部图像海报冲击",
     "function": "Typography attack",
-    "event": "只显示曲绘局部色块与轮廓，高速交替",
+    "event": "Cropped print image, flat vermilion field, giant number, graphic plane transformation",
     "sourceStart": 0,
-    "sourceEnd": 1,
-    "sample": 31.740000000000002,
+    "sourceEnd": 0.7916666666666254,
+    "sample": 31.648333333333316,
     "world": "ARCHIVE STORM",
     "heroObject": "original abstract cropped poster attack",
-    "cameraMotion": "只显示曲绘局部色块与轮廓，高速交替",
-    "palette": "ink / cream / muted green",
+    "cameraMotion": "Cropped print image, flat vermilion field, giant number, graphic plane transformation",
+    "palette": "BLACK / WHITE / RED",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -594,23 +625,58 @@
     "parentScene": "poster",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "poster"
   },
   {
     "id": "21",
+    "start": 31.9333333333333,
+    "end": 32.1,
+    "family": "insert-type",
+    "name": "Giant overprint cut",
+    "function": "Contrast / Transition",
+    "event": "Giant overprint cut",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 32.01666666666665,
+    "world": "ARCHIVE STORM",
+    "heroObject": "Giant overprint cut",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "BLACK / WHITE / RED",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 31.7167,
+      "strength": 0.9588
+    },
+    "lyricsCue": [
+      4
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-type",
+    "visualCategory": "GRAPHIC_2D",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Giant overprint cut",
+    "attackFramesAt60": 10
+  },
+  {
+    "id": "22",
     "start": 32.1,
     "end": 34,
     "family": "typeworld",
     "name": "平面压扁与文字空间回弹",
     "function": "Typography attack",
-    "event": "判定线压扁立体结构，再穿过三维日文立面",
+    "event": "2D typographic overprint, moving distortion planes, difference-composite print slices",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 33.145,
     "world": "ARCHIVE STORM",
     "heroObject": "depth-collapse planes invaded by CJK",
-    "cameraMotion": "判定线压扁立体结构，再穿过三维日文立面",
-    "palette": "ink / cream / muted green",
+    "cameraMotion": "2D typographic overprint, moving distortion planes, difference-composite print slices",
+    "palette": "BLACK / WHITE / MINT",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -625,23 +691,25 @@
     "parentScene": "typeworld",
     "visualCategory": "TYPOGRAPHIC",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Mint typographic overprint"
   },
   {
-    "id": "22",
+    "id": "23",
     "start": 34,
-    "end": 36.8,
+    "end": 36.75,
     "family": "engine",
     "name": "深蓝机械裂壳",
     "function": "Escalation",
-    "event": "机械骨架开启，镜头进入深色外壳",
+    "event": "Enclosing kilometre-scale shell, rotor, suspended arms, dark metal, hard rim, camera already inside",
     "sourceStart": 0,
-    "sourceEnd": 2.8,
-    "sample": 35.54,
+    "sourceEnd": 0.9821428571428581,
+    "sample": 35.5125,
     "world": "MECHANICAL COSMOS",
     "heroObject": "dark mechanical geodesic shell",
-    "cameraMotion": "机械骨架开启，镜头进入深色外壳",
-    "palette": "near-black / silver / warm warning",
+    "cameraMotion": "Enclosing kilometre-scale shell, rotor, suspended arms, dark metal, hard rim, camera already inside",
+    "palette": "90% BLACK / NAVY / AMBER",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -655,23 +723,58 @@
     "parentScene": "engine",
     "visualCategory": "MECHANICAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Inside the mechanical body"
   },
   {
-    "id": "23",
+    "id": "24",
+    "start": 36.75,
+    "end": 36.8,
+    "family": "insert-black",
+    "name": "Three-frame black rupture",
+    "function": "Contrast / Transition",
+    "event": "Three-frame black rupture",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 36.775,
+    "world": "MECHANICAL COSMOS",
+    "heroObject": "Three-frame black rupture",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "BLACK",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 33.6333,
+      "strength": 1.0
+    },
+    "lyricsCue": [
+      5
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-black",
+    "visualCategory": "VOID",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Three-frame black rupture",
+    "attackFramesAt60": 3
+  },
+  {
+    "id": "25",
     "start": 36.8,
     "end": 38.699999999999996,
     "family": "deep",
     "name": "深空模块与数据核心",
     "function": "Space expansion",
-    "event": "离开外壳，在倾斜模块和粒子流间穿行",
+    "event": "Immersed axial mechanical interior, passing arms/cables, tiny amber, opposing rim, fast roll traversal",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 37.845,
     "world": "MECHANICAL COSMOS",
     "heroObject": "irregular data core and structural modules",
-    "cameraMotion": "离开外壳，在倾斜模块和粒子流间穿行",
-    "palette": "near-black / silver / warm warning",
+    "cameraMotion": "Immersed axial mechanical interior, passing arms/cables, tiny amber, opposing rim, fast roll traversal",
+    "palette": "90% BLACK / NAVY / AMBER",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -686,23 +789,25 @@
     "parentScene": "deep",
     "visualCategory": "PARTICLE_SPACE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Deep rotor traversal"
   },
   {
-    "id": "24",
+    "id": "26",
     "start": 38.699999999999996,
     "end": 39.3,
     "family": "insert-seed",
     "name": "暗处暖金种子",
     "function": "Contrast / Transition",
-    "event": "机械光线缩为一个漂浮种子",
+    "event": "Tiny gold seed in large black void, shell opens, white inner sky, camera flies through",
     "sourceStart": 0,
     "sourceEnd": 1,
-    "sample": 39.029999999999994,
+    "sample": 38.958,
     "world": "MECHANICAL COSMOS",
     "heroObject": "暗处暖金种子",
-    "cameraMotion": "Static symbolic impact / brief contour match cut",
-    "palette": "near-black / warm brass",
+    "cameraMotion": "Tiny gold seed in large black void, shell opens, white inner sky, camera flies through",
+    "palette": "BLACK / WARM GOLD / WHITE SKY",
     "density": 1,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -716,10 +821,12 @@
     "parentScene": "insert-seed",
     "visualCategory": "SYMBOLIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Seed opens into sky"
   },
   {
-    "id": "25",
+    "id": "27",
     "start": 39.3,
     "end": 41,
     "family": "monoliths",
@@ -746,23 +853,24 @@
     "parentScene": "monoliths",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "NORMAL",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "monoliths"
   },
   {
-    "id": "26",
+    "id": "28",
     "start": 41,
     "end": 44.0,
     "family": "crystals",
     "name": "建筑尺度的磨砂晶体",
     "function": "Reveal",
-    "event": "玻璃立面开启内部空间，折面变成穿行路径",
+    "event": "Continuous living corolla, translucent petals, fibres, surface grazing macro, soft colored lighting",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 42.65,
     "world": "INVERTED GARDEN",
     "heroObject": "frosted architectural crystal bodies",
-    "cameraMotion": "玻璃立面开启内部空间，折面变成穿行路径",
-    "palette": "violet haze / ceramic / emissive cyan",
+    "cameraMotion": "Continuous living corolla, translucent petals, fibres, surface grazing macro, soft colored lighting",
+    "palette": "VIOLET / MAGENTA / PEARL",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -777,23 +885,25 @@
     "parentScene": "crystals",
     "visualCategory": "ORGANIC",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Living corolla macro"
   },
   {
-    "id": "27",
+    "id": "29",
     "start": 44.0,
     "end": 44.7,
     "family": "insert-membrane",
     "name": "有机薄膜之花",
     "function": "Contrast / Transition",
-    "event": "单一膜状开口与细纤维呼吸",
+    "event": "Full-frame translucent macro skin, micro veins, moving fibres, penetrating camera, palette exit",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 44.385000000000005,
     "world": "INVERTED GARDEN",
     "heroObject": "有机薄膜之花",
-    "cameraMotion": "Static symbolic impact / brief contour match cut",
-    "palette": "deep violet / silver / frosted membrane",
+    "cameraMotion": "Full-frame translucent macro skin, micro veins, moving fibres, penetrating camera, palette exit",
+    "palette": "VIOLET / MAGENTA",
     "density": 1,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -807,23 +917,25 @@
     "parentScene": "insert-membrane",
     "visualCategory": "ORGANIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Through the membrane"
   },
   {
-    "id": "28",
+    "id": "30",
     "start": 44.7,
-    "end": 51.050000000000004,
+    "end": 46.5,
     "family": "labyrinth",
     "name": "折面与 Möbius 航路",
     "function": "Escalation",
-    "event": "一整块曲面掀起、贴边俯冲、重力翻折三次事件",
+    "event": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
     "sourceStart": 0,
-    "sourceEnd": 3.7,
-    "sample": 48.1925,
+    "sourceEnd": 0.28346456692913335,
+    "sample": 45.690000000000005,
     "world": "INVERTED GARDEN",
     "heroObject": "continuous folded vault",
-    "cameraMotion": "一整块曲面掀起、贴边俯冲、重力翻折三次事件",
-    "palette": "violet haze / ceramic / emissive cyan",
+    "cameraMotion": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
+    "palette": "WARM GOLD / CREAM / UMBER",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -839,10 +951,150 @@
     "parentScene": "labyrinth",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Warm folded mineral vault"
   },
   {
-    "id": "29",
+    "id": "31",
+    "start": 46.5,
+    "end": 46.6333333333333,
+    "family": "insert-white",
+    "name": "White architectural cut",
+    "function": "Contrast / Transition",
+    "event": "White architectural cut",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 46.56666666666665,
+    "world": "THRESHOLD",
+    "heroObject": "White architectural cut",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "WHITE / BLACK",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 44.5167,
+      "strength": 1.0
+    },
+    "lyricsCue": [
+      7,
+      8,
+      9
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-white",
+    "visualCategory": "GRAPHIC_2D",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "White architectural cut",
+    "attackFramesAt60": 8
+  },
+  {
+    "id": "32",
+    "start": 46.6333333333333,
+    "end": 49.4,
+    "family": "labyrinth",
+    "name": "折面与 Möbius 航路",
+    "function": "Escalation",
+    "event": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
+    "sourceStart": 0.3044619422572117,
+    "sourceEnd": 0.7401574803149598,
+    "sample": 48.15499999999998,
+    "world": "INVERTED GARDEN",
+    "heroObject": "continuous folded vault",
+    "cameraMotion": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
+    "palette": "WARM GOLD / CREAM / UMBER",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 44.5167,
+      "strength": 1.0
+    },
+    "lyricsCue": [
+      7,
+      8,
+      9
+    ],
+    "renderMethod": "Remotion / native Three.js WebGL / original procedural geometry",
+    "parentScene": "labyrinth",
+    "visualCategory": "MEGASTRUCTURE",
+    "shotType": "ANCHOR",
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Warm folded mineral vault"
+  },
+  {
+    "id": "33",
+    "start": 49.4,
+    "end": 49.6,
+    "family": "insert-scan",
+    "name": "Green data scan rupture",
+    "function": "Contrast / Transition",
+    "event": "Green data scan rupture",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 49.5,
+    "world": "THRESHOLD",
+    "heroObject": "Green data scan rupture",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "BLACK / EMERALD",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 44.5167,
+      "strength": 1.0
+    },
+    "lyricsCue": [
+      7,
+      8,
+      9
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-scan",
+    "visualCategory": "GRAPHIC_2D",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Green data scan rupture",
+    "attackFramesAt60": 12
+  },
+  {
+    "id": "34",
+    "start": 49.6,
+    "end": 51.050000000000004,
+    "family": "labyrinth",
+    "name": "折面与 Möbius 航路",
+    "function": "Escalation",
+    "event": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
+    "sourceStart": 0.7716535433070861,
+    "sourceEnd": 1,
+    "sample": 50.3975,
+    "world": "INVERTED GARDEN",
+    "heroObject": "continuous folded vault",
+    "cameraMotion": "Continuous warm mineral vaults, diffuse dawn light, folded spaces, broad roll, rising camera",
+    "palette": "WARM GOLD / CREAM / UMBER",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 44.5167,
+      "strength": 1.0
+    },
+    "lyricsCue": [
+      7,
+      8,
+      9
+    ],
+    "renderMethod": "Remotion / native Three.js WebGL / original procedural geometry",
+    "parentScene": "labyrinth",
+    "visualCategory": "MEGASTRUCTURE",
+    "shotType": "ANCHOR",
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Warm folded mineral vault"
+  },
+  {
+    "id": "35",
     "start": 51.050000000000004,
     "end": 51.7,
     "family": "insert-liquid",
@@ -869,23 +1121,24 @@
     "parentScene": "insert-liquid",
     "visualCategory": "FLUID",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-liquid"
   },
   {
-    "id": "30",
+    "id": "36",
     "start": 51.7,
-    "end": 58.165,
+    "end": 54.8,
     "family": "bridge",
     "name": "断裂桥与终章门槛",
     "function": "Transition",
-    "event": "桥面分离、近拱掠过、空间抬升，跨越断桥进入高潮",
+    "event": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
     "sourceStart": 0,
-    "sourceEnd": 6.615,
-    "sample": 55.25575,
+    "sourceEnd": 0.4795050270688316,
+    "sample": 53.405,
     "world": "THRESHOLD",
     "heroObject": "three fractured viaduct spans",
-    "cameraMotion": "桥面分离、近拱掠过、空间抬升，跨越断桥进入高潮",
-    "palette": "grey sky / dark stone / pale cyan",
+    "cameraMotion": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
+    "palette": "WARM GOLD / CREAM / UMBER",
     "density": 8,
     "transition": "occlusion / hard spatial cut",
     "musicCue": {
@@ -901,10 +1154,150 @@
     "parentScene": "bridge",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Dawn threshold flight"
   },
   {
-    "id": "31",
+    "id": "37",
+    "start": 54.8,
+    "end": 54.85,
+    "family": "insert-black",
+    "name": "Three-frame black bridge interruption",
+    "function": "Contrast / Transition",
+    "event": "Three-frame black bridge interruption",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 54.825,
+    "world": "THRESHOLD",
+    "heroObject": "Three-frame black bridge interruption",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "BLACK",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 51.9167,
+      "strength": 0.8769
+    },
+    "lyricsCue": [
+      9,
+      10,
+      11
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-black",
+    "visualCategory": "VOID",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Three-frame black bridge interruption",
+    "attackFramesAt60": 3
+  },
+  {
+    "id": "38",
+    "start": 54.85,
+    "end": 56.75,
+    "family": "bridge",
+    "name": "断裂桥与终章门槛",
+    "function": "Transition",
+    "event": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
+    "sourceStart": 0.48723897911832953,
+    "sourceEnd": 0.7811291569992266,
+    "sample": 55.895,
+    "world": "THRESHOLD",
+    "heroObject": "three fractured viaduct spans",
+    "cameraMotion": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
+    "palette": "WARM GOLD / CREAM / UMBER",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 51.9167,
+      "strength": 0.8769
+    },
+    "lyricsCue": [
+      9,
+      10,
+      11
+    ],
+    "renderMethod": "Remotion / native Three.js WebGL / original procedural geometry",
+    "parentScene": "bridge",
+    "visualCategory": "LANDSCAPE",
+    "shotType": "ANCHOR",
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Dawn threshold flight"
+  },
+  {
+    "id": "39",
+    "start": 56.75,
+    "end": 56.95,
+    "family": "insert-red",
+    "name": "Red structural symbol cut",
+    "function": "Contrast / Transition",
+    "event": "Red structural symbol cut",
+    "sourceStart": 0,
+    "sourceEnd": 1,
+    "sample": 56.85,
+    "world": "THRESHOLD",
+    "heroObject": "Red structural symbol cut",
+    "cameraMotion": "Graphic entry / contour transformation / hard exit",
+    "palette": "RED / OFF-WHITE",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 51.9167,
+      "strength": 0.8769
+    },
+    "lyricsCue": [
+      9,
+      10,
+      11
+    ],
+    "renderMethod": "Original procedural graphic design / no external images",
+    "parentScene": "insert-red",
+    "visualCategory": "GRAPHIC_2D",
+    "shotType": "ATTACK",
+    "surpriseInsert": true,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Red structural symbol cut",
+    "attackFramesAt60": 12
+  },
+  {
+    "id": "40",
+    "start": 56.95,
+    "end": 58.165,
+    "family": "bridge",
+    "name": "断裂桥与终章门槛",
+    "function": "Transition",
+    "event": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
+    "sourceStart": 0.8120649651972163,
+    "sourceEnd": 1,
+    "sample": 57.61825,
+    "world": "THRESHOLD",
+    "heroObject": "three fractured viaduct spans",
+    "cameraMotion": "Thick suspended folded vaults, warm mineral surfaces, broken viaduct, long perspective flight",
+    "palette": "WARM GOLD / CREAM / UMBER",
+    "density": 8,
+    "transition": "occlusion / hard spatial cut",
+    "musicCue": {
+      "time": 51.9167,
+      "strength": 0.8769
+    },
+    "lyricsCue": [
+      9,
+      10,
+      11
+    ],
+    "renderMethod": "Remotion / native Three.js WebGL / original procedural geometry",
+    "parentScene": "bridge",
+    "visualCategory": "LANDSCAPE",
+    "shotType": "ANCHOR",
+    "surpriseInsert": false,
+    "directionPass": "world-identity-rebuild",
+    "reviewName": "Dawn threshold flight"
+  },
+  {
+    "id": "41",
     "start": 58.165,
     "end": 58.315,
     "family": "insert-negative",
@@ -931,10 +1324,11 @@
     "parentScene": "insert-negative",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-negative"
   },
   {
-    "id": "32",
+    "id": "42",
     "start": 58.315,
     "end": 63.22,
     "family": "stair",
@@ -962,10 +1356,11 @@
     "parentScene": "stair",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "stair"
   },
   {
-    "id": "33",
+    "id": "43",
     "start": 63.22,
     "end": 64.1,
     "family": "whiteout",
@@ -992,10 +1387,11 @@
     "parentScene": "whiteout",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "whiteout"
   },
   {
-    "id": "34",
+    "id": "44",
     "start": 64.1,
     "end": 69.54,
     "family": "canyon",
@@ -1023,10 +1419,11 @@
     "parentScene": "canyon",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "canyon"
   },
   {
-    "id": "35",
+    "id": "45",
     "start": 69.54,
     "end": 70.14,
     "family": "insert-vermilion",
@@ -1053,10 +1450,11 @@
     "parentScene": "insert-vermilion",
     "visualCategory": "SYMBOLIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-vermilion"
   },
   {
-    "id": "36",
+    "id": "46",
     "start": 70.14,
     "end": 74.5,
     "family": "ringtemple",
@@ -1084,10 +1482,11 @@
     "parentScene": "ringtemple",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "ringtemple"
   },
   {
-    "id": "37",
+    "id": "47",
     "start": 74.5,
     "end": 74.9,
     "family": "insert-feather",
@@ -1114,10 +1513,11 @@
     "parentScene": "insert-feather",
     "visualCategory": "ORGANIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-feather"
   },
   {
-    "id": "38",
+    "id": "48",
     "start": 74.9,
     "end": 78.299,
     "family": "colonnade",
@@ -1145,10 +1545,11 @@
     "parentScene": "colonnade",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "colonnade"
   },
   {
-    "id": "39",
+    "id": "49",
     "start": 78.299,
     "end": 82.1,
     "family": "quiet-island",
@@ -1175,10 +1576,11 @@
     "parentScene": "quiet-island",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "quiet-island"
   },
   {
-    "id": "40",
+    "id": "50",
     "start": 82.1,
     "end": 83.89999999999999,
     "family": "insert-root",
@@ -1205,10 +1607,11 @@
     "parentScene": "root-macro",
     "visualCategory": "ORGANIC",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-root"
   },
   {
-    "id": "41",
+    "id": "51",
     "start": 83.89999999999999,
     "end": 86.1,
     "family": "quiet-split",
@@ -1235,10 +1638,11 @@
     "parentScene": "quiet-split",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "quiet-split"
   },
   {
-    "id": "42",
+    "id": "52",
     "start": 86.1,
     "end": 90.1,
     "family": "quiet-leaf",
@@ -1265,10 +1669,11 @@
     "parentScene": "quiet-leaf",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "quiet-leaf"
   },
   {
-    "id": "43",
+    "id": "53",
     "start": 90.1,
     "end": 93.44999999999999,
     "family": "quiet-line",
@@ -1295,10 +1700,11 @@
     "parentScene": "quiet-line",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "quiet-line"
   },
   {
-    "id": "44",
+    "id": "54",
     "start": 93.44999999999999,
     "end": 94.1,
     "family": "insert-circuit",
@@ -1325,10 +1731,11 @@
     "parentScene": "quiet-line",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-circuit"
   },
   {
-    "id": "45",
+    "id": "55",
     "start": 94.1,
     "end": 98.076,
     "family": "quiet-shore",
@@ -1355,10 +1762,11 @@
     "parentScene": "quiet-shore",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "quiet-shore"
   },
   {
-    "id": "46",
+    "id": "56",
     "start": 98.076,
     "end": 101.5,
     "family": "redcut",
@@ -1385,10 +1793,11 @@
     "parentScene": "redcut",
     "visualCategory": "GLITCH_ABSTRACT",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "redcut"
   },
   {
-    "id": "47",
+    "id": "57",
     "start": 101.5,
     "end": 106.9,
     "family": "glitch",
@@ -1416,10 +1825,11 @@
     "parentScene": "glitch",
     "visualCategory": "GLITCH_ABSTRACT",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "glitch"
   },
   {
-    "id": "48",
+    "id": "58",
     "start": 106.9,
     "end": 112.598,
     "family": "rebuild-gate",
@@ -1448,10 +1858,11 @@
     "parentScene": "rebuild-gate",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "rebuild-gate"
   },
   {
-    "id": "49",
+    "id": "59",
     "start": 112.598,
     "end": 113.098,
     "family": "insert-graphic",
@@ -1478,10 +1889,11 @@
     "parentScene": "insert-graphic",
     "visualCategory": "GRAPHIC_2D",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-graphic"
   },
   {
-    "id": "50",
+    "id": "60",
     "start": 113.098,
     "end": 117.6,
     "family": "galaxy",
@@ -1508,10 +1920,11 @@
     "parentScene": "galaxy",
     "visualCategory": "PARTICLE_SPACE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "galaxy"
   },
   {
-    "id": "51",
+    "id": "61",
     "start": 117.6,
     "end": 120.8,
     "family": "storm",
@@ -1539,10 +1952,11 @@
     "parentScene": "storm",
     "visualCategory": "ARCHIVE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "storm"
   },
   {
-    "id": "52",
+    "id": "62",
     "start": 120.8,
     "end": 124.8,
     "family": "island-pull",
@@ -1570,10 +1984,11 @@
     "parentScene": "island-pull",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "island-pull"
   },
   {
-    "id": "53",
+    "id": "63",
     "start": 124.8,
     "end": 128.85,
     "family": "tree-assembly",
@@ -1601,10 +2016,11 @@
     "parentScene": "tree-assembly",
     "visualCategory": "ORGANIC",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "tree-assembly"
   },
   {
-    "id": "54",
+    "id": "64",
     "start": 128.85,
     "end": 135.19133333333335,
     "family": "gravity",
@@ -1632,10 +2048,11 @@
     "parentScene": "gravity",
     "visualCategory": "MEGASTRUCTURE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "gravity"
   },
   {
-    "id": "55",
+    "id": "65",
     "start": 135.19133333333335,
     "end": 135.258,
     "family": "insert-black",
@@ -1662,10 +2079,11 @@
     "parentScene": "insert-black",
     "visualCategory": "VOID",
     "shotType": "ATTACK",
-    "surpriseInsert": true
+    "surpriseInsert": true,
+    "reviewName": "insert-black"
   },
   {
-    "id": "56",
+    "id": "66",
     "start": 135.258,
     "end": 142.383,
     "family": "release",
@@ -1692,10 +2110,11 @@
     "parentScene": "release",
     "visualCategory": "LANDSCAPE",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "release"
   },
   {
-    "id": "57",
+    "id": "67",
     "start": 142.383,
     "end": 151.4,
     "family": "sky",
@@ -1722,22 +2141,23 @@
     "parentScene": "sky",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "sky"
   },
   {
-    "id": "58",
+    "id": "68",
     "start": 151.4,
     "end": 157,
     "family": "endcard",
     "name": "PHIGROS / MAIN STORY COMPLETE",
     "function": "Emotional pause",
-    "event": "安静字卡，继而 THANK YOU FOR THE JOURNEY",
+    "event": "Last fragment extinguishes; restrained unofficial afterstory title in open sky",
     "sourceStart": 0,
     "sourceEnd": 1,
     "sample": 154.48,
     "world": "NEW DAWN",
     "heroObject": "original text title",
-    "cameraMotion": "安静字卡，继而 THANK YOU FOR THE JOURNEY",
+    "cameraMotion": "Last fragment extinguishes; restrained unofficial afterstory title in open sky",
     "palette": "clean blue-white / silver",
     "density": 1,
     "transition": "quiet dissolve",
@@ -1750,10 +2170,11 @@
     "parentScene": "endcard",
     "visualCategory": "TYPOGRAPHIC",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "endcard"
   },
   {
-    "id": "59",
+    "id": "69",
     "start": 157,
     "end": 162.72544217687076,
     "family": "question",
@@ -1778,6 +2199,7 @@
     "parentScene": "question",
     "visualCategory": "MINIMAL",
     "shotType": "ANCHOR",
-    "surpriseInsert": false
+    "surpriseInsert": false,
+    "reviewName": "question"
   }
 ]

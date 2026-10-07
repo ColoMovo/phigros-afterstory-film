@@ -68,6 +68,8 @@ jobs:
           path: |
             output/opening-review.mp4
             output/opening-contact-sheet.jpg
+            output/labeled-contact-sheet.jpg
+            output/blind-contact-sheet.jpg
             output/opening-keyframes/*.png
             output/opening-verification.json
             output/preview.mp4
