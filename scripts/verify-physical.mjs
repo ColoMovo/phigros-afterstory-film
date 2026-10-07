@@ -5,6 +5,7 @@ const designs=process.env.TARGET==='physical-review'?all:all.filter(s=>used.has(
 for(const {id} of designs){
  const file=`public/physical/${id}.mp4`,meta=JSON.parse(fs.readFileSync(`public/physical/${id}.render.json`));
  const expected=createHash('sha256').update(fs.readFileSync('scripts/blender/physical-common.py')).update(fs.readFileSync(`scripts/blender/${id}.py`)).update(fs.readFileSync(`scripts/blender/settings/${id}.json`)).update(meta.profile).digest('hex');
+ if(process.env.TARGET==='final'&&meta.profile!=='final')throw Error(`Final composition cannot consume preview physical asset ${id}`);
  if(!['preview','final'].includes(meta.profile)||meta.engine!=='CYCLES'||meta.width!==(meta.profile==='preview'?960:1920))throw Error(`Wrong physical render profile ${id}`);
  if(meta.fingerprint!==expected||createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==meta.sha256)throw Error(`Stale physical shot ${id}`);
  const p=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-of','json',file],{encoding:'utf8'}));const v=p.streams.find(s=>s.codec_type==='video');

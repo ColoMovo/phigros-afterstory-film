@@ -17,6 +17,7 @@ This lists the active rendering pipeline's inputs. It does not imply that the cu
 
 | Material | Author / rights holder | Source | Authorization / usage basis | Local path | Usage timestamp |
 | --- | --- | --- | --- | --- | --- |
+| Original combined Blender event shots | Original workspace scripts | `scripts/blender` | Original geometry, shading, light and animation | Generated untracked `public/physical/*.mp4` | 00:12–00:14.591; 00:19.851–00:22.55; 00:39.3–00:41; 00:44.7–00:46.5; 00:51.7–00:54.8 |
 | Original geometric worlds, camera paths, particles, sky, shaders and typography layouts | Original code authored in this workspace for the user | Project source | Original project work; abstract fan visuals do not claim official story canon | `src/shot-library.ts`, `src/opening-world.ts`, `src/archive-art.ts`, `src/paint.ts` | 00:00–02:42.725 |
 | What do you want more than a Happy ending？ / 濒笼 | Third-party rights remain with the respective music and lyric rights holders | User-provided original MP3 | Necessary user-provided audio input; no redistribution license or Pigeon Games sublicensing authority inferred | `public/music.mp3` locally, untracked; CI restores from `assets/private-input/music.enc` using a protected Actions Secret | Entire original song, 00:00–02:42.725, original speed; no additional SFX |
 | Source JP / CN lyrics | Respective lyric / translation rights holders | User audio metadata | User-provided project input; source spelling retained; no independent license asserted | `src/data/lyrics.json`, `assets/lyrics-original.txt` | Exact supplied word / line timestamps; translation placeholder `//` is not shown |
@@ -35,12 +36,12 @@ The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599
 
 - Remotion 4.0.532, React 19.1.1 and Three.js 0.180.0, pinned in package-lock.json. Three.js is MIT licensed. Review Remotion's license for future organizational / commercial deployment.
 - FFmpeg performs CI encoding, muxing and decoded-output verification.
-- Original Blender source experiments remain optional development resources. The active shot-library composition does not load unfinished Blender clips and does not rely on external models, stock footage or remote per-frame media.
+- Blender 4.5.0 Cycles CPU generates five original combined event shots. Silent local H264 clips enter the Remotion main timeline; the original music remains the single global audio input. No stock footage, external models or remote per-frame media are used.
 
 
-## Combined Blender R&D — not yet used in the film
+## Original combined Blender shots in the active timeline
 
-Original scripts in `scripts/blender` build the five redesigned event candidates: glass-gate, mirror-crossing, fiber-aperture, relic-scrape, life-relic. Geometry, procedural materials and lighting are original; typography uses the already bundled OFL fonts. Blender 4.5.0 is the pinned official software runtime, not a visual source asset. The first event sequences are silent and rendered only in GitHub Actions. They are independent review candidates until playback, event and transition checks are complete. The saved `.blend` is the initial scene; absolute seeded animation poses are reconstructed by the source script.
+Original scripts in `scripts/blender` build glass-gate (19.851–22.55s), mirror-crossing (44.7–46.5s), fiber-aperture (51.7–54.8s), relic-scrape (39.3–41s), and life-relic (12–14.591s). Geometry, procedural materials and lighting are original; typography uses bundled OFL fonts. The original official Blender 4.5.0 runtime is software, not a visual source asset. All formal sequences are rendered in GitHub Actions and checked against source fingerprints before composition. Preview assets are 960×540 at 30fps; final assets are 1920×1080 at 30fps, repeated exactly twice in the 60fps film. These heavy shots do not claim 60 unique physical frames per second. The saved `.blend` contains the initial scene; absolute seeded poses are reconstructed by the source script. Current sequence-review decisions and failures are recorded in `VISUAL-QA.md`; timeline integration is followed by an encoded full-film review, not accepted merely from stills.
 
 The earlier grass, rock, curve/glass and reflection-floor compositions are archived in `research/material-tech` as R&D ONLY and are excluded from the timeline. A material experiment is not counted as a final visual material.
 

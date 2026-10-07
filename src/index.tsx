@@ -1,6 +1,7 @@
 import React,{useLayoutEffect,useRef,useState} from 'react';
-import {AbsoluteFill,Audio,Composition,continueRender,delayRender,registerRoot,staticFile,useCurrentFrame,useVideoConfig} from 'remotion';
+import {AbsoluteFill,Audio,Composition,OffthreadVideo,Sequence,continueRender,delayRender,registerRoot,staticFile,useCurrentFrame,useVideoConfig} from 'remotion';
 import analysis from './data/audio-analysis.json';
+import shots from './data/shots.json';
 import {setMemoryImages,paintShotGraphics} from './paint';
 import {loadOpeningAssets} from './opening-world';
 import {ShotWorld,shotAt} from './shot-library';
@@ -13,7 +14,7 @@ export const Film:React.FC<{quality?:string;openingLook?:'finished'|'silhouette'
  useLayoutEffect(()=>{loadFonts().then(()=>{setReady(true);continueRender(handle)})},[handle]);
  useLayoutEffect(()=>{if(ready&&graphic.current&&space.current){if(!world.current)world.current=new ShotWorld(space.current,openingLook==='silhouette');const time=frame/fps;world.current.render(time);paintShotGraphics(graphic.current,time,frame,fps,shotAt(time));if(openingLook==='silhouette')graphic.current.getContext('2d')!.clearRect(0,0,width,height)}},[frame,fps,ready,openingLook,width,height]);
  useLayoutEffect(()=>()=>{world.current?.dispose();world.current=null},[]);
- return <AbsoluteFill style={{background:'#08121f',isolation:'isolate'}}><canvas ref={space} width={width} height={height} style={{position:'absolute',inset:0,width:'100%',height:'100%'}}/><canvas ref={graphic} width={width} height={height} style={{position:'absolute',inset:0,width:'100%',height:'100%',mixBlendMode:shotAt(frame/fps).family==='gravity'?'difference':'normal'}}/><Audio src={staticFile('music.mp3')}/></AbsoluteFill>;
+ return <AbsoluteFill style={{background:'#08121f',isolation:'isolate'}}><canvas ref={space} width={width} height={height} style={{position:'absolute',inset:0,width:'100%',height:'100%'}}/>{shots.filter(s=>s.family.startsWith('physical-')).map(s=>{const from=Math.ceil(s.start*fps),end=Math.ceil(s.end*fps);return <Sequence key={s.id} from={from} durationInFrames={end-from}><OffthreadVideo src={staticFile(`physical/${s.family.slice(9)}.mp4`)} muted style={{width:'100%',height:'100%',objectFit:'cover'}}/></Sequence>})}<canvas ref={graphic} width={width} height={height} style={{position:'absolute',inset:0,width:'100%',height:'100%',mixBlendMode:shotAt(frame/fps).family==='gravity'||shotAt(frame/fps).family.startsWith('physical-')?'difference':'normal'}}/><Audio src={staticFile('music.mp3')}/></AbsoluteFill>;
 };
 const Root=()=> <Composition id="Afterstory" component={Film} width={1920} height={1080} fps={60} durationInFrames={Math.ceil(analysis.duration*60)} defaultProps={{}} calculateMetadata={({props}:{props:Record<string,unknown>})=>{const preview=props.quality==='preview',fps=preview?30:60;return {width:preview?960:1920,height:preview?540:1080,fps,durationInFrames:Math.ceil(analysis.duration*fps)}}}/>;
 registerRoot(Root);

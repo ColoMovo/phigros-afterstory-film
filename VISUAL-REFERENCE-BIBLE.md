@@ -14,7 +14,7 @@ Every 8–12 seconds in the active sections should change at least four of palet
 
 The user prefers the immersive fibre/aperture approach: foreground fills the edges, depth is explicit, and the destination has strong negative space. Other 3D worlds need comparable intrusion, not an isolated object in an empty room.
 
-The five original combined Blender candidates are documented in `BLENDER-SHOT-DESIGNS.md`. Rejected material tests live in `research/material-tech` as R&D ONLY. Candidates are first rendered as independent event sequences in GitHub Actions. They enter the film after composition, event and transition checks, not because a shader compiled.
+The five original combined Blender event shots are documented in `BLENDER-SHOT-DESIGNS.md`. Rejected material tests live in `research/material-tech` as R&D ONLY. Their independent encoded event sequences were inspected in GitHub Actions output; five replacements now enter the main timeline for full-film composition review. See `VISUAL-QA.md` for observed failures and corrections. A passing shader or manifest does not approve the image.
 
 Formal Blender sequences, section movies, opening review, full preview, final export, contact sheets and MP4 checks are GitHub Actions only. Local development uses individual stills and necessary short debugging. Camera/world dynamics are seeded absolute poses. Source audio stays private current-tree input; existing history is retained under the user's explicit decision.
 
