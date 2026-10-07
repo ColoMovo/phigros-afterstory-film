@@ -5,16 +5,23 @@ Formal sequence renders are restricted to GitHub Actions; local stills are QA.
 import bpy, math, random, pathlib, sys, argparse, json, hashlib, os, time
 from mathutils import Vector
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-p=argparse.ArgumentParser();p.add_argument('--shot',required=True);p.add_argument('--still',type=float);p.add_argument('--width',type=int);o=p.parse_args(sys.argv[sys.argv.index('--')+1:])
+p=argparse.ArgumentParser();p.add_argument('--shot',required=True);p.add_argument('--still',type=float);p.add_argument('--width',type=int);p.add_argument('--engine',choices=['BLENDER_EEVEE_NEXT','CYCLES']);p.add_argument('--samples',type=int);p.add_argument('--profile',choices=['preview','final'],default='final');p.add_argument('--chunk',type=int);p.add_argument('--chunks',type=int,default=4);o=p.parse_args(sys.argv[sys.argv.index('--')+1:])
 if o.still is None and os.environ.get('GITHUB_ACTIONS')!='true':raise RuntimeError('Formal Blender sequences render in GitHub Actions only')
 config=json.loads((ROOT/'scripts/blender/settings'/f'{o.shot}.json').read_text());rng=random.Random(config['seed'])
+if o.still is None:
+ if o.width or o.engine or o.samples:raise RuntimeError('Formal settings are selected by the explicit CI quality profile')
+ config.update(profile=o.profile,engine='CYCLES',width=min(config['width'],960) if o.profile=='preview' else config['width'],samples=8 if o.profile=='preview' else 16)
+if o.chunk is not None and not 0<=o.chunk<o.chunks:raise RuntimeError('Invalid frame chunk')
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene;s.render.engine='BLENDER_EEVEE_NEXT';s.eevee.taa_render_samples=config['samples'];s.eevee.use_raytracing=True
 s.eevee.volumetric_samples=16;s.eevee.volumetric_tile_size='16';s.eevee.use_volumetric_shadows=True
 s.render.resolution_x=o.width or config['width'];s.render.resolution_y=round(s.render.resolution_x*9/16);s.render.resolution_percentage=100;s.render.fps=config['fps']
 s.render.image_settings.file_format='PNG';s.render.image_settings.color_mode='RGB';s.render.image_settings.compression=15
 s.view_settings.view_transform='AgX';s.view_settings.look='AgX - Medium High Contrast';s.view_settings.exposure=-.3
-s.render.film_transparent=False;s.render.engine='BLENDER_EEVEE_NEXT'
+s.render.film_transparent=False;s.render.engine=o.engine or config.get('engine','BLENDER_EEVEE_NEXT')
+if s.render.engine=='CYCLES':
+ s.cycles.device='CPU';s.cycles.samples=o.samples or config['samples'];s.cycles.use_denoising=True;s.cycles.max_bounces=6;s.cycles.transmission_bounces=4;s.cycles.volume_bounces=1;s.render.use_persistent_data=True
+elif o.samples:s.eevee.taa_render_samples=o.samples
 def mat(name,color,rough=.65,metal=0,trans=0,emit=0,bump=0):
  m=bpy.data.materials.new(name);m.use_nodes=True;n=m.node_tree.nodes;l=m.node_tree.links;b=n.get('Principled BSDF');b.inputs['Base Color'].default_value=(*color,1);b.inputs['Roughness'].default_value=rough;b.inputs['Metallic'].default_value=metal;b.inputs['Transmission Weight'].default_value=trans;b.inputs['IOR'].default_value=1.45;b.inputs['Emission Color'].default_value=(*color,1);b.inputs['Emission Strength'].default_value=emit
  if bump:
@@ -87,12 +94,14 @@ def look(pos,target,lens=32,roll=0,focus=None):
 # A restrained highlight glow; material response and backlight provide the body.
 s.use_nodes=True;n=s.node_tree.nodes;n.clear();r=n.new('CompositorNodeRLayers');denoise=n.new('CompositorNodeDenoise');g=n.new('CompositorNodeGlare');g.glare_type='FOG_GLOW';g.quality='MEDIUM';g.threshold=1.4;g.mix=-.88;out=n.new('CompositorNodeComposite');s.node_tree.links.new(r.outputs['Image'],denoise.inputs['Image']);s.node_tree.links.new(denoise.outputs['Image'],g.inputs['Image']);s.node_tree.links.new(g.outputs['Image'],out.inputs['Image'])
 exec(compile((ROOT/'scripts/blender'/f'{o.shot}.py').read_text(),f'{o.shot}.py','exec'))
-outdir=ROOT/'public/physical'/o.shot;outdir.mkdir(parents=True,exist_ok=True)
+outdir=(ROOT/'.render/physical-chunks'/o.shot/str(o.chunk)) if o.chunk is not None else ROOT/'public/physical'/o.shot;outdir.mkdir(parents=True,exist_ok=True)
 if o.still is not None:
  animate(o.still);s.render.filepath=str(ROOT/'output'/f'physical-{o.shot}-{o.still:.2f}.png');bpy.ops.render.render(write_still=True)
 else:
- frames=math.ceil(config['duration']*config['fps']);animate(0);bpy.ops.wm.save_as_mainfile(filepath=str(outdir/f'{o.shot}.blend'),compress=True)
- for frame in range(frames):
+ frames=math.ceil(config['duration']*config['fps']);start=0 if o.chunk is None else frames*o.chunk//o.chunks;end=frames if o.chunk is None else frames*(o.chunk+1)//o.chunks
+ animate(0)
+ if start==0:bpy.ops.wm.save_as_mainfile(filepath=str(outdir/f'{o.shot}.blend'),compress=True)
+ for frame in range(start,end):
   s.frame_set(frame+1);animate(frame/max(1,frames-1));s.render.filepath=str(outdir/f'{frame:05d}.png');bpy.ops.render.render(write_still=True);print('PHYSICAL_FRAME',o.shot,frame+1,frames,flush=True)
- fingerprint=hashlib.sha256(pathlib.Path(__file__).read_bytes()+(ROOT/'scripts/blender'/f'{o.shot}.py').read_bytes()+(ROOT/'scripts/blender/settings'/f'{o.shot}.json').read_bytes()).hexdigest()
- (outdir/'render.json').write_text(json.dumps(dict(config,frames=frames,blender=bpy.app.version_string,fingerprint=fingerprint,source='original procedural Blender scene'),indent=2)+'\n')
+ fingerprint=hashlib.sha256(pathlib.Path(__file__).read_bytes()+(ROOT/'scripts/blender'/f'{o.shot}.py').read_bytes()+(ROOT/'scripts/blender/settings'/f'{o.shot}.json').read_bytes()+o.profile.encode()).hexdigest()
+ (outdir/'render.json').write_text(json.dumps(dict(config,frames=frames,startFrame=start,endFrame=end,chunk=o.chunk,chunks=o.chunks,blender=bpy.app.version_string,fingerprint=fingerprint,source='original procedural Blender scene'),indent=2)+'\n')

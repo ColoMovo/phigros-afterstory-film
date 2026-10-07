@@ -22,6 +22,8 @@ jobs:
     outputs:
       shots: ${{ steps.plan.outputs.shots }}
       required: ${{ steps.plan.outputs.required }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+      profile: ${{ steps.plan.outputs.profile }}
     steps:
       - uses: actions/checkout@v4
       - id: plan
@@ -32,28 +34,27 @@ jobs:
           import fs from 'node:fs';
           const target=process.env.TARGET;
           const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):target==='smoke'?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
-          fs.appendFileSync(process.env.GITHUB_OUTPUT,`shots=${JSON.stringify(shots)}\nrequired=${shots.length>0}\n`);
+          const profile=target==='final'?'final':'preview';
+          const matrix={include:shots.flatMap(shot=>[0,1,2,3].map(chunk=>({shot,chunk})))};
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`shots=${JSON.stringify(shots)}\nrequired=${shots.length>0}\nmatrix=${JSON.stringify(matrix)}\nprofile=${profile}\n`);
           JS_PLAN
   physical:
     needs: plan
     if: needs.plan.outputs.required == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     strategy:
       fail-fast: false
-      matrix:
-        shot: ${{ fromJSON(needs.plan.outputs.shots) }}
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
-      - name: Cache this shot independently
+      - name: Cache this absolute frame chunk
         id: shot-cache
         uses: actions/cache@v4
         with:
-          path: |
-            public/physical/${{ matrix.shot }}.mp4
-            public/physical/${{ matrix.shot }}.render.json
-            public/physical/${{ matrix.shot }}.blend
-          key: physical-blender450-${{ matrix.shot }}-${{ hashFiles('scripts/blender/physical-common.py', format('scripts/blender/{0}.py', matrix.shot), format('scripts/blender/settings/{0}.json', matrix.shot)) }}
+          path: .render/physical-chunks/${{ matrix.shot }}/${{ matrix.chunk }}
+          key: physical-cycles450-${{ needs.plan.outputs.profile }}-${{ matrix.shot }}-${{ matrix.chunk }}-${{ hashFiles('scripts/blender/physical-common.py', format('scripts/blender/{0}.py', matrix.shot), format('scripts/blender/settings/{0}.json', matrix.shot)) }}
       - name: Check complete shot design before rendering
         run: node scripts/verify-shot-designs.mjs
       - name: Install Blender runtime libraries
@@ -83,24 +84,48 @@ jobs:
           PY_CHECK
           tar -xf blender.tar.xz
           rm blender.tar.xz checksums.txt
-      - name: Render original physical shot
+      - name: Render seeded absolute frame range on CPU
         if: steps.shot-cache.outputs.cache-hit != 'true'
         env:
           BLENDER_PATH: .render/blender-runtime/blender-4.5.0-linux-x64/blender
-          LIBGL_ALWAYS_SOFTWARE: '1'
-        run: xvfb-run -a bash scripts/render-physical.sh '${{ matrix.shot }}'
+        run: '"$BLENDER_PATH" -b --factory-startup --python scripts/blender/physical-common.py -- --shot "${{ matrix.shot }}" --profile "${{ needs.plan.outputs.profile }}" --chunk "${{ matrix.chunk }}" --chunks 4'
       - uses: actions/upload-artifact@v4
         with:
-          name: physical-${{ matrix.shot }}-${{ github.sha }}
-          path: |
-            public/physical/${{ matrix.shot }}.mp4
-            public/physical/${{ matrix.shot }}.render.json
-            public/physical/${{ matrix.shot }}.blend
+          name: physical-frames-${{ matrix.shot }}-${{ needs.plan.outputs.profile }}-${{ matrix.chunk }}-${{ github.sha }}
+          path: .render/physical-chunks/${{ matrix.shot }}/${{ matrix.chunk }}
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 2
+  assemble:
+    needs: [plan, physical]
+    if: ${{ !cancelled() && needs.physical.result == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      PHYSICAL_PROFILE: ${{ needs.plan.outputs.profile }}
+      PHYSICAL_SHOTS: ${{ needs.plan.outputs.shots }}
+      PHYSICAL_CHUNKS: '4'
+      TARGET: ${{ inputs.target || 'smoke' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg && pip install pillow==11.3.0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: physical-frames-*-${{ github.sha }}
+          path: .render/incoming
+      - name: Check every frame and assemble original clips
+        run: python scripts/assemble-physical.py && node scripts/verify-physical.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: physical-assets-${{ github.sha }}
+          path: public/physical/*
           if-no-files-found: error
           retention-days: 14
   render:
-    needs: [plan, physical]
-    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.physical.result == 'success' || needs.physical.result == 'skipped') }}
+    needs: [plan, assemble]
+    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
@@ -124,17 +149,17 @@ jobs:
           npm ci --no-audit --no-fund
           npx remotion browser ensure
       - name: Restore cached original Blender shots
-        if: needs.physical.result == 'success'
+        if: needs.assemble.result == 'success'
         uses: actions/download-artifact@v4
         with:
-          pattern: physical-*-${{ github.sha }}
+          name: physical-assets-${{ github.sha }}
           path: public/physical
           merge-multiple: true
       - name: Verify physical asset fingerprints
-        if: needs.physical.result == 'success'
+        if: needs.assemble.result == 'success'
         run: node scripts/verify-physical.mjs
       - name: Verify actual Blender sequences and sample event stages
-        if: needs.physical.result == 'success'
+        if: needs.assemble.result == 'success'
         run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
         if: env.TARGET != 'physical-review'

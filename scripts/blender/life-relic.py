@@ -1,5 +1,5 @@
 """Centimetres of life against a vast hollow relic; not a lawn scene."""
-sky((.76,.79,.73),(.12,.23,.35),.65)
+sky((.24,.42,.48),(.84,.67,.43),.19)
 black=mat('Rough deep-green relic',(.012,.024,.025),.85,.28,bump=.25)
 green=mat('Near-black living geometry',(.005,.017,.008),.86,.0,.0)
 green.node_tree.nodes.get('Principled BSDF').inputs['Specular IOR Level'].default_value=.17
@@ -44,9 +44,13 @@ for i,(x,y,h) in enumerate([(-46,132,87),(61,154,114)]):
 body('Impossible judgement horizon',(0,138,34),(280,.12,.065),cyan,0)
 numeral('01',(38,90,0),19,ivory,.7)
 dust('Dawn air data',(0,24,6),(37,47,7),170,gold,.055)
-light('Dawn backlight',(-22,76,44),260000,19,(1,.81,.56),(0,18,4))
-light('Cold counter rim',(37,31,70),230000,26,(.54,.8,1),(0,49,33))
-light('Weak near living edge',(-5,-13,9),900,8,(.79,.92,1),(0,2,3));fog(.0008,(.4,.53,.6))
+light('Dawn backlight',(-22,76,44),370000,11,(1,.72,.39),(0,18,4))
+light('Cold counter rim',(37,89,70),180000,12,(.58,.81,1),(0,67,48))
+# A distant luminous breach is a compositional mass: it remains behind the
+# hanging relic, while foreground life stays in deep shadow with a warm rim.
+dawn=mat('Far dawn opening',(1,.86,.57),.8,0,0,5)
+prism('Dawn through a broken horizon',[(20,4),(89,4),(89,98),(54,95),(37,66)],186,.15,dawn)
+light('Weak near living edge',(-5,-13,9),430,5,(.87,.8,.57),(0,2,3));fog(.00055,(.36,.47,.53))
 s.camera.data.dof.aperture_fstop=9
 def animate(q):
  rise=ease((q-.18)/.64);split=ease((q-.48)/.38)

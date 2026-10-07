@@ -191,7 +191,38 @@ function inkWorld(){
  const g=new T.SphereGeometry(155,64,40),p=g.attributes.position;for(let i=0;i<p.count;i++){const k=1+.022*Math.sin(p.getX(i)*.06)*Math.sin(p.getY(i)*.07);p.setXYZ(i,p.getX(i)*k,p.getY(i)*k,p.getZ(i)*k)}g.computeVertexNormals();
  const orb=new T.Mesh(g,m);orb.position.set(-80,0,185);w.root.add(orb);
  for(let i=0;i<3;i++)cable(w.root,Array.from({length:50},(_,j)=>{const a=-.4+j/49*4.7,r=205+i*19;return[Math.cos(a)*r-80,Math.sin(a)*r,160+Math.sin(a)*40] as V}),i===0?.7:.16,'navy');
- w.moving.push(q=>{m.uniforms.phase.value=q;orb.rotation.z=q*.33;orb.position.x=-80-q*55});w.camera=(q,c)=>look(c,[28-q*55,15,-145+q*100],[-60,0,190],77,-.12+q*.32);return w;
+ w.moving.push(q=>{m.uniforms.phase.value=q;orb.rotation.z=q*.33;orb.position.x=-80-q*55});w.camera=(q,c)=>look(c,[58-q*25,-12+q*28,-35+q*74],[-12,0,190],77,-.12+q*.32);return w;
+}
+function galleryWorld(){
+ const w=world('#02090f',480,1600);rig(w,.018,'#87b9c9',1.4,'#f5ffff',4.6);w.scene.userData.environmentIntensity=.055;
+ const dark=new T.MeshStandardMaterial({color:'#02090d',roughness:.73,metalness:.6,side:T.DoubleSide});
+ const glass=new T.MeshPhysicalMaterial({color:'#aec9ce',roughness:.18,metalness:.06,transparent:true,opacity:.19,side:T.DoubleSide,depthWrite:false});
+ // Enclosing masses are cropped by the lens. The bright exit cuts their
+ // silhouette; the suspended specimens provide a softer interior layer.
+ for(const side of [-1,1]){
+  surface(w.root,30,10,(u,v)=>[side*(150+Math.sin(u*3.4)*18),-85+v*420,-70+u*1350],dark);
+  profile(w.root,[[-13,-85],[-13,330],[8,370],[29,275],[23,-85]],38,[side*95,0,30],[0,side*.1,0],'navy','silver');
+ }
+ const floor=surface(w.root,50,32,(u,v)=>[(u-.5)*620,-80+Math.sin(u*29+v*38)*.12,-140+v*1500],new T.MeshStandardMaterial({color:'#071219',roughness:.2,metalness:.88,side:T.DoubleSide}));
+ const panels:T.Mesh[]=[];
+ for(let i=0;i<3;i++){
+  const side=i%2?1:-1,x=side*77,z=155+i*195;
+  const pane=surface(w.root,1,1,(u,v)=>[x-47+u*94,-78+v*165,z],glass.clone());panels.push(pane);
+  profile(w.root,[[-45,-9],[-40,4],[38,4],[48,-10]],45,[x,-76,z+38],[Math.PI/2,0,0],'navy','silver');
+  const specimen=new T.Group();specimen.position.set(x,-10,z+32);w.root.add(specimen);
+  for(let j=0;j<5;j++){
+   const a=j/5*TAU;
+   surface(specimen,22,8,(u,v)=>{const r=10+u*42,angle=a+(v-.5)*Math.sin(u*Math.PI);return[Math.cos(angle)*r,Math.sin(angle)*r,Math.sin(u*Math.PI)*18]},new T.MeshStandardMaterial({color:'#718b80',roughness:.88,side:T.DoubleSide}));
+   cable(specimen,[[0,-42,0],[Math.cos(a)*24,Math.sin(a)*24,16],[Math.cos(a)*55,Math.sin(a)*55,2]],.24,'silver');
+  }
+  text(w.root,String(i+7).padStart(2,'0'),[x+18,-68,z-1],8,'silver',.4);
+ }
+ const exit=mesh(w.root,new T.PlaneGeometry(165,310),'white',[0,74,880]);exit.material=new T.MeshBasicMaterial({color:'#f0ffff',side:T.DoubleSide,toneMapped:false,fog:false});
+ const doors=[-1,1].map(side=>profile(w.root,[[-52,-85],[-52,243],[52,243],[52,-85]],25,[side*48,0,720],[0,0,0],'navy','silver'));
+ const cut=beam(w.root,[-240,-78,100],[240,-78,100],.35,.35,'energy');
+ fragments(w,240,290,1000,'silver',2023);roles(w,{navy:'#03070a',silver:'#9baeb4',energy:'#c3f2eb'},.7);
+ w.moving.push(q=>{panels.forEach((p,i)=>{p.position.x=(i%2?1:-1)*smooth(.23,.52,q)*32});doors.forEach((p,i)=>{p.position.x=(i?1:-1)*(48+smooth(.42,.7,q)*110)});cut.position.z=100+smooth(.1,.55,q)*590;floor.position.y=Math.sin(q*8)*.08});
+ w.camera=(q,c)=>look(c,[-28+q*42,-48+smooth(.62,.9,q)*45,-80+q*310+smooth(.62,1,q)*700],[0,30,1060],97,-.06+Math.sin(q*Math.PI)*.12);return w;
 }
 // Medium and lighting changes for the long-form acts; never recolour alternating pieces.
 export function directExistingWorld(w:World,family:string){
@@ -269,6 +300,7 @@ export function directedWorld(family:string):World|null{
  if(family==='cyan-storm')return cyanStorm();
  if(family==='gold-event')return goldEvent();
  if(family==='macro09')return inkWorld();
+ if(family==='rebuild-gate')return galleryWorld();
  if(family==='release'||family==='sky')return lifeDawn(family==='sky');
  if(['continent','islands','canopy'].includes(family))return archipelago(family);
  if(['temple','glass04','impossible','monuments','macro09'].includes(family))return cathedral(family);

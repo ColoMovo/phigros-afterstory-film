@@ -377,7 +377,7 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 // as source history, but never drawn by this composition.
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
  ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
- const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','monuments','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=dark?'#e5e9e8':'#132c40';
+ const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','rebuild-gate','monuments','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=dark?'#e5e9e8':'#132c40';
  if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
  if(shot.family.startsWith('insert-')){
   const kind=shot.family.slice(7);if(kind==='black'){fill('#000000');return;}
@@ -405,14 +405,17 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   if(d){txt(d.l.wordTiming[d.active]?.text.trim()||d.l.jp[0],210,820,430,'#e1e9e8','CJK');txt(d.l.jp,115,975,Math.min(52,1700/d.l.jp.length),white,'CJK')};judgment(540,-.18,'#dce5e6',10);return;
  }
  if(shot.family==='whiteout'){
-  fill('#e6e8e3');if(d)txt(d.l.wordTiming[d.active]?.text.trim()||d.l.jp[0],140,900,760,'#122330','CJK');judgment(500,.15,'#132333',21);if(Math.floor((t-shot.start)*fps)%12<3)fill('#070c13');return;
+  fill('#f7ffff');ctx.save();ctx.globalAlpha=(1-q)*.65;ctx.translate(960,540);ctx.rotate(-.2+q*.15);
+  for(let i=0;i<25;i++){const y=(hash(i+frame)*2-1)*900;line(-1700,y,1700,y+(hash(i+22)-.5)*700,i%3===0?'#ecbde2':'#68ffff',8+hash(i+7)*90,.65)}ctx.restore();
+  if(q>.72)fill('#ffffff');return;
  }
  if(shot.family==='signal'){
   tracking('A F T E R S T O R Y',128,155,19,3,'#acbbc8',.5);txt('UNOFFICIAL FAN TRIBUTE',128,195,17,'#7e909f','Text','left',.8);return;
  }
  if(shot.family==='dawn')return; // curved, depth-tested lyric glyphs in the shell.
+ if(shot.family==='rebuild-gate'&&q>.95){fill('#ffffff');return;}
  // Light flow and corrupted signal are entire image states, not RGB text effects.
- if((shot.family==='whiteout'&&q>.18)||(shot.family==='colonnade'&&q>.86)||shot.family==='gold-event'&&q>.58){
+ if((shot.family==='colonnade'&&q>.86)||shot.family==='gold-event'&&q>.58){
   const attack=shot.family==='colonnade'?(q-.86)/.14:shot.family==='gold-event'?(q-.58)/.42:q;
   fill(shot.family==='gold-event'?'#fff9e4':'#f3ffff',.6+attack*.4);
   ctx.save();ctx.globalAlpha=(1-attack)*.7;ctx.translate(960,540);ctx.rotate(-.22+attack*.2);

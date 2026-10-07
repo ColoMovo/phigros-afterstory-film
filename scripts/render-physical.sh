@@ -5,7 +5,7 @@ if [ "${GITHUB_ACTIONS:-}" != "true" ]; then
   exit 1
 fi
 shot_id="$1"
-"${BLENDER_PATH}" -b --factory-startup --python scripts/blender/physical-common.py -- --shot "$shot_id"
+"${BLENDER_PATH}" -b --factory-startup --python scripts/blender/physical-common.py -- --shot "$shot_id" --profile "${PHYSICAL_PROFILE:-final}"
 python3 - "$shot_id" <<'PY'
 import json,subprocess,pathlib,sys,hashlib
 shot=sys.argv[1];directory=pathlib.Path('public/physical')/shot;m=json.loads((directory/'render.json').read_text());output=pathlib.Path('public/physical')/(shot+'.mp4')
