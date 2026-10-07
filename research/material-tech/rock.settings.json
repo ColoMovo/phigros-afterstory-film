@@ -1,0 +1,10 @@
+{
+  "id": "rock",
+  "width": 1920,
+  "fps": 30,
+  "samples": 16,
+  "duration": 1.7,
+  "seed": 877,
+  "engine": "Blender 4.5.0 EEVEE raytracing",
+  "audio": false
+}

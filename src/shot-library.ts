@@ -2,7 +2,7 @@ import * as T from 'three';
 import shots from './data/shots.json';
 import audio from './data/audio-analysis.json';
 import lyrics from './data/lyrics.json';
-import {directedWorld} from './world-direction';
+import {directedWorld,directExistingWorld} from './world-direction';
 import {world,mesh,block,profile,beam,cable,text,island,foldedBody,glyphPlane,annotation,instances,fragments,look,cloudSea,dataTree,reflectionSky,materials,hash,clamp,smooth,lerp,crackedCore,leafGeo,boxGeo,existingWorlds,getArtwork,setMusicTime,type World,type V,type Mat} from './opening-world';
 export type Shot=typeof shots[number];
 export const shotAt=(t:number)=>shots.find(s=>t>=s.start&&t<s.end)??shots[shots.length-1];
@@ -69,12 +69,12 @@ function recolor(w:World,colors:Partial<Record<Mat,string>>){const replacements=
 function makeWorld(family:string):World{
  const directed=directedWorld(family);if(directed)return directed;
  const w=rawWorld(family);
+ directExistingWorld(w,family);
  if(['temple','impossible','monuments'].includes(family)){w.scene.background=new T.Color('#d4d5cf');w.scene.fog=new T.Fog('#d4d5cf',250,1150);recolor(w,{white:'#182333',energy:'#bc4a55',cyan:'#929fa7'});}
  if(['canopy','crystals'].includes(family)){w.scene.background=new T.Color('#b7b2c7');w.scene.fog=new T.Fog('#b7b2c7',220,1300);recolor(w,{leaf:'#40dabc',leafblue:'#546fba',leafviolet:'#a176a7',navy:'#293145',energy:'#9a86de'});}
  if(['memory','exploded'].includes(family)){w.scene.background=new T.Color('#afbdb5');w.scene.fog=new T.Fog('#afbdb5',180,950);recolor(w,{cyan:'#a8b6ad',energy:'#6faf8a',navy:'#26362e'});}
  if(['engine','deep'].includes(family)){recolor(w,{energy:'#d88c54',cyan:'#86979d',leaf:'#d88c54'});w.scene.children.forEach(o=>{if(o instanceof T.PointLight)o.color.set('#e1b796')});}
  if(family==='labyrinth'){w.scene.background=new T.Color('#d0c9b8');w.scene.fog=new T.Fog('#d0c9b8',270,1500);recolor(w,{white:'#e5ded0',energy:'#b09c70',cyan:'#9b9589'});}
- if(family==='stair'||family==='canyon'){recolor(w,{energy:'#dbd2b4',cyan:'#c4d2d7'});}
  return w;
 }
 // A single live scene avoids the old nine-world startup cost. Every frame derives

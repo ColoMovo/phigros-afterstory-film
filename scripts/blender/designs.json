@@ -1,0 +1,132 @@
+[
+  {
+    "id": "glass-gate",
+    "test": "A: GLASS × GIANT ARCHITECTURE × PARTICLES",
+    "duration": 2.7,
+    "hero": "An asymmetric fractured kilometre-scale glass 04 gate, with a hollow architectural silhouette, not a box.",
+    "focus": "The cyan split at the right-of-centre threshold; the white rim is secondary.",
+    "layers": {
+      "foreground": "A partial near-black buttress cuts the left edge; refractive splinters pass the lens.",
+      "midground": "Fractured stepped decks, a metal spinal armature and the suspended lower gate.",
+      "hero": "Frosted glass arch, internal branching light and a single horizontal time fault.",
+      "background": "A distant 04 monument and three unequal relic fins in mist."
+    },
+    "camera": "Low oblique approach → slip sideways past foreground → accelerate through the opened threshold.",
+    "event": "SPLIT / REVEAL / PASS. At 0.9s the judgement boundary lights; the upper arch freezes, lower arch separates; at 1.8s the camera enters the gap.",
+    "entry": "The previous numeric nave becomes a physically refractive architectural edge.",
+    "exit": "The lower glass lip fills the image and becomes the following flat graphic cut.",
+    "connection": "19.851–22.55s between numeric nave and exploded geometry; retain number + horizontal cut DNA.",
+    "palette": "Cold smoke / near-black structure / cyan light seam. No rainbow.",
+    "dna": [
+      "04 architecture",
+      "judgement boundary",
+      "asymmetric framing",
+      "impossible time fault"
+    ],
+    "physicalIdea": "FRAGILE / FLOATING — hard refractive enclosure with soft tissue and dry trapped inclusions."
+  },
+  {
+    "id": "mirror-crossing",
+    "test": "B: WATER × JUDGEMENT LINE × REFLECTION WORLD",
+    "duration": 1.8,
+    "hero": "A thin water horizon separates an ivory impossible cantilever above from a violet aperture civilisation below.",
+    "focus": "The white horizon; then the rotating violet world visible inside the film.",
+    "layers": {
+      "foreground": "A cropped submerged black shelf and refractive film edges.",
+      "midground": "Large fractured ivory cantilever overhead, broken dark terraces below.",
+      "hero": "Mirror horizon and the other world within it.",
+      "background": "Deep violet aperture, suspended rib cage and a far 08 silhouette."
+    },
+    "camera": "Skim at grazing angle → dive through the horizon → roll into the lower world.",
+    "event": "REFLECT / INVERT / ENTER. At 0.65s only the underwater world turns 90 degrees while the upper cantilever remains still; at 1.3s the camera penetrates the film.",
+    "entry": "The preceding magenta membrane flattens into a physical horizon.",
+    "exit": "White aperture fills the lens, matching the eight-frame white cut.",
+    "connection": "44.7–46.5s between organic membrane and white graphic attack; lower world borrows the aperture language, not the upper reflection.",
+    "palette": "Ivory / ink / lavender depth, concentrated white-cyan boundary.",
+    "dna": [
+      "judgement horizon",
+      "different reflection world",
+      "90-degree gravity fault",
+      "camera transition"
+    ],
+    "physicalIdea": "WET / HEAVY / INVERTED — a water film reveals a violet civilisation with its own gravity."
+  },
+  {
+    "id": "fiber-aperture",
+    "test": "C: ORGANIC FIBERS × MECHANICAL APERTURE",
+    "duration": 3.1,
+    "hero": "Five interlocking asymmetrical shutter blades inside a deep coherent fibre architecture.",
+    "focus": "A white aperture at the tunnel vanishing point, revealed as the blades peel apart.",
+    "layers": {
+      "foreground": "Thick cropped metal fibres and one close cyan data strand.",
+      "midground": "Hundreds of tapering glass / metal fibres in organised helical depth bands.",
+      "hero": "Five-fold iris with a sharp, legible negative-space silhouette.",
+      "background": "A distant white aperture and hanging numeric cuts."
+    },
+    "camera": "Off-axis inside traversal → shutter opening → fast pass into the far aperture.",
+    "event": "OPEN / PASS. The blades separate in 0.5s, fibres briefly contract, then camera passes the obstruction by 2.1s.",
+    "entry": "The preceding warm vault is compressed into a dark mechanical throat.",
+    "exit": "The aperture bleaches into the following scan attack.",
+    "connection": "51.7–54.8s before the cyan scan and four-frame black boundary; organic weight + hard mechanical timing.",
+    "palette": "Near-black / silver glass / white aperture, rare cyan strands.",
+    "dna": [
+      "geometric iris",
+      "number cuts",
+      "sharp aperture mask",
+      "camera as transition"
+    ],
+    "physicalIdea": "TENSE / ORGANIC / MECHANICAL — bending nerves constrain a shutter, then release the camera into white light."
+  },
+  {
+    "id": "relic-scrape",
+    "test": "D: ROCK / TERRAIN × NUMBER MONUMENT × SKY",
+    "duration": 1.7,
+    "hero": "The cracked surface of a floating continent forms the left foreground, framing a vast 08 monument beyond.",
+    "focus": "The sky gap and distant monument, with a cyan embedded fracture guiding the eye.",
+    "layers": {
+      "foreground": "About half the frame is a rim-lit eroded relic slab with glass inlays.",
+      "midground": "Three unequal broken terraces and structural bridges inside the gap.",
+      "hero": "The continent edge and monumental 08 visible together.",
+      "background": "Blue-white sky, long distant beam and a second suspended landmass."
+    },
+    "camera": "Scrape close to the relic surface, reveal the number through its gap, then let an edge sweep to complete occlusion.",
+    "event": "REVEAL / PASS / EXIT. The foreground crack widens, 08 is revealed, then a dark relic edge wipes the image to black.",
+    "entry": "Match the preceding tiny black seed to an extreme close dark mass.",
+    "exit": "Full-frame physical black occlusion, then the violet macro world begins.",
+    "connection": "39.3–41s connecting seed threshold to tissue world; makes black a spatial transition, not just an overlay.",
+    "palette": "Blue-white distance / rough navy-black terrain / thin cyan inlay.",
+    "dna": [
+      "08 civilisation",
+      "judgement sky line",
+      "extreme scale",
+      "physical occlusion"
+    ],
+    "physicalIdea": "DRY / DUSTY / MASSIVE — eroded continent skin becomes a wipe while a numeral becomes inhabitable space."
+  },
+  {
+    "id": "life-relic",
+    "test": "E: PROCEDURAL LIFE × FINAL DAWN × MASSIVE SCALE",
+    "duration": 2.591,
+    "hero": "A tiny living fibre at the lens and a top-heavy suspended obelisk, split into three unequal inverted relic shards, share a thin reflective plane.",
+    "focus": "First a warm rim on one near-black living leaf; then the cyan internal fissure in the massive suspended relic.",
+    "layers": {
+      "foreground": "A few large, close deep-green fibres; no grass lawn.",
+      "midground": "Fractured wet geometric platform with a few rooted fibres.",
+      "hero": "A hundreds-of-metres inverted obelisk with a jagged primary silhouette and two internal energy fissures.",
+      "background": "A second half-buried relic in cool haze and a thin judgement-line horizon."
+    },
+    "camera": "Centimetres above the water film; pass the close leaf, rise and reveal the gigantic threshold.",
+    "event": "REVEAL / SPLIT. A leaf uncovers the relic; a cyan fissure expands while the horizon remains impossibly level.",
+    "entry": "The island canopy resolves into a macro living edge.",
+    "exit": "The obelisk edge becomes the next numeric monument.",
+    "connection": "12–14.591s between archipelago and macro leaf; revisited only as a small surviving sprout after final black at 135s.",
+    "palette": "Cool dawn / near-black-green life / warm rims / one cyan seam.",
+    "dna": [
+      "judgement horizon",
+      "impossible architecture",
+      "life versus scale",
+      "graphic negative space"
+    ],
+    "physicalIdea": "LIVING / ROOTED / SUSPENDED — close leaves penetrate an enormous weightless inverted relic."
+  }
+]

@@ -7,7 +7,7 @@ on:
         required: true
         default: opening-review
         type: choice
-        options: [smoke, opening-review, opening, preview, final]
+        options: [smoke, physical-review, opening-review, opening, preview, final]
   push:
     branches: [main]
     paths-ignore: ['**.md']
@@ -17,7 +17,72 @@ concurrency:
   group: film-${{ github.event_name }}-${{ inputs.target || 'smoke' }}
   cancel-in-progress: false
 jobs:
+  physical:
+    if: github.event_name == 'workflow_dispatch' && inputs.target != 'smoke'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shot: [life-relic, glass-gate, relic-scrape, mirror-crossing, fiber-aperture]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache this shot independently
+        id: shot-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            public/physical/${{ matrix.shot }}.mp4
+            public/physical/${{ matrix.shot }}.render.json
+            public/physical/${{ matrix.shot }}.blend
+          key: physical-blender450-${{ matrix.shot }}-${{ hashFiles('scripts/blender/physical-common.py', format('scripts/blender/{0}.py', matrix.shot), format('scripts/blender/settings/{0}.json', matrix.shot)) }}
+      - name: Check complete shot design before rendering
+        run: node scripts/verify-shot-designs.mjs
+      - name: Install Blender runtime libraries
+        if: steps.shot-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg xvfb libegl1 libegl-mesa0 libgl1-mesa-dri libglx-mesa0 libgl1 libxi6 libxrender1 libxkbcommon0 libsm6 libxfixes3 libxxf86vm1
+      - name: Cache pinned official Blender runtime
+        if: steps.shot-cache.outputs.cache-hit != 'true'
+        id: blender-cache
+        uses: actions/cache@v4
+        with:
+          path: .render/blender-runtime
+          key: blender-official-4.5.0-linux-x64
+      - name: Download pinned official Blender
+        if: steps.shot-cache.outputs.cache-hit != 'true' && steps.blender-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .render/blender-runtime
+          cd .render/blender-runtime
+          curl --fail --retry 3 -L https://download.blender.org/release/Blender4.5/blender-4.5.0-linux-x64.tar.xz -o blender.tar.xz
+          curl --fail --retry 3 -L https://download.blender.org/release/Blender4.5/blender-4.5.0.sha256 -o checksums.txt
+          python - <<'PY_CHECK'
+          from pathlib import Path
+          import hashlib
+          expected=next(line.split()[0] for line in Path('checksums.txt').read_text().splitlines() if 'blender-4.5.0-linux-x64.tar.xz' in line)
+          assert hashlib.sha256(Path('blender.tar.xz').read_bytes()).hexdigest()==expected
+          PY_CHECK
+          tar -xf blender.tar.xz
+          rm blender.tar.xz checksums.txt
+      - name: Render original physical shot
+        if: steps.shot-cache.outputs.cache-hit != 'true'
+        env:
+          BLENDER_PATH: .render/blender-runtime/blender-4.5.0-linux-x64/blender
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: xvfb-run -a bash scripts/render-physical.sh '${{ matrix.shot }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: physical-${{ matrix.shot }}-${{ github.sha }}
+          path: |
+            public/physical/${{ matrix.shot }}.mp4
+            public/physical/${{ matrix.shot }}.render.json
+            public/physical/${{ matrix.shot }}.blend
+          if-no-files-found: error
+          retention-days: 14
   render:
+    needs: physical
+    if: ${{ !cancelled() && (needs.physical.result == 'success' || needs.physical.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
@@ -40,17 +105,33 @@ jobs:
           pip install numpy==2.2.6 pillow==11.3.0
           npm ci --no-audit --no-fund
           npx remotion browser ensure
+      - name: Restore cached original Blender shots
+        if: env.TARGET != 'smoke'
+        uses: actions/download-artifact@v4
+        with:
+          pattern: physical-*-${{ github.sha }}
+          path: public/physical
+          merge-multiple: true
+      - name: Verify physical asset fingerprints
+        if: env.TARGET != 'smoke'
+        run: node scripts/verify-physical.mjs
+      - name: Verify actual Blender sequences and sample event stages
+        if: env.TARGET != 'smoke'
+        run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
+        if: env.TARGET != 'physical-review'
         run: npm run fetch-assets && npm run verify-assets && npm run typecheck
       - name: Complex-world 1080p60 smoke (3 seconds)
+        if: env.TARGET != 'physical-review'
         run: node scripts/render.mjs smoke
       - name: Verify smoke and decoded shot frame
+        if: env.TARGET != 'physical-review'
         run: python scripts/review-shots.py output/smoke.mp4
       - name: Render requested formal scope
-        if: env.TARGET != 'smoke'
+        if: env.TARGET != 'smoke' && env.TARGET != 'physical-review'
         run: node scripts/render.mjs "$TARGET"
       - name: Verify requested MP4 and extract actual shot contact sheet
-        if: env.TARGET != 'smoke'
+        if: env.TARGET != 'smoke' && env.TARGET != 'physical-review'
         run: |
           case "$TARGET" in
             opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 ;;
@@ -66,6 +147,11 @@ jobs:
         with:
           name: afterstory-${{ inputs.target || 'smoke' }}-${{ github.sha }}
           path: |
+            output/physical-event-labeled.jpg
+            output/physical-event-blind.jpg
+            output/physical-verification.json
+            output/physical-events/*.png
+            output/physical-review/*.mp4
             output/opening-review.mp4
             output/opening-contact-sheet.jpg
             output/labeled-contact-sheet.jpg

@@ -1,0 +1,10 @@
+{
+  "id": "glass",
+  "width": 1920,
+  "fps": 30,
+  "samples": 16,
+  "duration": 2.699,
+  "seed": 854,
+  "engine": "Blender 4.5.0 EEVEE raytracing",
+  "audio": false
+}

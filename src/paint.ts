@@ -377,7 +377,7 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 // as source history, but never drawn by this composition.
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
  ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
- const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch'].includes(shot.family),color=dark?'#e5e9e8':'#132c40';
+ const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=dark?'#e5e9e8':'#132c40';
  if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
  if(shot.family.startsWith('insert-')){
   const kind=shot.family.slice(7);if(kind==='black'){fill('#000000');return;}
@@ -411,6 +411,19 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   tracking('A F T E R S T O R Y',128,155,19,3,'#acbbc8',.5);txt('UNOFFICIAL FAN TRIBUTE',128,195,17,'#7e909f','Text','left',.8);return;
  }
  if(shot.family==='dawn')return; // curved, depth-tested lyric glyphs in the shell.
+ // Light flow and corrupted signal are entire image states, not RGB text effects.
+ if((shot.family==='whiteout'&&q>.18)||(shot.family==='colonnade'&&q>.86)||shot.family==='gold-event'&&q>.58){
+  const attack=shot.family==='colonnade'?(q-.86)/.14:shot.family==='gold-event'?(q-.58)/.42:q;
+  fill(shot.family==='gold-event'?'#fff9e4':'#f3ffff',.6+attack*.4);
+  ctx.save();ctx.globalAlpha=(1-attack)*.7;ctx.translate(960,540);ctx.rotate(-.22+attack*.2);
+  for(let i=0;i<25;i++){const yy=(hash(i+frame)*2-1)*900;line(-1700,yy,1700,yy+(hash(i+22)-.5)*700,i%3===0?'#ecbde2':'#68ffff',8+hash(i+7)*90,.65)}ctx.restore();
+  if(attack>.9)fill('#ffffff');return;
+ }
+ if(shot.family==='glitch'&&(q>.87||Math.floor(q*12)%5===3)){
+  fill('#080a09');ctx.save();const small=document.createElement('canvas');small.width=192;small.height=108;const x=small.getContext('2d')!,im=x.createImageData(192,108);
+  for(let i=0;i<im.data.length;i+=4){const n=hash(i+Math.floor(t*30)*913)*255;im.data[i]=n*.88;im.data[i+1]=n;im.data[i+2]=n*.9;im.data[i+3]=255}x.putImageData(im,0,0);ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.77;ctx.drawImage(small,0,0,W,H);ctx.restore();
+  for(let i=0;i<80;i++)line(0,i*14,W,i*14,'#000000',4,.8);judgment(140+((t*230)%760),0,'#d9ffed',15);return;
+ }
  if(d){
   const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet;
   ctx.save();ctx.globalAlpha=a;ctx.shadowColor=dark?'#06121c':'#b5c5cc';ctx.shadowBlur=2;

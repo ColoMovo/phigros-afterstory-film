@@ -1,0 +1,10 @@
+{
+  "id": "water",
+  "width": 1920,
+  "fps": 30,
+  "samples": 16,
+  "duration": 1.8,
+  "seed": 900,
+  "engine": "Blender 4.5.0 EEVEE raytracing",
+  "audio": false
+}
