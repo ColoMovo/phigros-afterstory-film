@@ -366,6 +366,12 @@ export function paintBackdrop(canvas:HTMLCanvasElement,time:number){
  if(t>=135.258&&t<151.4)clearSky();
 }
 
+function timedLyric(value:string,x:number,y:number,size:number,color:string,align:CanvasTextAlign='left'){
+ const d=currentLyric();if(!d){txt(value,x,y,size,color,'CJK',align);return;}
+ ctx.save();ctx.font=`${size}px CJK`;ctx.textBaseline='alphabetic';ctx.textAlign='left';ctx.fillStyle=color;
+ const times=d.l.wordTiming.flatMap(token=>[...token.text].map(()=>token.time));const total=ctx.measureText(value).width;let at=x-(align==='center'?total/2:align==='right'?total:0);
+ [...value].forEach((ch,i)=>{ctx.save();ctx.globalAlpha*=t>=(times[i]??d.l.time)?1:.43;ctx.fillText(ch,at,y);ctx.restore();at+=ctx.measureText(ch).width});ctx.restore();
+}
 // Current shot-library graphic pass. The legacy Canvas worlds above are kept
 // as source history, but never drawn by this composition.
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
@@ -407,7 +413,7 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet;
   ctx.save();ctx.globalAlpha=a;ctx.shadowColor=dark?'#06121c':'#b5c5cc';ctx.shadowBlur=2;
   if(vertical){const sz=Math.min(44,780/d.l.jp.length);[...d.l.jp].forEach((ch,i)=>txt(ch,1770,130+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//')txt(d.l.zh,120,991,23,color,'CJK','left',.82)}
-  else{const top=Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(Number(shot.id)%4===0?-.08:0)};txt(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,'CJK',quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
+  else{const top=Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(Number(shot.id)%4===0?-.08:0)};timedLyric(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
   ctx.restore();
  }
  // Restrained annotations. No HUD fills the empty space.

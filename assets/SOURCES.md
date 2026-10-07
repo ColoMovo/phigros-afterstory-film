@@ -23,7 +23,7 @@ This lists the active rendering pipeline's inputs. It does not imply that the cu
 | Noto Sans CJK font subset | Adobe / Google / Noto contributors | https://github.com/notofonts/noto-cjk | SIL Open Font License 1.1, bundled `assets/Noto-LICENSE.txt` | `public/fonts/CJK.woff2`, `public/fonts/CJK.ttf` | JP / CN typography and credits throughout |
 | Inter Display / Text font subsets | Rasmus Andersson / Inter contributors | https://github.com/rsms/inter | SIL Open Font License, bundled `assets/Inter-LICENSE.txt` | `public/fonts/Display.woff2`, `public/fonts/Text.woff2`, `public/fonts/Display.ttf` | Numeric architecture, original text title, annotations, ending |
 
-The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3`. CI verification compares decoded output audio to this exact local input at zero offset. The standalone MP3 and secret are never uploaded with review outputs. The repository remains public. Removing the current plaintext file does not alone remove historical Git blobs; history cleanup is tracked separately.
+The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3`. CI verification compares decoded output audio to this exact local input at zero offset. The standalone MP3 and secret are never uploaded with review outputs. The repository remains public. Removing the current plaintext file does not alone remove historical Git blobs; the user explicitly chose to retain historical commits on 2026-10-07. Main history is not rewritten.
 
 # Project identity
 

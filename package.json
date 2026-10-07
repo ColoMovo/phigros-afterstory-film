@@ -14,7 +14,6 @@
     "render:preview": "node scripts/render.mjs preview",
     "render:final": "node scripts/render.mjs final",
     "verify-video": "python3 scripts/verify-video.py",
-    "render:heroes": "node scripts/build-heroes.mjs",
     "render:opening": "node scripts/render.mjs opening-review",
     "render:smoke": "node scripts/render.mjs smoke"
   },

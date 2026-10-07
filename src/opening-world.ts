@@ -16,6 +16,8 @@ const mod=(a:number,n:number)=>(a%n+n)%n;
 export type V=[number,number,number];
 export type World={scene:T.Scene;root:T.Group;primary?:T.Group;moving:((u:number,hit:number)=>void)[];camera:(u:number,c:T.PerspectiveCamera)=>void};
 let font:Font;
+let musicTime=0;
+export function setMusicTime(t:number){musicTime=t;}
 let artwork:HTMLImageElement[]=[];
 let assets:Promise<void>|null=null;
 export function loadOpeningAssets(fontUrl:string,images:HTMLImageElement[]){
@@ -283,11 +285,11 @@ function dawnEcology(w:World,attached:T.Group){
  // Exact supplied lyrics live on a bowed plane in front of the shell. Individual
  // glyphs have world depth and can disappear behind the satellite/foreground.
  for(const l of lyrics.slice(0,2)){
-  const row=new T.Group();attached.add(row);const chars=[...l.jp];
+  const row=new T.Group();attached.add(row);const chars=[...l.jp],charTiming=l.wordTiming.flatMap(token=>[...token.text].map(()=>token.time));
   const first=l.time===5.321;
   const letters=chars.map((ch,i)=>{const s=i/Math.max(1,chars.length-1),p:V=first?[54-s*108,-41+Math.sin(s*Math.PI)*8,-39-Math.sin(s*Math.PI)*8]:[48-s*94,45+Math.sin(s*Math.PI)*12,98+Math.cos(s*Math.PI)*10];const o=glyphPlane(row,ch,first?6.4:7.2,p);o.rotation.y=Math.PI+(s-.5)*.38;o.userData.rest=o.position.clone();return o});
   const note=annotation(row,l.zh,first?[30,-50,-31]:[0,32,111],first?65:83,[0,Math.PI+.14,0]);
-  w.moving.push(u=>{const time=5.321+u,end=first?9.09:12.015,a=smooth(l.time,l.time+.18,time)*(1-smooth(end-.15,end,time)),pull=first?smooth(8.2167,8.88,time):0;row.visible=a>0;letters.forEach((o,i)=>{const s=i/Math.max(1,chars.length-1),angle=s*Math.PI*1.65-.7;o.position.copy(o.userData.rest).lerp(new T.Vector3(8+Math.cos(angle)*27,-3+Math.sin(angle)*27,-18+Math.sin(angle)*14),pull);o.rotation.z=pull*(angle*.6-.5);(o.material as T.MeshBasicMaterial).opacity=a*(time>=(l.wordTiming[i]?.time??l.time)?1:.35)});(note.material as T.MeshBasicMaterial).opacity=a*.78});
+  w.moving.push(u=>{const time=musicTime,end=first?lyrics[1].time:lyrics[2].time,a=smooth(l.time,l.time+.18,time)*(1-smooth(end-.15,end,time)),pull=first?smooth(7.72,8.5,time):0;row.visible=a>0;letters.forEach((o,i)=>{const s=i/Math.max(1,chars.length-1),angle=s*Math.PI*1.65-.7;o.position.copy(o.userData.rest).lerp(new T.Vector3(8+Math.cos(angle)*27,-3+Math.sin(angle)*27,-18+Math.sin(angle)*14),pull);o.rotation.z=pull*(angle*.6-.5);(o.material as T.MeshBasicMaterial).opacity=a*(time>=(charTiming[i]??l.time)?1:.35)});(note.material as T.MeshBasicMaterial).opacity=a*.78});
  }
  annotation(attached,'SIGNAL / 00.  —  MEMORIA',[-49,26,-13],20,[0,Math.PI-.2,.25]);
  annotation(w.root,'GRAVITY // 01', [109,-8,55],25,[-Math.PI/2,0,0]);
