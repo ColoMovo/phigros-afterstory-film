@@ -75,7 +75,7 @@ function cathedral(family:string){
  if(family==='monuments'){
   w.scene.background=new T.Color('#010a10');if(w.scene.fog)w.scene.fog.color.set('#010a10');
   rig(w,.025,'#a7e5ff',3.2,'#eaffff',4.0);
-  g.traverse(o=>{if(o instanceof T.Mesh){const m=(o.material as T.MeshStandardMaterial).clone();m.color.set('#89b9c5');m.roughness=.75;o.material=m}});
+  g.traverse(o=>{if(o instanceof T.Mesh){const shade=(original:T.Material)=>{const m=original.clone() as T.MeshStandardMaterial;if(m.color)m.color.set('#89b9c5');if('roughness' in m)m.roughness=.75;return m};o.material=Array.isArray(o.material)?o.material.map(shade):shade(o.material)}});
   floor.material=new T.MeshStandardMaterial({color:'#01080c',roughness:.24,metalness:.83});
   fragments(w,180,370,1000,'energy',1790);
  }

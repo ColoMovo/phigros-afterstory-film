@@ -36,3 +36,12 @@ The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599
 - Remotion 4.0.532, React 19.1.1 and Three.js 0.180.0, pinned in package-lock.json. Three.js is MIT licensed. Review Remotion's license for future organizational / commercial deployment.
 - FFmpeg performs CI encoding, muxing and decoded-output verification.
 - Original Blender source experiments remain optional development resources. The active shot-library composition does not load unfinished Blender clips and does not rely on external models, stock footage or remote per-frame media.
+
+
+## Combined Blender R&D — not yet used in the film
+
+Original scripts in `scripts/blender` build the five redesigned event candidates: glass-gate, mirror-crossing, fiber-aperture, relic-scrape, life-relic. Geometry, procedural materials and lighting are original; typography uses the already bundled OFL fonts. Blender 4.5.0 is the pinned official software runtime, not a visual source asset. The first event sequences are silent and rendered only in GitHub Actions. They are independent review candidates until playback, event and transition checks are complete. The saved `.blend` is the initial scene; absolute seeded animation poses are reconstructed by the source script.
+
+The earlier grass, rock, curve/glass and reflection-floor compositions are archived in `research/material-tech` as R&D ONLY and are excluded from the timeline. A material experiment is not counted as a final visual material.
+
+The user's prose reference bible is recorded in `VISUAL-REFERENCE-BIBLE.md`. Official PV footage remains reference-only and is never decoded into the render assets. No new permission to use third-party music or artwork is inferred from the reference descriptions.

@@ -17,14 +17,32 @@ concurrency:
   group: film-${{ github.event_name }}-${{ inputs.target || 'smoke' }}
   cancel-in-progress: false
 jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      shots: ${{ steps.plan.outputs.shots }}
+      required: ${{ steps.plan.outputs.required }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        env:
+          TARGET: ${{ inputs.target || 'smoke' }}
+        run: |
+          node --input-type=module - <<'JS_PLAN'
+          import fs from 'node:fs';
+          const target=process.env.TARGET;
+          const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):target==='smoke'?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`shots=${JSON.stringify(shots)}\nrequired=${shots.length>0}\n`);
+          JS_PLAN
   physical:
-    if: github.event_name == 'workflow_dispatch' && inputs.target != 'smoke'
+    needs: plan
+    if: needs.plan.outputs.required == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
       fail-fast: false
       matrix:
-        shot: [life-relic, glass-gate, relic-scrape, mirror-crossing, fiber-aperture]
+        shot: ${{ fromJSON(needs.plan.outputs.shots) }}
     steps:
       - uses: actions/checkout@v4
       - name: Cache this shot independently
@@ -81,8 +99,8 @@ jobs:
           if-no-files-found: error
           retention-days: 14
   render:
-    needs: physical
-    if: ${{ !cancelled() && (needs.physical.result == 'success' || needs.physical.result == 'skipped') }}
+    needs: [plan, physical]
+    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.physical.result == 'success' || needs.physical.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
@@ -106,17 +124,17 @@ jobs:
           npm ci --no-audit --no-fund
           npx remotion browser ensure
       - name: Restore cached original Blender shots
-        if: env.TARGET != 'smoke'
+        if: needs.physical.result == 'success'
         uses: actions/download-artifact@v4
         with:
           pattern: physical-*-${{ github.sha }}
           path: public/physical
           merge-multiple: true
       - name: Verify physical asset fingerprints
-        if: env.TARGET != 'smoke'
+        if: needs.physical.result == 'success'
         run: node scripts/verify-physical.mjs
       - name: Verify actual Blender sequences and sample event stages
-        if: env.TARGET != 'smoke'
+        if: needs.physical.result == 'success'
         run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
         if: env.TARGET != 'physical-review'
