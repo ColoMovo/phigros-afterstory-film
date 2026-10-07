@@ -15,7 +15,7 @@ try {
 const composition=await selectComposition({...common,id:'Afterstory'});
 console.log(JSON.stringify({mode,width:composition.width,height:composition.height,fps:composition.fps,frames:composition.durationInFrames}));
 if(mode==='stills'){
- for(const time of [3,7,20,34,58,78,88,98,113,123,135.3,138,142.5,155,161]){
+ for(const time of (process.env.STILL_TIMES?process.env.STILL_TIMES.split(',').map(Number):[3,7,20,34,58,78,88,98,113,123,135.3,138,142.5,155,161])){
   await renderStill({...common,composition,frame:Math.round(time*composition.fps),output:`output/stills/${time.toFixed(1).padStart(5,'0')}.png`,imageFormat:'png'});
   console.log('Still',time);
  }

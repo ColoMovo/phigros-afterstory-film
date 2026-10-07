@@ -3,7 +3,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont,TTCollection
 root=pathlib.Path(__file__).resolve().parents[1]
 chars=''.join(l['jp']+l['zh'] for l in json.loads((root/'src/data/lyrics.json').read_text()))+'濒笼悉洛時間次空終章再会'
-chars+=''.join(chr(i) for i in range(32,127))+'—©→「」／'
+chars+=''.join(chr(i) for i in range(32,127))+'—©→「」／…∞'
 source='/usr/share/fonts/google-noto-sans-cjk-vf-fonts/NotoSansCJK-VF.ttc'
 font=TTFont(source,fontNumber=0)
 # Lock variable weight for reproducible static font file.

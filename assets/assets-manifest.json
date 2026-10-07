@@ -15,7 +15,7 @@
     "title": "cjk",
     "source": "https://github.com/notofonts/noto-cjk",
     "localPath": "public/fonts/CJK.woff2",
-    "sha256": "7fd164b4c59c125e5932a6217c99d9196c1d720fe77a62913ba674871f815d38",
+    "sha256": "642a4d33e78ad91f939309bcdab3c70704ffaa4c818eb136c5419fd5d42f6651",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   },
@@ -25,7 +25,7 @@
     "title": "display",
     "source": "https://github.com/rsms/inter",
     "localPath": "public/fonts/Display.woff2",
-    "sha256": "8685ec46cb262562ca32ebb3a08937048ee22f5a383f121af5bbfdcff633bccd",
+    "sha256": "9ab5bad49ec8f14c7710c43ff375bfec95f82cf0f9fa2910c80b126e2d5ee1e4",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   },
@@ -35,7 +35,7 @@
     "title": "text",
     "source": "https://github.com/rsms/inter",
     "localPath": "public/fonts/Text.woff2",
-    "sha256": "2c19a16152931a58eebbbb67c8ad38833be5d28e2808d07b9c8f67cf5ebdb7b6",
+    "sha256": "dd955139e15d9d77d4dd626ee539af5f17120c76147142963e6fca2e3c083c2f",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   }
