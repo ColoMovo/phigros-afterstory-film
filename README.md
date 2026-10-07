@@ -1,51 +1,42 @@
-# AFTERSTORY / Phigros main-story fan tribute
+# AFTERSTORY — Unofficial Phigros Fan Tribute
 
-An original 162.725442-second procedural film with the complete user-supplied song **What do you want more than a Happy ending？ — 濒笼**. Unofficial and not affiliated with Pigeon Games.
+**UNOFFICIAL FAN TRIBUTE — NOT AFFILIATED WITH PIGEON GAMES.**
 
-## Reproduce
+本项目为非官方玩家创作，与南京鸽游网络有限公司及《Phigros》官方不存在授权、合作或运营关系。
 
-Node 22, Python 3.12, FFmpeg. Linux Chromium libraries are installed explicitly by the included workflow. All visual resources and portable fonts are bundled; no network requests occur during scene rendering.
+The current rebuild is a complete 59-beat rough implementation (45 original shots plus 14 short inserts) across 13 art-direction worlds. Technical checks and a shot manifest do not establish visual acceptance. Earlier shell / opening reviews are superseded; this revision must be assessed from its own CI output.
+
+`src/data/shots.json` records continuous start / end, world, heroObject, cameraMotion, palette, density, transition, musicCue, lyricsCue, renderMethod, function and event. `src/shot-library.ts` renders every shot from absolute song time using real depth-buffered Three.js geometry. The shell hook ends at 9.3s; internal traversal lasts to 10.5s, then the camera enters the floating continent. Archive images are original procedural artwork. No official PV frame, character, UI, logo or song illustration appears in the active composition.
+
+## Development
 
 ```sh
 npm ci
-npx remotion browser ensure
-npm run fetch-assets
+# Restore the user's exact MP3 to public/music.mp3 locally. It is ignored by Git.
 npm run verify-assets
 npm run typecheck
-npm run render:test         # six seconds of the densest section, 540p30
-node scripts/render.mjs test60 # identical segment at 1080p60
-npm run render:stills
-npm run render:preview     # entire film, 960x540, 30 fps
-npm run render:final       # entire film, 1920x1080, 60 fps
-pip install numpy pillow
-python scripts/contact-sheet.py
-python scripts/verify-video.py
+npm run studio
+node scripts/render.mjs dev-stills
+# Optional extremely short development smoke:
+node scripts/render.mjs smoke
 ```
 
-`npm run studio` opens the editable Remotion timeline. To use an existing Chromium binary locally set `CHROME_PATH=/path/to/chrome`. CI uses the Remotion-pinned Headless Shell. Set `RENDER_CONCURRENCY` to control parallel frame rendering (default 2).
+The original music is a necessary user-provided input. Third-party rights remain with the respective rights holders. No standalone music release is created. The public repository contains an AES-256-GCM encrypted CI input; the key is provided only through the protected `AUDIO_DECRYPTION_KEY` Actions Secret. Public clones without that input cannot reproduce audio until the user's MP3 is restored. See `assets/SOURCES.md` for input attribution and exact SHA256.
 
-## GitHub Actions
+## Formal rendering: GitHub Actions only
 
-Open **Actions → Render Afterstory → Run workflow → quality: preview / final**. A six-second **1080p60** complexity test must pass before a full render is allowed. Pushes to `main` run only the smoke test. Dispatch runs upload MP4, keyframes, contact sheet, provenance, and machine-readable audio/video verification. A final dispatch also includes a 540p30 preview made from the final render.
+```sh
+gh workflow run render-video.yml -f target=opening-review
+gh workflow run render-video.yml -f target=preview
+gh workflow run render-video.yml -f target=final
+```
 
-The repository contains the original user-provided MP3. The user explicitly set the repository to public on 2026-10-07 and requested that it stay public. An optional `AUTHORIZED_AUDIO_URL` secret can restore a missing audio input, with its exact SHA-256 verified. No separate redistribution license for the music is asserted by this project.
+Targets: `smoke`, `opening-review` (alias `opening`), `preview`, `final`. Formal rendering outside Actions is intentionally rejected. Every run verifies source assets and typechecks, bundles the actual composition, renders a 3-second 1080p60 complex-world smoke, decodes it, then renders and verifies the requested target.
 
-## Files
+- Opening review: first 58.315 seconds, 960×540 / 30 fps, `opening-review.mp4`, `opening-contact-sheet.jpg`, 31 actual encoded shot samples, verification and manifest.
+- Preview: entire 162.725-second song, 960×540 / 30 fps, `preview.mp4`, 59-beat `contact-sheet.jpg` and verification.
+- Final: entire song, 1920×1080 / 60 fps, `phigros-main-story-celebration.mp4`, contact sheet and verification.
 
-- `src/index.tsx`: one Remotion composition; frame rate and dimensions change via `quality` only.
-- `src/paint.ts`: deterministic Three.js mesh projection, Canvas painter, lyrics and designed cuts. No WebGL context or GPU is required. Three.js supplies cached actual three-dimensional mesh geometry; the CPU renderer projects and depth-sorts faces, rather than displaying a background cube.
-- `src/data/lyrics.json`: exact embedded Japanese/Chinese line lyrics plus parsed AWLRC token times.
-- `src/data/audio-analysis.json`: 60 Hz RMS, spectral flux, bass/mid/high, seven spectrum bands, transient candidates, low-energy regions and director anchors.
-- `scripts/analyze.py`: repeatable source parsing and audio analysis, needs `numpy mutagen` and FFmpeg.
-- `scripts/subset-fonts.py`: provenance helper for creating the already-bundled WOFF2 subsets. This helper references the original local font installation; **normal clones and CI never need it**, as the resulting redistributable subsets and licenses are tracked.
-- `assets/SOURCES.md`: asset and research provenance.
-- `output/phigros-main-story-celebration.mp4`: full H.264/AAC final.
-- `output/preview.mp4`: full H.264/AAC preview.
+Verification checks H264 / AAC, dimensions, frame count, zero timestamps, full decode, original-input hash and audio correlation at zero offset. The contact sheet is extracted from encoded MP4 frames rather than separately rerendered source stills. Actions artifacts include source attribution and the shot manifest, never a standalone MP3 or key. No runtime network images / fonts are used.
 
-## Direction and limits
-
-Archive → nine-layer memory → irreversible ascent → separation → reconstruction → convergence → split dark sphere revealing dawn → afterstory and extinction. A moving fine white line changes gravity, divides compositions, becomes an orbital plane and finally a horizon. The 78.299–98.076 section deliberately drops density; 135.258 is the visual reveal. The final second is black.
-
-Lyric text comes directly from supplied metadata, including apparent Japanese/Chinese transcription errors; it has not been silently rewritten. Token timing is used as a graphic cue, not a karaoke strip. Spectral-flux peaks are candidates, not a claim of perfectly inferred musical beats. All apparent chapter data and system language are abstract original fan design, not newly asserted official lore.
-
-Video frames must have integral duration. Final 60 fps uses ceil(162.725442 × 60) frames; video length differs by less than one frame. Muxed audio begins at timestamp zero, uses the complete source at original speed, and is checked by correlation at zero lag against the original decoded song.
+This pass prioritizes world coverage and state changes. Further art-direction polish must be driven by actual CI frames and motion review; do not mistake scene-family names for proof of distinct visual states.

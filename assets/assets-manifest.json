@@ -38,5 +38,23 @@
     "sha256": "dd955139e15d9d77d4dd626ee539af5f17120c76147142963e6fca2e3c083c2f",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
+  },
+  {
+    "id": "noto-blender-font",
+    "type": "ttf",
+    "localPath": "public/fonts/CJK.ttf",
+    "sha256": "bc6b071af9b670afd1943cee77379398d06a2dc5d6765ed42734af09049e7a19",
+    "creator": "Adobe / Google / Noto contributors",
+    "source": "Converted from bundled CJK.woff2; original source https://github.com/notofonts/noto-cjk",
+    "license": "assets/Noto-LICENSE.txt"
+  },
+  {
+    "id": "display-geometry-font",
+    "type": "ttf",
+    "localPath": "public/fonts/Display.ttf",
+    "sha256": "b74c8e0dd744b3347faca4c96bc7b2e32f7d6f62300a79b1d1a99331e44a5bc4",
+    "creator": "Rasmus Andersson / Inter contributors",
+    "source": "Converted from bundled Inter font",
+    "license": "assets/Inter-LICENSE.txt"
   }
 ]

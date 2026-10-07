@@ -3,3 +3,12 @@ output/
 .render/
 *.log
 __pycache__/
+
+assets/blender/*.blend1
+public/hero/alpha-test.webm
+public/hero-review/
+
+# Necessary user-provided music is private CI input, never a public source asset.
+public/music.mp3
+assets/private-input/*.key
+public/memory/

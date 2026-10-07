@@ -2,55 +2,28 @@ name: Render Afterstory
 on:
   workflow_dispatch:
     inputs:
-      quality:
-        description: Render quality
+      target:
+        description: Render scope (all formal exports run here)
         required: true
-        default: preview
+        default: opening-review
         type: choice
-        options: [preview, final]
+        options: [smoke, opening-review, opening, preview, final]
   push:
     branches: [main]
+    paths-ignore: ['**.md']
 permissions:
   contents: read
 concurrency:
-  group: afterstory-${{ github.workflow }}-${{ github.event_name }}-${{ inputs.quality || 'smoke' }}
+  group: film-${{ github.event_name }}-${{ inputs.target || 'smoke' }}
   cancel-in-progress: false
 jobs:
-  smoke:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install Linux rendering dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
-      - run: npm ci --no-audit --no-fund
-      - run: npx remotion browser ensure
-      - run: npm run fetch-assets
-        env:
-          AUTHORIZED_AUDIO_URL: ${{ secrets.AUTHORIZED_AUDIO_URL }}
-      - run: npm run verify-assets
-      - run: npm run typecheck
-      - name: Complex sequence smoke test at 1080p60
-        run: node scripts/render.mjs test60
-      - uses: actions/upload-artifact@v4
-        with:
-          name: smoke-1080p60
-          path: output/test60-raw.mp4
-          retention-days: 7
   render:
-    if: github.event_name == 'workflow_dispatch'
-    needs: smoke
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 350
+    env:
+      AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
+      RENDER_CONCURRENCY: 2
+      TARGET: ${{ inputs.target || 'smoke' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -60,40 +33,54 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install renderer and verification dependencies
+      - name: Install local rendering dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
           pip install numpy==2.2.6 pillow==11.3.0
           npm ci --no-audit --no-fund
           npx remotion browser ensure
-      - run: npm run fetch-assets && npm run verify-assets && npm run typecheck
-        env:
-          AUTHORIZED_AUDIO_URL: ${{ secrets.AUTHORIZED_AUDIO_URL }}
-      - name: Full length render
-        run: node scripts/render.mjs '${{ inputs.quality }}'
-        env:
-          RENDER_CONCURRENCY: 2
-      - name: Keyframe contact sheet
+      - name: Restore private audio and verify source inputs
+        run: npm run fetch-assets && npm run verify-assets && npm run typecheck
+      - name: Complex-world 1080p60 smoke (3 seconds)
+        run: node scripts/render.mjs smoke
+      - name: Verify smoke and decoded shot frame
+        run: python scripts/review-shots.py output/smoke.mp4
+      - name: Render requested formal scope
+        if: env.TARGET != 'smoke'
+        run: node scripts/render.mjs "$TARGET"
+      - name: Verify requested MP4 and extract actual shot contact sheet
+        if: env.TARGET != 'smoke'
         run: |
-          npm run render:stills
-          python scripts/contact-sheet.py
-      - name: Verify every video and audio stream
-        run: python scripts/verify-video.py
-      - name: Create preview alongside final
-        if: inputs.quality == 'final'
+          case "$TARGET" in
+            opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 ;;
+            preview) python scripts/review-shots.py output/preview.mp4 ;;
+            final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 ;;
+          esac
+      - name: Package source attribution and shot manifest
         run: |
-          ffmpeg -v error -y -i output/phigros-main-story-celebration.mp4 -vf scale=960:540,fps=30 -c:v libx264 -preset fast -crf 23 -c:a copy -movflags +faststart output/preview.mp4
-          python scripts/verify-video.py
-      - name: Collect sources
-        run: cp assets/SOURCES.md output/SOURCES.md
-      - uses: actions/upload-artifact@v4
+          cp assets/SOURCES.md output/SOURCES.md
+          cp src/data/shots.json output/shot-manifest.json
+      - name: Upload review outputs (never standalone music or decryption key)
+        uses: actions/upload-artifact@v4
         with:
-          name: phigros-main-story-celebration-${{ inputs.quality }}
+          name: afterstory-${{ inputs.target || 'smoke' }}-${{ github.sha }}
           path: |
-            output/*.mp4
+            output/opening-review.mp4
+            output/opening-contact-sheet.jpg
+            output/opening-keyframes/*.png
+            output/opening-verification.json
+            output/preview.mp4
+            output/phigros-main-story-celebration.mp4
             output/contact-sheet.jpg
+            output/film-keyframes/*.png
+            output/film-verification.json
+            output/smoke.mp4
+            output/smoke-verification.json
             output/SOURCES.md
-            output/verification.json
-            output/stills/*.png
-          retention-days: 30
+            output/shot-manifest.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Remove decrypted input from runner
+        if: always()
+        run: rm -f public/music.mp3

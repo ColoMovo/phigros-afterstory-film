@@ -8,7 +8,7 @@ reports=[]
 def pcm(p):
  return np.frombuffer(subprocess.check_output(['ffmpeg','-v','error','-i',str(p),'-vn','-ar','8000','-ac','1','-f','f32le','-']),dtype='<f4')
 for path in files:
- if '-raw' in path.name or path.name.startswith('test'):continue
+ if '-raw' in path.name or path.name.startswith(('test','opening-')):continue
  info=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(path)]))
  v=next(s for s in info['streams'] if s['codec_type']=='video');a=next(s for s in info['streams'] if s['codec_type']=='audio')
  targetfps=60 if 'celebration' in path.name else 30

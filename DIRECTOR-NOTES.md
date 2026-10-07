@@ -1,17 +1,13 @@
-# Shot structure
+# Current directing pass
 
-| Time | System | Form / editorial action |
-|---|---|---|
-| 00:00–00:05.321 | Boot | Near black, tiny archive, dormant faceted object, white line |
-| 00:05.321–00:19.851 | Dawn | Obscured planet, off-axis ring, amber horizon, asymmetric lyric block |
-| 00:19.851–00:33.840 | Memory | Nine slabs build an impossible archive, camera roll, broken orbit numbering |
-| 00:33.840–00:58.315 | Next | Tunnel / colonnade / orbital core alternating every 3.55s, cut typography |
-| 00:58.315–01:18.299 | Ascent | Endless slats and light vanishing point, tilted gravity, brief inverse posters |
-| 01:18.299–01:38.076 | Separation | Two small drifting incomplete structures, lyric fades into long empty frame |
-| 01:38.076–01:53.098 | Reconnect | Reassembled orbital fragments, oversized RE: / HOME?, interrupted line |
-| 01:53.098–02:12.997 | Converge | Archive fragments, rings, numbered coordinates gather around growing core |
-| 02:12.997–02:15.258 | Threshold | The final words; short blackout before reveal |
-| 02:15.258–02:22.383 | Reveal | Dark sphere opens to an uninterrupted sky; clean image and horizon |
-| 02:22.383–02:42.725 | Afterstory | Numbered layers extinguish; 09 last; sparse credits; final question, black |
+BUILD THE SHOTS. BUILD THE WORLDS. Official PVs are visual-grammar references only; the user's extracted constraints govern this build. No missing reference file blocks rendering.
 
-Transitions use short designed black punctuations, brief flashes on key boundaries, and selected measured onsets for 2–4-frame horizontal tears. Ordinary frames remain clean.
+59 timed visual beats / 13 world identities / continuous 162.725442-second music timeline. Ball-related material is limited to the opening hook and later mechanical / final-core functions. Tree returns as a chapter motif, not an all-film subject. Opening units 03 and 04 intentionally share the accepted shell; they count as one primary scene family with distinct reveal / entry events.
+
+The shot library contains original signal void, shell ecology, internal gravity planes, floating continent, islands, canopy traversal, number architecture, fractured mirror sea, folded impossible building, 90-degree gravity monuments, cropped numeral surface, procedural archive storm, poster attack, true depth collapse, mechanical shell, deep modules, monolith forest, frosted architectural crystals, folded vault, broken bridge, ascending stair, whiteout, light canyon, broken arch temple, monumental columns, five quiet states, red fault, temporal scissor reconstruction, gate reconnection, chapter galaxy, memory storm, inward islands, tree / gate / numeral convergence, cracked gravity nucleus, clean sky release, 09 decay and two ending cards.
+
+Palette shifts are assigned to whole worlds: charcoal / silver; sky / navy / cyan; pale neutral / near-black / red seam; muted green archive; dark mechanical / warning orange; violet organic canopy / crystal; warm ceramic vault; exposed ascent; pale quiet sky; red fracture; restrained convergence; clean release. Saturation belongs to energy and focal leaves, not alternating painted parts. Materials emphasize rough stone / dark metal / ceramic / frosted glass.
+
+Long world passages include timed structural opening, separation, displacement or gravity changes. Camera paths provide occlusion, near misses, entry, exit, dive and rise. Glitch is applied to depth-tested world rendering and actual transforms. Typography is a limited invasion / annotation layer, with short designated poster / whiteout beats. The shell lyrics are curved depth-tested glyphs.
+
+Only CI-generated MP4s, their decoded shot samples, motion review and zero-offset audio checks can support delivery claims. Local static frames are development checks. This breadth pass is not represented as a visually approved final.
