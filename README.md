@@ -28,7 +28,7 @@ python scripts/verify-video.py
 
 Open **Actions → Render Afterstory → Run workflow → quality: preview / final**. A six-second **1080p60** complexity test must pass before a full render is allowed. Pushes to `main` run only the smoke test. Dispatch runs upload MP4, keyframes, contact sheet, provenance, and machine-readable audio/video verification. A final dispatch also includes a 540p30 preview made from the final render.
 
-The private repository contains the authorized original MP3. It must remain private with that file present. An optional `AUTHORIZED_AUDIO_URL` secret can restore a missing audio input, with its exact SHA-256 verified. Do not publish the music or original lyrics metadata as public repository assets.
+The repository contains the original user-provided MP3. The user explicitly set the repository to public on 2026-10-07 and requested that it stay public. An optional `AUTHORIZED_AUDIO_URL` secret can restore a missing audio input, with its exact SHA-256 verified. No separate redistribution license for the music is asserted by this project.
 
 ## Files
 

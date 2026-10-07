@@ -15,7 +15,7 @@ Original, unofficial Phigros main-story celebration film. Prepared 2026-10-05 (A
 - Source: user-provided original MP3, copied without modification on 2026-10-05.
 - Usage: 00:00.000 through 02:42.725; complete song at original speed, no added SFX.
 - Lyrics: USLT lrc/tlrc/awlrc blocks parsed automatically into `src/data/lyrics.json`. Source spelling is retained, including apparent transcription errors and the translation placeholder `//` (not shown onscreen). Exact source is retained in `assets/lyrics-original.txt`.
-- Rights: user-provided input; no redistribution license asserted. Kept in a private repository for the explicitly requested CI rendering. Do not make this repository public with the audio included.
+- Rights: user-provided input; no redistribution license asserted. Initially added to a private repository for the explicitly requested CI rendering. On 2026-10-07 the user set the repository to public and explicitly requested that it remain public.
 
 ## Fonts
 ### Noto Sans CJK
