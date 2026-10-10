@@ -55,4 +55,14 @@ The user's prose reference bible is recorded in `VISUAL-REFERENCE-BIBLE.md`. Off
 
 ### Downloaded original generated source pool (2026-10-10)
 
-Three Veo 3.1 - Quality original text-to-video baselines and three independent Omni 1.1 Flash dawn camera edits are recorded in `assets/generated-ai/manifest.json`, including prompts, measured duration/resolution and hashes. No official reference was uploaded. These are review-pending source materials; the final-render selection file remains empty at this checkpoint. Generated audio is discarded. The small provider watermark present in downloaded media is retained. Earlier duplicate exports are excluded from the version tree.
+Three Veo 3.1 - Quality original text-to-video baselines and three independent Omni 1.1 Flash dawn camera edits are recorded in `assets/generated-ai/manifest.json`, including prompts, measured duration/resolution and hashes. No official reference was uploaded. The nine downloaded versioned sources include both useful materials and rejected camera tests. After Actions review 38055119650, three sources have explicit short selections for the pilot preview: glass V02 material, red V01 after a failed camera-reshoot attempt, and stable dawn A. The other variants remain research material. No improved camera control is claimed. Generated audio is discarded. The small provider watermark present in downloaded media is retained. Earlier duplicate exports are excluded from the version tree.
+
+### Original spatial-control footage
+
+`assets/generated-ai/controls/dark-surface-v01.mp4` and `judgement-rule-v01.mp4` are original Blender previs, six seconds each at 960x540/24fps, silent. They were rendered and fully decoded in GitHub Actions run 38053840830; adjacent JSON files contain hashes, frame counts and the source commit. They are experiment inputs, not final-render selections. Their `.blend` sources and `scripts/blender/omni-controls.py` are retained.
+
+### Additional original-source Omni edits
+
+The glass V02 material edit, red V02 camera edit and dawn C2 orbit retest are recorded in the manifest and immutable version tree. These edit original generated sources, with exact recorded prompts. The original-Blender world-edit and spatial-rule tests remain pending: browser upload permission rejected import even after explicit user reauthorization. No official/reference media or remote Flow asset is substituted.
+
+The first mixed preview uses about 15.67 seconds of generated-world material across six authored intervals; all source audio is discarded. Exact text, 01–09, credits, original music, and deterministic transitions remain authored in the project. The selected native clips have provider watermarks, retained without removal. Final visual acceptance of the mixed preview is pending encoded review.

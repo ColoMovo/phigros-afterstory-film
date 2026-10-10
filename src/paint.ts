@@ -1,6 +1,10 @@
 import {Euler,Matrix4,Vector3} from 'three';
 import audio from './data/audio-analysis.json';
 import lyrics from './data/lyrics.json';
+import aiAssets from './data/ai-asset-index.json';
+import aiSelections from './data/ai-shot-selections.json';
+let photoPlate=false;
+const hasAiDawn=Boolean((aiAssets as Record<string,unknown>)['new-dawn-v02-camera-A']);
 import {paintPrintWorld} from './graphic-worlds';
 import {heroClips} from './hero-clips';
 
@@ -42,7 +46,11 @@ function tint(c:string,l:number){const n=parseInt(c.slice(1),16);return`rgb(${cl
 function fill(c:string,a=1){ctx.save();ctx.globalAlpha*=a;ctx.fillStyle=c;ctx.fillRect(0,0,W,H);ctx.restore()}
 function line(x:number,y:number,xx:number,yy:number,c=ink,w=1,a=1){ctx.save();ctx.globalAlpha*=a;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();ctx.restore()}
 function glow(x:number,y:number,r:number,c:string,a=1){ctx.save();ctx.globalAlpha*=a;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,rgba(c,0));ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore()}
-function txt(s:string,x:number,y:number,size:number,c=ink,font='Display',align:CanvasTextAlign='left',a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='alphabetic';ctx.fillText(s,x,y);ctx.restore()}
+function photoTextEdge(s:string,x:number,y:number,c:string){
+ if(!photoPlate)return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
+ ctx.save();ctx.strokeStyle=bright?'#132530':'#e1ecee';ctx.lineWidth=2;ctx.lineJoin='round';ctx.globalAlpha*=.55;ctx.strokeText(s,x,y);ctx.restore();
+}
+function txt(s:string,x:number,y:number,size:number,c=ink,font='Display',align:CanvasTextAlign='left',a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='alphabetic';photoTextEdge(s,x,y,c);ctx.fillText(s,x,y);ctx.restore()}
 function tracking(s:string,x:number,y:number,size:number,spacing:number,c=ink,a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.font=`${size}px Text`;ctx.fillStyle=c;for(const ch of s){ctx.fillText(ch,x,y);x+=ctx.measureText(ch).width+spacing}ctx.restore()}
 function poly(points:P[]){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath()}
 function clipNear(input:V[]):V[]{let out:V[]=[];for(let i=0;i<input.length;i++){const a=input[i],b=input[(i+1)%input.length],ai=a[2]>.5,bi=b[2]>.5;if(ai)out.push(a);if(ai!==bi){const u=(.5-a[2])/(b[2]-a[2]);out.push([mix(a[0],b[0],u),mix(a[1],b[1],u),.5])}}return out}
@@ -371,7 +379,7 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
  const d=currentLyric();if(!d){txt(value,x,y,size,color,'CJK',align);return;}
  ctx.save();ctx.font=`${size}px CJK`;ctx.textBaseline='alphabetic';ctx.textAlign='left';ctx.fillStyle=color;
  const times=d.l.wordTiming.flatMap(token=>[...token.text].map(()=>token.time));const total=ctx.measureText(value).width;let at=x-(align==='center'?total/2:align==='right'?total:0);
- [...value].forEach((ch,i)=>{ctx.save();ctx.globalAlpha*=t>=(times[i]??d.l.time)?1:.43;ctx.fillText(ch,at,y);ctx.restore();at+=ctx.measureText(ch).width});ctx.restore();
+ [...value].forEach((ch,i)=>{ctx.save();ctx.globalAlpha*=t>=(times[i]??d.l.time)?1:.43;photoTextEdge(ch,at,y,color);ctx.fillText(ch,at,y);ctx.restore();at+=ctx.measureText(ch).width});ctx.restore();
 }
 // Current shot-library graphic pass. The legacy Canvas worlds above are kept
 // as source history, but never drawn by this composition.
@@ -379,13 +387,13 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 // another axis; a large cropped glyph never replaces the complete sung line.
 const lyricLayouts=['space','passage','vertical','perspective','edge','mask','vertical','perspective','glyph','edge','mask','vertical','perspective','glyph','axis','farewell','axis','mask','vertical','perspective','glyph','axis','mask','vertical','perspective','edge','vertical','edge'];
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
- ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
+ ctx=canvas.getContext('2d',{alpha:true})!;t=time;photoPlate=aiSelections.some(s=>t>=s.start&&t<s.end&&Boolean((aiAssets as Record<string,unknown>)[s.clipId]));ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
  const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric();
  if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
  if(shot.family==='insert-black'){fill('#000000');return;}
  if(t>=151.4){
   if(t<154){fill('#eaece4');const a=smooth(t,151.4,151.75);txt('PHIGROS',150,302,118,'#101b22','Display','left',a);txt('MAIN STORY',154,442,76,'#18252c','Text','left',a);txt('COMPLETE',145,634,176,'#101b22','Display','left',a);tracking('2019 — 2026',161,790,31,4,'#344951',a);tracking('THANK YOU FOR THE JOURNEY',162,885,23,3,'#344951',a);line(148,965,1770,965,'#44585f',2,a);return;}
-  if(t<157){const fade=smooth(t,154,155.15);fill('#eaece4');fill('#000000',fade);const c='#c7cecc',a=smooth(t,154.25,155.1)*(1-smooth(t,156.65,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,28,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,22,c,'Text','left',a);txt('Original procedural visuals',155,850,22,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,24,c,'Text','left',a);txt('濒笼',155,957,24,c,'CJK','left',a);return;}
+  if(t<157){const fade=smooth(t,154,155.15);fill('#eaece4');fill('#000000',fade);const c='#c7cecc',a=smooth(t,154.25,155.1)*(1-smooth(t,156.65,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,28,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,22,c,'Text','left',a);txt('Original geometry and generated world plates',155,850,22,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,24,c,'Text','left',a);txt('濒笼',155,957,24,c,'CJK','left',a);return;}
   fill('#000000');const a=smooth(t,157.3,158.1)*(1-smooth(t,160.4,161.2));txt('What do you want more',380,474,57,'#dce1de','Text','left',a);txt('than a Happy ending?',540,554,57,'#dce1de','Text','left',a);if(t>=161.15&&t<161.3){const u=(t-161.15)/.15;line(0,540,W*u,540,'#acccc6',1.2,(1-u)*.8)}return;
  }
  if(t>=135.258&&t<137){fill('#fff8e7',1-smooth(t,135.38,137));return;}
@@ -394,6 +402,17 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
  const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
  const color=passage?passageColor:dark?'#e6eeeb':'#243945';
  if(shot.family==='signal'){tracking('UNOFFICIAL FAN TRIBUTE',125,975,17,2,'#a9bdc7',.75);return;}
+ if(hasAiDawn&&t>=141.7&&t<150.95){
+  // One island identity occupies the AI intervals. Numerals are authored here,
+  // never synthesized by the video model; the final 09 survives into empty sky.
+  if(t<142.3)line(0,730,W*smooth(t,141.7,142.3),730,'#486a7b',1.5,.4);
+  if(t>=142.3){
+   for(let i=0;i<8;i++){const a=1-smooth(t,142.3+i*.04,142.65+i*.04);if(a>0)txt(String(i+1).padStart(2,'0'),210+i*190,190+(i%2)*50,21,'#3c5d6f','Display','center',a*.5);}
+   const a=smooth(t,142.3,143)*(1-smooth(t,149.3,150.95)),x=1650+(t-142.3)*4,y=290-(t-142.3)*2;
+   txt('09',x,y,88,'#294f65','Display','center',a*.8);
+   line(x-90,y+42,x-25,y+14,'#486a7b',1,a*.5);
+  }
+ }
  if(shot.family==='dawn')return;
  if(shot.family.startsWith('insert-')){
   if(['insert-circuit','insert-negative','insert-graphic'].includes(shot.family)){

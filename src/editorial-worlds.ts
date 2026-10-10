@@ -1,4 +1,6 @@
 import * as T from 'three';
+import aiAssets from './data/ai-asset-index.json';
+const hasAiDawn=Boolean((aiAssets as Record<string,unknown>)['new-dawn-v02-camera-A']);
 import {world,profile,beam,cable,text,island,dataTree,foldedBody,annotation,instances,fragments,look,hash,smooth,lerp,crackedCore,leafGeo,materials,type World,type V} from './opening-world';
 
 // These acts share absolute song time. A cut label never resets their camera,
@@ -129,7 +131,7 @@ export function evolvingDawn(){
  const relics=Array.from({length:8},(_,i)=>{const o=text(w.root,String(i+1).padStart(2,'0'),[-500+i*140,-10+Math.sin(i)*50,1990+i*50],10,'gold',.5);return o});
  const scraps=Array.from({length:14},(_,i)=>shard(w.root,[(i%2?1:-1)*(90+hash(i)*170),40+(hash(i+10)-.5)*180,100+hash(i+23)*900],3+hash(i+3)*9,i+456,'silver'));
  const born=instances(destination,90,leafGeo,'gold',(i,o)=>{o.position.set(31+(hash(i)-.5)*16,4+hash(i+40)*24,(hash(i+16)-.5)*15);o.scale.set(.12,.12,.28)});
- w.moving.push(t=>{const reveal=smooth(139.6,142.4,t),lifeEvent=smooth(146,148.7,t),dissolve=smooth(149,151.1,t);layers.forEach((o,i)=>{o.position.x=(i%2?430:-410)+(t-135.258)*(i%2?1:-1)*(18-i*2);o.position.z=500+i*520-(t-135.258)*(32-i*4)});destination.visible=t>139.45;destination.position.y=-60+reveal*30;foliage[2].scale.setScalar(.01+lifeEvent*.99);foliage[2].rotation.y=-.9+lifeEvent*.9;foliage[0].rotation.z=Math.sin(t*1.2)*.035;foliage[1].rotation.z=-Math.sin(t*1.2)*.035;mark.visible=t<151.1;mm.opacity=1-dissolve;born.visible=t>149&&t<151.15;born.position.y=dissolve*45;born.rotation.z=dissolve*.22;born.scale.setScalar(1+dissolve*.7);relics.forEach((o,i)=>{o.visible=t>141.5&&t<143.2+i*.35});scraps.forEach((o,i)=>{o.visible=t<140.4;const travel=(t-135.258)*310;o.position.z=100+hash(i+23)*900+travel;o.position.x=(i%2?1:-1)*(90+hash(i)*170)*(1+travel/2000);});horizon.position.y=smooth(135.258,140,t)*40;});
+ w.moving.push(t=>{const reveal=smooth(139.6,142.4,t),lifeEvent=smooth(146,148.7,t),dissolve=smooth(149,151.1,t);layers.forEach((o,i)=>{o.position.x=(i%2?430:-410)+(t-135.258)*(i%2?1:-1)*(18-i*2);o.position.z=500+i*520-(t-135.258)*(32-i*4)});destination.visible=t>139.45&&!hasAiDawn;destination.position.y=-60+reveal*30;foliage[2].scale.setScalar(.01+lifeEvent*.99);foliage[2].rotation.y=-.9+lifeEvent*.9;foliage[0].rotation.z=Math.sin(t*1.2)*.035;foliage[1].rotation.z=-Math.sin(t*1.2)*.035;mark.visible=t<151.1;mm.opacity=1-dissolve;born.visible=t>149&&t<151.15;born.position.y=dissolve*45;born.rotation.z=dissolve*.22;born.scale.setScalar(1+dissolve*.7);relics.forEach((o,i)=>{o.visible=t>141.5&&t<143.2+i*.35});scraps.forEach((o,i)=>{o.visible=t<140.4;const travel=(t-135.258)*310;o.position.z=100+hash(i+23)*900+travel;o.position.x=(i%2?1:-1)*(90+hash(i)*170)*(1+travel/2000);});horizon.position.y=smooth(135.258,140,t)*40;});
  w.camera=(t,c)=>{const rush=smooth(135.258,140,t),approach=smooth(140,149,t),empty=smooth(149.6,151.4,t);look(c,[35-rush*26-approach*24,50-rush*18+approach*6+empty*30,-200+rush*300+approach*900],[-15,-4+empty*130,1280],78-rush*15-approach*17,0)};return w;
 }
 

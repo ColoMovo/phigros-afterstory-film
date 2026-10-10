@@ -10,7 +10,7 @@
       "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V01.mp4",
       "world": "glass-memory",
       "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
-      "status": "review-pending",
+      "status": "reference-only",
       "optional": true,
       "sourceDuration": 8.0,
       "resolution": [
@@ -29,8 +29,8 @@
       "generationDate": "2026-10-10",
       "localPath": "assets/generated-ai/red-machine/WORLD_RED_V01.mp4",
       "world": "red-machine",
-      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
-      "status": "review-pending",
+      "usageNotes": "Accepted for the limited hybrid preview in the explicit mined intervals only, following Actions source/comparison review 38055119650. Generated audio discarded. No full source dropped as a single shot.",
+      "status": "accepted",
       "optional": true,
       "sourceDuration": 8.0,
       "resolution": [
@@ -39,7 +39,8 @@
       ],
       "sha256": "1d3a59e961dcb566441eece233808a37a33923973cf90e4143a04f8b474a4468",
       "inputMode": "text-to-video",
-      "referenceInput": null
+      "referenceInput": null,
+      "visualDecision": "Short source intervals retain coherent forward traversal. Omni camera edit was attempted and did not demonstrate a correction; keep higher-resolution V01, without claiming improved camera control."
     },
     {
       "id": "new-dawn-v01",
@@ -50,7 +51,7 @@
       "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V01.mp4",
       "world": "new-dawn",
       "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
-      "status": "review-pending",
+      "status": "reference-only",
       "optional": true,
       "sourceDuration": 8.0,
       "resolution": [
@@ -68,7 +69,7 @@
       "model": "Omni 1.1 Flash",
       "prompt": "assets/generated-ai/omni-tests/dawn-camera-A.txt",
       "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_A.mp4",
-      "status": "review-pending",
+      "status": "accepted",
       "sha256": "c8f2b95d0edc394a32d0d0697e64513164269ca5bb1d0e781a3f0563904dffbe",
       "generationDate": "2026-10-10",
       "duration": 8.0,
@@ -82,10 +83,11 @@
       "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
       "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
       "world": "new-dawn",
-      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "usageNotes": "Accepted for the limited hybrid preview in the explicit mined intervals only, following Actions source/comparison review 38055119650. Generated audio discarded. No full source dropped as a single shot.",
       "optional": true,
       "sourceDuration": 8.0,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Stable original forward view retained. Selected 1.00–7.80 s in two directed intervals for quiet discovery and leaf opening; A is not evidence of superiority over V01."
     },
     {
       "id": "new-dawn-v02-camera-B",
@@ -94,7 +96,7 @@
       "model": "Omni 1.1 Flash",
       "prompt": "assets/generated-ai/omni-tests/dawn-camera-B.txt",
       "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_B.mp4",
-      "status": "review-pending",
+      "status": "rejected-camera-test",
       "sha256": "d4ccd6ba80cd9a992dd73135fe1dd75dbedc02b7b84543863cfe7a2effe56fbf",
       "generationDate": "2026-10-10",
       "duration": 8.0,
@@ -120,7 +122,7 @@
       "model": "Omni 1.1 Flash",
       "prompt": "assets/generated-ai/omni-tests/dawn-camera-C.txt",
       "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_C.mp4",
-      "status": "review-pending",
+      "status": "rejected-camera-test",
       "sha256": "0fff6657f6fe38ce0b37a16caa8c5ff3ed35f99b405d8f6e61261d5acd1b7414",
       "generationDate": "2026-10-10",
       "duration": 8.0,
@@ -153,7 +155,7 @@
         1280,
         720
       ],
-      "status": "review-pending",
+      "status": "rejected-camera-test",
       "world": "new-dawn",
       "sourceDuration": 8,
       "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
@@ -174,12 +176,13 @@
         720
       ],
       "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc",
-      "status": "review-pending",
+      "status": "accepted",
       "world": "glass-memory",
       "sourceDuration": 8.0,
-      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "usageNotes": "Accepted for the limited hybrid preview in the explicit mined intervals only, following Actions source/comparison review 38055119650. Generated audio discarded. No full source dropped as a single shot.",
       "optional": true,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Useful material layer improvement, clear foreground slab parallax and coherent source depth. Only 1.70–4.45 s selected."
     },
     {
       "id": "red-machine-v02-camera",
@@ -195,7 +198,7 @@
         720
       ],
       "sha256": "89c7b62833711265c959ac8e67886487a566924237b2086aaadf2aa67aaa249b",
-      "status": "review-pending",
+      "status": "rejected-camera-test",
       "world": "red-machine",
       "sourceDuration": 8.0,
       "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",

@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "id": "glass-traverse-34",
+    "clipId": "glass-memory-v02-material",
+    "start": 34,
+    "end": 36.75,
+    "sourceIn": 1.7,
+    "sourceOut": 4.45,
+    "purpose": "The flat graphic world opens into deep layered glass; close slab parallax leads to the black cut."
+  },
+  {
+    "id": "red-intrusion-36",
+    "clipId": "red-machine-v01",
+    "start": 36.8,
+    "end": 38.7,
+    "sourceIn": 2.8,
+    "sourceOut": 4.7,
+    "purpose": "Cool glass aperture cuts to warm cracked machine scale after three black frames."
+  },
+  {
+    "id": "red-return-46",
+    "clipId": "red-machine-v01",
+    "start": 46.6333333333333,
+    "end": 49.4,
+    "sourceIn": 0.35,
+    "sourceOut": 3.1166666666667,
+    "purpose": "Near beam occlusion and forward discovery replace sparse labyrinth primitives."
+  },
+  {
+    "id": "red-threshold-49",
+    "clipId": "red-machine-v01",
+    "start": 49.6,
+    "end": 51.05,
+    "sourceIn": 3.1166666666667,
+    "sourceOut": 4.5666666666667,
+    "purpose": "Continue the same source trajectory after the green scan cut, before the original fibre bridge."
+  },
+  {
+    "id": "dawn-discovery-142",
+    "clipId": "new-dawn-v02-camera-A",
+    "start": 142.3,
+    "end": 145.5,
+    "sourceIn": 1,
+    "sourceOut": 4.2,
+    "purpose": "Cloud approach discovers a single distant island; one geometry identity is retained through the next interval."
+  },
+  {
+    "id": "dawn-leaf-event-145",
+    "clipId": "new-dawn-v02-camera-A",
+    "start": 145.5,
+    "end": 149.1,
+    "sourceIn": 4.2,
+    "sourceOut": 7.8,
+    "fadeOutSeconds": 0.25,
+    "purpose": "The same camera and island continue into the new leaf event, then dissolve into empty original sky."
+  }
+]

@@ -1,1 +1,23 @@
-{}
+{
+  "red-machine-v01": {
+    "file": "generated-ai/red-machine-v01.mp4",
+    "width": 1920,
+    "height": 1080,
+    "duration": 8,
+    "sha256": "1d3a59e961dcb566441eece233808a37a33923973cf90e4143a04f8b474a4468"
+  },
+  "new-dawn-v02-camera-A": {
+    "file": "generated-ai/new-dawn-v02-camera-A.mp4",
+    "width": 1280,
+    "height": 720,
+    "duration": 8,
+    "sha256": "c8f2b95d0edc394a32d0d0697e64513164269ca5bb1d0e781a3f0563904dffbe"
+  },
+  "glass-memory-v02-material": {
+    "file": "generated-ai/glass-memory-v02-material.mp4",
+    "width": 1280,
+    "height": 720,
+    "duration": 8,
+    "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc"
+  }
+}
