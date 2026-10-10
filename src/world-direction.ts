@@ -67,7 +67,7 @@ function cathedral(family:string){
   profile(g,[[-5,-85],[-5,110],[25,10],[42,-85]],16,[side*135,0,z+5],[0,0,0],'navy','stone');
  }
  const labels=family==='temple'?['01','02','03']:family==='glass04'?['04']:family==='impossible'?['05','06']:family==='monuments'?['07','08']:['09'];
- const ns=labels.map((value,i)=>{const o=text(g,value,[labels.length===3?(i-1)*250:labels.length===2?(i-.5)*230:20,70,200+i*210],family==='macro09'?320:family==='glass04'?240:180,'navy',45);return o});
+ const ns=labels.map((value,i)=>{const o=text(g,value,[labels.length===3?(i-1)*250:labels.length===2?(i-.5)*230:20,70,200+i*210],family==='macro09'?320:family==='glass04'?240:180,'navy',45);const plane=new T.Plane(new T.Vector3(0,1,0),-70);o.material=o.material.clone();o.material.clippingPlanes=[plane];return o});
  if(family==='glass04'){ns[0].rotation.x=Math.PI/2;ns[0].rotation.z=-.15;ns[0].position.set(0,-10,310);(floor.material as T.MeshStandardMaterial)=(materials.obsidian.clone());}
  if(family==='impossible'){ns[0].rotation.z=-.4;ns[1].rotation.z=.7;beam(g,[-165,120,210],[145,200,450],29,28,'navy');}
  const line=beam(w.root,[-600,-25,100],[600,-25,100],.5,.5,'energy');
@@ -365,6 +365,6 @@ export function directedWorld(family:string):World|null{
  if(family==='insert-drop')return macroDrop();
  if(family==='insert-seed')return seedThreshold();
  if(family==='insert-membrane')return macroMembrane();
- if(family==='labyrinth'||family==='bridge')return warmThreshold(family);
+ if(family==='labyrinth'||family==='bridge'){const w=machinery(true);rig(w,.15,'#be8f61',4.1,'#ffe1b3',6.2);const amber=new T.PointLight('#f1b47b',110000,1100,2);amber.position.set(-70,80,430);w.scene.add(amber);const camera=w.camera;w.camera=(q,c)=>{camera(q,c);c.position.z+=q*q*180;c.rotation.z+=Math.sin(q*Math.PI)*.18;c.updateMatrixWorld()};return w;}
  return null;
 }

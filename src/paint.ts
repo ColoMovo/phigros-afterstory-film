@@ -375,70 +375,56 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 }
 // Current shot-library graphic pass. The legacy Canvas worlds above are kept
 // as source history, but never drawn by this composition.
+// Authored per lyric, rather than per arbitrary shot index. Chinese occupies
+// another axis; a large cropped glyph never replaces the complete sung line.
+const lyricLayouts=['space','passage','vertical','perspective','edge','mask','vertical','perspective','glyph','edge','mask','vertical','perspective','glyph','axis','farewell','axis','mask','vertical','perspective','glyph','axis','mask','vertical','perspective','edge','vertical','edge'];
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
  ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
- const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
- const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','rebuild-gate','monuments','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=passage?passageColor:shot.family.startsWith('physical-')||shot.family==='gravity'?'#ffffff':dark?'#e5e9e8':'#132c40';
+ const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric();
  if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
+ if(shot.family==='insert-black'){fill('#000000');return;}
+ if(t>=151.4){
+  if(t<154){fill('#eaece4');const a=smooth(t,151.4,151.75);txt('PHIGROS',150,302,118,'#101b22','Display','left',a);txt('MAIN STORY',154,442,76,'#18252c','Text','left',a);txt('COMPLETE',145,634,176,'#101b22','Display','left',a);tracking('2019 — 2026',161,790,31,4,'#344951',a);tracking('THANK YOU FOR THE JOURNEY',162,885,23,3,'#344951',a);line(148,965,1770,965,'#44585f',2,a);return;}
+  if(t<157){const fade=smooth(t,154,155.15);fill('#eaece4');fill('#000000',fade);const c='#c7cecc',a=smooth(t,154.25,155.1)*(1-smooth(t,156.65,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,28,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,22,c,'Text','left',a);txt('Original procedural visuals',155,850,22,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,24,c,'Text','left',a);txt('濒笼',155,957,24,c,'CJK','left',a);return;}
+  fill('#000000');const a=smooth(t,157.3,158.1)*(1-smooth(t,160.4,161.2));txt('What do you want more',380,474,57,'#dce1de','Text','left',a);txt('than a Happy ending?',540,554,57,'#dce1de','Text','left',a);if(t>=161.15&&t<161.3){const u=(t-161.15)/.15;line(0,540,W*u,540,'#acccc6',1.2,(1-u)*.8)}return;
+ }
+ if(t>=135.258&&t<137){fill('#fff8e7',1-smooth(t,135.38,137));return;}
+ if(t>=63.033333&&t<63.1){fill('#ffffff');return;}
+ const dark=t>=98.076&&t<135.191334||['engine','deep','crystals','red-world','cyan-storm','monuments','ringtemple','colonnade','labyrinth','bridge'].includes(shot.family)||shot.family.startsWith('physical-');
+ const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
+ const color=passage?passageColor:dark?'#e6eeeb':'#243945';
+ if(shot.family==='signal'){tracking('UNOFFICIAL FAN TRIBUTE',125,975,17,2,'#a9bdc7',.75);return;}
+ if(shot.family==='dawn')return;
  if(shot.family.startsWith('insert-')){
-  const kind=shot.family.slice(7);if(kind==='black'){fill('#000000');return;}
-  if(['circuit','negative','graphic'].includes(kind)){
-   fill(kind==='negative'?'#e8e8e2':'#090d12');const fg=kind==='negative'?'#131a20':'#dce4e1';
-   ctx.save();ctx.translate(960,540);ctx.rotate(kind==='graphic'?q*.9:-.16);
-   if(kind==='circuit'){for(let i=0;i<26;i++){const y=-450+i*36,s=80+hash(i+11)*300;line(-930,y,-s,y,fg,1.7);line(-s,y,s,y+(i%2?1:-1)*90,fg,1.7);line(s,y+(i%2?1:-1)*90,930,y+(i%2?1:-1)*90,fg,1.7)}line(-900,-180+q*400,900,-180+q*400,'#82b29a',4)}
-   else{for(let i=0;i<12;i++){ctx.save();ctx.rotate(i/12*TAU);const r=80+q*q*550;ctx.fillStyle=fg;ctx.fillRect(r,-9,70+i*11,12+i%3*15);ctx.restore()}ctx.strokeStyle=fg;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-220,-180);ctx.lineTo(220,-120);ctx.lineTo(310,160);ctx.lineTo(-130,250);ctx.closePath();ctx.stroke()}
-   ctx.restore();
+  if(['insert-circuit','insert-negative','insert-graphic'].includes(shot.family)){
+   fill(shot.family==='insert-negative'?'#f1eee6':'#060c0e');const c=shot.family==='insert-negative'?'#152024':'#bddbd6';ctx.save();ctx.translate(960,540);ctx.rotate(-.18+q*.25);for(let i=0;i<7;i++){const y=(i-3)*120;line(-1200,y,-40,y,c,2);line(-40,y,180,y+70,c,2);line(180,y+70,1200,y+70,c,2)}line(-1400,-600+q*1200,1400,-600+q*1200,c,18);ctx.restore();
   }return;
  }
- if(shot.family==='endcard'||shot.family==='question'){
-  if(shot.family==='question')fill('#080e14');const opacity=smooth(t,shot.start,shot.start+.6)*(1-smooth(t,shot.end-.8,shot.end-.3));
-  if(shot.family==='endcard'){
-   txt('AFTER STORY',960,720,41,'#183548','Text','center',smooth(t,151.9,152.8)*(1-smooth(t,155.6,156.7)));
-   txt('PHIGROS / MAIN STORY COMPLETE',960,769,19,'#3d5666','Text','center',.7*opacity);
-   txt('UNOFFICIAL FAN TRIBUTE · NOT AFFILIATED WITH PIGEON GAMES',960,1005,15,'#45616c','Text','center',opacity);
-  }else{
-   fill('#080e14');txt('What do you want more than a Happy ending?',960,535,58,'#e4e9e8','Text','center',opacity);txt('Music · 濒笼',960,606,23,'#aebbc3','CJK','center',opacity);if(t>=audio.duration-1)fill('#000000');
-  }
-  return;
+ if(t>=78.299&&t<98.076){
+  if(d){ctx.save();ctx.globalAlpha=d.a;const cut=smooth(t,86,92),sz=Math.min(86,1570/d.l.jp.length);ctx.translate(965,175);ctx.scale(1,1);ctx.beginPath();ctx.rect(-850,-130,1700,200*(1-cut));ctx.clip();timedLyric(d.l.jp,0,0,sz,'#3d4259','center');ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,1470,870,23,'#57576a','CJK','right',d.a*.8);}
+  if(t>=86&&t<92){const y=540+(t-86)*2;line(0,y,W,y,'#b7c3d2',1.2)}return;
  }
- if(shot.family==='poster'){
-  const index=Math.floor((t-shot.start)*15)%7,im=memories[index];fill(index%2?'#142431':'#d4dcdb');if(im){ctx.save();ctx.translate(960,540);ctx.rotate(-.14);ctx.drawImage(im,260,170,500,370,-1120,-780,2240,1560);ctx.restore()}
-  if(d){txt(d.l.wordTiming[d.active]?.text.trim()||d.l.jp[0],210,820,430,'#e1e9e8','CJK');txt(d.l.jp,115,975,Math.min(52,1700/d.l.jp.length),white,'CJK')};judgment(540,-.18,'#dce5e6',10);return;
- }
- if(shot.family==='whiteout'){
-  fill('#f7ffff');ctx.save();ctx.globalAlpha=(1-q)*.65;ctx.translate(960,540);ctx.rotate(-.2+q*.15);
-  for(let i=0;i<25;i++){const y=(hash(i+frame)*2-1)*900;line(-1700,y,1700,y+(hash(i+22)-.5)*700,i%3===0?'#ecbde2':'#68ffff',8+hash(i+7)*90,.65)}ctx.restore();
-  if(q>.72)fill('#ffffff');return;
- }
- if(shot.family==='signal'){
-  tracking('A F T E R S T O R Y',128,155,19,3,'#acbbc8',.5);txt('UNOFFICIAL FAN TRIBUTE',128,195,17,'#7e909f','Text','left',.8);return;
- }
- if(shot.family==='dawn')return; // curved, depth-tested lyric glyphs in the shell.
- if(shot.family==='rebuild-gate'&&q>.95){fill('#ffffff');return;}
- // Light flow and corrupted signal are entire image states, not RGB text effects.
- if((shot.family==='colonnade'&&q>.86)||shot.family==='gold-event'&&q>.58){
-  const attack=shot.family==='colonnade'?(q-.86)/.14:shot.family==='gold-event'?(q-.58)/.42:q;
-  fill(shot.family==='gold-event'?'#fff9e4':'#f3ffff',.6+attack*.4);
-  ctx.save();ctx.globalAlpha=(1-attack)*.7;ctx.translate(960,540);ctx.rotate(-.22+attack*.2);
-  for(let i=0;i<25;i++){const yy=(hash(i+frame)*2-1)*900;line(-1700,yy,1700,yy+(hash(i+22)-.5)*700,i%3===0?'#ecbde2':'#68ffff',8+hash(i+7)*90,.65)}ctx.restore();
-  if(attack>.9)fill('#ffffff');return;
- }
- if(shot.family==='glitch'&&(q>.87||Math.floor(q*12)%5===3)){
-  fill('#080a09');ctx.save();const small=document.createElement('canvas');small.width=192;small.height=108;const x=small.getContext('2d')!,im=x.createImageData(192,108);
-  for(let i=0;i<im.data.length;i+=4){const n=hash(i+Math.floor(t*30)*913)*255;im.data[i]=n*.88;im.data[i+1]=n;im.data[i+2]=n*.9;im.data[i+3]=255}x.putImageData(im,0,0);ctx.imageSmoothingEnabled=false;ctx.globalAlpha=.77;ctx.drawImage(small,0,0,W,H);ctx.restore();
-  for(let i=0;i<80;i++)line(0,i*14,W,i*14,'#000000',4,.8);judgment(140+((t*230)%760),0,'#d9ffed',15);return;
- }
+ // Each lyric owns a composition, with an independent translation annotation.
  if(d){
-  const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet&&!passage;
-  ctx.save();ctx.globalAlpha=a;ctx.shadowColor=dark?'#06121c':'#b5c5cc';ctx.shadowBlur=2;
-  if(shot.family==='gravity'||shot.family.startsWith('physical-'))ctx.shadowBlur=0;
-  if(vertical){const sz=Math.min(44,780/d.l.jp.length);[...d.l.jp].forEach((ch,i)=>txt(ch,1770,130+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//')txt(d.l.zh,120,991,23,color,'CJK','left',.82)}
-  else{const top=!passage&&Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(!passage&&Number(shot.id)%4===0?-.08:0)};timedLyric(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
+  const mode=passage?'passage':lyricLayouts[d.i]??'edge',size=Math.min(62,1480/Math.max(1,d.l.jp.length));ctx.save();ctx.globalAlpha=d.a;
+  if(mode==='passage'){timedLyric(d.l.jp,120,920,size,color);if(d.l.zh!=='//')txt(d.l.zh,1780,136,23,color,'CJK','right',.82);}
+  else if(mode==='vertical'){
+   const chars=[...d.l.jp],sz=Math.min(48,800/chars.length);chars.forEach((ch,i)=>txt(ch,1705,120+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//'){ctx.save();ctx.translate(102,805);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,24,color,'CJK','left',.8);ctx.restore();}
+  }else if(mode==='perspective'){
+   const u=smooth(d.age,0,.5);ctx.save();ctx.translate(250-50*u,870);ctx.transform(1,-.16,.48,.83,0,0);timedLyric(d.l.jp,0,0,Math.min(87,1630/d.l.jp.length),color);ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,1770,210,23,color,'CJK','right',.8);
+  }else if(mode==='glyph'){
+   const ch=d.l.wordTiming[d.active]?.text.trim()||d.l.jp[0];ctx.save();ctx.beginPath();ctx.rect(0,0,475,H);ctx.clip();txt(ch,-95,950,600,color,'CJK','left',.35);ctx.restore();timedLyric(d.l.jp,1790,963,Math.min(57,1350/d.l.jp.length),color,'right');if(d.l.zh!=='//')txt(d.l.zh,1130,124,23,color,'CJK','center',.8);
+  }else if(mode==='mask'){
+   const sweep=smooth(d.age,0,.65),y=420;ctx.save();ctx.beginPath();ctx.rect(130,y-100,1630*sweep,130);ctx.clip();timedLyric(d.l.jp,170,y,Math.min(83,1550/d.l.jp.length),color);ctx.restore();line(130,y+23,130+1630*sweep,y+23,color,1.4,.8);if(d.l.zh!=='//')txt(d.l.zh,1740,941,24,color,'CJK','right',.8);
+  }else if(mode==='axis'||mode==='farewell'){
+   ctx.save();ctx.translate(1660,800);ctx.rotate(-.36);timedLyric(d.l.jp,0,0,Math.min(69,1350/d.l.jp.length),color,'right');ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,850,165,22,color,'CJK','left',.8);
+  }else{
+   timedLyric(d.l.jp,1780,980,size,color,'right');if(d.l.zh!=='//'){ctx.save();ctx.translate(120,470);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,24,color,'CJK','center',.8);ctx.restore();}
+  }
   ctx.restore();
  }
- // Restrained annotations. No HUD fills the empty space.
- if(!shot.family.startsWith('quiet')&&Number(shot.id)>5&&Number(shot.id)<42){tracking(`RECORD ${shot.id} / 01—09`,116,65,16,2,color,.48)}
-
- // The final reveal and afterglow intentionally have no glitch overlay.
- if(t<135.258&&Number(shot.id)>12){const onset=audio.majorTransients.findLast(e=>e.time<=t);if(onset&&t-onset.time<2/60&&audio.majorTransients.indexOf(onset)%9===0){judgment(190+(t-onset.time)*16000,-.19,Number(shot.id)>33?'#be4754':'#e5eeed',8)}}
+ // Only two record annotations remain; the worlds carry their own density.
+ if(shot.id==='12'||shot.id==='27')tracking(`RECORD ${shot.id}`,118,68,15,2,color,.45);
+ if(t>=66&&t<66.45)judgment(1080*(t-66)/.45,0,'#e9e5db',5);
+ if(t>=105&&t<105+5/60){ctx.globalCompositeOperation='difference';fill('#e8ffff');ctx.globalCompositeOperation='source-over';if(Math.floor(t*60)%2===0)fill('#000000',.28);}
 }

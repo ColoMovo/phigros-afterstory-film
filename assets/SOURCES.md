@@ -38,6 +38,12 @@ The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599
 - FFmpeg performs CI encoding, muxing and decoded-output verification.
 - Blender 4.5.0 Cycles CPU generates five original combined event shots. Silent local H264 clips enter the Remotion main timeline; the original music remains the single global audio input. No stock footage, external models or remote per-frame media are used.
 
+## Generative Visual Material
+
+Google Flow generation is authorized for original visual worlds, using only original prompts and workspace-made Blender first frames. Official references, characters, game art, UI and readable lyric text are excluded from generation inputs. `assets/generated-ai/manifest.json` is the authoritative list of actual downloaded sources, their model/provider, prompt, date, provenance and quality status. `src/data/ai-shot-selections.json` defines the selected moments that actually enter this revision; unaccepted results are research material only. Generated audio is always discarded. The initial quality gate is limited to glass-memory, red-machine and new-dawn; an empty manifest means no actual AI footage has entered the film yet.
+
+The three original composition reference images and `.blend` files in `assets/generated-ai/references` come from `scripts/blender/hybrid-previs.py`. They establish camera, shape and foreground depth and are not official assets. Local reference still creation is authorized separately from formal film export. All formal review/sequence/movie rendering and MP4 verification remains in GitHub Actions. Downloaded AI clips are local repository inputs; no Google/Flow URL is resolved at render time.
+
 
 ## Original combined Blender shots in the active timeline
 

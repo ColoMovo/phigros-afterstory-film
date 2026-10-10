@@ -1,0 +1,10 @@
+{
+  "world": "new-dawn",
+  "origin": "Original Blender composition anchor",
+  "camera": "40mm, slow forward drift, stable horizon, small island lower centre, clouds at separate depths",
+  "text": "No readable text; added in Remotion",
+  "resolution": [
+    1920,
+    1080
+  ]
+}

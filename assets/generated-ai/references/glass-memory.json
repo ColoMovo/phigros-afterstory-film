@@ -1,0 +1,10 @@
+{
+  "world": "glass-memory",
+  "origin": "Original Blender composition anchor",
+  "camera": "25mm, low left start, stable horizon, forward dolly to upper-right white aperture; no orbit",
+  "text": "No readable text; added in Remotion",
+  "resolution": [
+    1920,
+    1080
+  ]
+}

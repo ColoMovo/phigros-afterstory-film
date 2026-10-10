@@ -8,7 +8,7 @@ movie=root/sys.argv[1];meta=json.loads(pathlib.Path(str(movie)+'.render.json').r
 shots=json.loads((root/'src/data/shots.json').read_text());rows=[]
 for anchor in shots:
  if anchor['shotType']!='ANCHOR' or anchor['start']<origin or anchor['end']>meta['sourceEnd']:continue
- group=[s for s in shots if s['anchorId']==anchor['anchorId'] and s['family'] in (anchor['family'],'sky' if anchor['family']=='release' else anchor['family'])]
+ group=[s for s in shots if s['anchorId']==anchor['anchorId']]
  spans=[(max(0,math.ceil((s['start']-origin)*fps-1e-7)),min(meta['frames']-1,math.ceil((s['end']-origin)*fps-1e-7)-1)) for s in group if s['start']<meta['sourceEnd']]
  spans=[(a,b) for a,b in spans if b>=a]
  if not spans:continue

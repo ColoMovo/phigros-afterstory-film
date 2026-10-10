@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "clips": [],
+  "rules": {
+    "origin": "Original prompts and original Blender first frames only",
+    "qualityGate": "First three worlds; no automatic expansion",
+    "music": "Generated sound is discarded; user original music unchanged"
+  }
+}

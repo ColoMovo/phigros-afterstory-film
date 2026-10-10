@@ -42,3 +42,10 @@ Verification checks H264 / AAC, dimensions, frame count, zero timestamps, full d
 This pass prioritizes world coverage and state changes. Further art-direction polish must be driven by actual CI frames and motion review; do not mistake scene-family names for proof of distinct visual states.
 
 Five combined Cycles shots are reconstructed from source in four seeded absolute frame ranges per shot. Preview uses 960×540, 8 samples; final uses 1920×1080, 16 samples, denoised. The job verifies every PNG and source fingerprint before encoding. `VISUAL-QA.md` records observed event failures and corrections. Stage contact sheets use four frames from each actual encoded independent anchor; there are 70 timed units and 37 anchors in this revision. No count is an artistic acceptance claim.
+
+## Editorial quality-floor revision
+
+See [EDITORIAL-REBUILD.md](EDITORIAL-REBUILD.md) for the revised music arc, continuous acts and judgment-line roles. Dispatch the `revised-preview` Actions target for the five requested editorial artifacts and the measured visual-activity/RMS chart. This review does not replace or claim acceptance of the previous native final.
+# Hybrid quality gate
+
+The first three original generative world tests, source provenance, offline integration and weak-shot replacement queue are described in [HYBRID_REBUILD.md](HYBRID_REBUILD.md). Passing asset checks does not assert that generated footage has passed visual review.

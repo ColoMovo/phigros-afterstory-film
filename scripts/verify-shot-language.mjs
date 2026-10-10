@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 const shots=JSON.parse(fs.readFileSync('src/data/shots.json'));
 const fields=['visualCategory','dominantPalette','materialIdentity','lightingIdentity','atmosphere','scaleRange','foregroundType','cameraBehavior','shotEvent','exitTransition'];
-for(const s of shots)for(const k of [...fields,'physicalIdea'])if(typeof s[k]!=='string'||!s[k].trim())throw Error(`Missing ${s.id} ${k}`);
+for(const s of shots)for(const k of [...fields,'physicalIdea','physicalFeeling'])if(typeof s[k]!=='string'||!s[k].trim())throw Error(`Missing ${s.id} ${k}`);
 const anchors=shots.filter(s=>s.shotType==='ANCHOR'),risks=[];
 for(let i=1;i<anchors.length;i++){
  const a=anchors[i-1],b=anchors[i];if(a.anchorId===b.anchorId)continue;

@@ -1,0 +1,10 @@
+{
+  "world": "red-machine",
+  "origin": "Original Blender composition anchor",
+  "camera": "24mm, forward tracking down the internal void, near-miss on left blade; stable roll and horizon",
+  "text": "No readable text; added in Remotion",
+  "resolution": [
+    1920,
+    1080
+  ]
+}

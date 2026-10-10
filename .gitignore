@@ -13,3 +13,6 @@ public/music.mp3
 assets/private-input/*.key
 public/memory/
 public/physical/
+
+public/generated-ai/
+assets/generated-ai/references/*.blend1

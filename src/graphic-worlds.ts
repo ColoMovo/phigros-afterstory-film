@@ -33,7 +33,7 @@ export function paintPrintWorld(x:CanvasRenderingContext2D,time:number,shot:Shot
   for(let i=0;i<3;i++){x.save();x.translate(-300+i*720+Math.sin(q*8+i)*90,770);x.transform(1,0,Math.sin(q*6+i)*.5,1,0,0);x.fillText((jp.replace(/[ 、。，]/g,'')||'時間')[i%Math.max(1,jp.length)]||'間',0,0);x.restore()}
   x.globalCompositeOperation='difference';x.fillStyle='#eeeae0';for(let i=0;i<6;i++)x.fillRect(0,90+i*150+Math.sin(q*17+i)*40,W,20+hash(i)*50);x.globalCompositeOperation='source-over';
  }else if(family==='poster'){
-  x.save();x.translate(960,540);x.rotate(-.2+q*.25);x.drawImage(im,-1250,-780,2500,1560);x.restore();x.fillStyle='#e02722';x.fillRect(W*.72,0,W*.28,H);x.fillStyle='#0c0c0b';x.font='620px Display';x.fillText('09',-70,900);
+  x.save();x.translate(960,540);x.rotate(-.2+q*.25);x.drawImage(im,-1250,-780,2500,1560);x.restore();x.fillStyle='#e02722';x.fillRect(W*.72,0,W*.28,H);x.fillStyle='#0c0c0b';x.font='620px Display';x.save();x.beginPath();x.rect(0,610,650,270);x.clip();x.fillText('09',-150,1050);x.restore();
  }else{
   // Large torn print planes and long opaque bars. Cropping is deliberate.
   const n=family==='exploded'?8:5;
@@ -42,7 +42,7 @@ export function paintPrintWorld(x:CanvasRenderingContext2D,time:number,shot:Shot
    x.save();x.translate(px,py);x.transform(1,Math.sin(i+q*6)*.08,(i%2?1:-1)*(.15+q*.25),1,0,0);x.rotate((i%2?1:-1)*(.07+q*.16));x.drawImage(plate(images,(i+tick)%7,(i+tick)%3===0),0,0,980,660);x.restore();
   }
   x.fillStyle=tick%3===0?'#21b895':'#111110';for(let i=0;i<4;i++)x.fillRect((i%2?1:-1)*q*420,80+i*230,W,20+hash(i+tick)*85);
-  x.fillStyle=tick%2?'#eeeae0':'#090909';x.font='360px Display';x.fillText(String(tick%9+1).padStart(2,'0'),1180,930);
+  x.fillStyle=tick%2?'#eeeae0':'#090909';x.font='360px Display';x.save();x.beginPath();x.rect(1380,700,540,240);x.clip();x.fillText(String(tick%9+1).padStart(2,'0'),1300,1070);x.restore();
  }
  // Photocopy grain and a large halftone field are in the image, not tiny labels.
  x.globalAlpha=.28;x.fillStyle=family==='typeworld'?'#e7f5e9':'#12110f';

@@ -1,4 +1,5 @@
-import fs from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
+import {execFileSync} from 'node:child_process';
+import fs from 'node:fs';import {createHash} from 'node:crypto';
 const items=JSON.parse(fs.readFileSync('assets/assets-manifest.json','utf8'));
 for(const item of items){if(!fs.existsSync(item.localPath))throw Error(`Missing ${item.localPath}`);const b=fs.readFileSync(item.localPath);if(createHash('sha256').update(b).digest('hex')!==item.sha256)throw Error(`Checksum mismatch: ${item.localPath}`);if(item.type==='font'&&b.toString('ascii',0,4)!=='wOF2')throw Error(`Invalid WOFF2: ${item.localPath}`);}
 const pipeline=process.argv.includes('--pipeline=blender')?'blender':'shot-library';
@@ -14,3 +15,5 @@ console.log(`Verified ${items.length} binary assets, ${lyrics.length} lyric line
 const shots=JSON.parse(fs.readFileSync('src/data/shots.json','utf8'));
 if(shots.length<30||shots[0].start!==0||Math.abs(shots.at(-1).end-a.duration)>1e-6||!shots.every((s,i)=>s.end>s.start&&(!i||Math.abs(s.start-shots[i-1].end)<1e-6)))throw Error('Invalid complete shot timeline');
 console.log(`Shot library: ${shots.length} timed shot units, ${new Set(shots.map(s=>s.world)).size} art-direction worlds. This is a structural check, not visual acceptance.`);
+
+execFileSync(process.execPath,['scripts/verify-ai-assets.mjs'],{stdio:'inherit'});

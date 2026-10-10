@@ -1,0 +1,18 @@
+{
+  "qualityGate": [
+    "glass-memory",
+    "red-machine",
+    "new-dawn"
+  ],
+  "outputsPerWorld": 1,
+  "requestedModel": "Veo 3.1 - Quality",
+  "aspectRatio": "16:9",
+  "actualUIInitialDuration": "8s",
+  "actualUIInitialResolution": "720p; inspect available upscale on download",
+  "maximumInitialGenerations": 3,
+  "prompts": {
+    "glass-memory": "assets/generated-ai/prompts/glass-memory.txt",
+    "red-machine": "assets/generated-ai/prompts/red-machine.txt",
+    "new-dawn": "assets/generated-ai/prompts/new-dawn.txt"
+  }
+}

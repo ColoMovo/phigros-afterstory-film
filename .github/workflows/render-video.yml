@@ -7,7 +7,7 @@ on:
         required: true
         default: opening-review
         type: choice
-        options: [smoke, physical-review, opening-review, opening, preview, final]
+        options: [smoke, physical-review, opening-review, opening, preview, revised-preview, hybrid-preview, final]
       opening_seconds:
         description: Opening review duration (12 to 58.315 seconds; ignored for other targets)
         required: false
@@ -154,7 +154,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
-          pip install numpy==2.2.6 pillow==11.3.0
+          pip install numpy==2.2.6 pillow==11.3.0 matplotlib==3.10.6
           npm ci --no-audit --no-fund
           npx remotion browser ensure
       - name: Restore cached original Blender shots
@@ -187,6 +187,8 @@ jobs:
         run: |
           case "$TARGET" in
             opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 && python scripts/review-anchors.py output/opening-review.mp4 ;;
+            hybrid-preview) python scripts/review-shots.py output/hybrid-preview.mp4 && python scripts/review-anchors.py output/hybrid-preview.mp4 && python scripts/review-editorial.py output/hybrid-preview.mp4 ;;
+            revised-preview) python scripts/review-shots.py output/revised-preview.mp4 && python scripts/review-anchors.py output/revised-preview.mp4 && python scripts/review-editorial.py output/revised-preview.mp4 ;;
             preview) python scripts/review-shots.py output/preview.mp4 && python scripts/review-anchors.py output/preview.mp4 ;;
             final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 ;;
           esac
@@ -211,6 +213,16 @@ jobs:
             output/blind-contact-sheet.jpg
             output/opening-keyframes/*.png
             output/opening-verification.json
+            output/hybrid-preview.mp4
+            output/hybrid-blind-contact-sheet.jpg
+            output/ai-asset-verification.json
+            output/revised-preview.mp4
+            output/final-build-review.mp4
+            output/ending-review.mp4
+            output/visual-activity.png
+            output/visual-activity.csv
+            output/editorial-review.json
+            output/*.mp4.render.json
             output/preview.mp4
             output/phigros-main-story-celebration.mp4
             output/contact-sheet.jpg
