@@ -11,7 +11,9 @@
     "glitchAllowance": "budget multiplier for optional space and graphic disruptions; existing short black punctuation keeps authored timing",
     "interpolation": "controls use absolute music time and linear interpolation between adjacent keyframes; section and shot labels remain categorical",
     "source": "Latest user emotional direction; existing shot boundaries and authored lyric timings. No automatic emotion inference from RMS.",
-    "verification": "Intent metadata does not confirm the rendered film satisfies this direction."
+    "verification": "Intent metadata does not confirm the rendered film satisfies this direction.",
+    "scaleLayers": "intended layers: cosmic / human / micro / graphic. Human may be anonymous architecture only. Presence must be checked in actual CI images and continuous movies.",
+    "recurringLeaf": "ONE original living motif with a shared translucent almond outline and one curved vein. Generic foliage, seed, water drop or particle is not proof of the recurring motif."
   },
   "sections": [
     {
@@ -204,7 +206,7 @@
       "warmth": 0.6,
       "openness": 0.97,
       "purpose": "只愿我们还能再相遇；第一次让观众感到舍不得。",
-      "visualEvent": "同一个残缺结构慢慢远去，距离成为事件。",
+      "visualEvent": "原创窗边空座位与同一片叶建立人类尺度；远处同一残缺物慢慢远去，叶从84.4开始离座。",
       "cameraIntent": "连续慢移，不增加随机insert。",
       "colorIntent": "pale blue、lavender、soft grey、非常淡的暖光。",
       "lifeIntent": "很少的光尘与柔风；物体远去不等于死亡。"
@@ -219,7 +221,7 @@
       "warmth": 0.57,
       "openness": 0.98,
       "purpose": "两个部分分开，但仍然共享曾经的形状与方向。",
-      "visualEvent": "结构分向两侧；歌词安静停留，不被攻击层盖掉。",
+      "visualEvent": "同一窗边空间与远方残缺物保持连续；结构分向两侧，唯一叶沿风漂离，歌词安静停留。",
       "cameraIntent": "慢下来观察距离扩大，保持同一离别空间。",
       "colorIntent": "淡紫与灰蓝；少量暖白在分离边缘。",
       "lifeIntent": "细叶或光粒子连接一瞬，然后轻轻散开。"
@@ -234,7 +236,7 @@
       "warmth": 0.64,
       "openness": 0.97,
       "purpose": "空下来以后仍有一点回应，离别不是绝望。",
-      "visualEvent": "裂口成为地平线，小光点逐渐回应。",
+      "visualEvent": "同一叶93.8–96.7淡出，座位留作缺席；裂口成为地平线，小光点回应。",
       "cameraIntent": "缓慢向光靠近，98秒前准备前进方向。",
       "colorIntent": "开阔蓝白与微暖地平线，避免冰冷shader示例。",
       "lifeIntent": "一粒像种子的光保持生命；微风持续。"
@@ -354,10 +356,10 @@
       "warmth": 0.84,
       "openness": 1.0,
       "purpose": "低语着离去，但留下的世界继续呼吸。",
-      "visualEvent": "岛屿与新叶可生长，旧章节逐一熄灭，09保持纪念感。",
+      "visualEvent": "同一天空与岛延续；旧章节依次熄灭。149.15后一个可以生活的小平台、空座位与同形叶从远处显现，门轻轻打开。",
       "cameraIntent": "慢前移；保留岛屿身份，不再次montage。",
       "colorIntent": "天空蓝、暖白、少量绿色或柔紫；叶片集中主色。",
-      "lifeIntent": "风、云与水的细动持续，新叶展开是真正事件。"
+      "lifeIntent": "风、云、水轻动；终景同形叶静放并受微风，是否能读成未来需实际CI确认，不宣称新芽展开。"
     },
     {
       "id": "memorial-to-light",
@@ -823,7 +825,20 @@
         "continuity": "微小向前位移，视线有目的地等待裂口。",
         "mustNotBecome": "system failure / archive shutdown / digital death"
       },
-      "lyricContext": []
+      "lyricContext": [],
+      "scaleLayers": [
+        "cosmic",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "02",
@@ -844,7 +859,19 @@
         "continuity": "沿缝隙继续，不重置视角。",
         "mustNotBecome": "system failure / archive shutdown / digital death"
       },
-      "lyricContext": []
+      "lyricContext": [],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "03",
@@ -871,7 +898,19 @@
           "jp": "夜明けに祈る，寂の拡げる空",
           "zh": "想黎明许愿，寂静漫过天空"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "04",
@@ -903,7 +942,19 @@
           "jp": "無音が 闇かに囁かけていた",
           "zh": "无声在暗处，正要低语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "05",
@@ -930,7 +981,27 @@
           "jp": "無音が 闇かに囁かけていた",
           "zh": "无声在暗处，正要低语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-first-glimpse",
+        "role": "同一片叶从Camera前掠过；巨构旅程中第一次微观生命相遇",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/opening-passage.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          9.7,
+          10.42
+        ],
+        "evidence": "makeMemoryLeaf; passingLeaf is visible only 9.7–10.42 and remains 29 scene units ahead of the absolute-time opening camera",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "06",
@@ -957,7 +1028,19 @@
           "jp": "無音が 闇かに囁かけていた",
           "zh": "无声在暗处，正要低语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "07",
@@ -984,7 +1067,20 @@
           "jp": "無音が 闇かに囁かけていた",
           "zh": "无声在暗处，正要低语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "08",
@@ -1011,7 +1107,19 @@
           "jp": "無音が 闇かに囁かけていた",
           "zh": "无声在暗处，正要低语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "09",
@@ -1038,7 +1146,20 @@
           "jp": "忘れたくなぃ時間の約束に",
           "zh": "不愿遗忘的时光之约"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "10",
@@ -1065,7 +1186,19 @@
           "jp": "忘れたくなぃ時間の約束に",
           "zh": "不愿遗忘的时光之约"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "11",
@@ -1092,7 +1225,20 @@
           "jp": "忘れたくなぃ時間の約束に",
           "zh": "不愿遗忘的时光之约"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "12",
@@ -1119,7 +1265,19 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "13",
@@ -1146,7 +1304,19 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "14",
@@ -1173,7 +1343,20 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "15",
@@ -1200,7 +1383,19 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "16",
@@ -1227,7 +1422,20 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "17",
@@ -1235,8 +1443,8 @@
       "end": 29.2,
       "sectionId": "memories-rush-back",
       "emotion": "memory / longing",
-      "emotionPurpose": "很多年同时涌回来，不是数据库在清空。",
-      "eventIntent": "旧图形碎片像光中的回忆奔涌；删去archive shutdown气质。",
+      "emotionPurpose": "回忆里不只有巨构：一个空位像有人曾在这里等待，同一片叶留下柔软、具体的陪伴痕迹。",
+      "eventIntent": "近纸被统一风向揭开；固定中景纸内的原创空窗边长椅与一片半透明叶显现。数字负空间之后继续回到巨大空间，不做冷扫描或随机换图。",
       "intended": {
         "energy": 0.72,
         "visualDensity": 0.83,
@@ -1254,7 +1462,28 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic",
+        "human",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-human-memory",
+        "role": "空窗边的叶把抽象记忆拉回等待与陪伴的人类尺度",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/archive-art.ts",
+          "src/graphic-worlds.ts"
+        ],
+        "time": [
+          26.9,
+          29.2
+        ],
+        "evidence": "archive image index2 is an original empty window-side bench with paintMemoryLeaf. It is now the 1550px middle-distance paper; the 01 near paper peels left/up to uncover it. Current visibility still needs a new development still and CI movie.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "18",
@@ -1281,7 +1510,20 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "19",
@@ -1308,7 +1550,19 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "20",
@@ -1335,7 +1589,20 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic",
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "21",
@@ -1362,7 +1629,19 @@
           "jp": "约束に震ゎせた心",
           "zh": "让心颤抖之今"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "22",
@@ -1394,7 +1673,20 @@
           "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
           "zh": "总追忆逝去的“时间”总在追忆"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic",
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "23",
@@ -1421,7 +1713,27 @@
           "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
           "zh": "总追忆逝去的“时间”总在追忆"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-in-glass",
+        "role": "同一叶以半透明玻璃印记保存旧光与记忆",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/paint.ts",
+          "src/archive-art.ts"
+        ],
+        "time": [
+          34,
+          36.75
+        ],
+        "evidence": "photoPlate branch clips paintMemoryLeaf to a moving upper-glass polygon; authored fade 34.2–34.6 and 36.15–36.55. paintMemoryLeaf now respects inherited alpha. This is an authored glass impression, not an AI edit of the source video.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "24",
@@ -1448,7 +1760,19 @@
           "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
           "zh": "总追忆逝去的“时间”总在追忆"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "25",
@@ -1480,7 +1804,19 @@
           "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
           "zh": "快被叹息淹没的“时间”快看不清"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "26",
@@ -1507,7 +1843,20 @@
           "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
           "zh": "快被叹息淹没的“时间”快看不清"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro",
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "27",
@@ -1534,7 +1883,19 @@
           "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
           "zh": "快被叹息淹没的“时间”快看不清"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "28",
@@ -1566,7 +1927,20 @@
           "jp": "天柱1つずつ次へ次へついていく",
           "zh": "天柱一根又一根，走向下一根，再下一根"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "29",
@@ -1593,7 +1967,19 @@
           "jp": "天柱1つずつ次へ次へついていく",
           "zh": "天柱一根又一根，走向下一根，再下一根"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "30",
@@ -1620,7 +2006,19 @@
           "jp": "天柱1つずつ次へ次へついていく",
           "zh": "天柱一根又一根，走向下一根，再下一根"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "31",
@@ -1647,7 +2045,19 @@
           "jp": "天柱1つずつ次へ次へついていく",
           "zh": "天柱一根又一根，走向下一根，再下一根"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "32",
@@ -1679,7 +2089,19 @@
           "jp": "たらればもう たらればもう",
           "zh": "//"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "33",
@@ -1706,7 +2128,19 @@
           "jp": "たらればもう たらればもう",
           "zh": "//"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "34",
@@ -1738,7 +2172,19 @@
           "jp": "意不の僕らがさ叫ぶよ",
           "zh": "倘若命运逆意，我们便呼喊"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "35",
@@ -1765,7 +2211,20 @@
           "jp": "意不の僕らがさ叫ぶよ",
           "zh": "倘若命运逆意，我们便呼喊"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "micro",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "36",
@@ -1797,7 +2256,20 @@
           "jp": "変わらない 代ゎらない 理解らない",
           "zh": "什么都未曾改变，若无可替代，无法理解"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "37",
@@ -1824,7 +2296,19 @@
           "jp": "変わらない 代ゎらない 理解らない",
           "zh": "什么都未曾改变，若无可替代，无法理解"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "38",
@@ -1856,7 +2340,19 @@
           "jp": "じゃあ空くて",
           "zh": "便只剩空虚"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "39",
@@ -1883,7 +2379,19 @@
           "jp": "じゃあ空くて",
           "zh": "便只剩空虚"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "40",
@@ -1910,7 +2418,19 @@
           "jp": "じゃあ空くて",
           "zh": "便只剩空虚"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "41",
@@ -1937,7 +2457,19 @@
           "jp": "じゃあ空くて",
           "zh": "便只剩空虚"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "42",
@@ -1964,7 +2496,19 @@
           "jp": "天使の梯子を探した",
           "zh": "于是我寻找天使的阶梯"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "43",
@@ -1996,7 +2540,19 @@
           "jp": "じゃがれた声 摇れ上擦る",
           "zh": "嘶哑的声音，颤抖着拔高"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "44",
@@ -2028,7 +2584,19 @@
           "jp": "一方通行の道程で贈れ往くよさが",
           "zh": "在单向旅途上，一路赠与的美好"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "45",
@@ -2055,7 +2623,19 @@
           "jp": "一方通行の道程で贈れ往くよさが",
           "zh": "在单向旅途上，一路赠与的美好"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "46",
@@ -2087,7 +2667,19 @@
           "jp": "春風へ奪われた言葉",
           "zh": "在那些被春风夺走的话语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "47",
@@ -2114,7 +2706,19 @@
           "jp": "春風へ奪われた言葉",
           "zh": "在那些被春风夺走的话语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "48",
@@ -2146,7 +2750,19 @@
           "jp": "背中合わせ伝えた言葉",
           "zh": "那些背靠着背传达的话语"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "49",
@@ -2154,8 +2770,8 @@
       "end": 86,
       "sectionId": "farewell-body",
       "emotion": "farewell / longing",
-      "emotionPurpose": "只愿再相遇：舍不得的是一路相伴的形状。",
-      "eventIntent": "同一残缺物慢慢远去；不要加随机mini object与字体攻击。",
+      "emotionPurpose": "只愿再相遇：空位暗示曾经的陪伴，宇宙距离让舍不得变得具体。",
+      "eventIntent": "以原创窗边空座位和同一片叶建立人类尺度；窗外同一巨大残缺物远去，叶从84.4开始慢慢离座。",
       "intended": {
         "energy": 0.28,
         "visualDensity": 0.23,
@@ -2173,7 +2789,28 @@
           "jp": "そしてまた，出会えますように",
           "zh": "「只愿我们还能再相遇」"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "human",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-farewell",
+        "role": "空座位与遥远巨构同处一场离别，唯一微观叶从座位漂走",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          78.299,
+          98.076
+        ],
+        "evidence": "farewellWorld creates waitingPlace(room=true) and rememberedLeaf on its empty seat; leaf drifts 84.4–94.2 and fades 93.8–96.7 while the distant relic separates. Room proportions use metres.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "51",
@@ -2182,7 +2819,7 @@
       "sectionId": "separation",
       "emotion": "loneliness / affection",
       "emotionPurpose": "两部分拥有共同过去，如今分向两边。",
-      "eventIntent": "分离缓慢而可见，字安静停留，让距离成为动作。",
+      "eventIntent": "同一窗边空间里，远方残缺物分向两侧，叶继续沿一条风向漂离；字安静停留，不增加插入物。",
       "intended": {
         "energy": 0.23,
         "visualDensity": 0.19,
@@ -2200,7 +2837,27 @@
           "jp": "そしてまた，出会えますように",
           "zh": "「只愿我们还能再相遇」"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "human",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-farewell",
+        "role": "空座位与遥远巨构同处一场离别，唯一微观叶从座位漂走",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          78.299,
+          98.076
+        ],
+        "evidence": "farewellWorld creates waitingPlace(room=true) and rememberedLeaf on its empty seat; leaf drifts 84.4–94.2 and fades 93.8–96.7 while the distant relic separates. Room proportions use metres.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "55",
@@ -2209,7 +2866,7 @@
       "sectionId": "hope-in-absence",
       "emotion": "absence / hope",
       "emotionPurpose": "留白让缺席可以被感受，而微光让未来仍存在。",
-      "eventIntent": "分裂线转为地平线，一个微光先响应。",
+      "eventIntent": "同一叶93.8–96.7逐渐淡出，座位仍留下；远方结构成为缺席，地平线微光回应。",
       "intended": {
         "energy": 0.29,
         "visualDensity": 0.17,
@@ -2227,7 +2884,27 @@
           "jp": "そしてまた，出会えますように",
           "zh": "「只愿我们还能再相遇」"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "human",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-farewell",
+        "role": "空座位与遥远巨构同处一场离别，唯一微观叶从座位漂走",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          78.299,
+          98.076
+        ],
+        "evidence": "farewellWorld creates waitingPlace(room=true) and rememberedLeaf on its empty seat; leaf drifts 84.4–94.2 and fades 93.8–96.7 while the distant relic separates. Room proportions use metres.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "56",
@@ -2254,7 +2931,19 @@
           "jp": "回答の無い岐道の前",
           "zh": "没有回答的岔路前"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "57",
@@ -2286,7 +2975,20 @@
           "jp": "あの清月の下に今もわらないままで",
           "zh": "在那清月之下，我至今仍不明白"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "human"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "58",
@@ -2318,7 +3020,20 @@
           "jp": "変わらない 代ゎらない 理解らない",
           "zh": "未曾改变，无可替代，无法理解"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "59",
@@ -2350,7 +3065,19 @@
           "jp": "じゃあいられなくて",
           "zh": "那便无法停留"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "60",
@@ -2359,7 +3086,7 @@
       "sectionId": "coming-home",
       "emotion": "belonging / reunion",
       "emotionPurpose": "寻找归处：一路见过的世界开始朝同一个地方走。",
-      "eventIntent": "壳、岛、玻璃复用旧身份与颜色，流向共同暖光。",
+      "eventIntent": "旧球壳、岛与玻璃向共同暖光前进；115.45–116.05空座位回忆、117.1–117.65玻璃内同一叶短暂闪回，保留原Shot与camera。",
       "intended": {
         "energy": 0.9,
         "visualDensity": 0.86,
@@ -2377,7 +3104,28 @@
           "jp": "帰属の行方を探した",
           "zh": "于是我寻找归处"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "human",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "human-and-glass-memory-recap",
+        "role": "汇聚前短暂回想空座位与玻璃中同一叶，随后回到巨大共同去处",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          115.45,
+          117.65
+        ],
+        "evidence": "waitingMemory visible 115.45–116.05; glassMemory with enclosedLeaf visible 117.1–117.65. Both are placed along the current camera and fade in/out without new shot boundaries.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "61",
@@ -2386,7 +3134,7 @@
       "sectionId": "coming-home",
       "emotion": "reunion / gratitude",
       "emotionPurpose": "时间层层叠叠，过去不是被丢弃而是被带回家。",
-      "eventIntent": "叶、纤维、水与硬碎片共用前进轴，不能随机object overload。",
+      "eventIntent": "118.1同一叶沿Camera前方归来；121开始中脉方向拉伸，连接判定平面，叶、纤维与硬结构共用前进轴。",
       "intended": {
         "energy": 0.9,
         "visualDensity": 0.86,
@@ -2409,7 +3157,27 @@
           "jp": "“時間”を積み重ねた悲斗",
           "zh": "在“时间”层层叠叠得悲斗之中"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-becomes-line",
+        "role": "同一叶的中脉沿归处展开，生命记忆与Judgement Line相连",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          118.1,
+          123.4
+        ],
+        "evidence": "convergenceWorld returningLeaf follows the absolute camera; 121–122.5 its width/depth contract while its long axis expands and rotates into the judgement plane. It fades 122.8–123.4.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "62",
@@ -2418,7 +3186,7 @@
       "sectionId": "all-the-years",
       "emotion": "gratitude / bittersweet joy",
       "emotionPurpose": "九章是共同走过的年月，熄灭也可以是释然。",
-      "eventIntent": "01–09先被读清，再让01–08依次归入目的地；不变注销列表。",
+      "eventIntent": "01–09先被读清；同一叶的中脉完成判定线连接后122.8–123.4退去，01–08随后依次归入目的地。",
       "intended": {
         "energy": 0.94,
         "visualDensity": 0.91,
@@ -2446,7 +3214,27 @@
           "jp": "洪星の1つに 僕の咆哮",
           "zh": "向着一颗洪星，发出我的咆哮"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-becomes-line",
+        "role": "同一叶的中脉沿归处展开，生命记忆与Judgement Line相连",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          118.1,
+          123.4
+        ],
+        "evidence": "convergenceWorld returningLeaf follows the absolute camera; 121–122.5 its width/depth contract while its long axis expands and rotates into the judgement plane. It fades 122.8–123.4.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "64",
@@ -2478,7 +3266,19 @@
           "jp": "最後まで",
           "zh": "直到最后"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "66",
@@ -2505,7 +3305,19 @@
           "jp": "最後まで",
           "zh": "直到最后"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "67",
@@ -2532,7 +3344,20 @@
           "jp": "残酷で幸福な結末を 生きてぃる",
           "zh": "残酷而又幸福的结局，我正生活在其中"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "cosmic",
+        "human"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "68",
@@ -2541,7 +3366,7 @@
       "sectionId": "after-story-life",
       "emotion": "life / hope / gentle farewell",
       "emotionPurpose": "低语告别之后，风还在吹，新叶仍会长。",
-      "eventIntent": "岛保持同一身份；01–08灭、09成光；云、叶、水轻微持续运动。",
+      "eventIntent": "同一岛与天空保持身份；01–08熄灭、09成光。149.15后原创小平台、空座位与同一叶从远方显现，门轻轻打开；不把静放叶宣称已验证的新芽展开。",
       "intended": {
         "energy": 0.56,
         "visualDensity": 0.36,
@@ -2564,7 +3389,28 @@
           "jp": "君を囁き去りに",
           "zh": "低语着，离你而去"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "human",
+        "cosmic",
+        "micro"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "leaf-new-growth",
+        "role": "同一叶留在可以生活的终景座位，风还在吹，门后仍有未来",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "time": [
+          149.15,
+          151.4
+        ],
+        "evidence": "evolvingDawn creates an irregular weathered mineral home platform, an empty seat, one resting canonical lastLeaf, and a canonical newLeaf on a fine stem. Home fades in 149.15–150.6 after clean Dawn A releases. newLeaf unfurls 149.2–151.25; door opens 50 degrees 150–151.35. Camera settles outside at 1.7m above the platform by 151.4.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      }
     },
     {
       "shotId": "69",
@@ -2591,7 +3437,19 @@
           "jp": "君を囁き去りに",
           "zh": "低语着，离你而去"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     },
     {
       "shotId": "70",
@@ -2618,7 +3476,19 @@
           "jp": "君を囁き去りに",
           "zh": "低语着，离你而去"
         }
-      ]
+      ],
+      "scaleLayers": [
+        "graphic"
+      ],
+      "scaleLayerState": "intended directorial contrast; an array does not prove the layers are visible in a render",
+      "recurringLeaf": {
+        "id": "THE_LEAF",
+        "role": "not scheduled as the focal recurring leaf; existing general foliage is not automatically this motif",
+        "state": "not-scheduled",
+        "implementationFiles": [],
+        "time": [],
+        "renderVerification": "not applicable"
+      }
     }
   ],
   "reviewRules": {
@@ -2657,5 +3527,140 @@
       "Existing final build contains long dark enclosing geometry; warm seams and open sky must be visible events, not labels.",
       "No program can verify longing, warmth, or relief by a numeric pass threshold."
     ]
+  },
+  "recurringLeaf": {
+    "id": "THE_LEAF",
+    "identity": "two pointed ends; slightly asymmetric translucent almond body; one curved vein; grey-green and warm-white reflected light",
+    "canonicalCode": [
+      "src/emotion-direction.ts:memoryLeafGeometry",
+      "src/emotion-direction.ts:makeMemoryLeaf",
+      "src/archive-art.ts:paintMemoryLeaf"
+    ],
+    "checkpoints": [
+      {
+        "id": "leaf-first-glimpse",
+        "time": [
+          9.7,
+          10.42
+        ],
+        "role": "同一片叶从Camera前掠过；巨构旅程中第一次微观生命相遇",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/opening-passage.ts",
+          "src/emotion-direction.ts"
+        ],
+        "evidence": "makeMemoryLeaf; passingLeaf is visible only 9.7–10.42 and remains 29 scene units ahead of the absolute-time opening camera",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "leaf-human-memory",
+        "time": [
+          26.9,
+          29.2
+        ],
+        "role": "空窗边的叶把抽象记忆拉回等待与陪伴的人类尺度",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/archive-art.ts",
+          "src/graphic-worlds.ts"
+        ],
+        "evidence": "archive image index2 is an original empty window-side bench with paintMemoryLeaf. It is now the 1550px middle-distance paper; the 01 near paper peels left/up to uncover it. Current visibility still needs a new development still and CI movie.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "leaf-in-glass",
+        "time": [
+          34,
+          36.75
+        ],
+        "role": "同一叶以半透明玻璃印记保存旧光与记忆",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/paint.ts",
+          "src/archive-art.ts"
+        ],
+        "evidence": "photoPlate branch clips paintMemoryLeaf to a moving upper-glass polygon; authored fade 34.2–34.6 and 36.15–36.55. paintMemoryLeaf now respects inherited alpha. This is an authored glass impression, not an AI edit of the source video.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "leaf-farewell",
+        "time": [
+          78.299,
+          98.076
+        ],
+        "role": "空座位与遥远巨构同处一场离别，唯一微观叶从座位漂走",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "evidence": "farewellWorld creates waitingPlace(room=true) and rememberedLeaf on its empty seat; leaf drifts 84.4–94.2 and fades 93.8–96.7 while the distant relic separates. Room proportions use metres.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "human-and-glass-memory-recap",
+        "time": [
+          115.45,
+          117.65
+        ],
+        "role": "汇聚前短暂回想空座位与玻璃中同一叶，随后回到巨大共同去处",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "evidence": "waitingMemory visible 115.45–116.05; glassMemory with enclosedLeaf visible 117.1–117.65. Both are placed along the current camera and fade in/out without new shot boundaries.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "leaf-becomes-line",
+        "time": [
+          118.1,
+          123.4
+        ],
+        "role": "同一叶的中脉沿归处展开，生命记忆与Judgement Line相连",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "evidence": "convergenceWorld returningLeaf follows the absolute camera; 121–122.5 its width/depth contract while its long axis expands and rotates into the judgement plane. It fades 122.8–123.4.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance"
+      },
+      {
+        "id": "leaf-new-growth",
+        "time": [
+          149.15,
+          151.4
+        ],
+        "role": "同一叶留在可以生活的终景座位，风还在吹，门后仍有未来",
+        "state": "implemented-in-code",
+        "implementationFiles": [
+          "src/editorial-worlds.ts",
+          "src/emotion-direction.ts"
+        ],
+        "evidence": "evolvingDawn creates an irregular weathered mineral home platform, an empty seat, one resting canonical lastLeaf, and a canonical newLeaf on a fine stem. Home fades in 149.15–150.6 after clean Dawn A releases. newLeaf unfurls 149.2–151.25; door opens 50 degrees 150–151.35. Camera settles outside at 1.7m above the platform by 151.4.",
+        "renderVerification": "pending current CI continuous review; code is not visual acceptance",
+        "eventLimitation": "Canonical new growth is implemented as an actual absolute-time leaf scale and orientation event, but its visibility and emotional pacing remain pending actual CI movie inspection."
+      }
+    ],
+    "closureState": "canonical leaf checkpoints are implemented in code, including glass impression, human farewell, vein expansion, and final home; visibility, continuity, emotional closure, and any new-growth claim remain pending actual CI review",
+    "mustNotAdd": "more recurring object categories or a substitute for an official character",
+    "reviewLimitations": [
+      "The old 27.6 development still obscured the bench. The updated development still now shows the window, bench and leaf as the main paper image; actual CI continuity still needs review.",
+      "Code implementation and named states do not establish that a small leaf can be perceived at 540p or 1080p in motion.",
+      "Final home now includes canonical newLeaf unfurling on a stem; implementation and development stills cannot establish continuous-film emotional closure."
+    ]
+  },
+  "referenceRestrictions": {
+    "referenceFile": "42396221991-1-192.mp4",
+    "scope": "VISUAL / EMOTIONAL / EDITORIAL REFERENCE ONLY",
+    "prohibited": [
+      "direct footage or screenshots in the final render",
+      "direct repainting or shot-for-shot reconstruction",
+      "uploading the recording for video-to-video replication",
+      "official character imitation or canon identity fabrication"
+    ],
+    "productionAssets": "original procedural places and original leaf only; reference does not provide reusable assets"
   }
 }

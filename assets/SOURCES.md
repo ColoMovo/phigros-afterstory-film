@@ -88,4 +88,4 @@ The 2026-10-10 emotional pass additionally archives `glass-memory-v03-emotion`, 
 
 ### Dawn human-scale edit candidate
 
-`WORLD_DAWN_V03_HUMAN.mp4` is an original Flow Omni 1.1 Flash edit of our own generated Dawn Camera A source. It adds a small empty landing, seat, rail and doorway, retaining a quiet sky composition. The player recording was not uploaded, traced or used as video input. Exact source SHA256 and prompt are recorded in the manifest; generated audio is discarded. Pending actual Actions comparison review, the timeline still uses Dawn A.
+`WORLD_DAWN_V03_HUMAN.mp4` is an original Flow Omni 1.1 Flash edit of our own generated Dawn Camera A source. It adds a small empty landing, seat, rail and doorway, retaining a quiet sky composition. The player recording was not uploaded, traced or used as video input. Exact source SHA256 and prompt are recorded in the manifest; generated audio is discarded. Actual Actions comparison 38062649505 showed the added architecture, but also unsolicited corner lettering and a changed leaf. The candidate is rejected; the timeline continues to use clean Dawn A and our native human-scale platform.

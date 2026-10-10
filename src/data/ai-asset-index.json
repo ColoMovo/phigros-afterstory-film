@@ -13,11 +13,11 @@
     "duration": 8,
     "sha256": "c8f2b95d0edc394a32d0d0697e64513164269ca5bb1d0e781a3f0563904dffbe"
   },
-  "glass-memory-v02-material": {
-    "file": "generated-ai/glass-memory-v02-material.mp4",
+  "glass-memory-v03-emotion": {
+    "file": "generated-ai/glass-memory-v03-emotion.mp4",
     "width": 1280,
     "height": 720,
     "duration": 8,
-    "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc"
+    "sha256": "8ff7093e65a98573ea35f01fdda6ddb04053f48152bfb4e3723a1935428c0e0e"
   }
 }

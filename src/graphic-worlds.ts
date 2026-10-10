@@ -35,13 +35,16 @@ function paintRememberedJourney(x:CanvasRenderingContext2D,time:number,shot:Shot
  // scan-line. Changing the foreground discovers more of the same old light.
  x.save();x.globalAlpha=.63;x.drawImage(images[6],-60-wind*8,-100,2100,1400);x.restore();
  if(shot.family==='memory'){
-  rememberedPaper(x,images,3,1490+q*80,160-q*35,650,-.18+q*.06,.24);
-  rememberedPaper(x,images,1,1200+q*100,650-q*100,880,.15+q*.08,.35);
-  rememberedPaper(x,images,2,520+q*230,530-q*75,1160,-.08+q*.13,.4);
+  rememberedPaper(x,images,3,1610+q*80,140-q*35,580,-.18+q*.06,.24);
+  rememberedPaper(x,images,1,1670+q*90,760-q*100,690,.15+q*.08,.35);
+  // The waiting-place sheet is the middle-distance subject, not a small card
+  // buried under the monumental doorway. Window, empty seat and leaf must be
+  // readable once the near paper lifts, even at the 540p preview size.
+  rememberedPaper(x,images,2,1030+q*45,540-q*25,1550,-.045+q*.06,.28);
   // The near sheet peels out of the frame. Its opening reveals the road and
   // living branch already present beneath it, instead of adding a new object.
   const peel=q*q*(3-2*q);
-  rememberedPaper(x,images,0,180+peel*1730,510-peel*710,1510,-.21+peel*.73,.15+peel*.8);
+  rememberedPaper(x,images,0,180-peel*1300,510-peel*720,1510,-.21+peel*.43,.15+peel*.8);
  }else if(shot.family==='poster'){
   // Brief flat reprint: strong ink silhouette, small rose paper edge. The
   // source stays fixed while the paper turns in the same wind direction.

@@ -266,10 +266,12 @@
       "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
       "identification": "Flow history thumbnail adjacent to the recorded human-scale refinement prompt; exported using its own Download control",
       "world": "new-dawn",
-      "status": "pending-ci-review",
+      "status": "rejected-visual-test",
       "optional": true,
       "inputMode": "existing-video-edit",
-      "usageNotes": "Original generated Dawn A source only. Adds an empty human-scale landing, seat, rail and doorway. No game recording, game asset or third-party image used as input. Candidate is not selected before actual Actions comparison review."
+      "usageNotes": "Original generated source only, no player recording input. Retained as a rejected world-detail test; generated audio discarded and no source interval enters the film.",
+      "reviewRun": 38062649505,
+      "visualDecision": "Actual Actions before/after samples at 0.3, 2, 4 and 7.6 seconds show a coherent added seat/rail/door on the same sky island, but also unsolicited readable corner text and a changed large leaf. Do not select this candidate. Keep the clean Dawn A source and precise native human-scale architecture."
     }
   ],
   "rules": {

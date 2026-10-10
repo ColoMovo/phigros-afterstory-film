@@ -1,5 +1,16 @@
 // Original cut-paper places remembered along a journey. No illustration,
 // official UI, logo, character, screenshot or PV frame is sampled here.
+// The original recurring leaf has two pointed ends, a slightly asymmetric
+// translucent body and one curved vein. It is a memory anchor, not an icon.
+export function paintMemoryLeaf(x:CanvasRenderingContext2D,px:number,py:number,length:number,turn=0){
+ x.save();const inheritedAlpha=x.globalAlpha;x.translate(px,py);x.rotate(turn);x.scale(length/100,length/100);
+ x.globalAlpha=inheritedAlpha*.7;const body=x.createLinearGradient(-23,12,21,-18);body.addColorStop(0,'#bacdc5');body.addColorStop(.54,'#e3ddba');body.addColorStop(1,'#b7cec9');x.fillStyle=body;
+ // Same normalized outline as emotion-direction.memoryLeafGeometry. The
+ // paper impression changes medium without inventing a second living symbol.
+ x.beginPath();for(let i=0;i<=24;i++){const u=i/24,half=Math.sin(u*Math.PI)*(1-u*.12),px=-half*.45*50,py=(u-.5)*100;i?x.lineTo(px,py):x.moveTo(px,py)}for(let i=24;i>=0;i--){const u=i/24,half=Math.sin(u*Math.PI)*(1-u*.12);x.lineTo(half*.45*50,(u-.5)*100)}x.closePath();x.fill();
+ x.globalAlpha=inheritedAlpha*.62;x.strokeStyle='#778e84';x.lineWidth=1.3;x.beginPath();x.moveTo(0,48);x.bezierCurveTo(1.1,18,1.1,-18,0,-48);x.stroke();
+ x.restore();
+}
 export async function createArchiveImages():Promise<HTMLImageElement[]>{
  return Promise.all(Array.from({length:7},async(_,i)=>{
   const c=document.createElement('canvas');c.width=1200;c.height=800;const x=c.getContext('2d')!;
@@ -17,9 +28,22 @@ export async function createArchiveImages():Promise<HTMLImageElement[]>{
    shape([[238,62],[833,91],[855,181],[268,145]]);
   }else if(i===1){ // A stair receding into light.
    for(let j=0;j<9;j++){const u=j/8,w=140+u*320,y=287+j*43;shape([[680-w/2,y],[680+w/2,y],[670+w/2,y+26],[667-w/2,y+26]],j%2?accent:ink)}
-  }else if(i===2){ // A broken bridge preserves the direction of travel.
-   shape([[0,328],[500,399],[542,458],[0,412]]);shape([[656,419],[1200,288],[1200,380],[700,475]]);
-   shape([[248,399],[303,414],[260,720],[215,725]]);shape([[964,352],[1012,340],[1089,689],[1035,702]]);
+  }else if(i===2){ // Original human-scale waiting place; no reference frame is copied.
+   x.fillStyle='#ece8de';x.fillRect(0,0,1200,800);
+   const morning=x.createLinearGradient(0,55,0,400);morning.addColorStop(0,'#c3d4db');morning.addColorStop(.7,'#f8f3e6');morning.addColorStop(1,'#ead7c3');x.fillStyle=morning;x.fillRect(270,45,930,363);
+   // An ordinary window opens onto an impossible, distant horizon. The bench
+   // proportions make the empty place livable before the cosmic view returns.
+   shape([[270,307],[493,295],[699,308],[946,290],[1200,301],[1200,314],[270,318]],'#9cacb3');
+   shape([[757,247],[836,235],[875,251],[862,262],[789,268]],'#b3bdbe');
+   shape([[250,20],[284,20],[284,447],[250,470]]);shape([[713,45],[731,45],[731,408],[713,408]]);
+   shape([[266,400],[1200,400],[1200,418],[255,436]]);
+   shape([[334,419],[1010,419],[721,800],[0,800]],'#f8f1df');
+   // A single empty seat, shown close enough to suggest the person who left it.
+   shape([[334,420],[873,420],[873,498],[334,498]]);
+   shape([[323,511],[885,511],[945,543],[372,546]],'#48525a');
+   shape([[377,545],[398,545],[392,662],[371,670]]);shape([[858,543],[878,543],[913,644],[892,649]]);
+   shape([[372,680],[998,655],[1027,675],[383,702]],'#d9cfc1');
+   paintMemoryLeaf(x,692,529,74,.95);
   }else if(i===3){ // Growth beside an old structure.
    shape([[89,742],[150,78],[285,36],[338,685]]);
    x.strokeStyle=ink;x.lineWidth=18;x.beginPath();x.moveTo(746,686);x.bezierCurveTo(749,461,646,403,696,139);x.stroke();

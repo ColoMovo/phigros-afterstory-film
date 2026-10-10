@@ -190,7 +190,7 @@ jobs:
             hybrid-preview) python scripts/review-shots.py output/hybrid-preview.mp4 && python scripts/review-anchors.py output/hybrid-preview.mp4 && python scripts/review-editorial.py output/hybrid-preview.mp4 ;;
             revised-preview) python scripts/review-shots.py output/revised-preview.mp4 && python scripts/review-anchors.py output/revised-preview.mp4 && python scripts/review-editorial.py output/revised-preview.mp4 ;;
             preview) python scripts/review-shots.py output/preview.mp4 && python scripts/review-anchors.py output/preview.mp4 ;;
-            final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 ;;
+            final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 && python scripts/review-editorial.py output/phigros-main-story-celebration.mp4 ;;
           esac
       - name: Package source attribution and shot manifest
         run: |

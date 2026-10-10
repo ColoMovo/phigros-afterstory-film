@@ -8,6 +8,7 @@ const hasAiDawn=Boolean((aiAssets as Record<string,unknown>)['new-dawn-v02-camer
 import {paintPrintWorld} from './graphic-worlds';
 import {heroClips} from './hero-clips';
 import {emotionAt} from './emotion-direction';
+import {paintMemoryLeaf} from './archive-art';
 
 // NEW DAWN — an architectural film. All animation, camera paths, lighting,
 // typography and particles are evaluated from absolute music time.
@@ -401,19 +402,29 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   const a=smooth(t,158.05,158.28)*(1-smooth(t,161.4,161.72544217687076)),c='#dce2df';
   txt('MUSIC',155,272,28,c,'Text','left',a*.65);
   txt('What do you want more than a Happy ending？',155,356,43,c,'CJK','left',a);
-  txt('Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい',155,420,35,c,'CJK','left',a);
-  txt('Music rights remain with the respective creators and rights holders.',155,488,27,c,'Text','left',a*.8);
+  txt('In-game displayed credit',155,410,25,c,'Text','left',a*.65);
+  txt('Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい',155,463,35,c,'CJK','left',a);
+  txt('Audio · user-provided source file',155,530,26,c,'Text','left',a*.75);
+  txt('Music and recording rights remain with the respective creators and rights holders.',155,581,25,c,'Text','left',a*.8);
   txt('UNOFFICIAL FAN TRIBUTE',155,770,35,c,'Text','left',a);
   txt('NOT AFFILIATED WITH PIGEON GAMES',155,831,27,c,'Text','left',a*.85);
   return;
  }
- if(t>=135.258&&t<135.85)fill('#fff8e7',.28*(1-smooth(t,135.258,135.85)));
+ if(t>=135.258&&t<135.391334){fill('#ffffff');return;}
+ if(t>=135.391334&&t<136.08)fill('#ffffff',1-smooth(t,135.391334,136.08));
  if(t>=63.033333&&t<63.1){fill('#ffffff');return;}
  const dark=t>=113.098&&t<135.191334||['engine','deep','crystals','red-world','cyan-storm','monuments','ringtemple','labyrinth','bridge'].includes(shot.family)||shot.family.startsWith('physical-');
  const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
  const colonnadeTone=smooth(t,75.0,76.8),colonnadeColor='#'+[[230,36],[238,57],[235,69]].map(([a,b])=>Math.round(mix(a,b,colonnadeTone)).toString(16).padStart(2,'0')).join('');
  const color=passage?passageColor:shot.family==='colonnade'?colonnadeColor:dark?'#e6eeeb':'#243945';
  if(shot.family==='signal'){tracking('UNOFFICIAL FAN TRIBUTE',125,975,17,2,'#a9bdc7',.75);return;}
+ if(photoPlate&&t>=34&&t<36.75){
+  // An authored translucent memory impression belongs to the passing glass
+  // pane. It shares the leaf's outline, moves with the source traversal and
+  // disappears behind the upper fracture rather than becoming a HUD icon.
+  const u=(t-34)/2.75,a=smooth(t,34.2,34.6)*(1-smooth(t,36.15,36.55));
+  ctx.save();ctx.globalAlpha=.28*a;ctx.beginPath();ctx.moveTo(825-u*180,45);ctx.lineTo(1420-u*255,110);ctx.lineTo(1190-u*215,410);ctx.lineTo(775-u*160,320);ctx.closePath();ctx.clip();ctx.translate(1100-u*200,235-u*30);ctx.transform(.7,-.22,.15,.94,0,0);paintMemoryLeaf(ctx,0,0,160,-.28);ctx.restore();
+ }
  if(t>=142.3&&t<151.4){
   // Chapters quietly extinguish. The last numeral loses its printed substance
   // into the same wind as the clouds, then leaves the sky entirely unmarked.

@@ -2,6 +2,7 @@ import * as T from 'three';
 import aiAssets from './data/ai-asset-index.json';
 const hasAiDawn=Boolean((aiAssets as Record<string,unknown>)['new-dawn-v02-camera-A']);
 import {world,profile,beam,cable,text,island,dataTree,foldedBody,annotation,instances,fragments,look,hash,smooth,lerp,crackedCore,leafGeo,materials,type World,type V} from './opening-world';
+import {makeMemoryLeaf} from './emotion-direction';
 
 // These acts share absolute song time. A cut label never resets their camera,
 // gravity, object positions or light. Seeking evaluates the same state as playback.
@@ -21,7 +22,7 @@ function gradient(w:World,colors:string[]){
  const c=document.createElement('canvas');c.width=16;c.height=512;const x=c.getContext('2d')!,g=x.createLinearGradient(0,0,0,512);colors.forEach((s,i)=>g.addColorStop(i/(colors.length-1),s));x.fillStyle=g;x.fillRect(0,0,16,512);const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;w.scene.background=tx;
 }
 function recolor(o:T.Object3D,color:string){o.traverse(p=>{if(p instanceof T.Mesh){const replace=(m:T.Material)=>{const c=m.clone() as T.MeshStandardMaterial;c.color?.set(color);return c};p.material=Array.isArray(p.material)?p.material.map(replace):replace(p.material)}})}
-function fade(o:T.Object3D,opacity:number){o.traverse(p=>{if(p instanceof T.Mesh){if(!p.userData.editorialFade){const clone=(m:T.Material)=>{const c=m.clone();c.userData.editorialOpacity=m.opacity;c.userData.editorialDepthWrite=m.depthWrite;return c;};p.material=Array.isArray(p.material)?p.material.map(clone):clone(p.material);p.userData.editorialFade=true;}for(const m of Array.isArray(p.material)?p.material:[p.material]){m.transparent=true;m.opacity=m.userData.editorialOpacity*opacity;m.depthWrite=m.userData.editorialDepthWrite&&opacity>.85;}}});}
+function fade(o:T.Object3D,opacity:number){o.traverse(p=>{if(p instanceof T.Mesh){if(!p.userData.editorialFade){const clone=(m:T.Material)=>{const c=m.clone();c.onBeforeCompile=m.onBeforeCompile;c.customProgramCacheKey=m.customProgramCacheKey;c.userData.editorialOpacity=m.opacity;c.userData.editorialDepthWrite=m.depthWrite;return c;};p.material=Array.isArray(p.material)?p.material.map(clone):clone(p.material);p.userData.editorialFade=true;}for(const m of Array.isArray(p.material)?p.material:[p.material]){m.transparent=true;m.opacity=m.userData.editorialOpacity*opacity;m.depthWrite=m.userData.editorialDepthWrite&&opacity>.85;}}});}
 function moteTexture(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d')!,g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.18,'rgba(255,255,255,.78)');g.addColorStop(.5,'rgba(255,255,255,.15)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return new T.CanvasTexture(c);}
 // These are air and pollen, with rounded soft edges rather than a data/star field.
 // Every drift is evaluated from the song clock, so seeking cannot accumulate wind.
@@ -40,19 +41,65 @@ function incomplete(p:T.Object3D,side:number,scale=1){
  return g;
 }
 
+// Author this architecture in metres: 0.46 m seat, 1.05 m rail, 2.20 m door.
+// Its proportions establish an absent person without a primitive mannequin.
+function weatheredPlatform(parent:T.Object3D,room:boolean){
+ const outline=[[-4.45,-3.3],[-2.7,-3.65],[1.15,-3.58],[3.82,-2.9],[4.4,-.5],[4.26,2.85],[3.18,4.15],[-.2,4.55],[-3.3,4.17],[-4.48,1.62]];
+ const points:number[]=[],indices:number[]=[],n=outline.length,depth=room?.18:1.12;
+ points.push(0,.008,0);
+ for(const [i,[x,z]] of outline.entries())points.push(x,Math.sin(i*2.41)*.012,z*(room?1:.79));
+ for(const [i,[x,z]] of outline.entries())points.push(x*(room?.985:.83+hash(i+197)*.13),-depth*(.82+hash(i+91)*.28),z*(room?.99:.67));
+ for(let i=0;i<n;i++)indices.push(0,1+(i+1)%n,1+i);
+ const g=new T.BufferGeometry();g.addGroup(0,indices.length,0);
+ const first=indices.length;
+ for(let i=0;i<n;i++){const a=i+1,b=1+(i+1)%n,c=a+n,d=b+n;indices.push(a,b,c,b,d,c);}
+ g.addGroup(first,indices.length-first,1);g.setAttribute('position',new T.Float32BufferAttribute(points,3));g.setIndex(indices);g.computeVertexNormals();
+ const top=satin(room?'#b5bdb7':'#b3beaf',.015,.97),edge=satin(room?'#919e9c':'#798983',.03,.98);
+ const weather=(m:T.MeshStandardMaterial,cut:boolean)=>{m.customProgramCacheKey=()=>cut?'human-mineral-cut-v1':'human-mineral-top-v1';m.onBeforeCompile=s=>{s.vertexShader='varying vec3 platformP;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nplatformP=position;');s.fragmentShader='varying vec3 platformP;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+ float grain=fract(sin(dot(floor(platformP.xz*145.),vec2(12.9898,78.233)))*43758.5453);
+ float layer=.5+.5*sin(${cut?'platformP.y*68.+sin(platformP.x*2.2)*.6':'platformP.z*6.2+sin(platformP.x*1.3)*.16'});
+ diffuseColor.rgb*=.93+grain*.05+layer*.045;
+ ${cut?'diffuseColor.rgb+=vec3(.055,.043,.027)*pow(layer,12.);':''}`);if(cut)s.fragmentShader=s.fragmentShader.replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance+=vec3(.14,.102,.052)*exp(-abs(platformP.y+.055)*48.);');};};
+ weather(top,false);weather(edge,true);const o=new T.Mesh(g,[top,edge]);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
+}
+function waitingPlace(parent:T.Object3D,room:boolean){
+ const place=new T.Group();parent.add(place);place.scale.setScalar(50);
+ weatheredPlatform(place,room);
+ const seat=new T.Group();seat.position.set(room?-2.45:-1.5,0,room?-.3:.3);place.add(seat);
+ const sitting=foldedBody(seat,(u,v)=>new T.Vector3(v*2.05,.46+smooth(.49,.98,u)*.48,-.22+u*.6),'white',.035,'stone');sitting.material=[satin('#c8c3b3',.015,.9),satin('#a0a79f',.02,.91),satin('#929b96',.04,.88)];
+ for(const side of [-1,1]){const foot=beam(seat,[side*.73,0,-.09],[side*.73,.46,-.09],.028,.24,'navy');recolor(foot,'#788689');}
+ if(room){
+  for(const x of [-4.3,4.3]){const post=beam(place,[x,0,3.4],[x,3.5,3.4],.085,.14,'white');recolor(post,'#cbd0cb');}
+  const top=beam(place,[-4.3,3.5,3.4],[4.3,3.5,3.4],.085,.14,'white');recolor(top,'#cbd0cb');
+  const sill=beam(place,[-4.3,.17,3.4],[4.3,.17,3.4],.1,.22,'white');recolor(sill,'#cbd0cb');
+  // A short safety rail sits beside the empty seat, leaving the window open.
+  for(const x of [-4.0,-3.25,-2.5])beam(place,[x,0,2.65],[x,1.05,2.65],.018,.025,'silver');beam(place,[-4,1.05,2.65],[-2.5,1.05,2.65],.025,.03,'silver');
+  return {place,seat,door:null};
+ }
+ const hinge=new T.Group();hinge.position.set(1.8,0,1.4);place.add(hinge);
+ const door=profile(hinge,[[0,0],[1.05,0],[1.05,2.2],[0,2.2]],.04,[0,0,0],[0,0,0],'white','stone');recolor(door,'#cdd1c8');
+ for(const x of [1.75,2.9])beam(place,[x,0,1.4],[x,2.3,1.4],.06,.08,'white');beam(place,[1.75,2.3,1.4],[2.9,2.3,1.4],.06,.08,'white');
+ const handle=beam(hinge,[.89,.98,-.045],[.89,1.09,-.045],.012,.012,'silver');recolor(handle,'#a2a897');
+ for(const x of [-3.8,-2.8])beam(place,[x,0,2.5],[x,1.05,2.5],.02,.03,'silver');beam(place,[-3.8,1.05,2.5],[-2.8,1.05,2.5],.025,.03,'silver');
+ return {place,seat,door:hinge};
+}
+
 // Three states of the SAME receding structure: farewell, separation, absence.
 export function farewellWorld(){
- const w=world('#c7c8d7',850,2900);gradient(w,['#8eabc2','#c8c5da','#f0ded4']);light(w,.62,'#ffe4cf',2.1,'#d9ecf7',1.55);
+ const w=world('#c7c8d7',2600,6900);gradient(w,['#8eabc2','#c8c5da','#f0ded4']);light(w,.62,'#ffe4cf',2.1,'#d9ecf7',1.55);
+ const waiting=waitingPlace(w.root,true);waiting.place.position.set(0,-55,-50);
+ const rememberedLeaf=makeMemoryLeaf(waiting.place,.09);rememberedLeaf.rotation.set(1.05,0,-.28);rememberedLeaf.position.set(-2.4,.55,-.23);
  const relic=new T.Group();relic.position.set(45,0,260);w.root.add(relic);w.primary=relic;
  const halves=[incomplete(relic,-1,1.6),incomplete(relic,1,1.6)];recolor(relic,'#72788b');halves[0].rotation.y=-.35;halves[1].rotation.y=.18;halves[1].rotation.x=.3;
- const line=beam(w.root,[-1500,-5,530],[1500,-5,530],.23,.23,'silver');
- recolor(line,'#abbac2');const far=foldedBody(w.root,(u,v)=>new T.Vector3(-1400+u*2900,-195+v*15,1700+Math.sin(u*3)*180),'stone',.5);recolor(far,'#c1b7c7');
+ const line=beam(w.root,[-3500,-5,3500],[3500,-5,3500],.4,.4,'silver');
+ recolor(line,'#abbac2');const far=foldedBody(w.root,(u,v)=>new T.Vector3(-3500+u*7000,-650+v*15,6200+Math.sin(u*3)*180),'stone',.5);recolor(far,'#c1b7c7');
  const grains=pollen(w,w.root,85,[1700,600,1800],'#fff0d8',1.25,180);grains.position.z=240;
  const spark=new T.Sprite(new T.SpriteMaterial({map:moteTexture(),color:'#fff2d6',transparent:true,opacity:.75,depthWrite:false}));spark.position.set(0,-5,530);spark.scale.setScalar(9);w.root.add(spark);
  // The same body travels away, hesitates, separates and becomes light. There
  // is no model replacement at the cut labels and no abrupt visibility switch.
- w.moving.push(t=>{const retreat=smooth(78.299,87,t),split=smooth(85.7,93,t),clear=smooth(91.7,96.5,t);relic.position.set(45-retreat*45,Math.sin((t-78.299)*.42)*2,260+retreat*450+split*130);relic.scale.setScalar(1-clear*.38);halves.forEach((o,i)=>{const s=i?1:-1;o.position.set(s*split*490,Math.sin(t*.42+i)*2+split*(i?18:-12),0);o.rotation.z=s*split*.14+Math.sin(t*.37+i)*.012;});fade(relic,1-clear);relic.visible=t<96.5;fade(far,1-smooth(86,93,t));line.rotation.z=-.04*(1-smooth(85,93,t));grains.position.x=(t-78.299)*2.5;grains.position.y=(t-78.299)*.42;spark.scale.setScalar(9+smooth(94.5,98.076,t)*5);spark.material.opacity=.48+smooth(95.2,98.076,t)*.27;});
- w.camera=(t,c)=>look(c,[-75+smooth(78.299,88,t)*75,30-smooth(78.299,88,t)*25,-200+smooth(78.299,98.076,t)*42],[0,-5,800],64-smooth(87,98.076,t)*2,0);return w;
+ w.moving.push(t=>{const retreat=smooth(78.299,87,t),split=smooth(85.7,93,t),clear=smooth(91.7,96.5,t);relic.position.set((45-retreat*45)*5,Math.sin((t-78.299)*.42)*10,2100+retreat*2250+split*650);relic.scale.setScalar((1-clear*.38)*5);halves.forEach((o,i)=>{const s=i?1:-1;o.position.set(s*split*490,Math.sin(t*.42+i)*2+split*(i?18:-12),0);o.rotation.z=s*split*.14+Math.sin(t*.37+i)*.012;});fade(relic,1-clear);relic.visible=t<96.5;fade(far,1-smooth(86,93,t));line.rotation.z=-.04*(1-smooth(85,93,t));grains.position.x=(t-78.299)*2.5;grains.position.y=(t-78.299)*.42;spark.scale.setScalar(9+smooth(94.5,98.076,t)*5);spark.material.opacity=.48+smooth(95.2,98.076,t)*.27;const drift=smooth(84.4,94.2,t);rememberedLeaf.position.set(-2.4+drift*3.7,.55+Math.sin(drift*Math.PI)*1.35+drift*.15,-.23+drift*6.8);rememberedLeaf.rotation.set(1.05-drift*.65,Math.sin(t*.6)*.12,-.28+drift*.6);fade(rememberedLeaf,1-smooth(93.8,96.7,t));});
+ // Floor y=-55 and eye y=30 establish the initial 1.70 m observer height.
+ w.camera=(t,c)=>look(c,[-45+smooth(78.299,88,t)*45,30-smooth(78.299,88,t)*8,-200-smooth(78.299,98.076,t)*28],[0,-5,2500],64-smooth(87,98.076,t)*2,0);return w;
 }
 
 // A ruptured line is the scaffold. Old fragments lock to it before we enter.
@@ -108,6 +155,13 @@ export function convergenceWorld(){
  skin(flow,50,100,(u,v)=>[(u-.5)*900,-230+v*185,-100+v*2300],water);
  const motes=pollen(w,flow,1100,[620,420,2500],'#fff0cd',1.8,920);
  const leaves=instances(flow,160,leafGeo,'leaf',(i,o)=>{const a=i*2.4,r=95+hash(i)*140;o.position.set(Math.cos(a)*r,Math.sin(a)*r,200+hash(i+79)*1900);o.scale.set(.7,.12,2+hash(i+2)*3);o.rotation.set(.2,a,a)});leaves.material=new T.MeshBasicMaterial({color:'#93d4c9',side:T.DoubleSide});
+ const returningLeaf=makeMemoryLeaf(w.root,4);
+ // Brief recollections inhabit this same forward current. They are the place
+ // and the leaf we have already left, not additional unrelated scene families.
+ const waitingMemory=waitingPlace(w.root,true);waitingMemory.place.scale.setScalar(18);const memoryFloor=waitingMemory.place.children[0] as T.Mesh;for(const m of Array.isArray(memoryFloor.material)?memoryFloor.material:[memoryFloor.material]){m.transparent=true;m.opacity=.14;m.depthWrite=false;}
+ const glassMemory=new T.Group();w.root.add(glassMemory);profile(glassMemory,[[-66,-58],[-42,32],[-8,46],[58,26],[72,-40],[40,-70],[10,-36],[-13,-62]],.7,[0,0,0],[.03,.1,-.18],'glass','silver');
+ const enclosedLeaf=makeMemoryLeaf(glassMemory,9);enclosedLeaf.position.set(-7,-3,2);enclosedLeaf.rotation.z=-.18;
+ w.moving.push(t=>{const rawQ=Math.max(0,(t-113.098)/(129-113.098)),cameraZ=-180+Math.pow(rawQ,1.18)*2430,cameraX=Math.sin(rawQ*3)*36;const a=smooth(115.45,116.05,t),b=smooth(117.1,117.65,t);waitingMemory.place.visible=t>=115.45&&t<116.05;waitingMemory.place.position.set(cameraX-43,-45,cameraZ+270-a*220);fade(waitingMemory.place,smooth(115.45,115.55,t)*(1-smooth(115.91,116.05,t))*.72);glassMemory.visible=t>=117.1&&t<117.65;glassMemory.position.set(cameraX+75-b*90,36,cameraZ+175-b*190);glassMemory.rotation.y=-.25+b*.38;fade(glassMemory,smooth(117.1,117.19,t)*(1-smooth(117.52,117.65,t))*.85);});
  const numerals=new T.Group();numerals.position.set(0,20,2100);w.root.add(numerals);
  const numeralPositions:V[]=Array.from({length:9},(_,i)=>i===8?[0,235,60]:[(i%2?1:-1)*(80+Math.floor(i/2)*10),150-Math.floor(i/2)*90,-120+Math.floor(i/2)*80]);
  const marks=Array.from({length:9},(_,i)=>{const o=text(numerals,String(i+1).padStart(2,'0'),numeralPositions[i],i===8?56:40,i===8?'white':'silver',9);o.rotation.z=i===8?0:(i%2?1:-1)*.055;return o});
@@ -118,7 +172,8 @@ export function convergenceWorld(){
  const obsidian=satin('#263d4c',.26,.9);obsidian.emissive.set('#15212b');obsidian.emissiveIntensity=.05;obsidian.onBeforeCompile=s=>{s.vertexShader='varying vec3 localP;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nlocalP=position;');s.fragmentShader='varying vec3 localP;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat strata=pow(.5+.5*sin(localP.y*.24+sin(localP.x*.013)*7.+sin(localP.z*.05)),14.);float broad=pow(.5+.5*sin(localP.y*.027+sin(localP.x*.007)*2.),3.);diffuseColor.rgb+=strata*vec3(.037,.046,.049)+broad*vec3(.016,.021,.026);');};
  const halves:T.Mesh[]=[];
  const cutEdges:T.Mesh[]=[];
- for(const side of [-1,1]){halves.push(skin(w.root,90,48,(u,v)=>{const a=side*(.025+u*2.95),p=.018+v*(Math.PI-.036),r=620+Math.sin(a*19+p*21)*1.8;return[170+Math.sin(a)*r*Math.sin(p),65+Math.cos(p)*r,2980-Math.cos(a)*r*Math.sin(p)]},obsidian));cutEdges.push(skin(w.root,80,4,(u,v)=>{const p=.018+u*(Math.PI-.036),r=592+v*28,a=side*.025;return[170+Math.sin(a)*r*Math.sin(p),65+Math.cos(p)*r,2980-Math.cos(a)*r*Math.sin(p)]},satin('#77848a',.16,.92)));}
+ const rimEdges:T.Mesh[]=[];
+ for(const side of [-1,1]){halves.push(skin(w.root,90,48,(u,v)=>{const a=side*(.025+u*2.95),p=.018+v*(Math.PI-.036),r=620+Math.sin(a*19+p*21)*1.8;return[170+Math.sin(a)*r*Math.sin(p),65+Math.cos(p)*r,2980-Math.cos(a)*r*Math.sin(p)]},obsidian));cutEdges.push(skin(w.root,80,4,(u,v)=>{const p=.018+u*(Math.PI-.036),r=592+v*28,a=side*.025;return[170+Math.sin(a)*r*Math.sin(p),65+Math.cos(p)*r,2980-Math.cos(a)*r*Math.sin(p)]},satin('#77848a',.16,.92)));const edge=cable(w.root,Array.from({length:25},(_,i)=>{const p=.2+i/24*(Math.PI-.4),r=621,a=side*.025;return[170+Math.sin(a)*r*Math.sin(p),65+Math.cos(p)*r,2980-Math.cos(a)*r*Math.sin(p)] as V}),.22,'energy');recolor(edge,'#e6efdf');rimEdges.push(edge);}
  // Surface relief remains a tertiary scale during the near pass. The former
  // large extrusions hid the entire curved body when the camera reached them.
  for(let i=0;i<7;i++){const a=-.8+i*.25;const o=shard(w.root,[170+Math.sin(a)*580,40+Math.sin(i*2)*120,2980-Math.cos(a)*625],8+i*.7,i+81,'navy');recolor(o,'#243642');}
@@ -129,7 +184,7 @@ export function convergenceWorld(){
  const skyWindow=new T.Mesh(new T.PlaneGeometry(22000,18000),new T.MeshBasicMaterial({map:skyMap,side:T.DoubleSide,fog:false,toneMapped:false}));skyWindow.position.set(170,50,5600);beyond.add(skyWindow);
  const clouds: T.Mesh[]=[];for(let i=0;i<4;i++){const o=new T.Mesh(new T.PlaneGeometry(1800+i*300,630+i*90),new T.MeshBasicMaterial({map:cloudTexture(),transparent:true,opacity:.48,side:T.DoubleSide,depthWrite:false,fog:false,toneMapped:false}));o.position.set(i%2?-370:420,-130+i%2*270,3580+i*440);beyond.add(o);clouds.push(o);}
  const seam=cable(w.root,[[171,-320,2600],[168,-160,2410],[181,40,2357],[166,230,2383],[181,420,2490]],.7,'gold');
- w.moving.push(t=>{const q=smooth(113.098,129,t),pull=smooth(118,130,t),release=smooth(129,131.9,t);moving.forEach(({o,p,r,index})=>{o.position.copy(p);const k=1-pull*(.32+index*.025);o.position.x*=k;o.position.y*=k;o.position.z=lerp(p.z,2490+index*14,pull*.72);o.rotation.copy(r);o.rotation.z+=Math.sin(t*.32+index)*.018;fade(o,1-release);});flow.scale.x=1-.1*q;flow.scale.y=1-.06*q;water.uniforms.time.value=t-113.098;motes.position.z=(t-113.098)*14;leaves.position.z=(t-113.098)*23;leaves.rotation.z=Math.sin((t-113.098)*.28)*.12;numerals.visible=t>=121.2&&t<131;marks.forEach((o,i)=>{const out=smooth(126.15+i*.3,126.75+i*.3,t);o.visible=i===8||out<1;o.position.z=numeralPositions[i][2]+smooth(125,129,t)*180;if(i<8)fade(o,1-out);});core.visible=t<130.4;(core.userData.nucleus as T.Object3D).visible=t<130.4;const open=smooth(131.4,135.1913,t);halves.forEach((o,i)=>{o.position.x=(i?1:-1)*open*165;cutEdges[i].position.x=o.position.x;});warm.intensity=6500+open*24500;beyond.visible=t>128;clouds.forEach((o,i)=>{o.position.x=(i%2?-370:420)+(t-128)*(i%2?-1:1)*7;});seam.visible=t>128;fade(seam,1-open);});
+ w.moving.push(t=>{const q=smooth(113.098,129,t),pull=smooth(118,130,t),release=smooth(129,131.9,t);moving.forEach(({o,p,r,index})=>{o.position.copy(p);const k=1-pull*(.32+index*.025);o.position.x*=k;o.position.y*=k;o.position.z=lerp(p.z,2490+index*14,pull*.72);o.rotation.copy(r);o.rotation.z+=Math.sin(t*.32+index)*.018;fade(o,1-release);});flow.scale.x=1-.1*q;flow.scale.y=1-.06*q;water.uniforms.time.value=t-113.098;motes.position.z=(t-113.098)*14;leaves.position.z=(t-113.098)*23;leaves.rotation.z=Math.sin((t-113.098)*.28)*.12;const travel=smooth(118.1,121.2,t),vein=smooth(121,122.5,t),rawQ=Math.max(0,(t-113.098)/(129-113.098)),cameraZ=-180+Math.pow(rawQ,1.18)*2430;returningLeaf.visible=t>118.1&&t<123.4;returningLeaf.position.set(Math.sin(rawQ*3)*36+lerp(8,0,travel),25+Math.sin(rawQ*4)*16-8+vein*4,cameraZ+55+vein*310);returningLeaf.rotation.set(.45+vein*(Math.PI/2-.45),.2*(1-vein),-.38*(1-vein));returningLeaf.scale.set(4*(1-vein*.94),4*(1+vein*105),4*(1-vein*.95));fade(returningLeaf,smooth(118.1,118.7,t)*(1-smooth(122.8,123.4,t)));numerals.visible=t>=121.2&&t<131;marks.forEach((o,i)=>{const out=smooth(126.15+i*.3,126.75+i*.3,t);o.visible=i===8||out<1;o.position.z=numeralPositions[i][2]+smooth(125,129,t)*180;if(i<8)fade(o,1-out);});core.visible=t<130.4;(core.userData.nucleus as T.Object3D).visible=t<130.4;const open=smooth(131.4,135.1913,t);halves.forEach((o,i)=>{o.position.x=(i?1:-1)*open*165;cutEdges[i].position.x=o.position.x;rimEdges[i].position.x=o.position.x;});warm.intensity=6500+open*24500;beyond.visible=t>128;clouds.forEach((o,i)=>{o.position.x=(i%2?-370:420)+(t-128)*(i%2?-1:1)*7;});seam.visible=t>128;fade(seam,1-open);});
  w.camera=(t,c)=>{const q=Math.max(0,(t-113.098)/(129-113.098));const scrape=smooth(129,135.1913,t);const slide=smooth(129,132.9,t),lateral=smooth(129,132.2,t),enter=smooth(132.9,135.1913,t);const z=t<129?-180+Math.pow(q,1.18)*2430:2250+slide*90+enter*720;const x=t<129?Math.sin(q*3)*36:Math.sin(3)*36-18*Math.sin(lateral*Math.PI)+161*lateral+enter*4;look(c,[x,25+Math.sin(q*4)*16,z],[170*smooth(129,131.9,t),65,Math.max(2650,z+170)],96+Math.sin(Math.min(1,q)*Math.PI)*15-scrape*14,Math.sin(Math.min(1,q)*5)*.09+scrape*.1)};
  return w;
 }
@@ -155,8 +210,16 @@ export function evolvingDawn(){
  const scraps=Array.from({length:14},(_,i)=>shard(w.root,[(i%2?1:-1)*(90+hash(i)*170),40+(hash(i+10)-.5)*180,100+hash(i+23)*900],3+hash(i+3)*9,i+456,'silver'));
  const born=instances(destination,90,leafGeo,'gold',(i,o)=>{o.position.set(31+(hash(i)-.5)*16,4+hash(i+40)*24,(hash(i+16)-.5)*15);o.scale.set(.12,.12,.28)});
  const air=pollen(w,w.root,65,[1100,400,2000],'#fff4d9',1.2,312);air.position.z=250;
+ // After the source plate releases, something small and inhabitable waits in
+ // the distance. It appears through air, rather than covering the film in a
+ // sudden foreground bench. The camera remains outside the opening door.
+ const home=waitingPlace(w.root,false);home.place.position.set(-60,-165,2130);
+ const lastLeaf=makeMemoryLeaf(home.place,.11);lastLeaf.position.set(-1.5,.57,.3);lastLeaf.rotation.set(1.05,0,-.24);
+ const newStem=cable(home.place,[[.5,.015,-2.3],[.48,.31,-2.3],[.53,.65,-2.27]],.009,'navy');recolor(newStem,'#697f70');
+ const newLeaf=makeMemoryLeaf(home.place,.32);newLeaf.position.set(.53,.68,-2.27);
+ w.moving.push(t=>{const reveal=smooth(149.15,150.6,t),open=smooth(150.0,151.35,t),unfurl=smooth(149.2,151.25,t);home.place.visible=t>149.15;fade(home.place,reveal);if(home.door)home.door.rotation.y=-open*.87;lastLeaf.rotation.z=-.24+Math.sin(t*.8)*.025;lastLeaf.position.y=.57+Math.sin(t*.9)*.004;newLeaf.scale.set(.008+unfurl*.312,.15+unfurl*.17,.32);newLeaf.rotation.set(.35-unfurl*.47,1.1-unfurl*1.02,.12+Math.sin(t*.8)*.018);});
  w.moving.push(t=>{const reveal=smooth(139.6,142.4,t),lifeEvent=smooth(146,148.7,t),dissolve=smooth(149,151.1,t);layers.forEach((o,i)=>{o.position.x=(i%2?430:-410)+(t-135.258)*(i%2?1:-1)*(11-i*1.3);o.position.y=-80+i%3*135+Math.sin((t-135.258)*.2+i)*8;o.position.z=500+i*520-(t-135.258)*(26-i*3)});destination.visible=t>139.45&&!hasAiDawn;destination.position.y=-60+reveal*30+Math.sin((t-135.258)*.45)*.65;life.rotation.z=Math.sin((t-135.258)*.8)*.025;foliage[2].scale.setScalar(.01+lifeEvent*.99);foliage[2].rotation.y=-.9+lifeEvent*.9+Math.sin(t*.9)*.02;foliage[0].rotation.z=Math.sin(t*.9)*.055;foliage[1].rotation.z=-Math.sin(t*.9+.3)*.05;mark.visible=t<151.1;mm.opacity=1-dissolve;born.visible=t>149&&t<151.15;born.position.y=dissolve*45;born.position.x=dissolve*14;born.rotation.z=dissolve*.22;born.scale.setScalar(1+dissolve*.7);relics.forEach((o,i)=>{const age=smooth(141.8+i*.16,142.5+i*.22,t);o.visible=t>141.5&&age<1;fade(o,1-age);});scraps.forEach((o,i)=>{const out=smooth(137.5+i*.045,140.4,t);o.visible=out<1;fade(o,1-out);const travel=(t-135.258)*210;o.position.z=100+hash(i+23)*900+travel;o.position.x=(i%2?1:-1)*(90+hash(i)*170)*(1+travel/2000);});air.position.x=(t-135.258)*3;air.position.y=(t-135.258)*.6;horizon.position.y=smooth(135.258,140,t)*40;});
- w.camera=(t,c)=>{const rush=smooth(135.258,140,t),approach=smooth(140,149,t),empty=smooth(149.6,151.4,t);look(c,[35-rush*26-approach*24,50-rush*18+approach*6+empty*30,-200+rush*300+approach*900],[-15,-4+empty*130,1280],78-rush*15-approach*17,0)};return w;
+ w.camera=(t,c)=>{const rush=smooth(135.258,140,t),approach=smooth(140,149,t),homeward=smooth(149.1,151.4,t);look(c,[35-rush*26-approach*24-homeward*45,50-rush*18+approach*6-homeward*118,-200+rush*300+approach*900+homeward*600],[lerp(-15,-60,homeward),lerp(-4,-110,homeward),lerp(1280,2200,homeward)],78-rush*15-approach*17,0)};return w;
 }
 
 export function editorialAct(t:number){return t>=78.299&&t<98.076?'farewell':t>=98.076&&t<113.098?'reconstruction':t>=113.098&&t<135.19133333333335?'convergence':t>=135.258&&t<151.4?'evolving-dawn':null;}

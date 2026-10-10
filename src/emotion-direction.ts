@@ -17,10 +17,20 @@ function softMote(){
  const c=document.createElement('canvas');c.width=c.height=32;const x=c.getContext('2d')!,g=x.createRadialGradient(16,16,0,16,16,16);
  g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(.2,'rgba(255,255,255,.45)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,32,32);return new T.CanvasTexture(c);
 }
-function leafGeometry(){
+export function memoryLeafGeometry(){
  const p:number[]=[],ix:number[]=[];
- for(let i=0;i<=12;i++)for(let j=0;j<=4;j++){const u=i/12,v=(j/4-.5)*2,half=Math.sin(u*Math.PI);p.push(v*half*.55,(u-.5)*2,Math.sin(u*Math.PI)*.18-v*v*half*.14);if(i<12&&j<4){const k=i*5+j;ix.push(k,k+1,k+5,k+1,k+6,k+5)}}
+ for(let i=0;i<=24;i++)for(let j=0;j<=6;j++){const u=i/24,v=(j/6-.5)*2,half=Math.sin(u*Math.PI)*(1-u*.12);p.push(v*half*.45+(1-v*v)*Math.sin(u*Math.PI)*.035,(u-.5)*2,Math.sin(u*Math.PI)*.18-v*v*half*.14);if(i<24&&j<6){const k=i*7+j;ix.push(k,k+1,k+7,k+1,k+8,k+7)}}
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setIndex(ix);g.computeVertexNormals();return g;
+}
+
+// One anonymous living symbol throughout the journey. Its distinct curved
+// almond outline and central vein survive scale/material/medium changes.
+export function makeMemoryLeaf(parent:T.Object3D,scale=1){
+ const leaf=new T.Group();parent.add(leaf);leaf.scale.setScalar(scale);
+ leaf.add(new T.Mesh(memoryLeafGeometry(),new T.MeshPhysicalMaterial({color:'#c1cab8',roughness:.69,metalness:.02,transparent:true,opacity:.58,side:T.DoubleSide,depthWrite:false})));
+ const path=new T.CatmullRomCurve3([new T.Vector3(0,-1,0),new T.Vector3(.02,0,.183),new T.Vector3(0,1,0)]);
+ const vein=new T.Mesh(new T.TubeGeometry(path,24,.007,4,false),new T.MeshBasicMaterial({color:'#dfd2aa',transparent:true,opacity:.72}));leaf.add(vein);
+ return leaf;
 }
 
 // Supplement the authored scene events with a small coherent breeze and warm
@@ -34,7 +44,7 @@ export function makeEmotionRig(w:World,family:string){
  const living=['opening-passage','continent','canopy','stair','canyon','ringtemple','colonnade'].includes(family);
  const leaves:{o:T.Mesh;phase:number;rest:T.Vector3}[]=[];
  if(living){
-  const geometry=leafGeometry(),mote=softMote();
+  const geometry=memoryLeafGeometry(),mote=softMote();
   for(let i=0;i<7;i++){
    const phase=i*2.399,mat=new T.MeshStandardMaterial({color:i<2?'#b5c1ab':'#d3d5bd',roughness:.83,metalness:0,side:T.DoubleSide,transparent:true,opacity:.65});
    const o=new T.Mesh(geometry,mat),rest=new T.Vector3(Math.sin(phase)*130,45+Math.cos(phase*.7)*72,90+i*65);o.position.copy(rest);o.scale.setScalar(1.7+i*.65);air.add(o);leaves.push({o,phase,rest});

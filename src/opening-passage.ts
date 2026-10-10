@@ -1,6 +1,7 @@
 import * as T from 'three';
 import {dawnWorld,profile,beam,cable,foldedBody,fragments,look,smooth,clamp,lerp,type V,type World} from './opening-world';
 import {directedWorld} from './world-direction';
+import {makeMemoryLeaf} from './emotion-direction';
 
 import {openingPassagePose} from './opening-camera';
 export {OPENING_PASSAGE_END} from './opening-camera';
@@ -32,6 +33,7 @@ export function makeOpeningPassage():World{
  const shellParts=w.primary!.children.slice(0,3).map((part,i)=>({part,rest:part.position.clone(),direction:i===0?-1:1}));
 
  const destination=directedWorld('continent')!;
+ const passingLeaf=makeMemoryLeaf(w.root,5.4);passingLeaf.visible=false;
  destination.root.position.z=700;w.root.add(destination.root);
  const destinationLights=destination.scene.children.filter((o):o is T.Light=>o instanceof T.Light).map(light=>{
   const power=light.intensity;light.position.z+=700;
@@ -53,6 +55,12 @@ export function makeOpeningPassage():World{
   destinationLights.forEach(({light,power})=>{light.intensity=power*lerp(.08,1,release)});
   shellParts.forEach(({part,rest,direction},i)=>{part.position.copy(rest);part.position.x+=direction*smooth(7.6,8.7,time)*(i===0?13:22);part.position.z+=smooth(7.6,8.7,time)*(i===0?0:10)});
   const q=clamp((time-10.5)/1.5);destination.moving.forEach(move=>move(q,hit));
+  // A brief leaf crosses the exit with the wind; we meet this exact outline
+  // again in memory, farewell, the line's vein and the final living platform.
+  const leafQ=clamp((time-9.7)/.72),leafPose=openingPassagePose(time),ahead=new T.Vector3(...leafPose.target).sub(new T.Vector3(...leafPose.position)).normalize();
+  passingLeaf.visible=time>=9.7&&time<10.42;
+  passingLeaf.position.set(...leafPose.position).addScaledVector(ahead,29);passingLeaf.position.x+=lerp(21,-23,leafQ);passingLeaf.position.y+=lerp(-6,9,leafQ);
+  passingLeaf.rotation.set(.42+leafQ*.18,.55+leafQ*.24,-.48+leafQ*.55);
  });
  w.camera=(time,c)=>{const p=openingPassagePose(time);look(c,p.position,p.target,p.fov,p.roll)};
  return w;
