@@ -9,7 +9,7 @@
       "generationDate": "2026-10-10",
       "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V01.mp4",
       "world": "glass-memory",
-      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
+      "usageNotes": "Original text-to-video baseline retained after actual CI source/comparison review 38055119650; not selected for the pilot timeline. Generated audio discarded.",
       "status": "reference-only",
       "optional": true,
       "sourceDuration": 8.0,
@@ -50,7 +50,7 @@
       "generationDate": "2026-10-10",
       "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V01.mp4",
       "world": "new-dawn",
-      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
+      "usageNotes": "Original text-to-video baseline retained after actual CI source/comparison review 38055119650; not selected for the pilot timeline. Generated audio discarded.",
       "status": "reference-only",
       "optional": true,
       "sourceDuration": 8.0,
@@ -110,10 +110,11 @@
       "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
       "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
       "world": "new-dawn",
-      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "usageNotes": "Actual CI comparison reviewed in run 38055119650. Not selected: requested camera change was not demonstrated or the spatial path was discontinuous. Generated audio discarded.",
       "optional": true,
       "sourceDuration": 8.0,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Introduces a large near platform at mid-shot, then returns to baseline wide framing; rejected as a continuous camera path."
     },
     {
       "id": "new-dawn-v02-camera-C",
@@ -136,10 +137,11 @@
       "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
       "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
       "world": "new-dawn",
-      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "usageNotes": "Actual CI comparison reviewed in run 38055119650. Not selected: requested camera change was not demonstrated or the spatial path was discontinuous. Generated audio discarded.",
       "optional": true,
       "sourceDuration": 8.0,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Requested 15-degree orbit was not visibly established."
     },
     {
       "id": "new-dawn-v03-camera-C2",
@@ -158,9 +160,10 @@
       "status": "rejected-camera-test",
       "world": "new-dawn",
       "sourceDuration": 8,
-      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "usageNotes": "Actual CI comparison reviewed in run 38055119650. Not selected: requested camera change was not demonstrated or the spatial path was discontinuous. Generated audio discarded.",
       "optional": true,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Independent shorter camera-only orbit instruction still closely retains V01."
     },
     {
       "id": "glass-memory-v02-material",
@@ -201,9 +204,10 @@
       "status": "rejected-camera-test",
       "world": "red-machine",
       "sourceDuration": 8.0,
-      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "usageNotes": "Actual CI comparison reviewed in run 38055119650. Not selected: requested camera change was not demonstrated or the spatial path was discontinuous. Generated audio discarded.",
       "optional": true,
-      "inputMode": "existing-video-edit"
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Requested lower near-surface tracking change was not visibly established; retain selected coherent V01 intervals."
     }
   ],
   "rules": {
