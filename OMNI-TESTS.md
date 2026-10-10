@@ -22,3 +22,11 @@ The `omni-review` Actions target uses the four actual local clips, checks SHA256
 Review camera direction, foreground parallax, horizon stability, target position, total orbit, identity of the island/sprout, timing and artifacts. Keep only improved intervals. A failed camera edit returns to the preceding version; cropping is a later editing option, not the initial substitute for trying Omni.
 
 The world-edit and spatial-rule tests remain pending until their actual control videos are imported and edited. No cloud result is labeled final. The manifest now records three downloaded Veo baselines and three Omni camera variants as review-pending, with no timeline selections. Duplicate earlier dawn exports were excluded rather than mislabeled as camera variants.
+
+## First actual camera decision
+
+Actions run 38053837570 decoded all four distinct files and exported a synchronized silent comparison. Inspection of the 0.3 / 4.0 / 7.6-second stages does not show the requested superiority: A and C closely retain V01; B introduces a near platform in the middle and returns to wide framing by the end. B is rejected as a continuous path, C has not demonstrated the requested orbit. The production preference remains Omni editing first, but this is not a validated camera-control capability. A second independent C2 edit uses a shorter instruction and orbit only; it is downloaded and pending CI comparison.
+
+Both six-second silent Blender controls passed rendering, measured frame count and full decode in Actions run 38053840830. They are archived with `.blend` and CI receipts in `assets/generated-ai/controls`. Flow import remains blocked by the browser upload permission system, including after the user explicitly reauthorized the two files. No alternate upload channel or browser-security workaround was used. These tests are pending, not passed.
+
+Existing Flow sources remain usable: an independent material-only glass edit and an independent camera-only red-machine edit have been downloaded. They are compared against their V01 parents in `omni-edit-*.mp4` and contact sheets before timeline selection. They do not substitute for the original Blender world/rule experiments.

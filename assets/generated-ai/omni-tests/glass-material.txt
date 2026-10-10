@@ -1,0 +1,9 @@
+SUBJECT: Material-only edit of the existing glass world.
+WORLD: LOCK all geometry, islands, aperture, slab positions and fragments.
+COMPOSITION: Keep every framing and depth relationship identical.
+MATERIAL: Change only the large translucent foreground slabs into frosted layered glass with fine internal micro-fractures and suspended inclusions. Preserve their silhouettes, thickness and transparency hierarchy. Internal layers must move with the slabs, not swim like liquid. Keep all dark mineral and background surfaces unchanged.
+LIGHT: LOCK the original lighting.
+CAMERA: LOCK the exact camera trajectory, lens, horizon and timing.
+MOTION: LOCK every object motion and the full eight-second duration.
+COLOR: Preserve the original limited pale-blue, white and charcoal palette.
+NEGATIVE CONSTRAINTS: No new objects, no topology changes, no liquid melting, no toy gloss, no new camera motion, no text or logo, no graphic glitch, no sound. Edit glass material only.

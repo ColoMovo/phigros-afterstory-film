@@ -138,6 +138,69 @@
       "optional": true,
       "sourceDuration": 8.0,
       "inputMode": "existing-video-edit"
+    },
+    {
+      "id": "new-dawn-v03-camera-C2",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-C2.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V03_CAMERA_C2.mp4",
+      "sha256": "55084885ec229988a97d9c16866ffc6200e06ee4f708b88858667bbc46371f55",
+      "generationDate": "2026-10-10",
+      "duration": 8,
+      "resolution": [
+        1280,
+        720
+      ],
+      "status": "review-pending",
+      "world": "new-dawn",
+      "sourceDuration": 8,
+      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "optional": true,
+      "inputMode": "existing-video-edit"
+    },
+    {
+      "id": "glass-memory-v02-material",
+      "parentId": "glass-memory-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/glass-material.txt",
+      "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V02_MATERIAL.mp4",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc",
+      "status": "review-pending",
+      "world": "glass-memory",
+      "sourceDuration": 8.0,
+      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "optional": true,
+      "inputMode": "existing-video-edit"
+    },
+    {
+      "id": "red-machine-v02-camera",
+      "parentId": "red-machine-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/red-camera.txt",
+      "localPath": "assets/generated-ai/red-machine/WORLD_RED_V02_CAMERA.mp4",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "89c7b62833711265c959ac8e67886487a566924237b2086aaadf2aa67aaa249b",
+      "status": "review-pending",
+      "world": "red-machine",
+      "sourceDuration": 8.0,
+      "usageNotes": "Original-source Omni edit; comparison pending. Source audio discarded.",
+      "optional": true,
+      "inputMode": "existing-video-edit"
     }
   ],
   "rules": {

@@ -1,0 +1,9 @@
+SUBJECT: Camera-only edit of the existing fractured mechanical world.
+WORLD: LOCK every beam, rib, crack, fragment, spatial layout and scale. Do not create a new world.
+COMPOSITION: Aim at the existing irregular central opening. Allow perspective to change only from camera translation.
+MATERIAL: LOCK all existing surfaces.
+LIGHT: LOCK illumination and emissive cracks.
+CAMERA: Replace camera motion with a single straight forward dolly toward the opening for the entire eight-second duration. Fixed 28mm lens. Stable horizon and zero roll. No orbit, no pan, no lateral drift, no zoom, no cuts. Near beams should pass the lens because the camera moves, not because beams deform.
+MOTION: Preserve all fragment and structure motions and exact timing.
+COLOR: LOCK the existing palette.
+NEGATIVE CONSTRAINTS: No geometry changes, no melting, no new rings, no readable text or logo, no graphic glitch, no sound. Camera motion only.

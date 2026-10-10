@@ -1,0 +1,9 @@
+SUBJECT: Camera-only reshoot of this existing eight-second dawn clip.
+WORLD: Preserve exactly the existing island, sprout and clouds. No new geometry.
+COMPOSITION: Keep the same sprout as the tracked target. Framing may change only because the camera moves.
+MATERIAL: LOCK all materials.
+LIGHT: LOCK all lighting.
+CAMERA: Move the camera continuously clockwise around the stationary island by fifteen degrees from first frame to last frame. One smooth arc, level horizon, fixed 40mm lens. Show the changing side of the mineral cliff. Do not rotate the island. Do not return to the initial view. No dolly, zoom, cuts or crossfades.
+MOTION: Preserve all original object motion and all eight seconds.
+COLOR: LOCK the original palette.
+NEGATIVE CONSTRAINTS: No added foreground platform, no island stretching, no world regeneration, no text, logos, graphic glitch or new sound. Camera orbit only.

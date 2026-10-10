@@ -1,0 +1,14 @@
+{
+  "mode": "judgement-rule",
+  "scope": "Original control footage for Omni tests, not final film",
+  "frames": 144,
+  "fps": 24,
+  "duration": 6,
+  "resolution": [
+    960,
+    540
+  ],
+  "fullDecode": "pass",
+  "sourceCommit": "3a74222b3f3315c1f4e90b08ba5c5bf2acdec85b",
+  "sha256": "33c89dd5b2b0d3df699872cd554381ed18173ec049d0e1ee7284e4019e61a17e"
+}
