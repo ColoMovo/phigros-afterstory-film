@@ -174,6 +174,17 @@
         "red-machine-v01",
         "red-machine-v02-camera"
       ]
+    },
+    {
+      "name": "glass-emotion",
+      "ids": [
+        "glass-memory-v02-material",
+        "glass-memory-v03-emotion"
+      ],
+      "labels": [
+        "V02 / ACCEPTED MATERIAL",
+        "V03 / EMOTIONAL EDIT"
+      ]
     }
   ],
   "controlledTests": {

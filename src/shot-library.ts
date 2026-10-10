@@ -5,6 +5,7 @@ import lyrics from './data/lyrics.json';
 import {editorialAct,makeEditorialAct,glitchFrames} from './editorial-worlds';
 import {directedWorld,directExistingWorld} from './world-direction';
 import {makeOpeningPassage,OPENING_PASSAGE_END} from './opening-passage';
+import {emotionAt,makeEmotionRig} from './emotion-direction';
 import {world,mesh,block,profile,beam,cable,text,island,foldedBody,glyphPlane,annotation,instances,fragments,look,cloudSea,dataTree,reflectionSky,materials,hash,clamp,smooth,lerp,crackedCore,leafGeo,boxGeo,existingWorlds,getArtwork,setMusicTime,type World,type V,type Mat} from './opening-world';
 export type Shot=typeof shots[number];
 export const shotAt=(t:number)=>shots.find(s=>t>=s.start&&t<s.end)??shots[shots.length-1];
@@ -84,12 +85,22 @@ function makeWorld(family:string):World{
 export class ShotWorld{
  private renderer:T.WebGLRenderer;
  private camera=new T.PerspectiveCamera(90,16/9,.35,7200);
- private live:World|null=null;private family='';private env=reflectionSky();
+ private live:World|null=null;private family='';private env=reflectionSky();private emotionalPose:((time:number)=>void)|null=null;
  constructor(canvas:HTMLCanvasElement,private silhouette=false){this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(1);this.renderer.setSize(canvas.width,canvas.height,false);this.renderer.outputColorSpace=T.SRGBColorSpace;this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.1;this.renderer.localClippingEnabled=true;this.renderer.shadowMap.enabled=!silhouette;this.renderer.shadowMap.type=T.PCFSoftShadowMap;materials.energy.toneMapped=false;}
- private clear(){this.live?.scene.traverse(o=>{if(o instanceof T.Mesh){if(o.geometry!==boxGeo&&o.geometry!==leafGeo)o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>{if('map' in m)(m.map as T.Texture|null)?.dispose();if(!Object.values(materials).includes(m as typeof materials.white))m.dispose()})}});this.live=null;this.renderer.renderLists.dispose();}
- render(time:number){setMusicTime(time);const shot=shotAt(time),passage=time<OPENING_PASSAGE_END,act=editorialAct(time),family=passage?'opening-passage':act??shot.family;if(this.family!==family){this.clear();this.live=passage?makeOpeningPassage():act?makeEditorialAct(act):makeWorld(shot.family);this.family=family;this.live.scene.environment=this.env;this.live.scene.environmentIntensity=this.live.scene.userData.environmentIntensity??.25;if(this.silhouette){this.live.scene.background=new T.Color('#e8eaeb');this.live.scene.fog=null;this.live.scene.overrideMaterial=new T.MeshBasicMaterial({color:'#0a0d11',side:T.DoubleSide});}}const w=this.live!,q=clamp((time-shot.start)/(shot.end-shot.start)),u=passage||act?time:lerp(shot.sourceStart,shot.sourceEnd,q),e=audio.majorTransients.findLast(e=>e.time<=time),hit=e?e.strength*Math.exp(-(time-e.time)*18):0;
- const pose=(at:number)=>{w.camera(at,this.camera);w.moving.forEach(f=>f(at,hit));};this.renderer.setScissorTest(false);pose(u);this.renderer.render(w.scene,this.camera);
- const tear=glitchFrames(time)||(time>26.9&&time<78.299&&e&&time-e.time<2/60&&audio.majorTransients.indexOf(e)%9===0);
+ private clear(){
+  const geometries=new Set<T.BufferGeometry>(),textures=new Set<T.Texture>(),ownedMaterials=new Set<T.Material>();
+  this.live?.scene.traverse(o=>{if(o instanceof T.Mesh||o instanceof T.Points||o instanceof T.Sprite){
+   if('geometry' in o&&o.geometry!==boxGeo&&o.geometry!==leafGeo)geometries.add(o.geometry);
+   for(const m of Array.isArray(o.material)?o.material:[o.material]){if('map' in m&&m.map instanceof T.Texture)textures.add(m.map);if(!Object.values(materials).includes(m as typeof materials.white))ownedMaterials.add(m);}
+  }});
+  if(this.live?.scene.background instanceof T.Texture)textures.add(this.live.scene.background);
+  geometries.forEach(g=>g.dispose());textures.forEach(t=>t.dispose());ownedMaterials.forEach(m=>m.dispose());
+  this.live=null;this.emotionalPose=null;this.renderer.renderLists.dispose();
+ }
+
+ render(time:number){setMusicTime(time);const shot=shotAt(time),passage=time<OPENING_PASSAGE_END,act=editorialAct(time),family=passage?'opening-passage':act??shot.family;if(this.family!==family){this.clear();this.live=passage?makeOpeningPassage():act?makeEditorialAct(act):makeWorld(shot.family);this.family=family;this.emotionalPose=makeEmotionRig(this.live,family);this.live.scene.environment=this.env;this.live.scene.environmentIntensity=this.live.scene.userData.environmentIntensity??.25;if(this.silhouette){this.live.scene.background=new T.Color('#e8eaeb');this.live.scene.fog=null;this.live.scene.overrideMaterial=new T.MeshBasicMaterial({color:'#0a0d11',side:T.DoubleSide});}}const w=this.live!,q=clamp((time-shot.start)/(shot.end-shot.start)),u=passage||act?time:lerp(shot.sourceStart,shot.sourceEnd,q),e=audio.majorTransients.findLast(e=>e.time<=time),hit=e?e.strength*Math.exp(-(time-e.time)*18):0;
+ const pose=(at:number)=>{w.camera(at,this.camera);w.moving.forEach(f=>f(at,hit));if(!this.silhouette)this.emotionalPose?.(time);};this.renderer.setScissorTest(false);pose(u);this.renderer.render(w.scene,this.camera);
+ const tear=emotionAt(time).glitchAllowance>.18&&(glitchFrames(time)||(time>26.9&&time<78.299&&e&&time-e.time<2/60&&audio.majorTransients.indexOf(e)%9===0));
  if(tear){const width=this.renderer.domElement.width,height=this.renderer.domElement.height;this.renderer.setScissorTest(true);for(let i=0;i<3;i++){this.renderer.setScissor(0,Math.round(height*(.13+i*.26)),width,Math.round(height*(.045+i*.02)));pose(Math.max(passage||act?0:shot.sourceStart,u-(i+1)/60));this.camera.position.x+=(i%2?1:-1)*(5+hit*12);this.renderer.render(w.scene,this.camera)}this.renderer.setScissorTest(false);pose(u)}
  if(time>=66&&time<66.45){const cw=this.renderer.domElement.width,ch=this.renderer.domElement.height,cut=Math.round(ch*(time-66)/.45);this.renderer.setScissorTest(true);this.renderer.setScissor(0,ch-cut,cw,cut);w.root.scale.z=.035;this.renderer.render(w.scene,this.camera);w.root.scale.z=1;this.renderer.setScissorTest(false);}
 

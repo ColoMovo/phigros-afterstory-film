@@ -11,6 +11,10 @@ export function makeOpeningPassage():World{
  const entry=new T.Group();entry.position.set(30,32,-70);w.root.add(entry);
  const shutters=[-1,1].map(side=>profile(entry,[[side*.08,-240],[side*340,-240],[side*300,255],[side*.08,225]],11,[0,0,0],[0,0,0],'navy','blackglass'));
  const trace=beam(entry,[0,-85,-6],[0,84,-6],.06,.08,'energy');
+ // A last warm light guides the opening; the shell is a passage, not a boot
+ // warning. This material is private, so later cyan cores retain their identity.
+ trace.material=new T.MeshBasicMaterial({color:'#efe0c4'});
+ const distantGlow=new T.PointLight('#ffe4c4',0,820,1.7);distantGlow.position.set(-140,-15,610);w.scene.add(distantGlow);
 
  // The back of the shell leads into an asymmetric, curved chamber. It shares
  // the shell's actual coordinates and opens onto the island world at z=700.
@@ -45,6 +49,7 @@ export function makeOpeningPassage():World{
   const daylight=smooth(4.35,5.3,time),outside=1-smooth(8.3,9.15,time);
   dawnLights.forEach(({light,power})=>{light.intensity=power*lerp(.025,1,daylight)*lerp(.11,1,outside)});
   const release=smooth(9.6,10.85,time);
+  distantGlow.intensity=lerp(7,23,smooth(3.2,5.321,time))*(1-smooth(10.5,12,time));
   destinationLights.forEach(({light,power})=>{light.intensity=power*lerp(.08,1,release)});
   shellParts.forEach(({part,rest,direction},i)=>{part.position.copy(rest);part.position.x+=direction*smooth(7.6,8.7,time)*(i===0?13:22);part.position.z+=smooth(7.6,8.7,time)*(i===0?0:10)});
   const q=clamp((time-10.5)/1.5);destination.moving.forEach(move=>move(q,hit));

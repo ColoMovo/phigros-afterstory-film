@@ -1,0 +1,82 @@
+{
+  "inspectedDate": "2026-10-10",
+  "scope": "Read-only local music provenance and attribution separation; no independent copyright ownership or release-license determination.",
+  "sourceFileMetadata": [
+    {
+      "role": "current-user-local-file",
+      "path": "/home/colomovo/Music/What do you want more than a Happy ending？ - 濒笼.mp3",
+      "bytes": 6637223,
+      "fileSHA256": "b9582f9bafab0ea969d0a71174c466e13f3a0931239cad90b4117d7968414e76",
+      "id3Version": "2.3.0",
+      "id3BlockBytes": 125292,
+      "observedTextFrames": {
+        "TIT2": "What do you want more than a Happy ending？",
+        "TPE1": "濒笼",
+        "TALB": "phigros（宣传音乐）",
+        "TCON": "Blues"
+      },
+      "absentAttributionFrames": [
+        "TCOM",
+        "TEXT",
+        "TCOP",
+        "TSRC",
+        "TPE2"
+      ],
+      "postID3SHA256": "9d3c02c51a32670fd65e0c43b14ee41bf80932d0ccfd2b55f505825de692b7da",
+      "decodedPCMFormat": "signed 16-bit little-endian, stereo, 44100 Hz",
+      "decodedPCMBytes": 28704768,
+      "decodedPCMSHA256": "2c498d61f7dc0fa5fe121911eef7916a9754a4c70e0fde4c92b9390ccf0f8e78"
+    },
+    {
+      "role": "archived-render-input",
+      "path": "public/music.mp3",
+      "bytes": 6623454,
+      "fileSHA256": "0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3",
+      "id3Version": "2.3.0",
+      "id3BlockBytes": 111523,
+      "observedTextFrames": {
+        "TIT2": "What do you want more than a Happy ending？",
+        "TPE1": "濒笼",
+        "TALB": "phigros（宣传音乐）",
+        "TCON": "Blues"
+      },
+      "absentAttributionFrames": [
+        "TCOM",
+        "TEXT",
+        "TCOP",
+        "TSRC",
+        "TPE2"
+      ],
+      "postID3SHA256": "9d3c02c51a32670fd65e0c43b14ee41bf80932d0ccfd2b55f505825de692b7da",
+      "decodedPCMFormat": "signed 16-bit little-endian, stereo, 44100 Hz",
+      "decodedPCMBytes": 28704768,
+      "decodedPCMSHA256": "2c498d61f7dc0fa5fe121911eef7916a9754a4c70e0fde4c92b9390ccf0f8e78"
+    }
+  ],
+  "userReportedGameDisplayAttribution": {
+    "text": "Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい",
+    "source": "Direct user instruction for the emotional pass",
+    "independentlyVerified": false,
+    "isObservedID3Value": false
+  },
+  "audioIdentity": {
+    "byteDifferenceScope": "ID3 tag block only",
+    "postID3BytesMatch": true,
+    "decodedPCMMatch": true,
+    "renderInputSHA256": "0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3",
+    "soundtrackUsage": "Entire archived original audio at original speed and zero offset; no generated soundtrack or added SFX."
+  },
+  "rightsBoundary": {
+    "statement": "Music rights remain with the respective creators and rights holders.",
+    "projectIdentity": "UNOFFICIAL FAN TRIBUTE — NOT AFFILIATED WITH PIGEON GAMES.",
+    "userSuppliedInputIsRedistributionLicense": false,
+    "pigeonGamesSublicensingAuthorityInferred": false,
+    "metadataProvesOwnership": false
+  },
+  "recommendedClosingCredit": [
+    "MUSIC",
+    "What do you want more than a Happy ending？",
+    "Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい",
+    "Music rights remain with the respective creators and rights holders."
+  ]
+}

@@ -51,6 +51,8 @@ def pcm(path,start,seconds):
  return np.frombuffer(subprocess.check_output(['ffmpeg','-v','error','-ss',str(start),'-i',str(path),'-t',str(seconds),'-vn','-ac','1','-ar','8000','-f','f32le','-']),dtype='<f4')
 source=ROOT/'public/music.mp3';original=pcm(source,meta['sourceStart'],duration);encoded=pcm(p,0,duration);n=min(len(original),len(encoded));corr=float(np.corrcoef(original[:n],encoded[:n])[0,1]);assert corr>.98
 assert hashlib.sha256(source.read_bytes()).hexdigest()==meta['sourceAudioSHA256']
+emotion_map=json.loads((ROOT/'src/data/emotion-map.json').read_text())
+emotion_intents={s['shotId']:s for s in emotion_map['shots']}
 shots=json.loads((ROOT/'src/data/shots.json').read_text());shots=[s for s in shots if s['sample']>=meta['sourceStart'] and s['sample']<meta['sourceEnd']]
 opening=p.name=='opening-review.mp4';prefix='opening' if opening else 'smoke' if p.name=='smoke.mp4' else 'film'
 dir=ROOT/'output'/f'{prefix}-keyframes';dir.mkdir(exist_ok=True)
@@ -61,6 +63,10 @@ for s in shots:
  last=min(meta['frames']-1,math.ceil((s['end']-meta['sourceStart'])*meta['fps']-1e-7)-1)
  frame=max(first,min(last,round((s['sample']-meta['sourceStart'])*meta['fps'])));path=dir/f"{s['id']}-{s['family']}.png"
  samples.append(dict(id=s['id'],family=s['family'],world=s['world'],name=s['name'],reviewName=s.get('reviewName',s['family']),sourceTime=meta['sourceStart']+frame/meta['fps'],videoFrame=frame,image=path.name,function=s['function']))
+for sample in samples:
+ sample['intendedEmotion']=emotion_intents[sample['id']]['emotion']
+ sample['emotionalPurpose']=emotion_intents[sample['id']]['emotionPurpose']
+ sample['visualAcceptance']='Requires actual visual review; intent is not a score.'
 frames=sorted({s['videoFrame'] for s in samples})
 select='+'.join(f'eq(n\\,{frame})' for frame in frames)
 subprocess.run(['ffmpeg','-v','error','-y','-i',str(p),'-vf',f'select={select}','-fps_mode','vfr','-frames:v',str(len(frames)),str(dir/'encoded-%03d.png')],check=True)

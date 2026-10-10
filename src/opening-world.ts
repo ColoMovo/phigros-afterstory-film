@@ -243,7 +243,6 @@ function dawnEcology(w:World,attached:T.Group,firstLyricOnly=false){
  profile(gate,[[18,-36],[25,-45],[46,-27],[46,58],[31,79],[25,60]],7,[0,0,5],[0,0,0],'white','stone');
  beam(gate,[-41,70,6],[35,83,6],3,8,'blue');cable(gate,[[-38,-35,0],[-41,40,0],[-29,76,0]],.10,'cyan');
  island(w.root,[-334,-10,212],42,53,'stone',715);
- annotation(gate,'08  /  DORMANT ARCHIVE',[-2,-31,-8],53);
  // Third focus: a remote split instrument with a hairline dawn-metal fissure.
  const distant=new T.Group();distant.position.set(320,245,350);distant.rotation.z=.22;w.root.add(distant);
  foldedBody(distant,(s,v)=>new T.Vector3(Math.sin(s*Math.PI*.9)*42+v*(28-8*s),-115+s*230,Math.sin(s*Math.PI*1.25)*38+v*11),'blue',6,'stone');
@@ -291,8 +290,6 @@ function dawnEcology(w:World,attached:T.Group,firstLyricOnly=false){
   const note=annotation(row,l.zh,first?[30,-50,-31]:[0,32,111],first?65:83,[0,Math.PI+.14,0]);
   w.moving.push(u=>{const time=musicTime,end=first?lyrics[1].time:lyrics[2].time,a=smooth(l.time,l.time+.18,time)*(1-smooth(end-.15,end,time)),pull=first?smooth(7.72,8.5,time):0;row.visible=a>0;letters.forEach((o,i)=>{const s=i/Math.max(1,chars.length-1),angle=s*Math.PI*1.65-.7;o.position.copy(o.userData.rest).lerp(new T.Vector3(8+Math.cos(angle)*27,-3+Math.sin(angle)*27,-18+Math.sin(angle)*14),pull);o.rotation.z=pull*(angle*.6-.5);(o.material as T.MeshBasicMaterial).opacity=a*(time>=(charTiming[i]??l.time)?1:.35)});(note.material as T.MeshBasicMaterial).opacity=a*.78});
  }
- annotation(attached,'SIGNAL / 00.  —  MEMORIA',[-49,26,-13],20,[0,Math.PI-.2,.25]);
- annotation(w.root,'GRAVITY // 01', [109,-8,55],25,[-Math.PI/2,0,0]);
 }
 
 export function dawnWorld(firstLyricOnly=false){

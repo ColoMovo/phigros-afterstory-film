@@ -94,7 +94,8 @@ for pair in spec.get('editComparisons',[]):
     args=['ffmpeg','-v','error','-y']
     for c in sources:args+=['-i',str(root/c['localPath'])]
     graph=[]
-    for i,label in enumerate(['V01 / ORIGINAL','OMNI / EDIT']):
+    pair_labels=pair.get('labels',['V01 / ORIGINAL','OMNI / EDIT'])
+    for i,label in enumerate(pair_labels):
         graph.append(f"[{i}:v]setpts=PTS-STARTPTS,fps=30,scale=640:360,drawbox=x=0:y=0:w=iw:h=32:color=black@0.75:t=fill,drawtext=fontfile='{font}':text='{label}':x=12:y=9:fontsize=14:fontcolor=white[p{i}]")
     graph.append('[p0][p1]hstack=inputs=2[v]')
     target=out/f"omni-edit-{pair['name']}.mp4"
@@ -108,7 +109,7 @@ for pair in spec.get('editComparisons',[]):
             frame=out/f'edit-{col}-{row}.png'
             subprocess.run(['ffmpeg','-v','error','-y','-ss',str(t),'-i',str(root/c['localPath']),'-frames:v','1','-vf','scale=480:270',str(frame)],check=True)
             sheet.paste(Image.open(frame).convert('RGB'),(col*480,row*295+25))
-            draw.text((col*480+8,row*295+5),f"{'V01' if col==0 else 'OMNI EDIT'} / {t:.2f}s",font=textfont,fill='white')
+            draw.text((col*480+8,row*295+5),f"{pair_labels[col]} / {t:.2f}s",font=textfont,fill='white')
             frame.unlink()
     sheet.save(out/f"omni-edit-{pair['name']}.jpg",quality=94)
     edit_reports.append(dict(name=pair['name'],sources=[dict(id=c['id'],sha256=c['sha256']) for c in sources],fullDecode='pass',comparisonSHA256=hashlib.sha256(target.read_bytes()).hexdigest(),visualAcceptance='Pending visual inspection; no inferred camera or rule success.'))

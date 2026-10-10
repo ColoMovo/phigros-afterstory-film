@@ -19,12 +19,29 @@ This lists the active rendering pipeline's inputs. It does not imply that the cu
 | --- | --- | --- | --- | --- | --- |
 | Original combined Blender event shots | Original workspace scripts | `scripts/blender` | Original geometry, shading, light and animation | Generated untracked `public/physical/*.mp4` | 00:12–00:14.591; 00:19.851–00:22.55; 00:39.3–00:41; 00:44.7–00:46.5; 00:51.7–00:54.8 |
 | Original geometric worlds, camera paths, particles, sky, shaders and typography layouts | Original code authored in this workspace for the user | Project source | Original project work; abstract fan visuals do not claim official story canon | `src/shot-library.ts`, `src/opening-world.ts`, `src/archive-art.ts`, `src/paint.ts` | 00:00–02:42.725 |
-| What do you want more than a Happy ending？ / 濒笼 | Third-party rights remain with the respective music and lyric rights holders | User-provided original MP3 | Necessary user-provided audio input; no redistribution license or Pigeon Games sublicensing authority inferred | `public/music.mp3` locally, untracked; CI restores from `assets/private-input/music.enc` using a protected Actions Secret | Entire original song, 00:00–02:42.725, original speed; no additional SFX |
+| What do you want more than a Happy ending？ | Third-party rights remain with the respective music and lyric rights holders; source tags and user-reported credits are separated in Music Rights below | User-provided original MP3 | Necessary user-provided audio input; no redistribution license or Pigeon Games sublicensing authority inferred | `public/music.mp3` locally, untracked; CI restores from `assets/private-input/music.enc` using a protected Actions Secret | Entire original song, 00:00–02:42.725, original speed; no additional SFX |
 | Source JP / CN lyrics | Respective lyric / translation rights holders | User audio metadata | User-provided project input; source spelling retained; no independent license asserted | `src/data/lyrics.json`, `assets/lyrics-original.txt` | Exact supplied word / line timestamps; translation placeholder `//` is not shown |
 | Noto Sans CJK font subset | Adobe / Google / Noto contributors | https://github.com/notofonts/noto-cjk | SIL Open Font License 1.1, bundled `assets/Noto-LICENSE.txt` | `public/fonts/CJK.woff2`, `public/fonts/CJK.ttf` | JP / CN typography and credits throughout |
 | Inter Display / Text font subsets | Rasmus Andersson / Inter contributors | https://github.com/rsms/inter | SIL Open Font License, bundled `assets/Inter-LICENSE.txt` | `public/fonts/Display.woff2`, `public/fonts/Text.woff2`, `public/fonts/Display.ttf` | Numeric architecture, original text title, annotations, ending |
 
-The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3`. CI verification compares decoded output audio to this exact local input at zero offset. The standalone MP3 and secret are never uploaded with review outputs. The repository remains public. Removing the current plaintext file does not alone remove historical Git blobs; the user explicitly chose to retain historical commits on 2026-10-07. Main history is not rewritten.
+## Music Rights
+
+**Music rights remain with the respective creators and rights holders.** This is an **UNOFFICIAL FAN TRIBUTE**, not an official, authorized or collaborative Pigeon Games production. A song appearing in Phigros does not establish Pigeon Games' authority to sublicense its music, lyrics, performances or translation. Neither local ID3 tags nor the user supplying a production input establishes copyright ownership or a public redistribution license.
+
+The current user file and the archived project input were inspected directly on 2026-10-10. Both contain these ID3 values:
+
+| ID3 frame | Observed value | What this establishes |
+| --- | --- | --- |
+| `TIT2` | What do you want more than a Happy ending？ | Source-file title tag |
+| `TPE1` | 濒笼 | Source-file performer tag; not independently verified authorship or ownership |
+| `TALB` | phigros（宣传音乐） | Source-file album tag; not official authorization |
+| `TCON` | Blues | Source-file genre tag |
+
+No `TCOM`, `TEXT`, `TCOP`, `TSRC` or `TPE2` attribution frames were present. The user separately reports the game's display credit as **Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい**. This game-display attribution is user supplied and was not independently checked against the game in this pass; it is not an observed ID3 value. It is recorded separately from the file tags and is the requested closing-credit text. No individual composition, lyric, performance or rights-holder role is inferred beyond that supplied wording.
+
+The archived render input `public/music.mp3` has SHA256 `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3`. The current file at the user's Music path has SHA256 `b9582f9bafab0ea969d0a71174c466e13f3a0931239cad90b4117d7968414e76`; the difference is confined to the ID3 tag block. Their complete post-ID3 bytes and decoded stereo audio are identical. Read-only measurements, exact metadata and both hashes are retained in `assets/music-source-provenance.json`; neither MP3 was modified.
+
+The film uses the entire archived original soundtrack at original speed and zero offset, without generated music or added SFX. CI verification compares the encoded soundtrack against that exact archived input. The standalone MP3 and secret are never uploaded with review outputs. No new plaintext MP3 is committed or published as a project resource. The repository remains public. Removing the current plaintext file does not alone remove historical Git blobs; the user explicitly chose to retain historical commits on 2026-10-07. Main history is not rewritten.
 
 # Project identity
 
@@ -40,7 +57,7 @@ The music SHA256 is `0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599
 
 ## Generative Visual Material
 
-Google Flow generation is authorized for original visual worlds, using only original prompts and workspace-made Blender first frames. Official references, characters, game art, UI and readable lyric text are excluded from generation inputs. `assets/generated-ai/manifest.json` is the authoritative list of actual downloaded sources, their model/provider, prompt, date, provenance and quality status. `src/data/ai-shot-selections.json` defines the selected moments that actually enter this revision; unaccepted results are research material only. Generated audio is always discarded. The initial quality gate is limited to glass-memory, red-machine and new-dawn; an empty manifest means no actual AI footage has entered the film yet.
+Google Flow generation is authorized for original visual worlds. Actual completed generations use original prompts and existing original generated clips; prepared workspace Blender reference/control inputs have not been successfully uploaded. Official references, characters, game art, UI and readable lyric text are excluded from generation inputs. `assets/generated-ai/manifest.json` is the authoritative list of actual downloaded sources, their model/provider, prompt, date, provenance and quality status. `src/data/ai-shot-selections.json` defines the selected moments that actually enter this revision; unaccepted results are research material only. Generated audio is always discarded. The initial quality gate is limited to glass-memory, red-machine and new-dawn; an empty manifest means no actual AI footage has entered the film yet.
 
 The three original composition reference images and `.blend` files in `assets/generated-ai/references` come from `scripts/blender/hybrid-previs.py`. They establish camera, shape and foreground depth and are not official assets. Local reference still creation is authorized separately from formal film export. All formal review/sequence/movie rendering and MP4 verification remains in GitHub Actions. Downloaded AI clips are local repository inputs; no Google/Flow URL is resolved at render time.
 
@@ -55,7 +72,7 @@ The user's prose reference bible is recorded in `VISUAL-REFERENCE-BIBLE.md`. Off
 
 ### Downloaded original generated source pool (2026-10-10)
 
-Three Veo 3.1 - Quality original text-to-video baselines and three independent Omni 1.1 Flash dawn camera edits are recorded in `assets/generated-ai/manifest.json`, including prompts, measured duration/resolution and hashes. No official reference was uploaded. The nine downloaded versioned sources include both useful materials and rejected camera tests. After Actions review 38055119650, three sources have explicit short selections for the pilot preview: glass V02 material, red V01 after a failed camera-reshoot attempt, and stable dawn A. The other variants remain research material. No improved camera control is claimed. Generated audio is discarded. The small provider watermark present in downloaded media is retained. Earlier duplicate exports are excluded from the version tree.
+Three Veo 3.1 - Quality original text-to-video baselines and three independent Omni 1.1 Flash dawn camera edits are recorded in `assets/generated-ai/manifest.json`, including prompts, measured duration/resolution and hashes. No official reference was uploaded. The earlier nine downloaded versioned sources include both useful materials and rejected camera tests. After Actions review 38055119650, three sources have explicit short selections for the pilot preview: glass V02 material, red V01 after a failed camera-reshoot attempt, and stable dawn A. The other variants remain research material. No improved camera control is claimed. Generated audio is discarded. The small provider watermark present in downloaded media is retained. Earlier duplicate exports are excluded from the version tree.
 
 ### Original spatial-control footage
 
@@ -66,3 +83,5 @@ Three Veo 3.1 - Quality original text-to-video baselines and three independent O
 The glass V02 material edit, red V02 camera edit and dawn C2 orbit retest are recorded in the manifest and immutable version tree. These edit original generated sources, with exact recorded prompts. The original-Blender world-edit and spatial-rule tests remain pending: browser upload permission rejected import even after explicit user reauthorization. No official/reference media or remote Flow asset is substituted.
 
 The first mixed preview uses about 15.67 seconds of generated-world material across six authored intervals; all source audio is discarded. Exact text, 01–09, credits, original music, and deterministic transitions remain authored in the project. The selected native clips have provider watermarks, retained without removal. Final visual acceptance of the mixed preview is pending encoded review.
+
+The 2026-10-10 emotional pass additionally archives `glass-memory-v03-emotion`, an Omni 1.1 Flash edit of the accepted V02 material source. It requests only dawn aperture/reflected light and gentle existing dust wind, with geometry/camera/timing locked. Its version-specific downloaded file, exact prompt and hash are registered; at this commit it is pending CI before/after review and is not yet selected. Emotional labels are intentions, not proof of camera preservation or emotional success.

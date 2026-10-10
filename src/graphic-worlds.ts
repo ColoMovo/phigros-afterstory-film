@@ -1,5 +1,5 @@
-// Original print/data montage. This world deliberately has no CG lighting.
-// Image thresholds, paper grain and frame slicing change the medium itself.
+// Original print montage. This world deliberately changes medium rather than
+// pretending that a full-frame graphic is another lit CG environment.
 type Shot={start:number;end:number;family:string};
 const W=1920,H=1080;
 const hash=(n:number)=>{const q=Math.sin(n*127.1+311.7)*43758.5;return q-Math.floor(q)};
@@ -9,9 +9,61 @@ function plate(images:HTMLImageElement[],index:number,invert:boolean){
  const c=document.createElement('canvas');c.width=640;c.height=426;const x=c.getContext('2d')!;x.drawImage(images[index%images.length],0,0,c.width,c.height);
  const pixels=x.getImageData(0,0,c.width,c.height);for(let i=0;i<pixels.data.length;i+=4){const l=pixels.data[i]*.25+pixels.data[i+1]*.6+pixels.data[i+2]*.15,b=(l>120)!==invert?238:12;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=b;}x.putImageData(pixels,0,0);cache.set(k,c);return c;
 }
+function rememberedPaper(x:CanvasRenderingContext2D,images:HTMLImageElement[],index:number,px:number,py:number,width:number,turn:number,curl:number){
+ const h=width*2/3;
+ x.save();x.translate(px,py);x.rotate(turn);x.transform(1,.025,Math.sin(curl)*.09,1,0,0);
+ // Few large sheets have stable identities. Their torn silhouettes, folds and
+ // the shared wind provide change; the pictures do not randomly change at 15Hz.
+ x.beginPath();x.moveTo(-width/2,-h/2);x.lineTo(width*.42,-h/2+18);x.lineTo(width/2,-h*.38);x.lineTo(width*.49,h*.45);x.lineTo(width*.34,h/2);x.lineTo(-width*.48,h*.47);x.closePath();
+ x.shadowColor='rgba(36,40,45,.22)';x.shadowBlur=28;x.shadowOffsetX=-15;x.shadowOffsetY=28;x.fillStyle='#f5eee0';x.fill();x.shadowColor='transparent';x.clip();
+ x.drawImage(images[index%images.length],-width/2+20,-h/2+20,width-40,h-40);
+ const fold=x.createLinearGradient(width*.25,0,width*.5,0);fold.addColorStop(0,'rgba(250,245,230,0)');fold.addColorStop(.6,`rgba(250,245,230,${.15+Math.abs(curl)*.18})`);fold.addColorStop(1,'rgba(76,63,59,.24)');x.fillStyle=fold;x.fillRect(width*.25,-h/2,width*.25,h);
+ x.restore();
+}
+const paperDoors=new Map<string,HTMLCanvasElement>();
+function chapterOpening(){
+ const key='09';if(paperDoors.has(key))return paperDoors.get(key)!;
+ const c=document.createElement('canvas');c.width=1400;c.height=1200;const y=c.getContext('2d')!;
+ y.fillStyle='#25313a';y.beginPath();y.moveTo(0,90);y.lineTo(1110,0);y.lineTo(1400,820);y.lineTo(1310,1200);y.lineTo(90,1160);y.closePath();y.fill();
+ y.globalCompositeOperation='destination-out';y.font='850px Display';y.textAlign='center';y.fillText('09',740,1020);
+ paperDoors.set(key,c);return c;
+}
+function paintRememberedJourney(x:CanvasRenderingContext2D,time:number,shot:Shot,images:HTMLImageElement[]){
+ const q=Math.max(0,Math.min(1,(time-shot.start)/(shot.end-shot.start))),wind=time-26.9;
+ x.save();const bg=x.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#f3eee1');bg.addColorStop(.55,'#e3e6e5');bg.addColorStop(1,'#c9d5dc');x.fillStyle=bg;x.fillRect(0,0,W,H);
+ // A remembered path persists behind every sheet; it is a destination, not a
+ // scan-line. Changing the foreground discovers more of the same old light.
+ x.save();x.globalAlpha=.63;x.drawImage(images[6],-60-wind*8,-100,2100,1400);x.restore();
+ if(shot.family==='memory'){
+  rememberedPaper(x,images,3,1490+q*80,160-q*35,650,-.18+q*.06,.24);
+  rememberedPaper(x,images,1,1200+q*100,650-q*100,880,.15+q*.08,.35);
+  rememberedPaper(x,images,2,520+q*230,530-q*75,1160,-.08+q*.13,.4);
+  // The near sheet peels out of the frame. Its opening reveals the road and
+  // living branch already present beneath it, instead of adding a new object.
+  const peel=q*q*(3-2*q);
+  rememberedPaper(x,images,0,180+peel*1730,510-peel*710,1510,-.21+peel*.73,.15+peel*.8);
+ }else if(shot.family==='poster'){
+  // Brief flat reprint: strong ink silhouette, small rose paper edge. The
+  // source stays fixed while the paper turns in the same wind direction.
+  rememberedPaper(x,images,4,800+q*100,530-q*80,2060,-.14+q*.14,.3);
+  x.fillStyle='#b98783';x.beginPath();x.moveTo(1700,0);x.lineTo(1920,0);x.lineTo(1920,1080);x.lineTo(1780,1080);x.closePath();x.fill();
+ }else{
+  rememberedPaper(x,images,5,1160+q*90,550-q*40,1910,.11+q*.05,.2);
+  // The chapter itself becomes a negative-space paper doorway. The visible
+  // memory behind 09 remains spatially continuous as wind carries the ink away.
+  const opening=shot.family==='insert-type'?.03:q;
+  x.save();x.translate(620+opening*880,505-opening*270);x.rotate(-.13+opening*.19);x.drawImage(chapterOpening(),-880,-715,1760,1510);x.restore();
+  x.strokeStyle='#f8efde';x.lineWidth=8;x.beginPath();x.moveTo(-100,920);x.bezierCurveTo(540,870,1100,220,2020,180-opening*120);x.stroke();
+ }
+ // Stable print grain gives the medium a tactile surface. It does not jitter
+ // every frame or introduce new data marks / warning labels.
+ x.globalAlpha=.08;x.fillStyle='#34323a';for(let i=0;i<850;i++)x.fillRect(hash(i)*W,hash(i+71)*H,1+hash(i+39)*2,1);x.globalAlpha=1;
+ x.restore();return true;
+}
 export function paintPrintWorld(x:CanvasRenderingContext2D,time:number,shot:Shot,images:HTMLImageElement[],jp:string){
  const family=shot.family,q=Math.max(0,Math.min(1,(time-shot.start)/(shot.end-shot.start))),tick=Math.floor((time-shot.start)*15);
  if(!['memory','exploded','poster','typeworld','insert-scan','insert-type','insert-red','insert-white'].includes(family))return false;
+ if(time>=26.9&&time<34&&images.length>6&&['memory','poster','insert-type','typeworld'].includes(family))return paintRememberedJourney(x,time,shot,images);
  x.save();
  const bg=family==='insert-red'?'#dd251e':family==='insert-white'?'#fffef9':family==='typeworld'?'#090a09':'#eeeae0';x.fillStyle=bg;x.fillRect(0,0,W,H);
  if(family==='insert-red'){

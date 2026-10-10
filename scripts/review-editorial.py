@@ -19,7 +19,7 @@ meta=json.loads(Path(str(movie)+'.render.json').read_text())
 assert meta['sourceStart']==0 and meta['sourceEnd']>162.7
 out=root/'output'
 sections=[]
-for name,start,end in [('final-build-review',110,145),('ending-review',130,meta['sourceEnd'])]:
+for name,start,end in [('first-climax-review',58.315,78.299),('farewell-review',78.299,98.076),('final-build-review',110,145),('ending-review',130,meta['sourceEnd'])]:
  target=out/(name+'.mp4')
  subprocess.run(['ffmpeg','-v','error','-y','-ss',str(start),'-i',str(movie),'-t',str(end-start),'-map','0:v:0','-map','0:a:0','-c:v','libx264','-preset','fast','-crf','17','-pix_fmt','yuv420p','-c:a','aac','-b:a','320k','-movflags','+faststart',str(target)],check=True)
  subprocess.run(['ffmpeg','-v','error','-i',str(target),'-f','null','-'],check=True)

@@ -7,6 +7,7 @@ let photoPlate=false;
 const hasAiDawn=Boolean((aiAssets as Record<string,unknown>)['new-dawn-v02-camera-A']);
 import {paintPrintWorld} from './graphic-worlds';
 import {heroClips} from './hero-clips';
+import {emotionAt} from './emotion-direction';
 
 // NEW DAWN — an architectural film. All animation, camera paths, lighting,
 // typography and particles are evaluated from absolute music time.
@@ -47,7 +48,7 @@ function fill(c:string,a=1){ctx.save();ctx.globalAlpha*=a;ctx.fillStyle=c;ctx.fi
 function line(x:number,y:number,xx:number,yy:number,c=ink,w=1,a=1){ctx.save();ctx.globalAlpha*=a;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();ctx.restore()}
 function glow(x:number,y:number,r:number,c:string,a=1){ctx.save();ctx.globalAlpha*=a;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,rgba(c,0));ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore()}
 function photoTextEdge(s:string,x:number,y:number,c:string){
- if(!photoPlate&&!(t>=129&&t<135.191334))return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
+ if(!photoPlate&&!(t>=5.321&&t<12)&&!(t>=58.315&&t<78.299)&&!(t>=98.076&&t<135.191334))return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
  ctx.save();ctx.strokeStyle=bright?'#132530':'#e1ecee';ctx.lineWidth=2;ctx.lineJoin='round';ctx.globalAlpha*=.55;ctx.strokeText(s,x,y);ctx.restore();
 }
 function txt(s:string,x:number,y:number,size:number,c=ink,font='Display',align:CanvasTextAlign='left',a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='alphabetic';photoTextEdge(s,x,y,c);ctx.fillText(s,x,y);ctx.restore()}
@@ -393,35 +394,51 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
  if(shot.family==='insert-black'){fill('#000000');return;}
  if(t>=151.4){
   if(t<154){fill('#eaece4');const a=smooth(t,151.4,151.75);txt('PHIGROS',150,302,118,'#101b22','Display','left',a);txt('MAIN STORY',154,442,76,'#18252c','Text','left',a);txt('COMPLETE',145,634,176,'#101b22','Display','left',a);tracking('2019 — 2026',161,790,31,4,'#344951',a);tracking('THANK YOU FOR THE JOURNEY',162,885,23,3,'#344951',a);line(148,965,1770,965,'#44585f',2,a);return;}
-  if(t<157){fill('#000000');const c='#dce2df',a=smooth(t,154.05,154.32)*(1-smooth(t,156.75,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,30,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,26,c,'Text','left',a);txt('Original geometry and generated world plates',155,850,26,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,26,c,'Text','left',a);txt('濒笼',155,957,26,c,'CJK','left',a);return;}
-  fill('#000000');const a=smooth(t,157.3,158.1)*(1-smooth(t,160.4,161.2));txt('What do you want more',380,474,57,'#dce1de','Text','left',a);txt('than a Happy ending?',540,554,57,'#dce1de','Text','left',a);if(t>=161.15&&t<161.3){const u=(t-161.15)/.15;line(0,540,W*u,540,'#acccc6',1.2,(1-u)*.8)}return;
+  fill('#000000');
+  if(t<154.35)return;
+  if(t<157.9){const a=smooth(t,154.35,154.8)*(1-smooth(t,157.55,157.9));txt('What do you want more',385,478,57,'#dce1de','Text','left',a);txt('than a Happy ending?',540,558,57,'#dce1de','Text','left',a);return;}
+  if(t<158.05){if(t<157.94)line(0,540,W,540,'#9bbeb7',1.4,.6);return;}
+  const a=smooth(t,158.05,158.28)*(1-smooth(t,161.4,161.72544217687076)),c='#dce2df';
+  txt('MUSIC',155,272,28,c,'Text','left',a*.65);
+  txt('What do you want more than a Happy ending？',155,356,43,c,'CJK','left',a);
+  txt('Apollo “HALO” program ft. 安月名莉子 × 大瀬良あい',155,420,35,c,'CJK','left',a);
+  txt('Music rights remain with the respective creators and rights holders.',155,488,27,c,'Text','left',a*.8);
+  txt('UNOFFICIAL FAN TRIBUTE',155,770,35,c,'Text','left',a);
+  txt('NOT AFFILIATED WITH PIGEON GAMES',155,831,27,c,'Text','left',a*.85);
+  return;
  }
- if(t>=135.258&&t<137){fill('#fff8e7',1-smooth(t,135.38,137));return;}
+ if(t>=135.258&&t<135.85)fill('#fff8e7',.28*(1-smooth(t,135.258,135.85)));
  if(t>=63.033333&&t<63.1){fill('#ffffff');return;}
- const dark=t>=98.076&&t<135.191334||['engine','deep','crystals','red-world','cyan-storm','monuments','ringtemple','colonnade','labyrinth','bridge'].includes(shot.family)||shot.family.startsWith('physical-');
+ const dark=t>=113.098&&t<135.191334||['engine','deep','crystals','red-world','cyan-storm','monuments','ringtemple','labyrinth','bridge'].includes(shot.family)||shot.family.startsWith('physical-');
  const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
- const color=passage?passageColor:dark?'#e6eeeb':'#243945';
+ const colonnadeTone=smooth(t,75.0,76.8),colonnadeColor='#'+[[230,36],[238,57],[235,69]].map(([a,b])=>Math.round(mix(a,b,colonnadeTone)).toString(16).padStart(2,'0')).join('');
+ const color=passage?passageColor:shot.family==='colonnade'?colonnadeColor:dark?'#e6eeeb':'#243945';
  if(shot.family==='signal'){tracking('UNOFFICIAL FAN TRIBUTE',125,975,17,2,'#a9bdc7',.75);return;}
- if(hasAiDawn&&t>=141.7&&t<150.95){
-  // One island identity occupies the AI intervals. Numerals are authored here,
-  // never synthesized by the video model; the final 09 survives into empty sky.
-  if(t<142.3)line(0,730,W*smooth(t,141.7,142.3),730,'#486a7b',1.5,.4);
-  if(t>=142.3){
-   for(let i=0;i<8;i++){const a=1-smooth(t,142.3+i*.04,142.65+i*.04);if(a>0)txt(String(i+1).padStart(2,'0'),210+i*190,190+(i%2)*50,21,'#3c5d6f','Display','center',a*.5);}
-   const a=smooth(t,142.3,143)*(1-smooth(t,149.3,150.95)),x=1650+(t-142.3)*4,y=290-(t-142.3)*2;
-   txt('09',x,y,88,'#294f65','Display','center',a*.8);
-   line(x-90,y+42,x-25,y+14,'#486a7b',1,a*.5);
+ if(t>=142.3&&t<151.4){
+  // Chapters quietly extinguish. The last numeral loses its printed substance
+  // into the same wind as the clouds, then leaves the sky entirely unmarked.
+  for(let i=0;i<8;i++){const a=1-smooth(t,143.1+i*.26,143.7+i*.26);if(a>0)txt(String(i+1).padStart(2,'0'),210+i*190,190+(i%2)*50,21,'#3c5d6f','Display','center',a*.42);}
+  const appear=smooth(t,142.3,143),dissolve=smooth(t,148.35,150.9),x=1640+(t-142.3)*2,y=285-(t-142.3)*1.3;
+  for(let i=0;i<18;i++){
+   const loss=smooth(dissolve,hash(i+72)*.44,.54+hash(i+72)*.46);ctx.save();ctx.beginPath();ctx.rect(x-90,y-95+i*6.5,180,6.6);ctx.clip();txt('09',x+(i%3-1)*loss*9,y,88,'#294f65','Display','center',appear*(1-loss)*.75);ctx.restore();
+   if(dissolve>0&&loss>0){const travel=(t-148.35)*(.55+hash(i+27)),a=appear*loss*(1-smooth(t,150.25,151.1));glow(x-70+hash(i+9)*140+travel*26,y-85+i*6.5-travel*9,1.3,'#fff0d2',a*.8);}
   }
  }
- if(shot.family==='dawn')return;
+ if(shot.family==='dawn'&&d){txt(d.l.jp,142,923,Math.min(55,1570/d.l.jp.length),'#e6eeeb','CJK','left',d.a);if(d.l.zh!=='//')txt(d.l.zh,149,985,26,'#e6eeeb','CJK','left',d.a*.88);return;}
  if(shot.family.startsWith('insert-')){
   if(['insert-circuit','insert-negative','insert-graphic'].includes(shot.family)){
    fill(shot.family==='insert-negative'?'#f1eee6':'#060c0e');const c=shot.family==='insert-negative'?'#152024':'#bddbd6';ctx.save();ctx.translate(960,540);ctx.rotate(-.18+q*.25);for(let i=0;i<7;i++){const y=(i-3)*120;line(-1200,y,-40,y,c,2);line(-40,y,180,y+70,c,2);line(180,y+70,1200,y+70,c,2)}line(-1400,-600+q*1200,1400,-600+q*1200,c,18);ctx.restore();
   }return;
  }
  if(t>=78.299&&t<98.076){
-  if(d){ctx.save();ctx.globalAlpha=d.a;const cut=smooth(t,86,92),sz=Math.min(86,1570/d.l.jp.length);ctx.translate(965,175);ctx.scale(1,1);ctx.beginPath();ctx.rect(-850,-130,1700,200*(1-cut));ctx.clip();timedLyric(d.l.jp,0,0,sz,'#3d4259','center');ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,1470,870,23,'#57576a','CJK','right',d.a*.8);}
-  if(t>=86&&t<92){const y=540+(t-86)*2;line(0,y,W,y,'#b7c3d2',1.2)}return;
+  const l=lyrics.find(l=>Math.abs(l.time-78.299)<.001)!;
+  const a=smooth(t,78.299,79.15)*(1-smooth(t,87.6,91.8)),drift=smooth(t,83.5,92);
+  txt(l.jp,960+drift*12,858-drift*12,50-drift*4,'#484e66','CJK','center',a*.88);
+  txt(l.zh,960+drift*8,922-drift*9,25,'#697080','CJK','center',a*.72);
+  return;
+ }
+ if(t>=135.258&&t<151.4){
+  if(d){txt(d.l.jp,960,923,Math.min(52,1630/d.l.jp.length),'#354f5d','CJK','center',d.a*.88);if(d.l.zh!=='//')txt(d.l.zh,960,987,27,'#5c727a','CJK','center',d.a*.83);}return;
  }
  // Each lyric owns a composition, with an independent translation annotation.
  if(d){
@@ -442,8 +459,7 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   }
   ctx.restore();
  }
- // Only two record annotations remain; the worlds carry their own density.
- if(shot.id==='12'||shot.id==='27')tracking(`RECORD ${shot.id}`,118,68,15,2,color,.45);
+
  if(t>=66&&t<66.45)judgment(1080*(t-66)/.45,0,'#e9e5db',5);
- if(t>=105&&t<105+5/60){ctx.globalCompositeOperation='difference';fill('#e8ffff');ctx.globalCompositeOperation='source-over';if(Math.floor(t*60)%2===0)fill('#000000',.28);}
+ if(emotionAt(t).glitchAllowance>.18&&t>=105&&t<105+5/60){ctx.globalCompositeOperation='difference';fill('#e8ffff');ctx.globalCompositeOperation='source-over';if(Math.floor(t*60)%2===0)fill('#000000',.28);}
 }

@@ -1,0 +1,2661 @@
+{
+  "schemaVersion": 1,
+  "duration": 162.72544217687076,
+  "timeUnit": "seconds of the unmodified original soundtrack",
+  "semantics": {
+    "state": "intended directorial state, not measured visual quality or audience emotion",
+    "values": "0..1 relative director controls; energy is intended motion intensity, not audio RMS",
+    "warmth": "perceptual emotional light and reflected warmth, not a full-frame orange filter",
+    "openness": "space available to move into and breathe; does not require removing every foreground",
+    "wind": "coherent subtle organic movement, not random jitter or a particle count",
+    "glitchAllowance": "budget multiplier for optional space and graphic disruptions; existing short black punctuation keeps authored timing",
+    "interpolation": "controls use absolute music time and linear interpolation between adjacent keyframes; section and shot labels remain categorical",
+    "source": "Latest user emotional direction; existing shot boundaries and authored lyric timings. No automatic emotion inference from RMS.",
+    "verification": "Intent metadata does not confirm the rendered film satisfies this direction."
+  },
+  "sections": [
+    {
+      "id": "last-light",
+      "start": 0,
+      "end": 2.66,
+      "emotion": "quiet remembrance",
+      "energy": 0.1,
+      "visualDensity": 0.12,
+      "warmth": 0.32,
+      "openness": 0.08,
+      "purpose": "最后一次打开旧物；远方有回应，不是恐怖开机。",
+      "visualEvent": "暖白的细信号先被发现，遮挡留出可走的方向。",
+      "cameraIntent": "微小向前位移，视线有目的地等待裂口。",
+      "colorIntent": "深蓝黑保留；细光偏暖白，cyan只作微弱回应。",
+      "lifeIntent": "尘埃缓慢上浮，像房间里被光照见的灰。"
+    },
+    {
+      "id": "first-opening",
+      "start": 2.66,
+      "end": 5.321,
+      "emotion": "reluctance / anticipation",
+      "energy": 0.23,
+      "visualDensity": 0.2,
+      "warmth": 0.39,
+      "openness": 0.3,
+      "purpose": "舍不得离开，但已经决定出发。",
+      "visualEvent": "遮挡从同一空间分离，让天空先露出来。",
+      "cameraIntent": "沿缝隙继续，不重置视角。",
+      "colorIntent": "暖白从暗部漏出，外部天光渐强。",
+      "lifeIntent": "极细粒子随开口气流被带出去。"
+    },
+    {
+      "id": "morning-awakening",
+      "start": 5.321,
+      "end": 12,
+      "emotion": "awakening / hope",
+      "energy": 0.56,
+      "visualDensity": 0.58,
+      "warmth": 0.49,
+      "openness": 0.66,
+      "purpose": "第一句歌词让观众确信世界还活着。",
+      "visualEvent": "球壳是通往天空的门；内腔也必须有远处出口。",
+      "cameraIntent": "向前穿越，内外尺度切换服务出发。",
+      "colorIntent": "蓝晨、柔白、少量lavender与金色反射；不长期困在黑核。",
+      "lifeIntent": "云层、风与叶片在出口先产生运动。"
+    },
+    {
+      "id": "life-continues",
+      "start": 12,
+      "end": 19.851,
+      "emotion": "youth / life / promise",
+      "energy": 0.65,
+      "visualDensity": 0.64,
+      "warmth": 0.57,
+      "openness": 0.83,
+      "purpose": "时光之约仍在生长；生命不属于过去时。",
+      "visualEvent": "遗迹裂口旁的叶脉亮起，树冠被风拉开。",
+      "cameraIntent": "从巨大遗迹贴近叶片，再穿过树冠。",
+      "colorIntent": "cyan与蓝绿是生命焦点，环境暖白且保留色彩层级。",
+      "lifeIntent": "枝条、叶片不是数据报错；运动具有风的连续方向。"
+    },
+    {
+      "id": "remembered-paths",
+      "start": 19.851,
+      "end": 26.9,
+      "emotion": "nostalgia / remembered journey",
+      "energy": 0.61,
+      "visualDensity": 0.73,
+      "warmth": 0.53,
+      "openness": 0.66,
+      "purpose": "数字是走过的章节与道路，不是登记表。",
+      "visualEvent": "玻璃与数字负空间串起曾经走过的方向。",
+      "cameraIntent": "穿过数字门，再沿玻璃裂缝继续。",
+      "colorIntent": "天空白、旧银、ultramarine；局部暖金像旧光。",
+      "lifeIntent": "玻璃内的细枝与漂浮残片具有同一风向。"
+    },
+    {
+      "id": "memories-rush-back",
+      "start": 26.9,
+      "end": 34,
+      "emotion": "memory / longing",
+      "energy": 0.72,
+      "visualDensity": 0.83,
+      "warmth": 0.58,
+      "openness": 0.61,
+      "purpose": "许多年份同时涌来，观众记住它们曾属于一个旅程。",
+      "visualEvent": "平面回忆涌入三维；碎片沿来路汇流，不扮演日志。",
+      "cameraIntent": "速度提高但始终有下一个可见去处。",
+      "colorIntent": "纸白与墨色高对比；暖痕和柔紫留在记忆边缘。",
+      "lifeIntent": "微小碎光更像花粉与光尘，禁止持续警告标签。"
+    },
+    {
+      "id": "memory-becomes-pressure",
+      "start": 34,
+      "end": 38.7,
+      "emotion": "pressure / time",
+      "energy": 0.78,
+      "visualDensity": 0.76,
+      "warmth": 0.43,
+      "openness": 0.47,
+      "purpose": "旅程确实艰难；压力只是经过的阴影。",
+      "visualEvent": "玻璃记忆内景进入短促机械挤压，下一束光已经可见。",
+      "cameraIntent": "继续向前；不要在机械核心周围停留展示。",
+      "colorIntent": "玻璃留暖反射；红色局限为压力标点。",
+      "lifeIntent": "闭合结构外仍有空气和漂动碎光。"
+    },
+    {
+      "id": "running-toward-light",
+      "start": 38.7,
+      "end": 46.6333333333333,
+      "emotion": "forward motion / resilience",
+      "energy": 0.82,
+      "visualDensity": 0.72,
+      "warmth": 0.63,
+      "openness": 0.78,
+      "purpose": "喘息之后仍然往前；速度伴随生命与空气。",
+      "visualEvent": "暖金种子打开，遗迹、花瓣和水面依次放行。",
+      "cameraIntent": "越过断口、贴纤维和水面飞出。",
+      "colorIntent": "warm mineral、透光花瓣、天空蓝与少量柔粉。",
+      "lifeIntent": "柔性纤维随风，水面有微波，花瓣的变化不暴力。"
+    },
+    {
+      "id": "brief-resistance",
+      "start": 46.6333333333333,
+      "end": 51.05,
+      "emotion": "pressure / refusal to stop",
+      "energy": 0.86,
+      "visualDensity": 0.79,
+      "warmth": 0.37,
+      "openness": 0.37,
+      "purpose": "短暂抵抗不允许覆盖整段向前的情绪。",
+      "visualEvent": "红色既存plate是阻力片段；51.05之前必须指向明亮出口。",
+      "cameraIntent": "Camera穿过去，禁止停下来崇拜机器。",
+      "colorIntent": "暗红与粗金属只暂用；暖白出口不能消失。",
+      "lifeIntent": "即便此处冷硬，出入口仍有随动光尘。"
+    },
+    {
+      "id": "toward-the-ladder",
+      "start": 51.05,
+      "end": 58.315,
+      "emotion": "determination / anticipation",
+      "energy": 0.88,
+      "visualDensity": 0.7,
+      "warmth": 0.66,
+      "openness": 0.78,
+      "purpose": "未能理解也无法停留，仍然寻找天使的阶梯。",
+      "visualEvent": "膜、纤维与桥边先展开，再让上升方向清晰。",
+      "cameraIntent": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+      "colorIntent": "暖白和矿物金取代警告红；黑场只作数帧标点。",
+      "lifeIntent": "纤维先收缩再放开，让气流带人出去。"
+    },
+    {
+      "id": "first-freedom",
+      "start": 58.315,
+      "end": 69.95,
+      "emotion": "ascension / freedom / wonder",
+      "energy": 0.94,
+      "visualDensity": 0.77,
+      "warmth": 0.75,
+      "openness": 0.91,
+      "purpose": "第一次高潮是世界变大与自由，不是系统过载。",
+      "visualEvent": "阶梯向光生长，墙体打开后可以看见更大的天空。",
+      "cameraIntent": "上升与穿越并存；翻转之后方向仍可理解。",
+      "colorIntent": "blue sky、暖白、晨金、cyan；阴影不能占据高潮主体。",
+      "lifeIntent": "悬浮光尘向上但不爆炸，远云提供呼吸与尺度。"
+    },
+    {
+      "id": "spring-wind-release",
+      "start": 69.95,
+      "end": 78.299,
+      "emotion": "release / bittersweet freedom",
+      "energy": 0.87,
+      "visualDensity": 0.63,
+      "warmth": 0.7,
+      "openness": 0.83,
+      "purpose": "春风带走的话语预告离别；释放先于告别。",
+      "visualEvent": "机械裂口放行，压缩通道最终把观众送进留白。",
+      "cameraIntent": "穿越一次边缘后减速，避免突然从暴力运动跳到静止。",
+      "colorIntent": "暖光比warning light更多；短黑场保持数帧。",
+      "lifeIntent": "风带走叶片与碎光，速度在段末自然减弱。"
+    },
+    {
+      "id": "farewell-body",
+      "start": 78.299,
+      "end": 86,
+      "emotion": "farewell / longing",
+      "energy": 0.28,
+      "visualDensity": 0.23,
+      "warmth": 0.6,
+      "openness": 0.97,
+      "purpose": "只愿我们还能再相遇；第一次让观众感到舍不得。",
+      "visualEvent": "同一个残缺结构慢慢远去，距离成为事件。",
+      "cameraIntent": "连续慢移，不增加随机insert。",
+      "colorIntent": "pale blue、lavender、soft grey、非常淡的暖光。",
+      "lifeIntent": "很少的光尘与柔风；物体远去不等于死亡。"
+    },
+    {
+      "id": "separation",
+      "start": 86,
+      "end": 92,
+      "emotion": "loneliness / affection",
+      "energy": 0.23,
+      "visualDensity": 0.19,
+      "warmth": 0.57,
+      "openness": 0.98,
+      "purpose": "两个部分分开，但仍然共享曾经的形状与方向。",
+      "visualEvent": "结构分向两侧；歌词安静停留，不被攻击层盖掉。",
+      "cameraIntent": "慢下来观察距离扩大，保持同一离别空间。",
+      "colorIntent": "淡紫与灰蓝；少量暖白在分离边缘。",
+      "lifeIntent": "细叶或光粒子连接一瞬，然后轻轻散开。"
+    },
+    {
+      "id": "hope-in-absence",
+      "start": 92,
+      "end": 98.076,
+      "emotion": "absence / hope",
+      "energy": 0.29,
+      "visualDensity": 0.17,
+      "warmth": 0.64,
+      "openness": 0.97,
+      "purpose": "空下来以后仍有一点回应，离别不是绝望。",
+      "visualEvent": "裂口成为地平线，小光点逐渐回应。",
+      "cameraIntent": "缓慢向光靠近，98秒前准备前进方向。",
+      "colorIntent": "开阔蓝白与微暖地平线，避免冰冷shader示例。",
+      "lifeIntent": "一粒像种子的光保持生命；微风持续。"
+    },
+    {
+      "id": "a-memory-responds",
+      "start": 98.076,
+      "end": 105.1,
+      "emotion": "hesitation / hope",
+      "energy": 0.64,
+      "visualDensity": 0.5,
+      "warmth": 0.55,
+      "openness": 0.65,
+      "purpose": "没有答案的岔路前，记忆回应我们，而非机器重启。",
+      "visualEvent": "地平线短暂裂开后，旧几何与叶片以暖光重现。",
+      "cameraIntent": "轻微犹豫后继续向前，不重复boot。",
+      "colorIntent": "fault可短促冷色，光与暖反射紧接着回来。",
+      "lifeIntent": "旧叶片先动起来，再由结构接回道路。"
+    },
+    {
+      "id": "continuing-after-farewell",
+      "start": 105.1,
+      "end": 113.098,
+      "emotion": "resilience / forward motion",
+      "energy": 0.81,
+      "visualDensity": 0.66,
+      "warmth": 0.65,
+      "openness": 0.8,
+      "purpose": "无法停留；带着离别继续向前。",
+      "visualEvent": "球壳、树枝与轨道重新组成可走的道路。",
+      "cameraIntent": "跨过判定线；这是路的连接，不是repair动画。",
+      "colorIntent": "天空光、暖白、微紫；故障不能再支配空间。",
+      "lifeIntent": "风与新叶引导镜头沿恢复的方向前行。"
+    },
+    {
+      "id": "coming-home",
+      "start": 113.098,
+      "end": 122,
+      "emotion": "reunion / belonging",
+      "energy": 0.9,
+      "visualDensity": 0.86,
+      "warmth": 0.73,
+      "openness": 0.73,
+      "purpose": "一路见过的东西一起寻找归处。",
+      "visualEvent": "原来的球壳、岛、玻璃、纤维从不同层向同一目标靠拢。",
+      "cameraIntent": "相机与物体共用前进轴，禁止随机爆炸堆模型。",
+      "colorIntent": "保留旧motif身份，加入同一暖光作为共同目的地。",
+      "lifeIntent": "叶片与纤维带动硬结构，生命与机器一起回家。"
+    },
+    {
+      "id": "all-the-years",
+      "start": 122,
+      "end": 128.85,
+      "emotion": "gratitude / reunion / bittersweet joy",
+      "energy": 0.94,
+      "visualDensity": 0.91,
+      "warmth": 0.79,
+      "openness": 0.74,
+      "purpose": "章节是积累的时光；靠近彼此之后才愿意放下。",
+      "visualEvent": "01–09被看清，01–08依次熄灭进入共同去处。",
+      "cameraIntent": "向中心前行但画面信息从many逐渐one。",
+      "colorIntent": "暖白与晨金是目的地；数字仍保留清晰冷色身份。",
+      "lifeIntent": "光粒子的轨迹延续先前的叶片风向。"
+    },
+    {
+      "id": "last-enclosure",
+      "start": 128.85,
+      "end": 132.997,
+      "emotion": "resolve / longing",
+      "energy": 0.88,
+      "visualDensity": 0.6,
+      "warmth": 0.76,
+      "openness": 0.43,
+      "purpose": "最后一次封闭，是为了随后完整打开。",
+      "visualEvent": "黑核曲面贴边掠过，温暖裂缝逐渐增宽。",
+      "cameraIntent": "必须看得出贴曲面穿过去，不变成黑色平面滑动。",
+      "colorIntent": "暗部保留反射与刻纹，核心光偏warm white而非警报。",
+      "lifeIntent": "光尘顺裂口被吸向外部天空，少量活叶暗示外界。"
+    },
+    {
+      "id": "to-the-very-end",
+      "start": 132.997,
+      "end": 135.258,
+      "emotion": "determination / release",
+      "energy": 0.91,
+      "visualDensity": 0.41,
+      "warmth": 0.85,
+      "openness": 0.71,
+      "purpose": "直到最后；现在需要答案，而非最后一次报错。",
+      "visualEvent": "裂缝打开，短黑场把closed变成open。",
+      "cameraIntent": "沿已建立的出口穿越，不随机切新世界。",
+      "colorIntent": "光温升向晨金白；黑场只在原有135.191333–135.258。",
+      "lifeIntent": "风从裂口向镜头返回，预告开放天空。"
+    },
+    {
+      "id": "the-answer-is-sky",
+      "start": 135.258,
+      "end": 140,
+      "emotion": "new dawn / relief",
+      "energy": 0.88,
+      "visualDensity": 0.25,
+      "warmth": 0.86,
+      "openness": 1.0,
+      "purpose": "残酷而幸福的结局，仍然可以生活其中。",
+      "visualEvent": "完整天空明确出现；前面的封闭都为此刻打开。",
+      "cameraIntent": "向前进入天空，先让观众看清与喘息。",
+      "colorIntent": "明亮蓝空气、暖地平线、soft clouds；保持巨大但温柔。",
+      "lifeIntent": "层云慢移、微风和极少碎光，不做爆炸。"
+    },
+    {
+      "id": "after-story-life",
+      "start": 140,
+      "end": 149.1,
+      "emotion": "life / gentle farewell / hope",
+      "energy": 0.56,
+      "visualDensity": 0.36,
+      "warmth": 0.84,
+      "openness": 1.0,
+      "purpose": "低语着离去，但留下的世界继续呼吸。",
+      "visualEvent": "岛屿与新叶可生长，旧章节逐一熄灭，09保持纪念感。",
+      "cameraIntent": "慢前移；保留岛屿身份，不再次montage。",
+      "colorIntent": "天空蓝、暖白、少量绿色或柔紫；叶片集中主色。",
+      "lifeIntent": "风、云与水的细动持续，新叶展开是真正事件。"
+    },
+    {
+      "id": "memorial-to-light",
+      "start": 149.1,
+      "end": 151.4,
+      "emotion": "gratitude / release",
+      "energy": 0.38,
+      "visualDensity": 0.18,
+      "warmth": 0.83,
+      "openness": 1.0,
+      "purpose": "不需要永远抓住最后一个编号，记忆可以成为光。",
+      "visualEvent": "09由纪念碑消散为光或叶片，最后不剩编号。",
+      "cameraIntent": "静稳地向前，让消散本身成为结束。",
+      "colorIntent": "柔天空与淡金光尘，避免青色报错粒子。",
+      "lifeIntent": "消散遵守风向与重力感，像被早晨带走。"
+    },
+    {
+      "id": "thank-you",
+      "start": 151.4,
+      "end": 154,
+      "emotion": "gratitude / farewell",
+      "energy": 0.23,
+      "visualDensity": 0.11,
+      "warmth": 0.78,
+      "openness": 1,
+      "purpose": "MAIN STORY COMPLETE与感谢为旅程告别，不是关闭系统。",
+      "visualEvent": "完结、年份与感谢安静出现，154秒前让出最后问题的位置。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    },
+    {
+      "id": "ending-breath",
+      "start": 154,
+      "end": 154.35,
+      "emotion": "quiet acceptance",
+      "energy": 0.05,
+      "visualDensity": 0,
+      "warmth": 0.62,
+      "openness": 1,
+      "purpose": "以短黑场给歌曲与最后问题留一次呼吸。",
+      "visualEvent": "黑场保持0.35秒；不加入系统文案。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    },
+    {
+      "id": "the-last-question",
+      "start": 154.35,
+      "end": 157.9,
+      "emotion": "tenderness / acceptance",
+      "energy": 0.16,
+      "visualDensity": 0.07,
+      "warmth": 0.62,
+      "openness": 1,
+      "purpose": "最后的问题来自温柔释然，留给观众。",
+      "visualEvent": "标题静静出现，完整保留问题的阅读时间。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    },
+    {
+      "id": "last-line-punctuation",
+      "start": 157.9,
+      "end": 158.05,
+      "emotion": "gentle memory punctuation",
+      "energy": 0.12,
+      "visualDensity": 0.05,
+      "warmth": 0.62,
+      "openness": 1,
+      "purpose": "轻微瑕疵像记忆余痕，不是错误或崩溃。",
+      "visualEvent": "仅既有0.15秒单线glitch；没有持续噪声、警报或扫描。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    },
+    {
+      "id": "music-and-unofficial-credits",
+      "start": 158.05,
+      "end": 161.72544217687076,
+      "emotion": "gratitude / respect",
+      "energy": 0.12,
+      "visualDensity": 0.1,
+      "warmth": 0.62,
+      "openness": 1,
+      "purpose": "情绪之后安静尊重音乐创作者与非官方身份。",
+      "visualEvent": "小字号音乐与unofficial credits可读，避免抢成第二场高潮。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    },
+    {
+      "id": "silence-of-the-image",
+      "start": 161.72544217687076,
+      "end": 162.72544217687076,
+      "emotion": "quiet acceptance",
+      "energy": 0.03,
+      "visualDensity": 0,
+      "warmth": 0.6,
+      "openness": 1,
+      "purpose": "旅程这一章结束，音乐完整到原始结尾。",
+      "visualEvent": "最后一秒所有信息熄灭；没有新粒子或最终camera动作。",
+      "cameraIntent": "静止或几乎察觉不到的前移；最后一秒没有任何画面运动。",
+      "colorIntent": "温柔白字与安静黑场，glitch单线只作0.15秒标点。",
+      "lifeIntent": "不再增加生命或几何素材，余韵属于歌曲。"
+    }
+  ],
+  "controls": [
+    {
+      "time": 0,
+      "warmth": 0.32,
+      "openness": 0.08,
+      "wind": 0.04,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 2.66,
+      "warmth": 0.34,
+      "openness": 0.12,
+      "wind": 0.05,
+      "glitchAllowance": 0.09
+    },
+    {
+      "time": 5.15,
+      "warmth": 0.42,
+      "openness": 0.35,
+      "wind": 0.15,
+      "glitchAllowance": 0.06
+    },
+    {
+      "time": 5.321,
+      "warmth": 0.48,
+      "openness": 0.58,
+      "wind": 0.27,
+      "glitchAllowance": 0.07
+    },
+    {
+      "time": 7.3,
+      "warmth": 0.44,
+      "openness": 0.45,
+      "wind": 0.22,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 9.3,
+      "warmth": 0.38,
+      "openness": 0.3,
+      "wind": 0.17,
+      "glitchAllowance": 0.1
+    },
+    {
+      "time": 10.5,
+      "warmth": 0.5,
+      "openness": 0.78,
+      "wind": 0.35,
+      "glitchAllowance": 0.06
+    },
+    {
+      "time": 12,
+      "warmth": 0.53,
+      "openness": 0.82,
+      "wind": 0.5,
+      "glitchAllowance": 0.05
+    },
+    {
+      "time": 19.851,
+      "warmth": 0.5,
+      "openness": 0.65,
+      "wind": 0.36,
+      "glitchAllowance": 0.14
+    },
+    {
+      "time": 26.9,
+      "warmth": 0.55,
+      "openness": 0.6,
+      "wind": 0.4,
+      "glitchAllowance": 0.18
+    },
+    {
+      "time": 34,
+      "warmth": 0.58,
+      "openness": 0.7,
+      "wind": 0.45,
+      "glitchAllowance": 0.12
+    },
+    {
+      "time": 36.75,
+      "warmth": 0.35,
+      "openness": 0.35,
+      "wind": 0.28,
+      "glitchAllowance": 0.15
+    },
+    {
+      "time": 36.8,
+      "warmth": 0.3,
+      "openness": 0.28,
+      "wind": 0.22,
+      "glitchAllowance": 0.25
+    },
+    {
+      "time": 38.7,
+      "warmth": 0.63,
+      "openness": 0.6,
+      "wind": 0.36,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 41,
+      "warmth": 0.62,
+      "openness": 0.74,
+      "wind": 0.46,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 46.6333333333333,
+      "warmth": 0.36,
+      "openness": 0.33,
+      "wind": 0.22,
+      "glitchAllowance": 0.18
+    },
+    {
+      "time": 49.4,
+      "warmth": 0.32,
+      "openness": 0.3,
+      "wind": 0.2,
+      "glitchAllowance": 0.18
+    },
+    {
+      "time": 51.05,
+      "warmth": 0.59,
+      "openness": 0.7,
+      "wind": 0.4,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 58.315,
+      "warmth": 0.7,
+      "openness": 0.84,
+      "wind": 0.55,
+      "glitchAllowance": 0.05
+    },
+    {
+      "time": 69.949,
+      "warmth": 0.75,
+      "openness": 0.9,
+      "wind": 0.65,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 69.95,
+      "warmth": 0.75,
+      "openness": 0.9,
+      "wind": 0.65,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 70,
+      "warmth": 0.74,
+      "openness": 0.88,
+      "wind": 0.5,
+      "glitchAllowance": 0.06
+    },
+    {
+      "time": 74,
+      "warmth": 0.65,
+      "openness": 0.62,
+      "wind": 0.45,
+      "glitchAllowance": 0.1
+    },
+    {
+      "time": 78.298,
+      "warmth": 0.62,
+      "openness": 0.7,
+      "wind": 0.35,
+      "glitchAllowance": 0.06
+    },
+    {
+      "time": 78.299,
+      "warmth": 0.6,
+      "openness": 0.96,
+      "wind": 0.15,
+      "glitchAllowance": 0.015
+    },
+    {
+      "time": 86,
+      "warmth": 0.57,
+      "openness": 0.97,
+      "wind": 0.11,
+      "glitchAllowance": 0.015
+    },
+    {
+      "time": 92,
+      "warmth": 0.61,
+      "openness": 0.99,
+      "wind": 0.13,
+      "glitchAllowance": 0.015
+    },
+    {
+      "time": 96.85,
+      "warmth": 0.66,
+      "openness": 0.93,
+      "wind": 0.2,
+      "glitchAllowance": 0.02
+    },
+    {
+      "time": 98.076,
+      "warmth": 0.49,
+      "openness": 0.58,
+      "wind": 0.24,
+      "glitchAllowance": 0.15
+    },
+    {
+      "time": 102,
+      "warmth": 0.55,
+      "openness": 0.68,
+      "wind": 0.28,
+      "glitchAllowance": 0.12
+    },
+    {
+      "time": 105.1,
+      "warmth": 0.6,
+      "openness": 0.73,
+      "wind": 0.35,
+      "glitchAllowance": 0.09
+    },
+    {
+      "time": 109,
+      "warmth": 0.66,
+      "openness": 0.81,
+      "wind": 0.47,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 113.098,
+      "warmth": 0.7,
+      "openness": 0.7,
+      "wind": 0.54,
+      "glitchAllowance": 0.1
+    },
+    {
+      "time": 118,
+      "warmth": 0.73,
+      "openness": 0.7,
+      "wind": 0.57,
+      "glitchAllowance": 0.08
+    },
+    {
+      "time": 122,
+      "warmth": 0.78,
+      "openness": 0.72,
+      "wind": 0.62,
+      "glitchAllowance": 0.07
+    },
+    {
+      "time": 128.85,
+      "warmth": 0.72,
+      "openness": 0.45,
+      "wind": 0.54,
+      "glitchAllowance": 0.05
+    },
+    {
+      "time": 132.997,
+      "warmth": 0.83,
+      "openness": 0.38,
+      "wind": 0.5,
+      "glitchAllowance": 0.02
+    },
+    {
+      "time": 135.19133333333335,
+      "warmth": 0.85,
+      "openness": 0.71,
+      "wind": 0.55,
+      "glitchAllowance": 0.02
+    },
+    {
+      "time": 135.258,
+      "warmth": 0.86,
+      "openness": 1,
+      "wind": 0.6,
+      "glitchAllowance": 0.005
+    },
+    {
+      "time": 140,
+      "warmth": 0.84,
+      "openness": 1,
+      "wind": 0.5,
+      "glitchAllowance": 0.01
+    },
+    {
+      "time": 149.1,
+      "warmth": 0.84,
+      "openness": 1,
+      "wind": 0.24,
+      "glitchAllowance": 0.005
+    },
+    {
+      "time": 151.4,
+      "warmth": 0.82,
+      "openness": 1,
+      "wind": 0.18,
+      "glitchAllowance": 0.003
+    },
+    {
+      "time": 154,
+      "warmth": 0.62,
+      "openness": 1,
+      "wind": 0.06,
+      "glitchAllowance": 0
+    },
+    {
+      "time": 154.35,
+      "warmth": 0.62,
+      "openness": 1,
+      "wind": 0.05,
+      "glitchAllowance": 0
+    },
+    {
+      "time": 157.9,
+      "warmth": 0.62,
+      "openness": 1,
+      "wind": 0.02,
+      "glitchAllowance": 0.012
+    },
+    {
+      "time": 158.05,
+      "warmth": 0.62,
+      "openness": 1,
+      "wind": 0.02,
+      "glitchAllowance": 0
+    },
+    {
+      "time": 161.72544217687076,
+      "warmth": 0.6,
+      "openness": 1,
+      "wind": 0,
+      "glitchAllowance": 0
+    },
+    {
+      "time": 162.72544217687076,
+      "warmth": 0.6,
+      "openness": 1,
+      "wind": 0,
+      "glitchAllowance": 0
+    }
+  ],
+  "shots": [
+    {
+      "shotId": "01",
+      "start": 0,
+      "end": 2.66,
+      "sectionId": "last-light",
+      "emotion": "quiet remembrance",
+      "emotionPurpose": "远处最后一束光像旧物的余温。",
+      "eventIntent": "细信号缓慢被发现；不要用warning或crash文案。",
+      "intended": {
+        "energy": 0.1,
+        "visualDensity": 0.12,
+        "warmth": 0.32,
+        "openness": 0.08
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "微小向前位移，视线有目的地等待裂口。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": []
+    },
+    {
+      "shotId": "02",
+      "start": 2.66,
+      "end": 5.321,
+      "sectionId": "first-opening",
+      "emotion": "anticipation / reluctance",
+      "emotionPurpose": "出发之前的舍不得，与裂口后已有的天空共存。",
+      "eventIntent": "遮挡打开，先看见远方空气，再发现巨构。",
+      "intended": {
+        "energy": 0.23,
+        "visualDensity": 0.2,
+        "warmth": 0.39,
+        "openness": 0.3
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "沿缝隙继续，不重置视角。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": []
+    },
+    {
+      "shotId": "03",
+      "start": 5.321,
+      "end": 7.3833,
+      "sectionId": "morning-awakening",
+      "emotion": "awakening / hope",
+      "emotionPurpose": "球壳是世界尚活着的证据与旅程入口。",
+      "eventIntent": "天光落在壳体边缘；远处云和叶片先动起来。",
+      "intended": {
+        "energy": 0.56,
+        "visualDensity": 0.58,
+        "warmth": 0.49,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向前穿越，内外尺度切换服务出发。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 5.321,
+          "jp": "夜明けに祈る，寂の拡げる空",
+          "zh": "想黎明许愿，寂静漫过天空"
+        }
+      ]
+    },
+    {
+      "shotId": "04",
+      "start": 7.3833,
+      "end": 9.3,
+      "sectionId": "morning-awakening",
+      "emotion": "wonder / forward motion",
+      "emotionPurpose": "接近未知不意味着恐惧，是愿意继续向前。",
+      "eventIntent": "贴着断口穿越，出口保持可辨识。",
+      "intended": {
+        "energy": 0.56,
+        "visualDensity": 0.58,
+        "warmth": 0.49,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向前穿越，内外尺度切换服务出发。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 5.321,
+          "jp": "夜明けに祈る，寂の拡げる空",
+          "zh": "想黎明许愿，寂静漫过天空"
+        },
+        {
+          "time": 9.09,
+          "jp": "無音が 闇かに囁かけていた",
+          "zh": "无声在暗处，正要低语"
+        }
+      ]
+    },
+    {
+      "shotId": "05",
+      "start": 9.3,
+      "end": 10.5,
+      "sectionId": "morning-awakening",
+      "emotion": "wonder / anticipation",
+      "emotionPurpose": "内部空间包裹观众，但未来的空间已经在等待。",
+      "eventIntent": "玻璃层掠过，同时群岛出口逐渐展开。",
+      "intended": {
+        "energy": 0.56,
+        "visualDensity": 0.58,
+        "warmth": 0.49,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向前穿越，内外尺度切换服务出发。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 9.09,
+          "jp": "無音が 闇かに囁かけていた",
+          "zh": "无声在暗处，正要低语"
+        }
+      ]
+    },
+    {
+      "shotId": "06",
+      "start": 10.5,
+      "end": 12,
+      "sectionId": "morning-awakening",
+      "emotion": "release / youth",
+      "emotionPurpose": "从封闭进入开阔，让第一句歌词确实有天空。",
+      "eventIntent": "Camera飞出，前景压力释放，云与风开始可感知。",
+      "intended": {
+        "energy": 0.56,
+        "visualDensity": 0.58,
+        "warmth": 0.49,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向前穿越，内外尺度切换服务出发。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 9.09,
+          "jp": "無音が 闇かに囁かけていた",
+          "zh": "无声在暗处，正要低语"
+        }
+      ]
+    },
+    {
+      "shotId": "07",
+      "start": 12,
+      "end": 14.591000000000001,
+      "sectionId": "life-continues",
+      "emotion": "life / promise",
+      "emotionPurpose": "被时间留下的遗迹里仍然有生命。",
+      "eventIntent": "叶片揭开遗迹，裂缝放出柔光而非警报。",
+      "intended": {
+        "energy": 0.65,
+        "visualDensity": 0.64,
+        "warmth": 0.57,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "从巨大遗迹贴近叶片，再穿过树冠。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 9.09,
+          "jp": "無音が 闇かに囁かけていた",
+          "zh": "无声在暗处，正要低语"
+        }
+      ]
+    },
+    {
+      "shotId": "08",
+      "start": 14.591000000000001,
+      "end": 15.191,
+      "sectionId": "life-continues",
+      "emotion": "youth / affection",
+      "emotionPurpose": "一片叶是可以记住的小生命，不是材质demo。",
+      "eventIntent": "叶脉在风中亮起并带向下一棵树。",
+      "intended": {
+        "energy": 0.65,
+        "visualDensity": 0.64,
+        "warmth": 0.57,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "从巨大遗迹贴近叶片，再穿过树冠。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 9.09,
+          "jp": "無音が 闇かに囁かけていた",
+          "zh": "无声在暗处，正要低语"
+        }
+      ]
+    },
+    {
+      "shotId": "09",
+      "start": 15.191,
+      "end": 17.7,
+      "sectionId": "life-continues",
+      "emotion": "life / memory",
+      "emotionPurpose": "时光之约以新叶继续，而非数据树加载成功。",
+      "eventIntent": "树冠受风分开，让Camera沿生命的动线穿过去。",
+      "intended": {
+        "energy": 0.65,
+        "visualDensity": 0.64,
+        "warmth": 0.57,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "从巨大遗迹贴近叶片，再穿过树冠。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 15.191,
+          "jp": "忘れたくなぃ時間の約束に",
+          "zh": "不愿遗忘的时光之约"
+        }
+      ]
+    },
+    {
+      "shotId": "10",
+      "start": 17.7,
+      "end": 19.551,
+      "sectionId": "life-continues",
+      "emotion": "nostalgia / wonder",
+      "emotionPurpose": "数字像曾经走过的章节门。",
+      "eventIntent": "01–03以暖边光和道路深度出现，避免system registry。",
+      "intended": {
+        "energy": 0.65,
+        "visualDensity": 0.64,
+        "warmth": 0.57,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "从巨大遗迹贴近叶片，再穿过树冠。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 15.191,
+          "jp": "忘れたくなぃ時間の約束に",
+          "zh": "不愿遗忘的时光之约"
+        }
+      ]
+    },
+    {
+      "shotId": "11",
+      "start": 19.551,
+      "end": 19.851,
+      "sectionId": "life-continues",
+      "emotion": "memory association",
+      "emotionPurpose": "前后世界共享的形状让人想起曾经。",
+      "eventIntent": "数字孔隙匹配下一块记忆的孔隙；只作短标点。",
+      "intended": {
+        "energy": 0.65,
+        "visualDensity": 0.64,
+        "warmth": 0.57,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "从巨大遗迹贴近叶片，再穿过树冠。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 15.191,
+          "jp": "忘れたくなぃ時間の約束に",
+          "zh": "不愿遗忘的时光之约"
+        }
+      ]
+    },
+    {
+      "shotId": "12",
+      "start": 19.851,
+      "end": 22.55,
+      "sectionId": "remembered-paths",
+      "emotion": "memory / longing",
+      "emotionPurpose": "玻璃封存了一段旧光，过去仍可被看见。",
+      "eventIntent": "门打开时露出旧结构与细枝，Camera走入记忆。",
+      "intended": {
+        "energy": 0.61,
+        "visualDensity": 0.73,
+        "warmth": 0.53,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿过数字门，再沿玻璃裂缝继续。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "13",
+      "start": 22.55,
+      "end": 24.08,
+      "sectionId": "remembered-paths",
+      "emotion": "nostalgia / wonder",
+      "emotionPurpose": "05与06是到过的地方，不是展示列表。",
+      "eventIntent": "沿拱与门的负空间穿行，不围着数字转。",
+      "intended": {
+        "energy": 0.61,
+        "visualDensity": 0.73,
+        "warmth": 0.53,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿过数字门，再沿玻璃裂缝继续。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "14",
+      "start": 24.08,
+      "end": 24.5,
+      "sectionId": "remembered-paths",
+      "emotion": "life / connection",
+      "emotionPurpose": "叶脉与路线共享旅程的方向。",
+      "eventIntent": "叶脉变为判定线后保留运动与温度的关联。",
+      "intended": {
+        "energy": 0.61,
+        "visualDensity": 0.73,
+        "warmth": 0.53,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿过数字门，再沿玻璃裂缝继续。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "15",
+      "start": 24.5,
+      "end": 26,
+      "sectionId": "remembered-paths",
+      "emotion": "memory / distance",
+      "emotionPurpose": "07和08的尺度承载积累的年月。",
+      "eventIntent": "重力转动显出另一条路，始终有去处。",
+      "intended": {
+        "energy": 0.61,
+        "visualDensity": 0.73,
+        "warmth": 0.53,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿过数字门，再沿玻璃裂缝继续。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "16",
+      "start": 26,
+      "end": 26.9,
+      "sectionId": "remembered-paths",
+      "emotion": "nostalgia / longing",
+      "emotionPurpose": "09暂时只是未来的边缘，不能提前像终止码。",
+      "eventIntent": "局部球壳与墨痕转入温暖记忆碎片。",
+      "intended": {
+        "energy": 0.61,
+        "visualDensity": 0.73,
+        "warmth": 0.53,
+        "openness": 0.66
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿过数字门，再沿玻璃裂缝继续。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "17",
+      "start": 26.9,
+      "end": 29.2,
+      "sectionId": "memories-rush-back",
+      "emotion": "memory / longing",
+      "emotionPurpose": "很多年同时涌回来，不是数据库在清空。",
+      "eventIntent": "旧图形碎片像光中的回忆奔涌；删去archive shutdown气质。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "18",
+      "start": 29.2,
+      "end": 30.8,
+      "sectionId": "memories-rush-back",
+      "emotion": "memory / forward motion",
+      "emotionPurpose": "回忆释放出来仍然指向前方。",
+      "eventIntent": "碎片逆向掠过，暖白去处渐大，不变数据风暴报错。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "19",
+      "start": 30.8,
+      "end": 31.3,
+      "sectionId": "memories-rush-back",
+      "emotion": "nostalgia / tenderness",
+      "emotionPurpose": "一滴水让记忆可以被触摸。",
+      "eventIntent": "旧光在水滴中短暂清晰，然后温柔化为涟漪。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "20",
+      "start": 31.3,
+      "end": 31.9333333333333,
+      "sectionId": "memories-rush-back",
+      "emotion": "youth / memory surge",
+      "emotionPurpose": "平面冲击是某段记忆的强烈回返。",
+      "eventIntent": "纸与数字切入空间，留暖痕而不是警报满屏。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "21",
+      "start": 31.9333333333333,
+      "end": 32.1,
+      "sectionId": "memories-rush-back",
+      "emotion": "memory punctuation",
+      "emotionPurpose": "短切保留节奏，不独立制造冷系统人格。",
+      "eventIntent": "只承接前后的图像回忆。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        }
+      ]
+    },
+    {
+      "shotId": "22",
+      "start": 32.1,
+      "end": 34,
+      "sectionId": "memories-rush-back",
+      "emotion": "longing / memory",
+      "emotionPurpose": "无法挽住的旧世界由平面再展开。",
+      "eventIntent": "图形压扁后恢复纵深，以光和去处结束。",
+      "intended": {
+        "energy": 0.72,
+        "visualDensity": 0.83,
+        "warmth": 0.58,
+        "openness": 0.61
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "速度提高但始终有下一个可见去处。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 19.851,
+          "jp": "约束に震ゎせた心",
+          "zh": "让心颤抖之今"
+        },
+        {
+          "time": 33.84,
+          "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
+          "zh": "总追忆逝去的“时间”总在追忆"
+        }
+      ]
+    },
+    {
+      "shotId": "23",
+      "start": 34,
+      "end": 36.75,
+      "sectionId": "memory-becomes-pressure",
+      "emotion": "memory / pressure",
+      "emotionPurpose": "当前选用玻璃记忆plate；不要按旧机械name赋予末日情绪。",
+      "eventIntent": "保存的光与结构在透明层里闪现，Camera沿原轨迹继续。",
+      "intended": {
+        "energy": 0.78,
+        "visualDensity": 0.76,
+        "warmth": 0.43,
+        "openness": 0.47
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "继续向前；不要在机械核心周围停留展示。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 33.84,
+          "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
+          "zh": "总追忆逝去的“时间”总在追忆"
+        }
+      ]
+    },
+    {
+      "shotId": "24",
+      "start": 36.75,
+      "end": 36.8,
+      "sectionId": "memory-becomes-pressure",
+      "emotion": "pressure punctuation",
+      "emotionPurpose": "三帧黑色是旅程换气，不能读成关机。",
+      "eventIntent": "黑场严格保持原长度，不延长。",
+      "intended": {
+        "energy": 0.78,
+        "visualDensity": 0.76,
+        "warmth": 0.43,
+        "openness": 0.47
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "继续向前；不要在机械核心周围停留展示。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 33.84,
+          "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
+          "zh": "总追忆逝去的“时间”总在追忆"
+        }
+      ]
+    },
+    {
+      "shotId": "25",
+      "start": 36.8,
+      "end": 38.699999999999996,
+      "sectionId": "memory-becomes-pressure",
+      "emotion": "pressure / time",
+      "emotionPurpose": "短暂红色机械阻力代表旅程很难，而不是机器崇拜。",
+      "eventIntent": "穿过挤压结构，同时暗示下一处暖出口。",
+      "intended": {
+        "energy": 0.78,
+        "visualDensity": 0.76,
+        "warmth": 0.43,
+        "openness": 0.47
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "继续向前；不要在机械核心周围停留展示。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 33.84,
+          "jp": "過ぎた“時間”ばかり 想い馳せるばかり",
+          "zh": "总追忆逝去的“时间”总在追忆"
+        },
+        {
+          "time": 38.076,
+          "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
+          "zh": "快被叹息淹没的“时间”快看不清"
+        }
+      ]
+    },
+    {
+      "shotId": "26",
+      "start": 38.699999999999996,
+      "end": 39.3,
+      "sectionId": "running-toward-light",
+      "emotion": "resilience / hope",
+      "emotionPurpose": "叹息之后，微小的暖光仍然值得走近。",
+      "eventIntent": "种子般的金光打开成天空，不能像warning lamp。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 38.076,
+          "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
+          "zh": "快被叹息淹没的“时间”快看不清"
+        }
+      ]
+    },
+    {
+      "shotId": "27",
+      "start": 39.3,
+      "end": 41,
+      "sectionId": "running-toward-light",
+      "emotion": "forward motion / wonder",
+      "emotionPurpose": "文明残骸成为继续走过的道路。",
+      "eventIntent": "08露出后贴边掠走，远方光延续前进方向。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 38.076,
+          "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
+          "zh": "快被叹息淹没的“时间”快看不清"
+        }
+      ]
+    },
+    {
+      "shotId": "28",
+      "start": 41,
+      "end": 44.0,
+      "sectionId": "running-toward-light",
+      "emotion": "life / forward motion",
+      "emotionPurpose": "透明花瓣表达仍然在生长的世界。",
+      "eventIntent": "近表面纤维随風变化，Camera始终穿向开放处。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 38.076,
+          "jp": "溜息に埋もれそうな“時間”を見失いそぅになる",
+          "zh": "快被叹息淹没的“时间”快看不清"
+        },
+        {
+          "time": 43.484,
+          "jp": "天柱1つずつ次へ次へついていく",
+          "zh": "天柱一根又一根，走向下一根，再下一根"
+        }
+      ]
+    },
+    {
+      "shotId": "29",
+      "start": 44.0,
+      "end": 44.7,
+      "sectionId": "running-toward-light",
+      "emotion": "life / intimacy",
+      "emotionPurpose": "巨大空间偶尔贴近柔软的小尺度。",
+      "eventIntent": "叶膜与微细脉络掠过，柔光从内部透出。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 43.484,
+          "jp": "天柱1つずつ次へ次へついていく",
+          "zh": "天柱一根又一根，走向下一根，再下一根"
+        }
+      ]
+    },
+    {
+      "shotId": "30",
+      "start": 44.7,
+      "end": 46.5,
+      "sectionId": "running-toward-light",
+      "emotion": "wonder / forward motion",
+      "emotionPurpose": "不同重力增加旅途发现，不能只证明技术。",
+      "eventIntent": "水面反射先让另一个天空出现，再入水穿过去。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 43.484,
+          "jp": "天柱1つずつ次へ次へついていく",
+          "zh": "天柱一根又一根，走向下一根，再下一根"
+        }
+      ]
+    },
+    {
+      "shotId": "31",
+      "start": 46.5,
+      "end": 46.6333333333333,
+      "sectionId": "running-toward-light",
+      "emotion": "light punctuation",
+      "emotionPurpose": "白切承接继续向前的动势。",
+      "eventIntent": "保持既有短切长度，不额外加警告文字。",
+      "intended": {
+        "energy": 0.82,
+        "visualDensity": 0.72,
+        "warmth": 0.63,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "越过断口、贴纤维和水面飞出。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 43.484,
+          "jp": "天柱1つずつ次へ次へついていく",
+          "zh": "天柱一根又一根，走向下一根，再下一根"
+        }
+      ]
+    },
+    {
+      "shotId": "32",
+      "start": 46.6333333333333,
+      "end": 49.4,
+      "sectionId": "brief-resistance",
+      "emotion": "pressure / determination",
+      "emotionPurpose": "此处实际red plate是有限的阴影段，不按矿物暖色描述自欺。",
+      "eventIntent": "Camera必须穿过红色阻力，明亮目标仍存在。",
+      "intended": {
+        "energy": 0.86,
+        "visualDensity": 0.79,
+        "warmth": 0.37,
+        "openness": 0.37
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "Camera穿过去，禁止停下来崇拜机器。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 43.484,
+          "jp": "天柱1つずつ次へ次へついていく",
+          "zh": "天柱一根又一根，走向下一根，再下一根"
+        },
+        {
+          "time": 47.794,
+          "jp": "たらればもう たらればもう",
+          "zh": "//"
+        }
+      ]
+    },
+    {
+      "shotId": "33",
+      "start": 49.4,
+      "end": 49.6,
+      "sectionId": "brief-resistance",
+      "emotion": "pressure punctuation",
+      "emotionPurpose": "扫描只给短促阻力，不新增系统含义。",
+      "eventIntent": "绿色切痕立刻还给旅程动线。",
+      "intended": {
+        "energy": 0.86,
+        "visualDensity": 0.79,
+        "warmth": 0.37,
+        "openness": 0.37
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "Camera穿过去，禁止停下来崇拜机器。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 47.794,
+          "jp": "たらればもう たらればもう",
+          "zh": "//"
+        }
+      ]
+    },
+    {
+      "shotId": "34",
+      "start": 49.6,
+      "end": 51.050000000000004,
+      "sectionId": "brief-resistance",
+      "emotion": "pressure / refusal to stop",
+      "emotionPurpose": "继续穿过原red plate，观众要感到我们不愿停下。",
+      "eventIntent": "不要停留展示控制臂；出口方向必须被读出。",
+      "intended": {
+        "energy": 0.86,
+        "visualDensity": 0.79,
+        "warmth": 0.37,
+        "openness": 0.37
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "Camera穿过去，禁止停下来崇拜机器。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 47.794,
+          "jp": "たらればもう たらればもう",
+          "zh": "//"
+        },
+        {
+          "time": 49.86,
+          "jp": "意不の僕らがさ叫ぶよ",
+          "zh": "倘若命运逆意，我们便呼喊"
+        }
+      ]
+    },
+    {
+      "shotId": "35",
+      "start": 51.050000000000004,
+      "end": 51.7,
+      "sectionId": "toward-the-ladder",
+      "emotion": "release / forward motion",
+      "emotionPurpose": "冷硬折面终于转为可以流动的东西。",
+      "eventIntent": "液态的连续流向承担从压力到光的转换。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 49.86,
+          "jp": "意不の僕らがさ叫ぶよ",
+          "zh": "倘若命运逆意，我们便呼喊"
+        }
+      ]
+    },
+    {
+      "shotId": "36",
+      "start": 51.7,
+      "end": 54.8,
+      "sectionId": "toward-the-ladder",
+      "emotion": "determination / hope",
+      "emotionPurpose": "障碍会张开，仍然能抵达下一段。",
+      "eventIntent": "纤维收缩后向两侧放开，把Camera送入白光。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 49.86,
+          "jp": "意不の僕らがさ叫ぶよ",
+          "zh": "倘若命运逆意，我们便呼喊"
+        },
+        {
+          "time": 53.906,
+          "jp": "変わらない 代ゎらない 理解らない",
+          "zh": "什么都未曾改变，若无可替代，无法理解"
+        }
+      ]
+    },
+    {
+      "shotId": "37",
+      "start": 54.8,
+      "end": 54.85,
+      "sectionId": "toward-the-ladder",
+      "emotion": "threshold punctuation",
+      "emotionPurpose": "三帧黑场只是跨越门槛。",
+      "eventIntent": "不延长，不新增system failure字样。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 53.906,
+          "jp": "変わらない 代ゎらない 理解らない",
+          "zh": "什么都未曾改变，若无可替代，无法理解"
+        }
+      ]
+    },
+    {
+      "shotId": "38",
+      "start": 54.85,
+      "end": 56.75,
+      "sectionId": "toward-the-ladder",
+      "emotion": "forward motion / anticipation",
+      "emotionPurpose": "断桥意味着要跨过去，终章是远方去处。",
+      "eventIntent": "晨光照亮桥边与出口；Camera向前而非盘旋。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 53.906,
+          "jp": "変わらない 代ゎらない 理解らない",
+          "zh": "什么都未曾改变，若无可替代，无法理解"
+        },
+        {
+          "time": 55.677,
+          "jp": "じゃあ空くて",
+          "zh": "便只剩空虚"
+        }
+      ]
+    },
+    {
+      "shotId": "39",
+      "start": 56.75,
+      "end": 56.95,
+      "sectionId": "toward-the-ladder",
+      "emotion": "threshold punctuation",
+      "emotionPurpose": "短红切只保留拍点力度。",
+      "eventIntent": "不要在短切内加入更强warning内容。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 55.677,
+          "jp": "じゃあ空くて",
+          "zh": "便只剩空虚"
+        }
+      ]
+    },
+    {
+      "shotId": "40",
+      "start": 56.95,
+      "end": 58.165,
+      "sectionId": "toward-the-ladder",
+      "emotion": "determination / hope",
+      "emotionPurpose": "桥后上升空间已经有光。",
+      "eventIntent": "最后一段前进把视线抬向阶梯。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 55.677,
+          "jp": "じゃあ空くて",
+          "zh": "便只剩空虚"
+        }
+      ]
+    },
+    {
+      "shotId": "41",
+      "start": 58.165,
+      "end": 58.315,
+      "sectionId": "toward-the-ladder",
+      "emotion": "anticipation / opening",
+      "emotionPurpose": "极性切换是空间打开的准备。",
+      "eventIntent": "黑白切结束在暖白上升方向。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.7,
+        "warmth": 0.66,
+        "openness": 0.78
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "冲过快门和门槛，运动方向逐渐从前方转向上方。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 55.677,
+          "jp": "じゃあ空くて",
+          "zh": "便只剩空虚"
+        }
+      ]
+    },
+    {
+      "shotId": "42",
+      "start": 58.315,
+      "end": 62,
+      "sectionId": "first-freedom",
+      "emotion": "ascension / wonder",
+      "emotionPurpose": "寻找天使的阶梯真正变成空间的上升。",
+      "eventIntent": "阶梯在脚下成形，暖光与天空占据去处。",
+      "intended": {
+        "energy": 0.94,
+        "visualDensity": 0.77,
+        "warmth": 0.75,
+        "openness": 0.91
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "上升与穿越并存；翻转之后方向仍可理解。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 58.315,
+          "jp": "天使の梯子を探した",
+          "zh": "于是我寻找天使的阶梯"
+        }
+      ]
+    },
+    {
+      "shotId": "43",
+      "start": 62,
+      "end": 66,
+      "sectionId": "first-freedom",
+      "emotion": "freedom / light",
+      "emotionPurpose": "拔高的声音由空间高度回应。",
+      "eventIntent": "越过阶梯顶进入光柱，暖白多于警告cyan。",
+      "intended": {
+        "energy": 0.94,
+        "visualDensity": 0.77,
+        "warmth": 0.75,
+        "openness": 0.91
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "上升与穿越并存；翻转之后方向仍可理解。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 58.315,
+          "jp": "天使の梯子を探した",
+          "zh": "于是我寻找天使的阶梯"
+        },
+        {
+          "time": 62.538,
+          "jp": "じゃがれた声 摇れ上擦る",
+          "zh": "嘶哑的声音，颤抖着拔高"
+        }
+      ]
+    },
+    {
+      "shotId": "44",
+      "start": 66,
+      "end": 69.95,
+      "sectionId": "first-freedom",
+      "emotion": "wonder / freedom",
+      "emotionPurpose": "单向旅途上的赠与，让世界超出已知尺度。",
+      "eventIntent": "墙体翻转开口之后给更大的天空，而非冷机械闭环。",
+      "intended": {
+        "energy": 0.94,
+        "visualDensity": 0.77,
+        "warmth": 0.75,
+        "openness": 0.91
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "上升与穿越并存；翻转之后方向仍可理解。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 62.538,
+          "jp": "じゃがれた声 摇れ上擦る",
+          "zh": "嘶哑的声音，颤抖着拔高"
+        },
+        {
+          "time": 66.872,
+          "jp": "一方通行の道程で贈れ往くよさが",
+          "zh": "在单向旅途上，一路赠与的美好"
+        }
+      ]
+    },
+    {
+      "shotId": "45",
+      "start": 69.95,
+      "end": 70,
+      "sectionId": "spring-wind-release",
+      "emotion": "rhythm punctuation",
+      "emotionPurpose": "三帧压暗是眨眼。",
+      "eventIntent": "不制造关机音画语义，立刻回光。",
+      "intended": {
+        "energy": 0.87,
+        "visualDensity": 0.63,
+        "warmth": 0.7,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿越一次边缘后减速，避免突然从暴力运动跳到静止。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 66.872,
+          "jp": "一方通行の道程で贈れ往くよさが",
+          "zh": "在单向旅途上，一路赠与的美好"
+        }
+      ]
+    },
+    {
+      "shotId": "46",
+      "start": 70,
+      "end": 74,
+      "sectionId": "spring-wind-release",
+      "emotion": "release / spring wind",
+      "emotionPurpose": "机械只是被春风打开的旧壳。",
+      "eventIntent": "裂口打开时，风与柔光带走小叶片。",
+      "intended": {
+        "energy": 0.87,
+        "visualDensity": 0.63,
+        "warmth": 0.7,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿越一次边缘后减速，避免突然从暴力运动跳到静止。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 66.872,
+          "jp": "一方通行の道程で贈れ往くよさが",
+          "zh": "在单向旅途上，一路赠与的美好"
+        },
+        {
+          "time": 72.502,
+          "jp": "春風へ奪われた言葉",
+          "zh": "在那些被春风夺走的话语"
+        }
+      ]
+    },
+    {
+      "shotId": "47",
+      "start": 74,
+      "end": 74.05,
+      "sectionId": "spring-wind-release",
+      "emotion": "rhythm punctuation",
+      "emotionPurpose": "短黑切是进入告别前的呼吸。",
+      "eventIntent": "保持原长度，后面明确有白色出口。",
+      "intended": {
+        "energy": 0.87,
+        "visualDensity": 0.63,
+        "warmth": 0.7,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿越一次边缘后减速，避免突然从暴力运动跳到静止。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 72.502,
+          "jp": "春風へ奪われた言葉",
+          "zh": "在那些被春风夺走的话语"
+        }
+      ]
+    },
+    {
+      "shotId": "48",
+      "start": 74.05,
+      "end": 78.299,
+      "sectionId": "spring-wind-release",
+      "emotion": "release / longing",
+      "emotionPurpose": "背靠背的话语开始远去，压缩最终通往安静。",
+      "eventIntent": "通道出口扩成留白；镜头在末端减速。",
+      "intended": {
+        "energy": 0.87,
+        "visualDensity": 0.63,
+        "warmth": 0.7,
+        "openness": 0.83
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "穿越一次边缘后减速，避免突然从暴力运动跳到静止。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 72.502,
+          "jp": "春風へ奪われた言葉",
+          "zh": "在那些被春风夺走的话语"
+        },
+        {
+          "time": 75.938,
+          "jp": "背中合わせ伝えた言葉",
+          "zh": "那些背靠着背传达的话语"
+        }
+      ]
+    },
+    {
+      "shotId": "49",
+      "start": 78.299,
+      "end": 86,
+      "sectionId": "farewell-body",
+      "emotion": "farewell / longing",
+      "emotionPurpose": "只愿再相遇：舍不得的是一路相伴的形状。",
+      "eventIntent": "同一残缺物慢慢远去；不要加随机mini object与字体攻击。",
+      "intended": {
+        "energy": 0.28,
+        "visualDensity": 0.23,
+        "warmth": 0.6,
+        "openness": 0.97
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "连续慢移，不增加随机insert。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 78.299,
+          "jp": "そしてまた，出会えますように",
+          "zh": "「只愿我们还能再相遇」"
+        }
+      ]
+    },
+    {
+      "shotId": "51",
+      "start": 86,
+      "end": 92,
+      "sectionId": "separation",
+      "emotion": "loneliness / affection",
+      "emotionPurpose": "两部分拥有共同过去，如今分向两边。",
+      "eventIntent": "分离缓慢而可见，字安静停留，让距离成为动作。",
+      "intended": {
+        "energy": 0.23,
+        "visualDensity": 0.19,
+        "warmth": 0.57,
+        "openness": 0.98
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "慢下来观察距离扩大，保持同一离别空间。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 78.299,
+          "jp": "そしてまた，出会えますように",
+          "zh": "「只愿我们还能再相遇」"
+        }
+      ]
+    },
+    {
+      "shotId": "55",
+      "start": 92,
+      "end": 98.076,
+      "sectionId": "hope-in-absence",
+      "emotion": "absence / hope",
+      "emotionPurpose": "留白让缺席可以被感受，而微光让未来仍存在。",
+      "eventIntent": "分裂线转为地平线，一个微光先响应。",
+      "intended": {
+        "energy": 0.29,
+        "visualDensity": 0.17,
+        "warmth": 0.64,
+        "openness": 0.97
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "缓慢向光靠近，98秒前准备前进方向。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 78.299,
+          "jp": "そしてまた，出会えますように",
+          "zh": "「只愿我们还能再相遇」"
+        }
+      ]
+    },
+    {
+      "shotId": "56",
+      "start": 98.076,
+      "end": 102,
+      "sectionId": "a-memory-responds",
+      "emotion": "hesitation / resilience",
+      "emotionPurpose": "岔路没有回答，但我们尚未停止。",
+      "eventIntent": "断层之后必须立即带回光，不变重启日志。",
+      "intended": {
+        "energy": 0.64,
+        "visualDensity": 0.5,
+        "warmth": 0.55,
+        "openness": 0.65
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "轻微犹豫后继续向前，不重复boot。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 98.076,
+          "jp": "回答の無い岐道の前",
+          "zh": "没有回答的岔路前"
+        }
+      ]
+    },
+    {
+      "shotId": "57",
+      "start": 102,
+      "end": 105.1,
+      "sectionId": "a-memory-responds",
+      "emotion": "memory / hope",
+      "emotionPurpose": "清月之下，旧记忆仍在回应。",
+      "eventIntent": "旧几何与叶片幽影带微暖边光，而非扫描修复。",
+      "intended": {
+        "energy": 0.64,
+        "visualDensity": 0.5,
+        "warmth": 0.55,
+        "openness": 0.65
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "轻微犹豫后继续向前，不重复boot。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 98.076,
+          "jp": "回答の無い岐道の前",
+          "zh": "没有回答的岔路前"
+        },
+        {
+          "time": 102.155,
+          "jp": "あの清月の下に今もわらないままで",
+          "zh": "在那清月之下，我至今仍不明白"
+        }
+      ]
+    },
+    {
+      "shotId": "58",
+      "start": 105.1,
+      "end": 109,
+      "sectionId": "continuing-after-farewell",
+      "emotion": "reunion / resilience",
+      "emotionPurpose": "回忆把路接起来，离别之后依然可以前行。",
+      "eventIntent": "树叶、壳体和旧轨道组成去处，让生命先动。",
+      "intended": {
+        "energy": 0.81,
+        "visualDensity": 0.66,
+        "warmth": 0.65,
+        "openness": 0.8
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "跨过判定线；这是路的连接，不是repair动画。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 102.155,
+          "jp": "あの清月の下に今もわらないままで",
+          "zh": "在那清月之下，我至今仍不明白"
+        },
+        {
+          "time": 108.55,
+          "jp": "変わらない 代ゎらない 理解らない",
+          "zh": "未曾改变，无可替代，无法理解"
+        }
+      ]
+    },
+    {
+      "shotId": "59",
+      "start": 109,
+      "end": 113.098,
+      "sectionId": "continuing-after-farewell",
+      "emotion": "forward motion / hope",
+      "emotionPurpose": "无法停留意味着愿意继续走。",
+      "eventIntent": "Camera跨线时，天光与柔性动线明确回归。",
+      "intended": {
+        "energy": 0.81,
+        "visualDensity": 0.66,
+        "warmth": 0.65,
+        "openness": 0.8
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "跨过判定线；这是路的连接，不是repair动画。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 108.55,
+          "jp": "変わらない 代ゎらない 理解らない",
+          "zh": "未曾改变，无可替代，无法理解"
+        },
+        {
+          "time": 110.47,
+          "jp": "じゃあいられなくて",
+          "zh": "那便无法停留"
+        }
+      ]
+    },
+    {
+      "shotId": "60",
+      "start": 113.098,
+      "end": 118,
+      "sectionId": "coming-home",
+      "emotion": "belonging / reunion",
+      "emotionPurpose": "寻找归处：一路见过的世界开始朝同一个地方走。",
+      "eventIntent": "壳、岛、玻璃复用旧身份与颜色，流向共同暖光。",
+      "intended": {
+        "energy": 0.9,
+        "visualDensity": 0.86,
+        "warmth": 0.73,
+        "openness": 0.73
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "相机与物体共用前进轴，禁止随机爆炸堆模型。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 113.098,
+          "jp": "帰属の行方を探した",
+          "zh": "于是我寻找归处"
+        }
+      ]
+    },
+    {
+      "shotId": "61",
+      "start": 118,
+      "end": 122,
+      "sectionId": "coming-home",
+      "emotion": "reunion / gratitude",
+      "emotionPurpose": "时间层层叠叠，过去不是被丢弃而是被带回家。",
+      "eventIntent": "叶、纤维、水与硬碎片共用前进轴，不能随机object overload。",
+      "intended": {
+        "energy": 0.9,
+        "visualDensity": 0.86,
+        "warmth": 0.73,
+        "openness": 0.73
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "相机与物体共用前进轴，禁止随机爆炸堆模型。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 113.098,
+          "jp": "帰属の行方を探した",
+          "zh": "于是我寻找归处"
+        },
+        {
+          "time": 119.513,
+          "jp": "“時間”を積み重ねた悲斗",
+          "zh": "在“时间”层层叠叠得悲斗之中"
+        }
+      ]
+    },
+    {
+      "shotId": "62",
+      "start": 122,
+      "end": 128.85,
+      "sectionId": "all-the-years",
+      "emotion": "gratitude / bittersweet joy",
+      "emotionPurpose": "九章是共同走过的年月，熄灭也可以是释然。",
+      "eventIntent": "01–09先被读清，再让01–08依次归入目的地；不变注销列表。",
+      "intended": {
+        "energy": 0.94,
+        "visualDensity": 0.91,
+        "warmth": 0.79,
+        "openness": 0.74
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向中心前行但画面信息从many逐渐one。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 119.513,
+          "jp": "“時間”を積み重ねた悲斗",
+          "zh": "在“时间”层层叠叠得悲斗之中"
+        },
+        {
+          "time": 123.746,
+          "jp": "君がもぅ知らない“世界”で",
+          "zh": "在你已不再知晓的“世界”"
+        },
+        {
+          "time": 128.193,
+          "jp": "洪星の1つに 僕の咆哮",
+          "zh": "向着一颗洪星，发出我的咆哮"
+        }
+      ]
+    },
+    {
+      "shotId": "64",
+      "start": 128.85,
+      "end": 135.19133333333335,
+      "sectionId": "last-enclosure",
+      "emotion": "resolve / longing / release",
+      "emotionPurpose": "最后一次黑暗存在，是为了把完整天空放出来。",
+      "eventIntent": "沿有刻纹的曲面穿入暖裂口，禁止长时间黑平面或更多glitch。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.6,
+        "warmth": 0.76,
+        "openness": 0.43
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "必须看得出贴曲面穿过去，不变成黑色平面滑动。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 128.193,
+          "jp": "洪星の1つに 僕の咆哮",
+          "zh": "向着一颗洪星，发出我的咆哮"
+        },
+        {
+          "time": 132.997,
+          "jp": "最後まで",
+          "zh": "直到最后"
+        }
+      ]
+    },
+    {
+      "shotId": "66",
+      "start": 135.19133333333335,
+      "end": 135.258,
+      "sectionId": "to-the-very-end",
+      "emotion": "release punctuation",
+      "emotionPurpose": "四帧归零是向天空的呼吸。",
+      "eventIntent": "保持原四帧；下一帧必须明亮开放。",
+      "intended": {
+        "energy": 0.91,
+        "visualDensity": 0.41,
+        "warmth": 0.85,
+        "openness": 0.71
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "沿已建立的出口穿越，不随机切新世界。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 132.997,
+          "jp": "最後まで",
+          "zh": "直到最后"
+        }
+      ]
+    },
+    {
+      "shotId": "67",
+      "start": 135.258,
+      "end": 140,
+      "sectionId": "the-answer-is-sky",
+      "emotion": "new dawn / relief",
+      "emotionPurpose": "残酷而幸福的结局里，生活仍在继续。",
+      "eventIntent": "完整清晰的天空接住强音乐，云层分深度移动，不爆炸。",
+      "intended": {
+        "energy": 0.88,
+        "visualDensity": 0.25,
+        "warmth": 0.86,
+        "openness": 1.0
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "向前进入天空，先让观众看清与喘息。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 135.258,
+          "jp": "残酷で幸福な結末を 生きてぃる",
+          "zh": "残酷而又幸福的结局，我正生活在其中"
+        }
+      ]
+    },
+    {
+      "shotId": "68",
+      "start": 140,
+      "end": 151.4,
+      "sectionId": "after-story-life",
+      "emotion": "life / hope / gentle farewell",
+      "emotionPurpose": "低语告别之后，风还在吹，新叶仍会长。",
+      "eventIntent": "岛保持同一身份；01–08灭、09成光；云、叶、水轻微持续运动。",
+      "intended": {
+        "energy": 0.56,
+        "visualDensity": 0.36,
+        "warmth": 0.84,
+        "openness": 1.0
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "慢前移；保留岛屿身份，不再次montage。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 135.258,
+          "jp": "残酷で幸福な結末を 生きてぃる",
+          "zh": "残酷而又幸福的结局，我正生活在其中"
+        },
+        {
+          "time": 142.383,
+          "jp": "君を囁き去りに",
+          "zh": "低语着，离你而去"
+        }
+      ]
+    },
+    {
+      "shotId": "69",
+      "start": 151.4,
+      "end": 157,
+      "sectionId": "the-last-question",
+      "emotion": "gratitude / tenderness",
+      "emotionPurpose": "主线结束先感谢旅程，再把温柔的问题留给观众；这不是系统终止。",
+      "eventIntent": "151.4–154完结与致谢；154–154.35短黑呼吸；154.35开始最后的问题，文字保持安静可读。",
+      "intended": {
+        "energy": 0.18,
+        "visualDensity": 0.08,
+        "warmth": 0.68,
+        "openness": 1
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "画面渐静，文字不能再变成攻击性主景。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 142.383,
+          "jp": "君を囁き去りに",
+          "zh": "低语着，离你而去"
+        }
+      ]
+    },
+    {
+      "shotId": "70",
+      "start": 157,
+      "end": 162.72544217687076,
+      "sectionId": "music-and-unofficial-credits",
+      "emotion": "tenderness / gratitude / quiet acceptance",
+      "emotionPurpose": "最后问题的余韵与对创作者的尊重，随后画面完全安静；音乐仍完整到尾。",
+      "eventIntent": "问题持续到157.9；157.9–158.05仅短单线glitch；158.05–161.72544217687076音乐与unofficial小字号credits；最后1秒全黑。",
+      "intended": {
+        "energy": 0.1,
+        "visualDensity": 0.07,
+        "warmth": 0.62,
+        "openness": 1
+      },
+      "reviewFocus": {
+        "question": "连续成片中是否能读出该情绪目的，而不只是漂亮的物体？",
+        "continuity": "保持静止或几乎察觉不到的前移。",
+        "mustNotBecome": "system failure / archive shutdown / digital death"
+      },
+      "lyricContext": [
+        {
+          "time": 142.383,
+          "jp": "君を囁き去りに",
+          "zh": "低语着，离你而去"
+        }
+      ]
+    }
+  ],
+  "reviewRules": {
+    "maxColdMechanicalRunSeconds": 20,
+    "pressureWindows": [
+      [
+        34,
+        38.7
+      ],
+      [
+        46.6333333333333,
+        51.05
+      ]
+    ],
+    "heartWindow": [
+      78.299,
+      98.076
+    ],
+    "finalReleaseWindow": [
+      132.997,
+      151.4
+    ],
+    "noNewShots": true,
+    "shotCount": 64,
+    "reviewMethod": "Watch actual CI movies with the complete soundtrack; state intent and observed behavior separately. Contacts show compositional stages but cannot prove emotional pacing.",
+    "failureConditions": [
+      "20 seconds read only as cold mystery or mechanical pressure",
+      "78.299–98.076 becomes a list of unrelated shader inserts or lyric attacks",
+      "135.258 reveal is still threatening, apocalyptic, or structurally closed",
+      "140–151.4 uses another fast montage instead of breathing, life, and 09 release",
+      "Ending reads as system shutdown rather than the completion of a shared journey"
+    ],
+    "currentRisks": [
+      "Existing world and shot names retain system/archive/mechanical language; names are not emotional acceptance.",
+      "Selected red-machine source appears at 36.8–38.7 and 46.633333–51.05; later two uses sit in shots whose old event text describes a warm mineral vault. Review actual media.",
+      "Existing final build contains long dark enclosing geometry; warm seams and open sky must be visible events, not labels.",
+      "No program can verify longing, warmth, or relief by a numeric pass threshold."
+    ]
+  }
+}

@@ -224,13 +224,36 @@ function galleryWorld(){
  w.moving.push(q=>{panels.forEach((p,i)=>{p.position.x=(i%2?1:-1)*smooth(.23,.52,q)*32});doors.forEach((p,i)=>{p.position.x=(i?1:-1)*(48+smooth(.42,.7,q)*110)});cut.position.z=100+smooth(.1,.55,q)*590;floor.position.y=Math.sin(q*8)*.08});
  w.camera=(q,c)=>look(c,[-28+q*42,-48+smooth(.62,.9,q)*45,-80+q*310+smooth(.62,1,q)*700],[0,30,1060],97,-.06+Math.sin(q*Math.PI)*.12);return w;
 }
-// Medium and lighting changes for the long-form acts; never recolour alternating pieces.
+// An opening contains air beyond the structure; the sky is a destination in
+// depth, while the existing architecture still supplies the foreground.
+function skyOpening(w:World,position:V,width:number,height:number){
+ const c=document.createElement('canvas');c.width=1024;c.height=512;const x=c.getContext('2d')!;
+ const sky=x.createLinearGradient(0,0,0,512);sky.addColorStop(0,'#7396ad');sky.addColorStop(.54,'#dce9df');sky.addColorStop(1,'#f6e6c5');x.fillStyle=sky;x.fillRect(0,0,1024,512);
+ for(let i=0;i<7;i++){const y=210+i*27,g=x.createLinearGradient(0,y-16,0,y+34);g.addColorStop(0,'rgba(244,246,225,0)');g.addColorStop(.5,'rgba(244,246,225,.32)');g.addColorStop(1,'rgba(244,246,225,0)');x.fillStyle=g;x.fillRect(0,y-16,1024,50)}
+ const sun=x.createRadialGradient(705,302,10,705,302,220);sun.addColorStop(0,'rgba(255,239,198,.82)');sun.addColorStop(.38,'rgba(255,239,198,.28)');sun.addColorStop(1,'rgba(255,239,198,0)');x.fillStyle=sun;x.fillRect(450,50,550,462);
+ const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;
+ const material=new T.MeshBasicMaterial({map:tx,side:T.BackSide,toneMapped:false,fog:false,transparent:true,opacity:1,depthWrite:false});
+ // An enclosing sky has no rectangular edge when the camera banks or rises.
+ const air=new T.Mesh(new T.SphereGeometry(Math.max(width,height)*1.55,48,32),material);air.position.set(...position);w.root.add(air);return air;
+}
+function springBreeze(w:World,position:V,start:number,end:number,seed:number){
+ const g=new T.Group();g.position.set(...position);w.root.add(g);
+ const leaves:Array<{o:T.Mesh;p:T.Vector3;phase:number}>=[];
+ for(let i=0;i<11;i++){
+  const phase=hash(seed+i),o=surface(g,18,5,(u,v)=>{const wid=Math.sin(u*Math.PI)*3.4;return[(v-.5)*wid,(u-.5)*12,Math.sin(u*Math.PI)*1.1+(v-.5)**2*2]},new T.MeshStandardMaterial({color:'#8baca0',roughness:.95,metalness:0,side:T.DoubleSide}));
+  o.position.set((phase-.5)*210,(hash(seed+i+31)-.5)*105,hash(seed+i+71)*190);o.rotation.set(.2+phase,.5+phase*1.6,-.7+phase);leaves.push({o,p:o.position.clone(),phase});
+ }
+ w.moving.push(q=>{const wind=smooth(start,end,q);g.visible=q>start;leaves.forEach(({o,p,phase})=>{o.position.copy(p);o.position.x+=wind*(80+phase*50);o.position.y+=wind*(28+phase*24)+Math.sin(q*4+phase*TAU)*1.6;o.position.z-=wind*125;o.rotation.z=-.7+phase+Math.sin(q*3+phase*TAU)*.12;o.rotation.y=.5+phase*1.6+wind*.55;});});
+ return g;
+}
+// Medium, opening actions and living air for the first climax. These are
+// additions to its existing camera paths and authored silhouettes, not new shots.
 export function directExistingWorld(w:World,family:string){
  const styles:Record<string,{bg:string;key:string;rim:string;roles:Partial<Record<Mat,string>>;fill:number}>={
-  stair:{bg:'#f2ffff',key:'#ffffff',rim:'#9bffff',roles:{navy:'#05161e',stone:'#badbdd',white:'#ffffff',energy:'#c4ffff'},fill:.15},
-  canyon:{bg:'#ddd8cd',key:'#fff7e9',rim:'#ffffff',roles:{white:'#13100c',stone:'#544c40',navy:'#050504',energy:'#ffffff'},fill:.08},
-  ringtemple:{bg:'#1b0802',key:'#ef7d28',rim:'#ffd190',roles:{white:'#9b633a',stone:'#3c2418',navy:'#0b0805',energy:'#ffaa53'},fill:.025},
-  colonnade:{bg:'#000b08',key:'#0ccf83',rim:'#dffff3',roles:{white:'#092019',stone:'#05120e',navy:'#010504',energy:'#42ffae',silver:'#90e5c6'},fill:.02},
+  stair:{bg:'#cfdfdf',key:'#fff0d4',rim:'#a5c9dd',roles:{navy:'#152b41',stone:'#34566d',white:'#e6ebdf',energy:'#d1eee7'},fill:.28},
+  canyon:{bg:'#d8ded6',key:'#fff0d3',rim:'#bbd7de',roles:{white:'#25333d',stone:'#52646b',navy:'#122331',energy:'#eaf0d5',silver:'#b3c5b7'},fill:.16},
+  ringtemple:{bg:'#25302e',key:'#e9c18a',rim:'#f7e7c5',roles:{white:'#9d8b6b',stone:'#5b5746',navy:'#17282d',energy:'#e5d9a6',silver:'#a4b5ad'},fill:.14},
+  colonnade:{bg:'#071718',key:'#74aa98',rim:'#bdcfbc',roles:{white:'#243d43',stone:'#293c3b',navy:'#061218',energy:'#a3cdc0',silver:'#94b5aa'},fill:.035},
   'quiet-island':{bg:'#cbbcd0',key:'#ffe6de',rim:'#def7ff',roles:{white:'#baaea8',stone:'#706579',navy:'#232838',energy:'#f6e9d7'},fill:.6},
   'quiet-split':{bg:'#f3efdf',key:'#ffffff',rim:'#fff9e4',roles:{white:'#0a0b0c',stone:'#0a0b0c',navy:'#050708'},fill:.05},
   'quiet-leaf':{bg:'#2b1320',key:'#f1ba72',rim:'#ffd4ab',roles:{white:'#dfa1a0',navy:'#210b13',leafblue:'#742134',energy:'#ffe8ad'},fill:.04},
@@ -238,22 +261,52 @@ export function directExistingWorld(w:World,family:string){
   'quiet-shore':{bg:'#99bdcd',key:'#fff1f1',rim:'#effaff',roles:{stone:'#345870',navy:'#1e344a',energy:'#f0f8ff'},fill:.5},
  };
  const style=styles[family];if(!style)return;w.scene.background=new T.Color(style.bg);if(w.scene.fog)w.scene.fog.color.set(style.bg);
- rig(w,style.fill,style.key,family==='stair'?7:3.8,style.rim,family==='colonnade'?3.5:1.2);roles(w,style.roles,.87);
+ rig(w,style.fill,style.key,family==='stair'?3.7:3.8,style.rim,1.2);roles(w,style.roles,['stair','canyon','ringtemple','colonnade'].includes(family)?.9:.87);
+ if(family==='stair'){
+  backdrop(w,[[0,'#62879f'],[.54,'#cbdedc'],[1,'#f5ecd8']]);
+  if(w.scene.fog instanceof T.Fog){w.scene.fog.near=650;w.scene.fog.far=2300;}
+  const g=w.primary!,steps=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.ExtrudeGeometry&&Math.abs(o.rotation.x-Math.PI/2)<.01).map(o=>({o,y:o.position.y,r:o.rotation.z}));
+  const blade=g.children.find(o=>o instanceof T.Mesh&&!(o.geometry instanceof T.ExtrudeGeometry)&&!(o.geometry instanceof T.BoxGeometry));
+  const sky=skyOpening(w,[0,430,1380],2450,1250),light=new T.DirectionalLight('#ffe5b3',1.1);light.position.set(170,460,950);light.target.position.set(0,180,410);w.scene.add(light,light.target);
+  springBreeze(w,[15,190,610],.55,1.35,2380);
+  w.moving.push(q=>{const open=smooth(.5,1.18,q);if(blade)blade.position.x=-open*170;steps.forEach(({o,y,r},i)=>{o.position.y=y+Math.sin(q*3+i*.19)*.24*open;o.rotation.z=r+Math.sin(q*2+i*.15)*.006*open;});sky.scale.x=.76+open*.24;light.intensity=1.1+open*.9;});
+ }
+ if(family==='canyon'){
+  const g=w.primary!,walls=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&!(o instanceof T.InstancedMesh)&&!(o.geometry instanceof T.ExtrudeGeometry)&&!(o.geometry instanceof T.BoxGeometry));
+  const supports=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.ExtrudeGeometry).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
+  const sky=skyOpening(w,[0,310,1380],2100,1100);(sky.material as T.MeshBasicMaterial).opacity=.35;
+  surface(w.root,45,4,(u,v)=>[(u-.5)*1050,105+Math.sin(u*Math.PI)*24+v*4,1030+v*90],new T.MeshStandardMaterial({color:'#a4b8b3',roughness:.96,side:T.DoubleSide}));
+  const fill=new T.DirectionalLight('#f8e6bb',1);fill.position.set(0,370,1280);fill.target.position.set(0,100,560);w.scene.add(fill,fill.target);
+  springBreeze(w,[0,75,760],.3,.93,2440);
+  w.moving.push(q=>{const open=smooth(.2,.72,q);walls.forEach((o,i)=>{o.position.x=(i?1:-1)*open*175;o.rotation.z=(i?1:-1)*open*.075;});supports.forEach(({o,p,r})=>{o.position.copy(p);o.rotation.copy(r);o.position.x+=(p.x>0?1:-1)*open*(80+p.z*.055);o.rotation.z+=(p.x>0?1:-1)*open*.045;});(sky.material as T.MeshBasicMaterial).opacity=.35+open*.65;fill.intensity=1+open*2;});
+ }
  if(family==='colonnade'){
-  for(let i=0;i<17;i++)cable(w.root,[[-210+i*26,-60,0],[-210+i*26,-60,1100]],.14,'energy');
-  const destination=mesh(w.root,new T.PlaneGeometry(145,270),'white',[0,210,980]);destination.material=new T.MeshBasicMaterial({color:'#effff6',side:T.DoubleSide,toneMapped:false,fog:false});
+  const g=w.primary!,columns=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.ExtrudeGeometry).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
+  const lintels=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.BoxGeometry&&o.position.y>150&&o.scale.y<300).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
+  for(let i=0;i<5;i++)cable(w.root,[[-120+i*60,-60,0],[-120+i*60,-60,1100]],.1,'energy');
+  const destination=skyOpening(w,[0,420,1370],2300,1250);(destination.material as T.MeshBasicMaterial).opacity=.18;
+  const landing=island(w.root,[110,250,1100],105,22,'stone',2498);landing.material=new T.MeshStandardMaterial({color:'#859d91',roughness:1,metalness:0});
+  surface(w.root,42,5,(u,v)=>[-380+u*800,245+Math.sin(u*Math.PI)*30,1010+v*125],new T.MeshStandardMaterial({color:'#c3cdc1',roughness:.94,side:T.DoubleSide}));
+  const warmth=new T.DirectionalLight('#ffe6b3',0);warmth.position.set(-30,430,1200);warmth.target.position.set(0,220,540);w.scene.add(warmth,warmth.target);
+  const hemisphere=w.scene.children.find((o):o is T.HemisphereLight=>o instanceof T.HemisphereLight)!;
+  const beginning=new T.Color(style.bg),outside=new T.Color('#c8d7cd');
+  springBreeze(w,[15,280,750],.26,.98,2510);
+  w.moving.push(q=>{const open=smooth(.2,.86,q);columns.forEach(({o,p,r})=>{o.position.copy(p);o.rotation.copy(r);o.position.x+=(p.x>0?1:-1)*open*(210+p.z*.10);o.rotation.z+=(p.x>0?1:-1)*open*.13;});lintels.forEach(({o,p,r})=>{o.position.copy(p);o.rotation.copy(r);o.position.x+=(p.x>0?1:-1)*open*185;o.position.y+=open*90;o.rotation.z+=(p.x>0?1:-1)*open*.2;});(destination.material as T.MeshBasicMaterial).opacity=.18+open*.82;warmth.intensity=open*3.4;hemisphere.intensity=.035+open*.62;(w.scene.background as T.Color).copy(beginning).lerp(outside,open);if(w.scene.fog)w.scene.fog.color.copy(beginning).lerp(outside,open);});
  }
  if(family==='ringtemple'){
-  if(w.scene.fog instanceof T.Fog){w.scene.fog.near=650;w.scene.fog.far=1800;}
-  if(w.primary)w.primary.scale.setScalar(2.1);
+  if(w.scene.fog instanceof T.Fog){w.scene.fog.near=700;w.scene.fog.far=2100;}
+  if(w.primary)w.primary.scale.setScalar(1.85);
   const camera=w.camera;w.camera=(q,c)=>{camera(q,c);c.position.z+=100+q*115;c.updateMatrixWorld()};
-  fragments(w,550,280,450,'silver',1850);
-  const rim=new T.DirectionalLight('#ffd7a0',4.5);rim.position.set(-140,70,590);w.scene.add(rim);
-  const breach=new T.PointLight('#ffbf73',24000,500,2);breach.position.set(-105,230,475);w.scene.add(breach);
-  const rake=new T.SpotLight('#ffcf9c',12000000,1500,.52,.25,2);rake.position.set(-320,370,120);rake.target.position.set(0,115,525);w.scene.add(rake,rake.target);
+  fragments(w,190,360,610,'silver',1850);
+  const rim=new T.DirectionalLight('#f5e4bd',2.6);rim.position.set(-140,70,820);w.scene.add(rim);
+  const breach=new T.PointLight('#ffe3b2',13000,800,2);breach.position.set(-65,195,690);w.scene.add(breach);
+  const rake=new T.SpotLight('#ffe6c1',6500000,1500,.62,.45,2);rake.position.set(-260,390,260);rake.target.position.set(0,115,625);w.scene.add(rake,rake.target);
   const seam=cable(w.root,[[-150,350,460],[-220,275,466],[-190,200,470]],.65,'gold');
   const slab=profile(w.root,[[-110,-160],[-105,160],[-32,193],[21,20],[-15,-180]],24,[-265,10,180],[.1,.24,-.21],'navy','stone');
-  w.moving.push(q=>{breach.intensity=24000+smooth(.4,.68,q)*26000;seam.position.x=-smooth(.38,.7,q)*45;slab.position.x=-265-smooth(.05,.32,q)*140});
+  const modules=w.primary!.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&(o.geometry instanceof T.ExtrudeGeometry||o.geometry instanceof T.BoxGeometry)).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
+  const sky=skyOpening(w,[0,290,1330],2100,1050);(sky.material as T.MeshBasicMaterial).opacity=.12;
+  springBreeze(w,[-40,95,610],.35,.94,2470);
+  w.moving.push(q=>{const release=smooth(.24,.8,q);breach.intensity=13000+release*15000;seam.position.x=-release*45;slab.position.x=-265-smooth(.05,.32,q)*140;modules.forEach(({o,p,r})=>{o.position.copy(p);o.rotation.copy(r);o.position.x+=p.x*release*.34;o.position.y+=(p.y-45)*release*.17;o.position.z+=release*34;o.rotation.z+=(p.x>0?1:-1)*release*.1;});(sky.material as T.MeshBasicMaterial).opacity=.12+release*.88;rim.intensity=2.6+release*1.5;});
  }
  if(family==='quiet-shore'){
   surface(w.root,100,2,(u,v)=>{const a=(u-.5)*2.1,r=1350+v*3;return[Math.sin(a)*r,-930+Math.cos(a)*r,1900]},new T.MeshBasicMaterial({color:'#e8dfef',side:T.DoubleSide,transparent:true,opacity:.4}));

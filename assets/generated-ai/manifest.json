@@ -208,6 +208,40 @@
       "optional": true,
       "inputMode": "existing-video-edit",
       "visualDecision": "Requested lower near-surface tracking change was not visibly established; retain selected coherent V01 intervals."
+    },
+    {
+      "id": "glass-memory-v03-emotion",
+      "parentId": "glass-memory-v02-material",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/prompts/WORLD_GLASS_V03_EMOTION.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V03_EMOTION.mp4",
+      "world": "glass-memory",
+      "usageNotes": "Existing V02 selected in Flow history; emotional atmosphere edit requests warm distant light and coherent existing dust wind only. Downloaded from this version-specific original-size control, not a scene re-export. Pending CI before/after motion, silhouette and light review; generated audio discarded.",
+      "status": "pending-review",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "8ff7093e65a98573ea35f01fdda6ddb04053f48152bfb4e3723a1935428c0e0e",
+      "inputMode": "existing-video-edit",
+      "referenceInput": null,
+      "sourceVideo": "glass-memory-v02-material",
+      "requestedLocked": [
+        "geometry",
+        "camera trajectory",
+        "lens",
+        "timing",
+        "duration",
+        "material"
+      ],
+      "requestedChanges": [
+        "distant dawn-light and reflected edge light",
+        "existing dust wind"
+      ]
     }
   ],
   "rules": {

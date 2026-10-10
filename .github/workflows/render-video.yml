@@ -172,7 +172,7 @@ jobs:
         run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
         if: env.TARGET != 'physical-review'
-        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && node --experimental-strip-types scripts/verify-opening-camera.mjs && npm run typecheck
+        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && node scripts/verify-emotion-map.mjs && node --experimental-strip-types scripts/verify-opening-camera.mjs && npm run typecheck
       - name: Complex-world 1080p60 smoke (3 seconds)
         if: env.TARGET != 'physical-review'
         run: node scripts/render.mjs smoke
@@ -196,6 +196,8 @@ jobs:
         run: |
           cp assets/SOURCES.md output/SOURCES.md
           cp src/data/shots.json output/shot-manifest.json
+          cp src/data/emotion-map.json output/emotion-map.json
+          cp assets/music-source-provenance.json output/music-source-provenance.json
       - name: Upload review outputs (never standalone music or decryption key)
         uses: actions/upload-artifact@v4
         with:
@@ -218,6 +220,8 @@ jobs:
             output/ai-asset-verification.json
             output/revised-preview.mp4
             output/final-build-review.mp4
+            output/first-climax-review.mp4
+            output/farewell-review.mp4
             output/ending-review.mp4
             output/visual-activity.png
             output/visual-activity.csv
@@ -232,6 +236,9 @@ jobs:
             output/smoke-verification.json
             output/SOURCES.md
             output/shot-manifest.json
+            output/emotion-map.json
+            output/emotion-map-verification.json
+            output/music-source-provenance.json
             output/shot-language-audit.json
             output/anchor-events/*.jpg
             output/anchor-event-verification.json
