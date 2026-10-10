@@ -1,0 +1,9 @@
+SUBJECT: Edit the original six-second Blender control clip to establish a judgement-line gravity rule.
+WORLD: Preserve all five original rigid wedge objects, their geometry, materials and identities. Preserve their initial layout and depth. The existing thin cyan line is the only spatial boundary.
+COMPOSITION: Preserve original camera framing and depth; changed object positions must result from gravity rather than camera movement.
+MATERIAL: LOCK every surface and the existing cyan line appearance.
+LIGHT: LOCK all original lighting and background.
+CAMERA: LOCK the complete steady forward camera trajectory, lens, stable horizon and timing. Do not roll the camera or rotate the entire image to fake the effect.
+MOTION: Preserve six seconds. From 0 to 1.5 seconds, keep the original stationary objects and horizontal line. From 1.5 to 4 seconds, rotate only the line clockwise through ninety degrees in the camera-facing plane. Gravity rotates with its downward normal: initially down, then down-left, then toward screen-left. The five rigid wedges accelerate toward this changing direction with increasing displacement. From 4 to 6 seconds, the line stays vertical and all objects continue falling toward screen-left. Keep object count and silhouettes unchanged. No snap back to original positions.
+COLOR: LOCK the muted neutral world and the small cyan boundary. No new palette.
+NEGATIVE CONSTRAINTS: No camera roll, global image rotation, scene cuts, new objects, stretching, melting, duplicated wedges, new architecture, readable text, numbers, logos, overlays, graphic glitch or sound. The rule must be visible through line rotation and independent rigid-object reaction while the camera remains stable.

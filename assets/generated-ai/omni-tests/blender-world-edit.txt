@@ -1,0 +1,9 @@
+SUBJECT: Edit this original six-second Blender previs; keep its large dark curved shell and narrow seam.
+WORLD: LOCK all main geometry, object count, shell silhouette, seam position and spatial layout. Do not add a new hero or new architecture.
+COMPOSITION: LOCK the original framing at every moment. Keep the same clipped shell edges and the same visible gap.
+MATERIAL: Change only surface finish and micro-detail: rough dark metal with fine brushed relief, restrained shallow etched traces, layered subtle reflections in the existing curved surface. Do not enlarge cracks or alter the outline. No glossy plastic.
+LIGHT: Refine the existing broad cool illumination and narrow warm seam glow without changing light direction. Keep highlight detail and deep readable cavities.
+CAMERA: LOCK the complete original forward near-surface trajectory, lens, horizon, target and speed. No reshoot, orbit, pan, roll, zoom or cuts.
+MOTION: LOCK the exact six-second duration and all original object motion. Micro-detail must attach to the rigid surface rather than swim or deform.
+COLOR: Preserve near-black, muted cool metal and a very small warm-gold seam. No rainbow, bright yellow, cyan repaint or broad saturation.
+NEGATIVE CONSTRAINTS: No new geometry, no silhouette change, no scene replacement, no melting, no object multiplication, no readable text, numbers, logos, graphic glitch or new sound. Edit surface finish, atmosphere and light only. Keep atmospheric haze extremely subtle so it never hides the preserved silhouette.

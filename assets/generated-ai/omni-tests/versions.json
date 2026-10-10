@@ -180,7 +180,9 @@
     "inputs": "Two original six-second silent Blender controls successfully rendered and decoded by Actions run 38053840830. Archived under assets/generated-ai/controls.",
     "flowImport": "Blocked: browser upload security continued to deny the action after explicit user reauthorization. No workaround used.",
     "worldEdit": "Not performed on Blender control yet. Separate existing Veo glass material edit is recorded honestly as a source-world refinement.",
-    "spatialRule": "Not performed yet. No gravity-control success claimed."
+    "spatialRule": "Not performed yet. No gravity-control success claimed.",
+    "worldEditPrompt": "assets/generated-ai/omni-tests/blender-world-edit.txt",
+    "spatialRulePrompt": "assets/generated-ai/omni-tests/blender-spatial-rule.txt"
   },
   "secondReview": {
     "ciRun": 38055119650,
