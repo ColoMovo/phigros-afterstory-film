@@ -260,6 +260,8 @@ jobs:
             output/omni-camera-comparison.mp4
             output/omni-camera-contact-sheet.jpg
             output/omni-camera-verification.json
+            output/hybrid-source-contact-sheet.jpg
+            output/hybrid-source-review.mp4
           if-no-files-found: error
           retention-days: 14
   omni-previs:

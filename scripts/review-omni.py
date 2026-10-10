@@ -10,6 +10,7 @@ out=root/'output'
 out.mkdir(exist_ok=True)
 clips=[next(v for v in spec['versions'] if v['id']==name) for name in spec['cameraComparison']]
 assert len(clips)==4
+assert len({c['sha256'] for c in clips})==4, 'Duplicate file cannot stand in for another camera variant'
 reports=[]
 for c in clips:
     p=root/c['localPath']
@@ -49,3 +50,31 @@ for col,(c,label) in enumerate(zip(clips,labels)):
 sheet.save(out/'omni-camera-contact-sheet.jpg',quality=94)
 (out/'omni-camera-verification.json').write_text(json.dumps(dict(sourceCommit=os.environ.get('GITHUB_SHA'),sources=reports,comparisonDuration=duration,comparisonSHA256=hashlib.sha256(target.read_bytes()).hexdigest(),visualAcceptance='Pending inspection of camera path, geometry identity, timing and artifact rate; decode is not camera control proof.'),indent=2)+'\n')
 print('Actual four-source comparison complete; artistic control remains a review decision.')
+
+# The initial three-world quality gate is also reviewed from real source frames.
+manifest=json.loads((root/'assets/generated-ai/manifest.json').read_text())
+worlds=[next(c for c in manifest['clips'] if c['id']==name) for name in ['glass-memory-v01','red-machine-v01','new-dawn-v01']]
+source_sheet=Image.new('RGB',(1440,3*295),(14,17,23))
+draw=ImageDraw.Draw(source_sheet)
+parts=[]
+for col,c in enumerate(worlds):
+    p=root/c['localPath']
+    assert hashlib.sha256(p.read_bytes()).hexdigest()==c['sha256']
+    subprocess.run(['ffmpeg','-v','error','-i',str(p),'-an','-f','null','-'],check=True)
+    for row,t in enumerate([.3,4,7.6]):
+        frame=out/f'source-{col}-{row}.png'
+        subprocess.run(['ffmpeg','-v','error','-y','-ss',str(t),'-i',str(p),'-frames:v','1','-vf','scale=480:270',str(frame)],check=True)
+        source_sheet.paste(Image.open(frame).convert('RGB'),(col*480,row*295+25))
+        draw.text((col*480+8,row*295+5),f"{c['world'].upper()} / {t:.2f}s",font=textfont,fill='white')
+        frame.unlink()
+    part=out/f'source-{col}.mp4'
+    label=c['world'].upper()
+    subprocess.run(['ffmpeg','-v','error','-y','-i',str(p),'-an','-vf',f"scale=1280:720,fps=30,drawbox=x=0:y=0:w=iw:h=40:color=black@0.75:t=fill,drawtext=fontfile='{font}':text='{label} / ORIGINAL SOURCE':x=16:y=12:fontsize=18:fontcolor=white",'-c:v','libx264','-crf','18','-pix_fmt','yuv420p',str(part)],check=True)
+    parts.append(part)
+source_sheet.save(out/'hybrid-source-contact-sheet.jpg',quality=94)
+concat=out/'source-concat.txt'
+concat.write_text(''.join(f"file '{p.name}'\n" for p in parts))
+subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(concat),'-c','copy','-movflags','+faststart',str(out/'hybrid-source-review.mp4')],check=True)
+subprocess.run(['ffmpeg','-v','error','-i',str(out/'hybrid-source-review.mp4'),'-f','null','-'],check=True)
+for p in parts:p.unlink()
+concat.unlink()
