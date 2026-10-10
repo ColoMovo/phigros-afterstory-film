@@ -1,0 +1,222 @@
+name: Render Final in Four Absolute Ranges
+on:
+  workflow_call:
+    inputs:
+      physical_run_id:
+        description: Existing final physical-assets source run
+        required: false
+        type: string
+        default: '38090288881'
+      physical_source_sha:
+        description: Full source commit of that final physical-assets artifact
+        required: false
+        type: string
+        default: '2f1a68b2f69b505f79cee42d571a0c06ab1ad71f'
+    secrets:
+      AUDIO_DECRYPTION_KEY:
+        required: true
+  workflow_dispatch:
+    inputs:
+      physical_run_id:
+        description: Existing successful Blender assembly run containing the final physical-assets artifact
+        required: true
+        type: string
+        default: '38090288881'
+      physical_source_sha:
+        description: Full source commit of that physical-assets artifact; fingerprints must also match this checkout
+        required: true
+        type: string
+        default: '2f1a68b2f69b505f79cee42d571a0c06ab1ad71f'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: film-final-parallel-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  TARGET: final
+  RENDER_CONCURRENCY: '2'
+  PHYSICAL_SOURCE_SHA: ${{ inputs.physical_source_sha }}
+  PHYSICAL_SOURCE_RUN_ID: ${{ inputs.physical_run_id }}
+jobs:
+  chunks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        index: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate physical artifact locator
+        run: |
+          node --input-type=module - <<'JS'
+          if(!/^[1-9][0-9]*$/.test(process.env.PHYSICAL_SOURCE_RUN_ID||'')||!/^[a-f0-9]{40}$/.test(process.env.PHYSICAL_SOURCE_SHA||''))throw Error('Invalid physical run ID or full source commit');
+          JS
+      - name: Install the same final renderer and verification dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
+          pip install pillow==11.3.0
+          npm ci --no-audit --no-fund
+          npx remotion browser ensure
+      - name: Restore existing verified final Blender clips from the source run
+        uses: actions/download-artifact@v4
+        with:
+          name: physical-assets-${{ inputs.physical_source_sha }}
+          path: public/physical
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.physical_run_id }}
+      - name: Verify final physical fingerprints and design structure
+        run: node scripts/verify-shot-designs.mjs && node scripts/verify-physical.mjs
+      - name: Check archived reference PNG integrity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib,json
+          paths=sorted(Path('assets/generated-ai/references').glob('*.png'))
+          if not paths:raise RuntimeError('No archived reference PNGs found')
+          rows=[]
+          for p in paths:
+            with Image.open(p) as image:
+              if image.format!='PNG' or min(image.size)<=0:raise RuntimeError(f'Invalid PNG: {p}')
+              size=list(image.size);image.verify()
+            rows.append({'file':str(p),'dimensions':size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'integrity':'pass'})
+          Path('output').mkdir(exist_ok=True)
+          Path('output/final-input-png-verification.json').write_text(json.dumps({'scope':'Archived reference PNG integrity only. Physical source PNG sequence checks were performed in the source Actions assembly run; this run reuses its fingerprint-verified final clips.','inputs':rows},indent=2)+'\n')
+          PY
+      - name: Restore private music and verify selections, emotion, camera and types
+        env:
+          AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
+        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && node scripts/verify-emotion-map.mjs && node --experimental-strip-types scripts/verify-opening-camera.mjs && npm run typecheck
+      - name: Render complete composition at this inclusive absolute range, video only
+        env:
+          FINAL_CHUNK_INDEX: ${{ matrix.index }}
+        run: node scripts/render-final-chunk.mjs "$FINAL_CHUNK_INDEX"
+      - name: Upload only this video-only chunk and its actual input hashes
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-chunk-${{ matrix.index }}-${{ github.sha }}
+          path: |
+            output/final-chunks/chunk-*.mp4
+            output/final-chunks/chunk-*.json
+          if-no-files-found: error
+          retention-days: 2
+      - name: Remove decrypted music from the runner
+        if: always()
+        run: rm -f public/music.mp3
+  assemble:
+    needs: chunks
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the existing export verification dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          pip install numpy==2.2.6 pillow==11.3.0 matplotlib==3.10.6
+          npm ci --no-audit --no-fund
+      - name: Restore existing final Blender clips for input-hash verification
+        uses: actions/download-artifact@v4
+        with:
+          name: physical-assets-${{ inputs.physical_source_sha }}
+          path: public/physical
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.physical_run_id }}
+      - name: Restore the four chunks from this exact source commit
+        uses: actions/download-artifact@v4
+        with:
+          pattern: final-chunk-*-${{ github.sha }}
+          path: output/final-chunks
+          merge-multiple: true
+      - name: Verify reused Blender source before final assembly
+        run: node scripts/verify-shot-designs.mjs && node scripts/verify-physical.mjs && python scripts/review-physical.py
+      - name: Record reference PNG integrity and the reused physical sequence scope
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib,json,os
+          paths=sorted(Path('assets/generated-ai/references').glob('*.png'))
+          if not paths:raise RuntimeError('No archived reference PNGs found')
+          rows=[]
+          for p in paths:
+            with Image.open(p) as image:
+              if image.format!='PNG' or min(image.size)<=0:raise RuntimeError(f'Invalid PNG: {p}')
+              size=list(image.size);image.verify()
+            rows.append({'file':str(p),'dimensions':size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'integrity':'pass'})
+          Path('output/final-input-png-verification.json').write_text(json.dumps({'sourceCommit':os.environ['GITHUB_SHA'],'physicalSourceCommit':os.environ['PHYSICAL_SOURCE_SHA'],'physicalSourceRunId':os.environ['PHYSICAL_SOURCE_RUN_ID'],'scope':'Archived reference PNG integrity only. Source Blender PNG sequence checks were performed in the original Actions assembly run; this run checks final clip fingerprints and decoded MP4s.','inputs':rows},indent=2)+'\n')
+          PY
+      - name: Restore private music and recheck actual source selections
+        env:
+          AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
+        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && node scripts/verify-emotion-map.mjs && node --experimental-strip-types scripts/verify-opening-camera.mjs && npm run typecheck
+      - name: Check ranges and hashes, stream-copy video, mux the full original once, inspect actual seams
+        run: python scripts/assemble-final-chunks.py
+      - name: Verify the full MP4, zero-offset music and actual editorial/contact evidence
+        run: python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 && python scripts/review-editorial.py output/phigros-main-story-celebration.mp4
+      - name: Package attribution and unchanged shot/emotion manifests
+        run: |
+          cp assets/SOURCES.md output/SOURCES.md
+          cp src/data/shots.json output/shot-manifest.json
+          cp src/data/emotion-map.json output/emotion-map.json
+          cp assets/music-source-provenance.json output/music-source-provenance.json
+      - name: Upload verified final and actual review evidence, never standalone music or keys
+        uses: actions/upload-artifact@v4
+        with:
+          name: afterstory-final-parallel-${{ github.sha }}
+          path: |
+            output/phigros-main-story-celebration.mp4
+            output/phigros-main-story-celebration.mp4.render.json
+            output/final-chunk-boundaries.jpg
+            output/final-chunk-assembly.json
+            output/final-input-png-verification.json
+            output/final-chunks/chunk-*.json
+            output/film-verification.json
+            output/contact-sheet.jpg
+            output/labeled-contact-sheet.jpg
+            output/blind-contact-sheet.jpg
+            output/film-keyframes/*.png
+            output/first-climax-review.mp4
+            output/farewell-review.mp4
+            output/final-build-review.mp4
+            output/ending-review.mp4
+            output/visual-activity.png
+            output/visual-activity.csv
+            output/editorial-review.json
+            output/anchor-events/*.jpg
+            output/anchor-event-verification.json
+            output/physical-event-labeled.jpg
+            output/physical-event-blind.jpg
+            output/physical-verification.json
+            output/physical-events/*.png
+            output/physical-review/*.mp4
+            output/ai-asset-verification.json
+            output/emotion-map-verification.json
+            output/shot-language-audit.json
+            output/SOURCES.md
+            output/shot-manifest.json
+            output/emotion-map.json
+            output/music-source-provenance.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Remove decrypted music from the runner
+        if: always()
+        run: rm -f public/music.mp3

@@ -7,11 +7,21 @@ on:
         required: true
         default: opening-review
         type: choice
-        options: [smoke, physical-review, opening-review, opening, preview, revised-preview, hybrid-preview, omni-review, omni-previs, final]
+        options: [smoke, physical-review, opening-review, opening, preview, revised-preview, hybrid-preview, omni-review, omni-previs, final, parallel-final]
       opening_seconds:
         description: Opening review duration (12 to 58.315 seconds; ignored for other targets)
         required: false
         default: '58.315'
+        type: string
+      physical_run_id:
+        description: Existing final physical-assets source run (parallel-final only)
+        required: false
+        default: '38090288881'
+        type: string
+      physical_source_sha:
+        description: Full source commit for the reused final physical-assets (parallel-final only)
+        required: false
+        default: '2f1a68b2f69b505f79cee42d571a0c06ab1ad71f'
         type: string
   push:
     branches: [main]
@@ -22,6 +32,17 @@ concurrency:
   group: film-${{ github.event_name }}-${{ inputs.target || 'smoke' }}
   cancel-in-progress: false
 jobs:
+  parallel-final:
+    if: inputs.target == 'parallel-final'
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/render-final-parallel.yml
+    with:
+      physical_run_id: ${{ inputs.physical_run_id || '38090288881' }}
+      physical_source_sha: ${{ inputs.physical_source_sha || '2f1a68b2f69b505f79cee42d571a0c06ab1ad71f' }}
+    secrets:
+      AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
   plan:
     runs-on: ubuntu-latest
     outputs:
@@ -41,7 +62,7 @@ jobs:
           const target=process.env.TARGET;
           const opening=target==='opening'||target==='opening-review',end=opening?Number(process.env.OPENING_END):Infinity;
           if(opening&&(!Number.isFinite(end)||end<12||end>58.315))throw Error('Opening duration must be 12–58.315 seconds');
-          const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):['smoke','omni-review','omni-previs'].includes(target)?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
+          const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):['smoke','omni-review','omni-previs','parallel-final'].includes(target)?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
           const profile=target==='final'?'final':'preview';
           const matrix={include:shots.flatMap(shot=>[0,1,2,3].map(chunk=>({shot,chunk})))};
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`shots=${JSON.stringify(shots)}\nrequired=${shots.length>0}\nmatrix=${JSON.stringify(matrix)}\nprofile=${profile}\n`);
@@ -133,7 +154,7 @@ jobs:
           retention-days: 14
   render:
     needs: [plan, assemble]
-    if: ${{ !cancelled() && inputs.target != 'omni-review' && inputs.target != 'omni-previs' && needs.plan.result == 'success' && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
+    if: ${{ !cancelled() && inputs.target != 'omni-review' && inputs.target != 'omni-previs' && inputs.target != 'parallel-final' && needs.plan.result == 'success' && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
