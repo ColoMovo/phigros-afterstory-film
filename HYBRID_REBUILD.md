@@ -8,7 +8,9 @@ Only GLASS MEMORY, RED MACHINE and NEW DAWN are queued initially, one generation
 
 The observed Google Flow setup offers Veo 3.1 - Quality, first-frame input, landscape 16:9, one output, 8 seconds and 720p. Higher-resolution download/upscale is checked when a result exists. The requested 20–30-second pools can be assembled from multiple sources after the initial visual gate; the first gate does not substitute a lower-quality model for extra duration. Each prompt independently defines subject, world, composition, material, light, camera, motion, color and negative constraints.
 
-Actual outputs must be downloaded into `assets/generated-ai/<world>/`, then recorded with provider/model, exact prompt, date, duration, resolution, SHA256, first-frame provenance and honest quality decision in `manifest.json`. An empty manifest means no generated clip has been accepted. There is no implicit remote clip and no generated placeholder.
+The original first frames were completed, but the Chrome extension upload interface required an additional file-URL permission that has not been granted. Without changing that security setting, the initial three tests use explicitly recorded text-to-video prompts (`*-text.txt`). They do not claim first-frame anchoring. The original references remain ready for a later authorized image-to-video comparison.
+
+Actual outputs must be downloaded into `assets/generated-ai/<world>/`, then recorded with provider/model, exact prompt, date, duration, resolution, SHA256, first-frame provenance and honest quality decision in `manifest.json`. The populated manifest records actual downloaded clips; review-pending entries are not accepted film sources. There is no implicit remote clip and no generated placeholder.
 
 ## Weak-segment queue
 

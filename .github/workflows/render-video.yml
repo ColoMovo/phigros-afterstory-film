@@ -7,7 +7,7 @@ on:
         required: true
         default: opening-review
         type: choice
-        options: [smoke, physical-review, opening-review, opening, preview, revised-preview, hybrid-preview, final]
+        options: [smoke, physical-review, opening-review, opening, preview, revised-preview, hybrid-preview, omni-review, omni-previs, final]
       opening_seconds:
         description: Opening review duration (12 to 58.315 seconds; ignored for other targets)
         required: false
@@ -41,7 +41,7 @@ jobs:
           const target=process.env.TARGET;
           const opening=target==='opening'||target==='opening-review',end=opening?Number(process.env.OPENING_END):Infinity;
           if(opening&&(!Number.isFinite(end)||end<12||end>58.315))throw Error('Opening duration must be 12–58.315 seconds');
-          const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):target==='smoke'?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
+          const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):['smoke','omni-review','omni-previs'].includes(target)?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
           const profile=target==='final'?'final':'preview';
           const matrix={include:shots.flatMap(shot=>[0,1,2,3].map(chunk=>({shot,chunk})))};
           fs.appendFileSync(process.env.GITHUB_OUTPUT,`shots=${JSON.stringify(shots)}\nrequired=${shots.length>0}\nmatrix=${JSON.stringify(matrix)}\nprofile=${profile}\n`);
@@ -133,7 +133,7 @@ jobs:
           retention-days: 14
   render:
     needs: [plan, assemble]
-    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
+    if: ${{ !cancelled() && inputs.target != 'omni-review' && inputs.target != 'omni-previs' && needs.plan.result == 'success' && (needs.assemble.result == 'success' || needs.assemble.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
@@ -240,3 +240,70 @@ jobs:
       - name: Remove decrypted input from runner
         if: always()
         run: rm -f public/music.mp3
+
+  omni-review:
+    if: inputs.target == 'omni-review'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg && pip install pillow==11.3.0
+      - name: Compare four actual downloaded versions without source audio
+        run: python scripts/review-omni.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: omni-camera-review-${{ github.sha }}
+          path: |
+            output/omni-camera-comparison.mp4
+            output/omni-camera-contact-sheet.jpg
+            output/omni-camera-verification.json
+          if-no-files-found: error
+          retention-days: 14
+  omni-previs:
+    if: inputs.target == 'omni-previs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [dark-surface, judgement-rule]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender runtime libraries and encoding tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libegl1 libegl-mesa0 libgl1-mesa-dri libglx-mesa0 libgl1 libxi6 libxrender1 libxkbcommon0 libsm6 libxfixes3 libxxf86vm1
+      - name: Cache pinned official Blender runtime
+        id: blender-cache
+        uses: actions/cache@v4
+        with:
+          path: .render/blender-runtime
+          key: blender-official-4.5.0-linux-x64
+      - name: Download and verify pinned official Blender
+        if: steps.blender-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .render/blender-runtime
+          cd .render/blender-runtime
+          curl --fail --retry 3 -L https://download.blender.org/release/Blender4.5/blender-4.5.0-linux-x64.tar.xz -o blender.tar.xz
+          curl --fail --retry 3 -L https://download.blender.org/release/Blender4.5/blender-4.5.0.sha256 -o checksums.txt
+          python - <<'PY_CHECK'
+          from pathlib import Path
+          import hashlib
+          expected=next(line.split()[0] for line in Path('checksums.txt').read_text().splitlines() if 'blender-4.5.0-linux-x64.tar.xz' in line)
+          assert hashlib.sha256(Path('blender.tar.xz').read_bytes()).hexdigest()==expected
+          PY_CHECK
+          tar -xf blender.tar.xz
+          rm blender.tar.xz checksums.txt
+      - name: Render original spatial control footage
+        env:
+          BLENDER_PATH: .render/blender-runtime/blender-4.5.0-linux-x64/blender
+        run: '"$BLENDER_PATH" -b --factory-startup --python scripts/blender/omni-controls.py -- "${{ matrix.mode }}"'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: omni-control-${{ matrix.mode }}-${{ github.sha }}
+          path: output/omni-controls/${{ matrix.mode }}/*
+          if-no-files-found: error
+          retention-days: 14

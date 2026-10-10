@@ -1,0 +1,18 @@
+SUBJECT:
+Edit this existing dawn video. Camera variant B: low-angle near-surface tracking. Do not regenerate the world.
+WORLD:
+LOCK the floating island, synthetic sprout, cloud layers and distant horizon. Do not add objects. Preserve all geometry, world layout and scale.
+COMPOSITION:
+Preserve the same island and sprout as the target. Keep the world layout and all object shapes unchanged.
+MATERIAL:
+LOCK every material, leaf translucency and mineral surface. No material edits.
+LIGHT:
+LOCK the existing dawn illumination and atmospheric scattering.
+CAMERA:
+Change only camera position, lens and motion. Lower the camera toward the island underside. Use a 24mm wide-angle perspective. Track steadily forward beside the curved mineral edge, with a close foreground near miss in the final third. Look slightly upward toward the same sprout. Keep horizon stable; no orbit, pan, roll, handheld shake or abrupt zoom. Preserve the exact original eight-second timing. Geometry must not move to fake the camera change.
+MOTION:
+Preserve the original eight-second timing and all object, leaf and cloud motion. No retiming, new actions or topology changes.
+COLOR:
+LOCK the existing sky blue, pearl white and soft warm-gold palette.
+NEGATIVE CONSTRAINTS:
+No text, logos, subtitles, people, characters, new objects, melting, geometry changes, random camera movement or graphic glitch. Change camera position, lens and motion only. Preserve all other details.

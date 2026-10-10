@@ -52,3 +52,7 @@ Original scripts in `scripts/blender` build glass-gate (19.851–22.55s), mirror
 The earlier grass, rock, curve/glass and reflection-floor compositions are archived in `research/material-tech` as R&D ONLY and are excluded from the timeline. A material experiment is not counted as a final visual material.
 
 The user's prose reference bible is recorded in `VISUAL-REFERENCE-BIBLE.md`. Official PV footage remains reference-only and is never decoded into the render assets. No new permission to use third-party music or artwork is inferred from the reference descriptions.
+
+### Downloaded original generated source pool (2026-10-10)
+
+Three Veo 3.1 - Quality original text-to-video baselines and three independent Omni 1.1 Flash dawn camera edits are recorded in `assets/generated-ai/manifest.json`, including prompts, measured duration/resolution and hashes. No official reference was uploaded. These are review-pending source materials; the final-render selection file remains empty at this checkpoint. Generated audio is discarded. The small provider watermark present in downloaded media is retained. Earlier duplicate exports are excluded from the version tree.

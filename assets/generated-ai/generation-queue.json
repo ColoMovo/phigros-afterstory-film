@@ -14,5 +14,12 @@
     "glass-memory": "assets/generated-ai/prompts/glass-memory.txt",
     "red-machine": "assets/generated-ai/prompts/red-machine.txt",
     "new-dawn": "assets/generated-ai/prompts/new-dawn.txt"
+  },
+  "initialInputMode": "text-to-video; first-frame file upload blocked by extension file URL permission, permission question pending",
+  "referencesReady": true,
+  "actualSubmittedPrompts": {
+    "glass-memory": "assets/generated-ai/prompts/glass-memory-text.txt",
+    "red-machine": "assets/generated-ai/prompts/red-machine-text.txt",
+    "new-dawn": "assets/generated-ai/prompts/new-dawn-text.txt"
   }
 }

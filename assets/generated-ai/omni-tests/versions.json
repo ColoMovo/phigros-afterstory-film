@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "cameraComparison": [
+    "new-dawn-v01",
+    "new-dawn-v02-camera-A",
+    "new-dawn-v02-camera-B",
+    "new-dawn-v02-camera-C"
+  ],
+  "versions": [
+    {
+      "id": "new-dawn-v01",
+      "parentId": null,
+      "provider": "Google Flow",
+      "model": "Veo 3.1 - Quality",
+      "prompt": "assets/generated-ai/prompts/new-dawn-text.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V01.mp4",
+      "status": "downloaded and locally identified; formal comparison pending",
+      "sha256": "41c7830efdc36c20eaa085cbbe99462bae795461cc85f833a8d2fb0a2ff18b50",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control"
+    },
+    {
+      "id": "new-dawn-v02-camera-A",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-A.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_A.mp4",
+      "status": "downloaded and locally identified; formal comparison pending",
+      "sha256": "c8f2b95d0edc394a32d0d0697e64513164269ca5bb1d0e781a3f0563904dffbe",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control"
+    },
+    {
+      "id": "new-dawn-v02-camera-B",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-B.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_B.mp4",
+      "status": "downloaded and locally identified; formal comparison pending",
+      "sha256": "d4ccd6ba80cd9a992dd73135fe1dd75dbedc02b7b84543863cfe7a2effe56fbf",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control"
+    },
+    {
+      "id": "new-dawn-v02-camera-C",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-C.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_C.mp4",
+      "status": "downloaded and locally identified; formal comparison pending",
+      "sha256": "0fff6657f6fe38ce0b37a16caa8c5ff3ed35f99b405d8f6e61261d5acd1b7414",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control"
+    }
+  ],
+  "acceptance": "Four distinct local video files verified. Camera control and visual acceptance require inspection of the GitHub Actions comparison."
+}

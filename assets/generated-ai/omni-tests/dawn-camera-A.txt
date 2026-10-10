@@ -1,0 +1,18 @@
+SUBJECT:
+Edit this existing dawn video. Camera variant A: slow forward dolly. Do not regenerate the world.
+WORLD:
+LOCK the floating island, synthetic sprout, cloud layers and distant horizon. Do not add objects. Preserve all geometry, world layout and scale.
+COMPOSITION:
+Keep the island below centre with vast negative space. Preserve the same opening framing and target.
+MATERIAL:
+LOCK every material, leaf translucency and mineral surface. No material edits.
+LIGHT:
+LOCK the existing dawn illumination and atmospheric scattering.
+CAMERA:
+Change only the camera motion to a slow steady forward dolly along one straight axis for the whole existing eight-second duration. Maintain 40mm lens perspective and stable horizon. No orbit, pan, roll, handheld shake or abrupt zoom. The island grows only slightly in frame. Near-cloud parallax must reflect this camera motion.
+MOTION:
+Preserve the original eight-second timing and all object, leaf and cloud motion. No retiming, new actions or topology changes.
+COLOR:
+LOCK the existing sky blue, pearl white and soft warm-gold palette.
+NEGATIVE CONSTRAINTS:
+No text, logos, subtitles, people, characters, new objects, melting, geometry changes, random camera movement or graphic glitch. Change camera motion only. Preserve all other details.

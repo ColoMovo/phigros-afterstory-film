@@ -1,6 +1,145 @@
 {
   "version": 1,
-  "clips": [],
+  "clips": [
+    {
+      "id": "glass-memory-v01",
+      "provider": "Google Flow",
+      "model": "Veo 3.1 - Quality",
+      "prompt": "assets/generated-ai/prompts/glass-memory-text.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V01.mp4",
+      "world": "glass-memory",
+      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
+      "status": "review-pending",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sha256": "4433bd5649e16853138219bc990501b606a042b7dbcb73546c0b816852a039b7",
+      "inputMode": "text-to-video",
+      "referenceInput": null
+    },
+    {
+      "id": "red-machine-v01",
+      "provider": "Google Flow",
+      "model": "Veo 3.1 - Quality",
+      "prompt": "assets/generated-ai/prompts/red-machine-text.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/red-machine/WORLD_RED_V01.mp4",
+      "world": "red-machine",
+      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
+      "status": "review-pending",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sha256": "1d3a59e961dcb566441eece233808a37a33923973cf90e4143a04f8b474a4468",
+      "inputMode": "text-to-video",
+      "referenceInput": null
+    },
+    {
+      "id": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Veo 3.1 - Quality",
+      "prompt": "assets/generated-ai/prompts/new-dawn-text.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V01.mp4",
+      "world": "new-dawn",
+      "usageNotes": "Original text-to-video source. Awaiting actual CI source review; not selected for final timeline. Generated audio discarded.",
+      "status": "review-pending",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "41c7830efdc36c20eaa085cbbe99462bae795461cc85f833a8d2fb0a2ff18b50",
+      "inputMode": "text-to-video",
+      "referenceInput": null
+    },
+    {
+      "id": "new-dawn-v02-camera-A",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-A.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_A.mp4",
+      "status": "review-pending",
+      "sha256": "c8f2b95d0edc394a32d0d0697e64513164269ca5bb1d0e781a3f0563904dffbe",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
+      "world": "new-dawn",
+      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "inputMode": "existing-video-edit"
+    },
+    {
+      "id": "new-dawn-v02-camera-B",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-B.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_B.mp4",
+      "status": "review-pending",
+      "sha256": "d4ccd6ba80cd9a992dd73135fe1dd75dbedc02b7b84543863cfe7a2effe56fbf",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
+      "world": "new-dawn",
+      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "inputMode": "existing-video-edit"
+    },
+    {
+      "id": "new-dawn-v02-camera-C",
+      "parentId": "new-dawn-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/dawn-camera-C.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V02_CAMERA_C.mp4",
+      "status": "review-pending",
+      "sha256": "0fff6657f6fe38ce0b37a16caa8c5ff3ed35f99b405d8f6e61261d5acd1b7414",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded prompt, exported using its own Download control",
+      "world": "new-dawn",
+      "usageNotes": "Independent camera edit of new-dawn-v01. Formal four-way comparison pending. Source audio always discarded.",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "inputMode": "existing-video-edit"
+    }
+  ],
   "rules": {
     "origin": "Original prompts and original Blender first frames only",
     "qualityGate": "First three worlds; no automatic expansion",

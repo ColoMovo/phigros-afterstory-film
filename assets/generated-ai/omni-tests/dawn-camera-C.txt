@@ -1,0 +1,18 @@
+SUBJECT:
+Edit this existing dawn video. Camera variant C: controlled fifteen-degree orbit plus dolly. Do not regenerate the world.
+WORLD:
+LOCK the floating island, synthetic sprout, cloud layers and distant horizon. Do not add objects. Preserve all geometry, world layout and scale.
+COMPOSITION:
+Keep the island below centre with vast negative space. Preserve the same opening framing and target.
+MATERIAL:
+LOCK every material, leaf translucency and mineral surface. No material edits.
+LIGHT:
+LOCK the existing dawn illumination and atmospheric scattering.
+CAMERA:
+Change only the camera motion. Maintain 40mm lens perspective and the same island target. During the exact existing eight-second shot, perform a smooth clockwise orbit totaling only fifteen degrees combined with a small steady forward dolly. Keep the horizon level. No full circle, random orbit, pan, roll, shake or sudden zoom. The island grows only slightly in frame. Cloud and mineral-edge parallax must reflect this limited path. Do not rotate or move the island to fake the orbit.
+MOTION:
+Preserve the original eight-second timing and all object, leaf and cloud motion. No retiming, new actions or topology changes.
+COLOR:
+LOCK the existing sky blue, pearl white and soft warm-gold palette.
+NEGATIVE CONSTRAINTS:
+No text, logos, subtitles, people, characters, new objects, melting, geometry changes, uncontrolled camera movement or graphic glitch. Change camera motion only. Preserve all other details.
