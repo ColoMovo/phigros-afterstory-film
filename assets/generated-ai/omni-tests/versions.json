@@ -185,6 +185,17 @@
         "V02 / ACCEPTED MATERIAL",
         "V03 / EMOTIONAL EDIT"
       ]
+    },
+    {
+      "name": "dawn-human",
+      "ids": [
+        "new-dawn-v02-camera-A",
+        "new-dawn-v03-human"
+      ],
+      "labels": [
+        "V02 CAMERA A / ORIGINAL DAWN",
+        "V03 HUMAN / PENDING REVIEW"
+      ]
     }
   ],
   "controlledTests": {

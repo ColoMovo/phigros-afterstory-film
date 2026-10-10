@@ -179,10 +179,10 @@
         720
       ],
       "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc",
-      "status": "accepted",
+      "status": "reference-only",
       "world": "glass-memory",
       "sourceDuration": 8.0,
-      "usageNotes": "Accepted for the limited hybrid preview in the explicit mined intervals only, following Actions source/comparison review 38055119650. Generated audio discarded. No full source dropped as a single shot.",
+      "usageNotes": "Previously accepted parent material version; retained immutably for comparison. The existing glass interval now uses its reviewed V03 atmosphere edit.",
       "optional": true,
       "inputMode": "existing-video-edit",
       "visualDecision": "Useful material layer improvement, clear foreground slab parallax and coherent source depth. Only 1.70–4.45 s selected."
@@ -218,8 +218,8 @@
       "generationDate": "2026-10-10",
       "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V03_EMOTION.mp4",
       "world": "glass-memory",
-      "usageNotes": "Existing V02 selected in Flow history; emotional atmosphere edit requests warm distant light and coherent existing dust wind only. Downloaded from this version-specific original-size control, not a scene re-export. Pending CI before/after motion, silhouette and light review; generated audio discarded.",
-      "status": "pending-review",
+      "usageNotes": "Accepted only for the existing 34–36.75s glass-memory selection after actual Actions before/after inspection 38061570017. Generated audio is discarded; provider watermark is retained.",
+      "status": "accepted",
       "optional": true,
       "sourceDuration": 8.0,
       "resolution": [
@@ -241,7 +241,35 @@
       "requestedChanges": [
         "distant dawn-light and reflected edge light",
         "existing dust wind"
-      ]
+      ],
+      "reviewRun": "38061570017",
+      "visualDecision": "Inspected CI synchronous V02/V03 movie and same-time decoded frames. Macro glass silhouette, aperture, foreground crossings and steady forward trajectory remain coherent in the mined 1.7–4.45s range; soft warm aperture/reflections are visible. Exact camera/geometry equivalence is not claimed; fine surface synthesis changes remain. Warm light supports memory, without proving audience emotion."
+    },
+    {
+      "id": "new-dawn-v03-human",
+      "parentId": "new-dawn-v02-camera-A",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/prompts/WORLD_DAWN_V03_HUMAN.txt",
+      "localPath": "assets/generated-ai/new-dawn/WORLD_DAWN_V03_HUMAN.mp4",
+      "sha256": "460a875c00006314c1e49764b4454a1d72ed47ab9c831a64ab790bc81a886959",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": "24/1",
+      "export": "720p Original size",
+      "audioUsage": "discarded; never used in film",
+      "sourceProject": "PHIGROS · HYBRID REBUILD · QUALITY GATE",
+      "identification": "Flow history thumbnail adjacent to the recorded human-scale refinement prompt; exported using its own Download control",
+      "world": "new-dawn",
+      "status": "pending-ci-review",
+      "optional": true,
+      "inputMode": "existing-video-edit",
+      "usageNotes": "Original generated Dawn A source only. Adds an empty human-scale landing, seat, rail and doorway. No game recording, game asset or third-party image used as input. Candidate is not selected before actual Actions comparison review."
     }
   ],
   "rules": {
