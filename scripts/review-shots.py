@@ -10,6 +10,35 @@ p=ROOT/(sys.argv[1] if len(sys.argv)>1 else 'output/opening-review.mp4')
 if p.name!='smoke.mp4' and os.environ.get('GITHUB_ACTIONS')!='true':
  raise RuntimeError('Formal MP4 verification and contact sheets run in GitHub Actions.')
 meta=json.loads(Path(str(p)+'.render.json').read_text())
+def generated_world_plate_inputs():
+ # Label this rendered interval from verified, staged sources, not the planned manifest.
+ evidence=p.parent/'ai-asset-verification.json'
+ index_path=ROOT/'src/data/ai-asset-index.json'
+ selections_path=ROOT/'src/data/ai-shot-selections.json'
+ if not all(path.exists() for path in (evidence,index_path,selections_path)):
+  return []
+ verified={clip['id']:clip for clip in json.loads(evidence.read_text()).get('clips',[])
+           if clip.get('status')=='verified' and clip.get('selectedUses',0)>0}
+ index=json.loads(index_path.read_text())
+ selections=json.loads(selections_path.read_text())
+ used={}
+ first_frame=round(meta['sourceStart']*meta['fps'])
+ end_frame=first_frame+meta['frames']
+ for selection in selections:
+  clip_id=selection['clipId'];clip=verified.get(clip_id);staged=index.get(clip_id)
+  if not clip or not staged or not clip.get('sha256') or staged.get('sha256')!=clip['sha256']:
+   continue
+  start=math.ceil(selection['start']*meta['fps']-1e-7)
+  end=math.ceil(selection['end']*meta['fps']-1e-7)
+  if max(start,first_frame)<min(end,end_frame):
+   used[clip_id]={'id':clip_id,'sha256':clip['sha256']}
+ return list(used.values())
+world_plate_inputs=generated_world_plate_inputs()
+artwork_inputs='original procedural geometry and authored Blender visual pipeline'
+artwork_label='Original procedural / Blender visuals'
+if world_plate_inputs:
+ artwork_inputs+=' plus archived generated world plates from verified local sources'
+ artwork_label+=' + archived generated world plates'
 probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(p)]))
 v=next(s for s in probe['streams'] if s['codec_type']=='video');a=next(s for s in probe['streams'] if s['codec_type']=='audio')
 assert (v['codec_name'],a['codec_name'],v['width'],v['height'],v['r_frame_rate'])==('h264','aac',meta['width'],meta['height'],str(meta['fps'])+'/1')
@@ -40,7 +69,7 @@ for sample in samples:(dir/sample['image']).write_bytes(byframe[sample['videoFra
 for path in byframe.values():path.unlink()
 w,h=384,216;cols=5;rows=math.ceil(len(samples)/cols);sheet=Image.new('RGB',(w*cols,(h+74)*rows+76),'#101b27');draw=ImageDraw.Draw(sheet)
 draw.text((18,14),f"CI {'OPENING' if opening else 'FILM'} / ART DIRECTION REVIEW / {meta['sourceCommit'][:12]}",font=font,fill='#dce7eb')
-draw.text((18,43),'Original procedural visuals · UNOFFICIAL FAN TRIBUTE · samples decoded from MP4',font=small,fill='#91a9b6')
+draw.text((18,43),artwork_label+' · UNOFFICIAL FAN TRIBUTE · samples decoded from MP4',font=small,fill='#91a9b6')
 for i,s in enumerate(samples):
  x=i%cols*w;y=76+i//cols*(h+74);sheet.paste(Image.open(dir/s['image']).convert('RGB').resize((w,h)),(x,y));draw.text((x+10,y+h+5),f"{s['id']}  {s['sourceTime']:.2f}s  {s['reviewName']}",font=small,fill='#e5eaf0');draw.text((x+10,y+h+37),s['world'],font=small,fill='#9dafbc')
 contact=ROOT/'output'/('opening-contact-sheet.jpg' if opening else 'smoke-contact-sheet.jpg' if prefix=='smoke' else 'contact-sheet.jpg');sheet.save(contact,quality=96)
@@ -50,5 +79,5 @@ if prefix!='smoke':
  for i,s in enumerate(samples):blind.paste(Image.open(dir/s['image']).convert('RGB').resize((w,h)),(i%cols*w,i//cols*h))
  blind.save(ROOT/'output/blind-contact-sheet.jpg',quality=96)
  if p.name=='hybrid-preview.mp4':blind.save(ROOT/'output/hybrid-blind-contact-sheet.jpg',quality=96)
-report={**meta,'scope':'partial opening review' if opening else 'development smoke' if prefix=='smoke' else 'complete music timeline preview' if p.name in ('preview.mp4','revised-preview.mp4','hybrid-preview.mp4') else 'full 1080p60 export','file':p.name,'audioCorrelationAtZeroOffset':corr,'fullDecode':'pass','sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'shotSamples':samples,'contactSheet':contact.name,'blindContactSheet':'blind-contact-sheet.jpg' if prefix!='smoke' else None,'labeledContactSheet':'labeled-contact-sheet.jpg' if prefix!='smoke' else None,'artworkInputs':'original procedural geometry and images only','visualAcceptance':'not implied by technical verification'}
+report={**meta,'scope':'partial opening review' if opening else 'development smoke' if prefix=='smoke' else 'complete music timeline preview' if p.name in ('preview.mp4','revised-preview.mp4','hybrid-preview.mp4') else 'full 1080p60 export','file':p.name,'audioCorrelationAtZeroOffset':corr,'fullDecode':'pass','sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'shotSamples':samples,'contactSheet':contact.name,'blindContactSheet':'blind-contact-sheet.jpg' if prefix!='smoke' else None,'labeledContactSheet':'labeled-contact-sheet.jpg' if prefix!='smoke' else None,'artworkInputs':artwork_inputs,'generatedWorldPlateInputs':world_plate_inputs,'visualAcceptance':'not implied by technical verification'}
 reportPath=ROOT/'output'/f'{prefix}-verification.json';reportPath.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='shotSamples'},ensure_ascii=False,indent=2))

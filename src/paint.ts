@@ -47,7 +47,7 @@ function fill(c:string,a=1){ctx.save();ctx.globalAlpha*=a;ctx.fillStyle=c;ctx.fi
 function line(x:number,y:number,xx:number,yy:number,c=ink,w=1,a=1){ctx.save();ctx.globalAlpha*=a;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();ctx.restore()}
 function glow(x:number,y:number,r:number,c:string,a=1){ctx.save();ctx.globalAlpha*=a;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,rgba(c,0));ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore()}
 function photoTextEdge(s:string,x:number,y:number,c:string){
- if(!photoPlate)return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
+ if(!photoPlate&&!(t>=129&&t<135.191334))return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
  ctx.save();ctx.strokeStyle=bright?'#132530':'#e1ecee';ctx.lineWidth=2;ctx.lineJoin='round';ctx.globalAlpha*=.55;ctx.strokeText(s,x,y);ctx.restore();
 }
 function txt(s:string,x:number,y:number,size:number,c=ink,font='Display',align:CanvasTextAlign='left',a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='alphabetic';photoTextEdge(s,x,y,c);ctx.fillText(s,x,y);ctx.restore()}
@@ -393,7 +393,7 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
  if(shot.family==='insert-black'){fill('#000000');return;}
  if(t>=151.4){
   if(t<154){fill('#eaece4');const a=smooth(t,151.4,151.75);txt('PHIGROS',150,302,118,'#101b22','Display','left',a);txt('MAIN STORY',154,442,76,'#18252c','Text','left',a);txt('COMPLETE',145,634,176,'#101b22','Display','left',a);tracking('2019 — 2026',161,790,31,4,'#344951',a);tracking('THANK YOU FOR THE JOURNEY',162,885,23,3,'#344951',a);line(148,965,1770,965,'#44585f',2,a);return;}
-  if(t<157){const fade=smooth(t,154,155.15);fill('#eaece4');fill('#000000',fade);const c='#c7cecc',a=smooth(t,154.25,155.1)*(1-smooth(t,156.65,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,28,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,22,c,'Text','left',a);txt('Original geometry and generated world plates',155,850,22,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,24,c,'Text','left',a);txt('濒笼',155,957,24,c,'CJK','left',a);return;}
+  if(t<157){fill('#000000');const c='#dce2df',a=smooth(t,154.05,154.32)*(1-smooth(t,156.75,157));txt('UNOFFICIAL FAN TRIBUTE',155,735,30,c,'Text','left',a);txt('NOT AFFILIATED WITH PIGEON GAMES',155,783,26,c,'Text','left',a);txt('Original geometry and generated world plates',155,850,26,c,'Text','left',a);txt('Music · What do you want more than a Happy ending?',155,913,26,c,'Text','left',a);txt('濒笼',155,957,26,c,'CJK','left',a);return;}
   fill('#000000');const a=smooth(t,157.3,158.1)*(1-smooth(t,160.4,161.2));txt('What do you want more',380,474,57,'#dce1de','Text','left',a);txt('than a Happy ending?',540,554,57,'#dce1de','Text','left',a);if(t>=161.15&&t<161.3){const u=(t-161.15)/.15;line(0,540,W*u,540,'#acccc6',1.2,(1-u)*.8)}return;
  }
  if(t>=135.258&&t<137){fill('#fff8e7',1-smooth(t,135.38,137));return;}
@@ -428,7 +428,7 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   const mode=passage?'passage':lyricLayouts[d.i]??'edge',size=Math.min(62,1480/Math.max(1,d.l.jp.length));ctx.save();ctx.globalAlpha=d.a;
   if(mode==='passage'){timedLyric(d.l.jp,120,920,size,color);if(d.l.zh!=='//')txt(d.l.zh,1780,136,23,color,'CJK','right',.82);}
   else if(mode==='vertical'){
-   const chars=[...d.l.jp],sz=Math.min(48,800/chars.length);chars.forEach((ch,i)=>txt(ch,1705,120+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//'){ctx.save();ctx.translate(102,805);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,24,color,'CJK','left',.8);ctx.restore();}
+   const chars=[...d.l.jp],sz=Math.min(48,800/chars.length);chars.forEach((ch,i)=>txt(ch,1705,120+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//'){ctx.save();ctx.translate(102,805);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,photoPlate?28:24,color,'CJK','left',photoPlate?1:.8);ctx.restore();}
   }else if(mode==='perspective'){
    const u=smooth(d.age,0,.5);ctx.save();ctx.translate(250-50*u,870);ctx.transform(1,-.16,.48,.83,0,0);timedLyric(d.l.jp,0,0,Math.min(87,1630/d.l.jp.length),color);ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,1770,210,23,color,'CJK','right',.8);
   }else if(mode==='glyph'){
