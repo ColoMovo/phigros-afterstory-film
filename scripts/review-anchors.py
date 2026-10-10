@@ -19,7 +19,13 @@ for anchor in shots:
   stages.append(dict(phase=phase,videoFrame=frame,sourceTime=origin+frame/fps))
  rows.append(dict(id=anchor['id'],family=anchor['family'],event=anchor['shotEvent'],stages=stages))
 directory=root/'output/anchor-events';directory.mkdir(parents=True,exist_ok=True)
-frames=sorted({s['videoFrame'] for r in rows for s in r['stages']});select='+'.join(f'eq(n\\,{n})' for n in frames)
+joins=[]
+for time in [5.321,7.3833,9.3,10.5]:
+ if origin<=time<meta['sourceEnd']:
+  first=math.ceil((time-origin)*fps-1e-7)
+  stages=[dict(videoFrame=n,sourceTime=origin+n/fps) for n in range(first-2,first+3) if 0<=n<meta['frames']]
+  joins.append(dict(boundary=time,stages=stages))
+frames=sorted({s['videoFrame'] for r in rows+joins for s in r['stages']});select='+'.join(f'eq(n\\,{n})' for n in frames)
 subprocess.run(['ffmpeg','-v','error','-y','-i',str(movie),'-vf',f'select={select}','-fps_mode','vfr','-frames:v',str(len(frames)),str(directory/'frame-%03d.png')],check=True)
 images={n:directory/f'frame-{i+1:03d}.png' for i,n in enumerate(frames)}
 w,h=384,216;font=ImageFont.truetype(str(root/'public/fonts/Display.ttf'),17)
@@ -30,6 +36,13 @@ for page in range(math.ceil(len(rows)/8)):
    im=Image.open(images[stage['videoFrame']]).convert('RGB').resize((w,h));blind.paste(im,(c*w,r*h));labeled.paste(im,(c*w,r*(h+48)))
    draw.text((c*w+8,r*(h+48)+h+8),f"{row['id']} {row['family']} {stage['sourceTime']:.3f}s",font=font,fill='#e2ebe9')
  blind.save(directory/f'{page+1:02d}-blind.jpg',quality=94);labeled.save(directory/f'{page+1:02d}-labeled.jpg',quality=94)
+if joins:
+ sheet=Image.new('RGB',(w*5,(h+48)*len(joins)),'#080e12');draw=ImageDraw.Draw(sheet)
+ for r,row in enumerate(joins):
+  for c,stage in enumerate(row['stages']):
+   sheet.paste(Image.open(images[stage['videoFrame']]).convert('RGB').resize((w,h)),(c*w,r*(h+48)))
+   draw.text((c*w+8,r*(h+48)+h+8),f"join {row['boundary']:.3f}s / {stage['sourceTime']:.3f}s",font=font,fill='#e2ebe9')
+ sheet.save(root/'output/opening-joins.jpg',quality=96)
 for p in images.values():p.unlink()
-(root/'output/anchor-event-verification.json').write_text(json.dumps(dict(sourceCommit=meta['sourceCommit'],movie=movie.name,scope='Actual encoded event stages; does not approve visual quality',anchors=rows),ensure_ascii=False,indent=2)+'\n')
+(root/'output/anchor-event-verification.json').write_text(json.dumps(dict(sourceCommit=meta['sourceCommit'],movie=movie.name,scope='Actual encoded event stages; does not approve visual quality',anchors=rows,openingJoins=joins),ensure_ascii=False,indent=2)+'\n')
 print(f'Sampled four encoded stages in {len(rows)} independent anchors; {len(frames)} real video frames')

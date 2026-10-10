@@ -181,7 +181,7 @@ function dataTree(w:World,pos:V,scale:number){
 
 // A shell-centred civilisation, laid out as a traversable level. Each silhouette
 // has a different job; the large profiles are not random primitive scatter.
-function dawnEcology(w:World,attached:T.Group){
+function dawnEcology(w:World,attached:T.Group,firstLyricOnly=false){
  // Four asymmetric satellites: a blade buttress, broken balcony, suspended keel,
  // and a folded instrument. They terminate in the shell's support network.
  profile(attached,[[-15,-40],[2,-47],[14,-20],[10,17],[0,40],[-8,34],[-6,5],[-19,-10]],8,[72,5,-2],[.08,-.18,-.16],'navy','silver');
@@ -284,7 +284,7 @@ function dawnEcology(w:World,attached:T.Group){
  const satelliteDrift=(u:number)=>{const q=smooth(7.3833,8.0,u+5.321);gate.rotation.z=-.13-q*.14;distant.rotation.z=.22-q*.11};
  // Exact supplied lyrics live on a bowed plane in front of the shell. Individual
  // glyphs have world depth and can disappear behind the satellite/foreground.
- for(const l of lyrics.slice(0,2)){
+ for(const l of lyrics.slice(0,firstLyricOnly?1:2)){
   const row=new T.Group();attached.add(row);const chars=[...l.jp],charTiming=l.wordTiming.flatMap(token=>[...token.text].map(()=>token.time));
   const first=l.time===5.321;
   const letters=chars.map((ch,i)=>{const s=i/Math.max(1,chars.length-1),p:V=first?[54-s*108,-41+Math.sin(s*Math.PI)*8,-39-Math.sin(s*Math.PI)*8]:[48-s*94,45+Math.sin(s*Math.PI)*12,98+Math.cos(s*Math.PI)*10];const o=glyphPlane(row,ch,first?6.4:7.2,p);o.rotation.y=Math.PI+(s-.5)*.38;o.userData.rest=o.position.clone();return o});
@@ -295,7 +295,7 @@ function dawnEcology(w:World,attached:T.Group){
  annotation(w.root,'GRAVITY // 01', [109,-8,55],25,[-Math.PI/2,0,0]);
 }
 
-function dawnWorld(){
+export function dawnWorld(firstLyricOnly=false){
  const w=world('#a8bfd2',190,700);
  const shell=new T.Group();shell.position.set(0,60,85);shell.rotation.z=-.16;w.root.add(shell);w.primary=shell;
  shellPatch(shell,-.36,4.10,.17,2.80,[61,82,43],5.5);
@@ -306,7 +306,7 @@ function dawnWorld(){
  const lamp=new T.PointLight('#42d6df',1800,85,2);lamp.position.set(8,53,68);w.scene.add(lamp);
  const seam:V[]=Array.from({length:31},(_,i)=>{const y=-15+i;return [8+Math.sin(y*.09)*2,-5+y,-Math.sqrt(Math.max(.1,1-y*y/270))*8.5]});cable(inside,seam,.19,'energy');
  const orbit:V[]=Array.from({length:90},(_,i)=>{const a=-.35+i/89*Math.PI*1.65;return [Math.cos(a)*71,Math.sin(a)*50,Math.sin(a)*21]});cable(inside,orbit,.27,'gold');
- dawnEcology(w,inside);
+ dawnEcology(w,inside,firstLyricOnly);
  for(let i=0;i<6;i++){const a=i/6*TAU;cable(inside,[[0,-35,0],[Math.cos(a)*9,-7,Math.sin(a)*6],[Math.cos(a)*20,23,Math.sin(a)*14]],.12,'cyan');for(let j=0;j<3;j++)cable(inside,[[Math.cos(a)*9,-7,Math.sin(a)*6],[Math.cos(a+.2*j)*17,15,Math.sin(a)*13],[Math.cos(a+.2*j)*30,32+j*4,Math.sin(a)*19]],.035,'white')}
  const dust=instances(inside,550,leafGeo,'stone',(i,m)=>{const a=i*2.399,r=18+hash(i+98)*33;m.position.set(Math.cos(a)*r,-43+hash(i+32)*90,Math.sin(a)*r*.65);m.rotation.set(hash(i),hash(i+23),hash(i+89));m.scale.set(.16,.12,.26)});
  const energyDust=instances(inside,180,leafGeo,'energy',(_i,m)=>{m.scale.set(.09,.12,.1)}),flowPose=new T.Object3D();

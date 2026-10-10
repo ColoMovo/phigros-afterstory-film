@@ -1,0 +1,9 @@
+# Opening spatial continuity correction
+
+User feedback: the shell appearance and the following transitions feel unnatural. The previous logical family cuts rebuilt the scene and reset the camera. At 9.3 seconds the shell camera changed from roughly (-11,61,110) to (-15,4,10), with FOV 83→101; at 10.5 seconds the interior camera changed from (20,22,345) to (-140,-50,-140). These were unrelated coordinate systems, although the intended action was one traversal.
+
+The current 0–12 second passage retains the approved broken shell and cyan core. Foreground shutters physically reveal that existing shell. The shell lips separate before the lens crosses their edge; an asymmetric curved chamber occupies the region behind it. The island world is already placed beyond the chamber, with its own directional light. The same scene instance, absolute-time camera and time-scaled Hermite position/gaze curve cross all logical cuts. Gaze distances are normalized to avoid a far target accelerating the interpolation. There is no dissolve masking a scene reset.
+
+The second lyric retains one layout through 9.3–12 seconds; its contrast changes smoothly as the camera leaves the shadow. The first lyric remains on the shell's curved glyph plane. The original song and lyric timestamps are unchanged. At 12 seconds the existing Blender living-relic shot remains an intentional style cut.
+
+Verification: typecheck, physical-idea manifest audit, and a trajectory check for position/gaze/velocity/FOV/roll continuity, monotonic forward motion and absence of one-frame teleports at 60fps. Development stills bracket 9.3s and 10.5s. Formal opening movie, its encoded boundary sheet, audio verification and final MP4 must run in GitHub Actions. A passing continuity check alone does not approve the visual transition.

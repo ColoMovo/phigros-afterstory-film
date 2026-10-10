@@ -377,7 +377,8 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 // as source history, but never drawn by this composition.
 export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
  ctx=canvas.getContext('2d',{alpha:true})!;t=time;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
- const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','rebuild-gate','monuments','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=shot.family.startsWith('physical-')||shot.family==='gravity'?'#ffffff':dark?'#e5e9e8':'#132c40';
+ const passage=t>=9.3&&t<12,passageTone=smooth(t,9.85,10.45),passageColor='#'+[[229,19],[233,44],[232,64]].map(([a,b])=>Math.round(mix(a,b,passageTone)).toString(16).padStart(2,'0')).join('');
+ const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric(),dark=['signal','rift','interior','engine','deep','crystals','galaxy','gravity','storm','glitch','red-world','cyan-storm','rebuild-gate','monuments','ringtemple','colonnade','quiet-leaf','quiet-line'].includes(shot.family)||shot.family.startsWith('physical-')&&shot.family!=='physical-life-relic',color=passage?passageColor:shot.family.startsWith('physical-')||shot.family==='gravity'?'#ffffff':dark?'#e5e9e8':'#132c40';
  if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
  if(shot.family.startsWith('insert-')){
   const kind=shot.family.slice(7);if(kind==='black'){fill('#000000');return;}
@@ -428,11 +429,11 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   for(let i=0;i<80;i++)line(0,i*14,W,i*14,'#000000',4,.8);judgment(140+((t*230)%760),0,'#d9ffed',15);return;
  }
  if(d){
-  const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet;
+  const size=Math.min(64,1500/Math.max(1,d.l.jp.length)),a=d.a,quiet=shot.family.startsWith('quiet'),vertical=Number(shot.id)%5===0&&!quiet&&!passage;
   ctx.save();ctx.globalAlpha=a;ctx.shadowColor=dark?'#06121c':'#b5c5cc';ctx.shadowBlur=2;
   if(shot.family==='gravity'||shot.family.startsWith('physical-'))ctx.shadowBlur=0;
   if(vertical){const sz=Math.min(44,780/d.l.jp.length);[...d.l.jp].forEach((ch,i)=>txt(ch,1770,130+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//')txt(d.l.zh,120,991,23,color,'CJK','left',.82)}
-  else{const top=Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(Number(shot.id)%4===0?-.08:0)};timedLyric(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
+  else{const top=!passage&&Number(shot.id)%3===1,x=quiet?960:120,y=quiet?895:top?145:919;ctx.save();if(!quiet){ctx.translate(x,y);ctx.rotate(!passage&&Number(shot.id)%4===0?-.08:0)};timedLyric(d.l.jp,quiet?x:0,quiet?y:0,quiet?Math.min(42,size):size,color,quiet?'center':'left');if(d.l.zh!=='//')txt(d.l.zh,quiet?x:3,quiet?y+45:49,22,color,'CJK',quiet?'center':'left',.8);ctx.restore()}
   ctx.restore();
  }
  // Restrained annotations. No HUD fills the empty space.

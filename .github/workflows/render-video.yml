@@ -8,6 +8,11 @@ on:
         default: opening-review
         type: choice
         options: [smoke, physical-review, opening-review, opening, preview, final]
+      opening_seconds:
+        description: Opening review duration (12 to 58.315 seconds; ignored for other targets)
+        required: false
+        default: '58.315'
+        type: string
   push:
     branches: [main]
     paths-ignore: ['**.md']
@@ -29,10 +34,13 @@ jobs:
       - id: plan
         env:
           TARGET: ${{ inputs.target || 'smoke' }}
+          OPENING_END: ${{ inputs.opening_seconds || '58.315' }}
         run: |
           node --input-type=module - <<'JS_PLAN'
           import fs from 'node:fs';
           const target=process.env.TARGET;
+          const opening=target==='opening'||target==='opening-review',end=opening?Number(process.env.OPENING_END):Infinity;
+          if(opening&&(!Number.isFinite(end)||end<12||end>58.315))throw Error('Opening duration must be 12–58.315 seconds');
           const shots=target==='physical-review'?JSON.parse(fs.readFileSync('scripts/blender/designs.json')).map(s=>s.id):target==='smoke'?[]:[...new Set(JSON.parse(fs.readFileSync('src/data/shots.json')).filter(s=>s.family.startsWith('physical-')).map(s=>s.family.slice(9)))];
           const profile=target==='final'?'final':'preview';
           const matrix={include:shots.flatMap(shot=>[0,1,2,3].map(chunk=>({shot,chunk})))};
@@ -132,6 +140,7 @@ jobs:
       AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
       RENDER_CONCURRENCY: 2
       TARGET: ${{ inputs.target || 'smoke' }}
+      OPENING_END: ${{ inputs.opening_seconds || '58.315' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -163,7 +172,7 @@ jobs:
         run: python scripts/review-physical.py
       - name: Restore private audio and verify source inputs
         if: env.TARGET != 'physical-review'
-        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && npm run typecheck
+        run: npm run fetch-assets && npm run verify-assets && node scripts/verify-shot-language.mjs && node --experimental-strip-types scripts/verify-opening-camera.mjs && npm run typecheck
       - name: Complex-world 1080p60 smoke (3 seconds)
         if: env.TARGET != 'physical-review'
         run: node scripts/render.mjs smoke
@@ -197,6 +206,7 @@ jobs:
             output/physical-review/*.mp4
             output/opening-review.mp4
             output/opening-contact-sheet.jpg
+            output/opening-joins.jpg
             output/labeled-contact-sheet.jpg
             output/blind-contact-sheet.jpg
             output/opening-keyframes/*.png

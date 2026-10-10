@@ -18,7 +18,9 @@ try{
   for(const time of times){const shot=shots.find(s=>time>=s.start&&time<s.end);const name=`${shot.id}-${time.toFixed(3)}.png`;await renderStill({...common,composition,frame:Math.round(time*composition.fps),output:path.join(dir,name),imageFormat:'png'});console.log('Development still',shot.id,time)}
  }else{
   const smoke=mode==='smoke'||mode.startsWith('test'),opening=mode==='opening'||mode==='opening-review';
-  const start=smoke?41:0,end=smoke?44:opening?58.315:analysis.duration,range=[Math.ceil(start*composition.fps),Math.ceil(end*composition.fps)-1];
+  const openingEnd=Number(process.env.OPENING_END||58.315);
+  if(opening&&(!Number.isFinite(openingEnd)||openingEnd<12||openingEnd>58.315))throw Error('Opening duration must be 12–58.315 seconds');
+  const start=smoke?41:0,end=smoke?44:opening?openingEnd:analysis.duration,range=[Math.ceil(start*composition.fps),Math.ceil(end*composition.fps)-1];
   const raw=`output/${smoke?'smoke':opening?'opening':quality}-raw.mp4`;let last=-1;const started=performance.now();
   await renderMedia({...common,composition,codec:'h264',audioCodec:'aac',audioBitrate:'320k',crf:quality==='final'?17:23,x264Preset:'fast',pixelFormat:'yuv420p',imageFormat:'jpeg',jpegQuality:quality==='final'?95:87,concurrency:Number(process.env.RENDER_CONCURRENCY||2),outputLocation:raw,frameRange:range,onProgress:p=>{const n=Math.floor(p.progress*20);if(n!==last){last=n;console.log(`${Math.round(p.progress*100)}% rendered=${p.renderedFrames} encoded=${p.encodedFrames} elapsed=${Math.round((performance.now()-started)/1000)}s`)}}});
   const output=`output/${smoke?'smoke':opening?'opening-review':quality==='final'?'phigros-main-story-celebration':'preview'}.mp4`,sourceStart=range[0]/composition.fps,duration=Math.min(analysis.duration-sourceStart,(range[1]-range[0]+1)/composition.fps);

@@ -6,7 +6,7 @@
 
 The current rebuild is a complete timed film implementation with independently rebuilt world identities; see WORLD-IDENTITY.md for the visible palette / light / medium / scale / camera differences. Technical checks and a shot manifest do not establish visual acceptance. Earlier shell / opening reviews are superseded; this revision must be assessed from its own CI output.
 
-`src/data/shots.json` records continuous start / end, world, heroObject, cameraMotion, palette, density, transition, musicCue, lyricsCue, renderMethod, function and event. `src/shot-library.ts` renders every shot from absolute song time using depth-buffered Three.js geometry and five CI-generated original Blender clips on the same Remotion timeline. The shell hook ends at 9.3s; internal traversal lasts to 10.5s, then the camera enters the floating continent. Archive images are original procedural artwork. No official PV frame, character, UI, logo or song illustration appears in the active composition.
+`src/data/shots.json` records continuous start / end, world, heroObject, cameraMotion, palette, density, transition, musicCue, lyricsCue, renderMethod, function and event. `src/shot-library.ts` renders every shot from absolute song time using depth-buffered Three.js geometry and five CI-generated original Blender clips on the same Remotion timeline. The first 12 seconds are one shared native scene: near shutters uncover the shell, its side opening leads into a curved chamber, and the chamber reveals the island world already behind it. The 5.321s, 7.3833s, 9.3s and 10.5s event boundaries preserve camera position, gaze, velocity, FOV and roll. A CI-generated opening-joins sheet shows the five encoded frames around each boundary. Archive images are original procedural artwork. No official PV frame, character, UI, logo or song illustration appears in the active composition.
 
 ## Development
 
@@ -26,14 +26,14 @@ The original music is a necessary user-provided input. Third-party rights remain
 ## Formal rendering: GitHub Actions only
 
 ```sh
-gh workflow run render-video.yml -f target=opening-review
+gh workflow run render-video.yml -f target=opening-review -f opening_seconds=17.7
 gh workflow run render-video.yml -f target=preview
 gh workflow run render-video.yml -f target=final
 ```
 
 Targets: `smoke`, `physical-review`, `opening-review` (alias `opening`), `preview`, `final`. Formal rendering outside Actions is intentionally rejected. Every run verifies source assets and typechecks, bundles the actual composition, renders a 3-second 1080p60 complex-world smoke, decodes it, then renders and verifies the requested target.
 
-- Opening review: first 58.315 seconds, 960×540 / 30 fps, `opening-review.mp4`, `opening-contact-sheet.jpg`, actual encoded shot samples, plus labeled and blind contact sheets, verification and manifest.
+- Opening review: configurable 12–58.315 seconds (default 58.315), 960×540 / 30 fps, `opening-review.mp4`, `opening-contact-sheet.jpg`, actual encoded shot samples, plus labeled and blind contact sheets, verification and manifest.
 - Preview: entire 162.725-second song, 960×540 / 30 fps, `preview.mp4`, `contact-sheet.jpg`, labeled and blind contact sheets and verification.
 - Final: entire song, 1920×1080 / 60 fps (native scenes 60 unique frames/sec; five Cycles clips 30fps repeated exactly twice), `phigros-main-story-celebration.mp4`, contact sheet and verification.
 
