@@ -49,7 +49,7 @@ function fill(c:string,a=1){ctx.save();ctx.globalAlpha*=a;ctx.fillStyle=c;ctx.fi
 function line(x:number,y:number,xx:number,yy:number,c=ink,w=1,a=1){ctx.save();ctx.globalAlpha*=a;ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke();ctx.restore()}
 function glow(x:number,y:number,r:number,c:string,a=1){ctx.save();ctx.globalAlpha*=a;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,c);g.addColorStop(1,rgba(c,0));ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore()}
 function photoTextEdge(s:string,x:number,y:number,c:string){
- if(!photoPlate&&!(t>=5.321&&t<12)&&!(t>=58.315&&t<78.299)&&!(t>=98.076&&t<135.191334))return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
+ if(!photoPlate&&!(t>=5.321&&t<12)&&!(t>=58.315&&t<78.299)&&!(t>=98.076&&t<135.191334)&&!(t>=135.258&&t<151.4))return;const bright=c.startsWith('#')&&[1,3,5].reduce((v,i)=>v+parseInt(c.slice(i,i+2),16),0)>450;
  ctx.save();ctx.strokeStyle=bright?'#132530':'#e1ecee';ctx.lineWidth=2;ctx.lineJoin='round';ctx.globalAlpha*=.55;ctx.strokeText(s,x,y);ctx.restore();
 }
 function txt(s:string,x:number,y:number,size:number,c=ink,font='Display',align:CanvasTextAlign='left',a=1){ctx.save();ctx.globalAlpha*=clamp(a);ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='alphabetic';photoTextEdge(s,x,y,c);ctx.fillText(s,x,y);ctx.restore()}
@@ -449,7 +449,10 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
   return;
  }
  if(t>=135.258&&t<151.4){
-  if(d){txt(d.l.jp,960,923,Math.min(52,1630/d.l.jp.length),'#354f5d','CJK','center',d.a*.88);if(d.l.zh!=='//')txt(d.l.zh,960,987,27,'#5c727a','CJK','center',d.a*.83);}return;
+  // The open sky is bright, while the island still carries dark detail.
+  // Warm ivory with a restrained navy keyline keeps both lyric languages
+  // readable without turning the quiet ending into a subtitle card.
+  if(d){txt(d.l.jp,960,923,Math.min(52,1630/d.l.jp.length),'#fff3d6','CJK','center',d.a*.92);if(d.l.zh!=='//')txt(d.l.zh,960,987,27,'#fff8e8','CJK','center',d.a*.88);}return;
  }
  // Each lyric owns a composition, with an independent translation annotation.
  if(d){

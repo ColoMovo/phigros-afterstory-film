@@ -12,7 +12,7 @@ process.chdir(root);
 const totalFrames=9764,frames=2441,fps=60,width=1920,height=1080,chunks=4;
 const ranges=Array.from({length:chunks},(_,index)=>({index,startFrame:index*frames,endFrame:(index+1)*frames-1,frames}));
 if(process.argv[2]==='--plan'){
- console.log(JSON.stringify({quality:'final',composition:'Afterstory',totalFrames,fps,width,height,muted:true,ranges},null,2));
+ console.log(JSON.stringify({quality:'final',composition:'Afterstory',totalFrames,fps,width,height,muted:true,colorSpace:'bt709',pixelFormat:'yuv420p',colorRange:'tv',ranges},null,2));
  process.exit(0);
 }
 if(process.env.GITHUB_ACTIONS!=='true')throw Error('Formal final chunks render only in GitHub Actions. --plan is read-only.');
@@ -96,15 +96,18 @@ try{
  const heartbeat=setInterval(()=>{if(performance.now()-lastLog>=14500)logProgress()},15000);
  heartbeat.unref();
  try{
-  await renderMedia({...common,composition,codec:'h264',muted:true,crf:17,x264Preset:'fast',pixelFormat:'yuv420p',imageFormat:'jpeg',jpegQuality:95,concurrency,outputLocation,frameRange:[startFrame,endFrame],onProgress:progress=>{
+  // Pinned Remotion performs zscale matrix/range conversion on the first
+  // JPEG encoding step for bt709; pix_fmt alone leaves the input full range.
+  await renderMedia({...common,composition,codec:'h264',muted:true,crf:17,x264Preset:'fast',pixelFormat:'yuv420p',colorSpace:'bt709',imageFormat:'jpeg',jpegQuality:95,concurrency,outputLocation,frameRange:[startFrame,endFrame],onProgress:progress=>{
    latest=progress;const n=Math.floor(progress.progress*20);if(n!==last){last=n;logProgress()}
   }});
  }finally{clearInterval(heartbeat)}
  const probe=JSON.parse(execFileSync('ffprobe',['-v','error','-show_streams','-of','json',outputLocation],{encoding:'utf8'}));
  const video=probe.streams.find(stream=>stream.codec_type==='video');
  if(probe.streams.length!==1||!video||video.codec_name!=='h264'||video.pix_fmt!=='yuv420p'||video.width!==width||video.height!==height||video.r_frame_rate!=='60/1'||video.avg_frame_rate!=='60/1'||Number(video.nb_frames)!==frames||Math.abs(Number(video.start_time||0))>.002)throw Error('Encoded final chunk has the wrong frame count, format or audio stream.');
+ if(video.color_range!=='tv'||video.color_space!=='bt709'||video.color_transfer!=='bt709'||video.color_primaries!=='bt709')throw Error('Encoded final chunk must contain converted limited-range BT.709, not untagged or full-range JPEG output.');
  const sha256=createHash('sha256').update(fs.readFileSync(outputLocation)).digest('hex');
- const metadata={schemaVersion:1,index,startFrame,endFrame,frames,...fingerprintFields,sourceFingerprint,sha256,codec:'h264',pixelFormat:'yuv420p',muted:true,quality:'final',composition:'Afterstory',shotCount:shots.length,encoding:{crf:17,x264Preset:'fast',imageFormat:'jpeg',jpegQuality:95},physicalIDs,physicalSourceRunId,renderRunId};
+ const metadata={schemaVersion:1,index,startFrame,endFrame,frames,...fingerprintFields,sourceFingerprint,sha256,codec:video.codec_name,pixelFormat:video.pix_fmt,colorRange:video.color_range,colorSpace:video.color_space,colorTransfer:video.color_transfer,colorPrimaries:video.color_primaries,muted:true,quality:'final',composition:'Afterstory',shotCount:shots.length,encoding:{crf:17,x264Preset:'fast',imageFormat:'jpeg',jpegQuality:95,colorSpace:'bt709'},physicalIDs,physicalSourceRunId,renderRunId};
  fs.writeFileSync(path.join(outputDirectory,stem+'.json'),JSON.stringify(metadata,null,2)+'\n');
  console.log(`Verified video-only chunk ${index}: absolute frames ${startFrame}–${endFrame}.`);
 }finally{await browser.close({silent:true})}

@@ -33,6 +33,7 @@ REQUIRED_FIELDS = {
     "schemaVersion", *PER_CHUNK_FIELDS, "totalFrames", "fps", "width", "height",
     "sourceCommit", "physicalSourceCommit", "musicDuration", "sourceAudioSHA256",
     "sourceFingerprint", "inputHashes", "codec", "pixelFormat", "muted",
+    "colorRange", "colorSpace", "colorTransfer", "colorPrimaries",
     "quality", "composition", "shotCount", "encoding",
 }
 
@@ -110,12 +111,14 @@ def validate_contracts(directory: Path, source_commit=None, physical_commit=None
             "fps": FPS, "width": WIDTH, "height": HEIGHT,
             "musicDuration": MUSIC_DURATION, "sourceAudioSHA256": AUDIO_SHA,
             "codec": "h264", "pixelFormat": "yuv420p", "muted": True,
+            "colorRange": "tv", "colorSpace": "bt709",
+            "colorTransfer": "bt709", "colorPrimaries": "bt709",
             "quality": "final", "composition": "Afterstory", "shotCount": 64,
         }
         for key, value in expected.items():
             require(item[key] == value and type(item[key]) is type(value),
                     f"{name}: {key} must be {value!r}")
-        encoding = {"crf": 17, "x264Preset": "fast", "imageFormat": "jpeg", "jpegQuality": 95}
+        encoding = {"crf": 17, "x264Preset": "fast", "imageFormat": "jpeg", "jpegQuality": 95, "colorSpace": "bt709"}
         require(isinstance(item["encoding"], dict) and item["encoding"].keys() == encoding.keys(),
                 f"{name}: encoding must contain exactly the final encoding parameters")
         for key, value in encoding.items():
@@ -175,6 +178,10 @@ def rate(value) -> Fraction:
 def validate_video(video, frames: int, name: str, counted=False):
     require(video.get("codec_name") == "h264" and video.get("pix_fmt") == "yuv420p",
             f"{name}: expected H.264 / yuv420p")
+    require(video.get("color_range") == "tv" and
+            all(video.get(key) == "bt709" for key in
+                ("color_space", "color_transfer", "color_primaries")),
+            f"{name}: expected converted limited-range BT.709 matrix, transfer and primaries")
     require((video.get("width"), video.get("height")) == (WIDTH, HEIGHT),
             f"{name}: incorrect resolution")
     require(rate(video.get("r_frame_rate")) == FPS and rate(video.get("avg_frame_rate")) == FPS,
@@ -347,6 +354,9 @@ def main():
         "physicalSourceCommit": metadata[0]["physicalSourceCommit"],
         "sourceFingerprint": metadata[0]["sourceFingerprint"], "inputHashes": metadata[0]["inputHashes"],
         "assembledChunks": CHUNKS,
+        "pixelFormat": videos[0]["pix_fmt"], "colorRange": videos[0]["color_range"],
+        "colorSpace": videos[0]["color_space"], "colorTransfer": videos[0]["color_transfer"],
+        "colorPrimaries": videos[0]["color_primaries"],
     }
     for key in ("physicalSourceRunId", "renderRunId"):
         if key in metadata[0]:
@@ -357,6 +367,7 @@ def main():
         **render_meta, "file": final.name, "sha256": file_sha(final),
         "videoAssembly": "concat demuxer / H.264 stream copy / exact integer frame order",
         "audioAssembly": "Original music from zero; encoded once to AAC 320k; no chunk audio",
+        "colorEncoding": "Each chunk uses Remotion BT.709 zscale matrix/limited-range conversion once; concat and final mux preserve the verified values by stream copy.",
         "streamSignature": signature, "chunks": metadata, "boundaries": boundaries,
         "boundaryPixels": "pass", "boundaryContactSheet": contact.name,
         "boundaryContactSheetSHA256": file_sha(contact),
