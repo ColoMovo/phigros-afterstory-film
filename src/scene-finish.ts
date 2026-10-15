@@ -1,11 +1,13 @@
 import * as T from 'three';
+import {materials} from './opening-world';
 import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
 import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
 import {SSAOPass} from 'three/addons/postprocessing/SSAOPass.js';
 import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
 
 export function finishScene(scene:T.Scene){
- const seen=new Set<T.Material>();
+ const seen=new Set<T.Material>(),clones=new Map<T.Material,T.Material>();
+ const shared=new Set<T.Material>(Object.values(materials));
  scene.traverse(o=>{
   if(/(?:Axes|Grid|Camera|Box|Plane|Arrow)Helper$/.test(o.type)||o.userData.productionHelper)o.visible=false;
   if(o.userData.graphicAnnotation){o.userData.suppressRender=true;o.visible=false;}
@@ -13,6 +15,8 @@ export function finishScene(scene:T.Scene){
   // resemblance to viewport guides while retaining substantial structural ribs.
   if((o.userData.guideLike&&o.userData.cableRadius<.5)||o.userData.guideBeam){o.userData.suppressRender=true;o.visible=false;}
   if(!(o instanceof T.Mesh))return;
+  const own=(m:T.Material)=>{if(!shared.has(m))return m;let copy=clones.get(m);if(!copy){copy=m.clone();copy.onBeforeCompile=m.onBeforeCompile;copy.customProgramCacheKey=m.customProgramCacheKey.bind(m);clones.set(m,copy);}return copy;};
+  o.material=Array.isArray(o.material)?o.material.map(own):own(o.material);
   for(const m of Array.isArray(o.material)?o.material:[o.material]){
    if(seen.has(m)||!(m instanceof T.MeshStandardMaterial)||m.userData.finishedSurface)continue;seen.add(m);m.userData.finishedSurface=true;
    const previous=m.onBeforeCompile,cache=m.customProgramCacheKey.bind(m);
