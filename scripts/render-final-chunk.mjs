@@ -35,7 +35,7 @@ if(sourceAudioSHA256!=='0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7
 // Hash declared reproducibility inputs; source-only references are not final-frame assets.
 // Never include key files or the runner environment.
 const paths=new Set(['package.json','package-lock.json','tsconfig.json','assets/assets-manifest.json',
- 'assets/generated-ai/manifest.json','assets/music-source-provenance.json',
+ 'assets/generated-ai/manifest.json','assets/music-source-provenance.json','assets/lyric-corrections.json','scripts/repair-lyrics.py','scripts/subset-fonts.py',
  'scripts/render-final-chunk.mjs','scripts/assemble-final-chunks.py']);
 function addDirectory(directory,accept=()=>true){
  for(const entry of fs.readdirSync(directory,{withFileTypes:true})){

@@ -171,7 +171,7 @@ jobs:
       - name: Check ranges and hashes, stream-copy video, mux the full original once, inspect actual seams
         run: python scripts/assemble-final-chunks.py
       - name: Verify the full MP4, zero-offset music and actual editorial/contact evidence
-        run: python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 && python scripts/review-editorial.py output/phigros-main-story-celebration.mp4
+        run: python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 && python scripts/review-editorial.py output/phigros-main-story-celebration.mp4 && python scripts/review-repairs.py output/phigros-main-story-celebration.mp4
       - name: Package attribution and unchanged shot/emotion manifests
         run: |
           cp assets/SOURCES.md output/SOURCES.md
@@ -194,6 +194,7 @@ jobs:
             output/labeled-contact-sheet.jpg
             output/blind-contact-sheet.jpg
             output/film-keyframes/*.png
+            output/repair-review/**
             output/first-climax-review.mp4
             output/farewell-review.mp4
             output/final-build-review.mp4

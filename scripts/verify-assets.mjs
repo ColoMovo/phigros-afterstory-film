@@ -8,6 +8,13 @@ for(const item of items.filter(i=>i.type==='video')){const probe=JSON.parse(exec
 for(const file of ['src/data/lyrics.json','src/data/audio-analysis.json','assets/SOURCES.md'])if(!fs.existsSync(file))throw Error(`Missing ${file}`);
 const lyrics=JSON.parse(fs.readFileSync('src/data/lyrics.json','utf8'));const a=JSON.parse(fs.readFileSync('src/data/audio-analysis.json','utf8'));
 if(lyrics.length!==28||!lyrics.every((l,i)=>l.jp&&l.zh&&l.wordTiming.length&&(!i||l.time>lyrics[i-1].time)))throw Error('Incomplete or unsorted source lyrics');
+const corrections=JSON.parse(fs.readFileSync('assets/lyric-corrections.json','utf8'));
+if(corrections.status!=='editorial comparison, not officially verified'||lyrics.length!==corrections.lines.length)throw Error('Missing honest lyric provenance');
+for(const [i,row] of lyrics.entries()){
+ const corrected=corrections.lines[i];
+ if(row.time!==corrected.time||row.jp!==corrected.jp||row.zh!==corrected.zh)throw Error(`Unreviewed lyric change at ${row.time}`);
+ if(/悲斗|洪星の|囁き去り|意不の僕らがさ/.test(row.jp+row.zh))throw Error(`Known source transcription defect at ${row.time}`);
+}
 if(a.frames.length!==Math.ceil(a.duration*a.featureRate)||!a.frames.every(f=>f.length===12&&f.every(Number.isFinite)))throw Error('Invalid audio controls');
 execFileSync('ffmpeg',['-v','error','-i','public/music.mp3','-f','null','-'],{stdio:'inherit'});
 console.log(`Verified ${items.length} binary assets, ${lyrics.length} lyric lines, ${a.frames.length} analysis frames; audio decodes cleanly.`);

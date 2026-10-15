@@ -44,7 +44,7 @@ function archipelago(family:string){
  roles(w,{navy:'#101f27',stone:'#4d666e',leaf:'#00b99e',leafblue:'#0755bc',leafviolet:'#583e95',white:'#e0f3ed'},.97);
  const near=profile(w.root,[[-95,-170],[-90,130],[-8,85],[29,-60],[5,-200]],28,[-245,-40,70],[0,.12,-.2],'navy','stone');
  if(family==='canopy'){
-  w.camera=(q,c)=>look(c,[-145+q*175,35+q*85,85+q*235],[-130,105,310],105,-.2+q*.38);
+  w.camera=(q,c)=>look(c,[-200+q*165,118+q*65,5+q*125],[-130,62,310],86,-.07+q*.13);
   w.moving.push(q=>{hero.rotation.y=q*.07;near.position.x=-245-q*210});
  }else if(family==='islands'){
   w.camera=(q,c)=>look(c,[-80+q*200,-10+smooth(.35,.8,q)*115,-120+q*470],[0,80,660],99,Math.sin(q*Math.PI)*-.2);
@@ -79,11 +79,11 @@ function cathedral(family:string){
   floor.material=new T.MeshStandardMaterial({color:'#01080c',roughness:.24,metalness:.83});
   fragments(w,180,370,1000,'energy',1790);
  }
- w.moving.push(q=>{line.position.z=70+q*850;if(family==='glass04')ns[0].rotation.z=-.15-smooth(.5,.8,q)*.25;if(family==='monuments')g.rotation.z=smooth(.3,.7,q)*Math.PI/2});
+ w.moving.push(q=>{line.position.z=70+q*850;if(family==='glass04')ns[0].rotation.z=-.15-smooth(.5,.8,q)*.25;if(family==='monuments')g.rotation.z=smooth(.05,.95,q)*.35});
  w.camera=(q,c)=>{
   if(family==='macro09')look(c,[100-q*160,-22,125+q*85],[0,25,280],104,.17);
   else if(family==='glass04')look(c,[-80+q*100,95-q*125,-70+q*270],[0,8,350],99,q*.3);
-  else look(c,[Math.sin(q*2.5)*32,-65+q*18,-110+q*(family==='monuments'?320:410)],[0,100,650],108,family==='monuments'?smooth(.3,.7,q)*Math.PI/2:family==='impossible'?-q*.5:0);
+  else look(c,[Math.sin(q*2.5)*32,-65+q*18,-110+q*(family==='monuments'?320:410)],[0,100,650],108,family==='monuments'?smooth(.05,.95,q)*.35:family==='impossible'?-smooth(0,1,q)*.16:0);
  };return w;
 }
 function machinery(deep=false){
@@ -283,7 +283,7 @@ export function directExistingWorld(w:World,family:string){
  if(family==='colonnade'){
   const g=w.primary!,columns=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.ExtrudeGeometry).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
   const lintels=g.children.filter((o):o is T.Mesh=>o instanceof T.Mesh&&o.geometry instanceof T.BoxGeometry&&o.position.y>150&&o.scale.y<300).map(o=>({o,p:o.position.clone(),r:o.rotation.clone()}));
-  for(let i=0;i<5;i++)cable(w.root,[[-120+i*60,-60,0],[-120+i*60,-60,1100]],.1,'energy');
+  // The lane remains open; no five-line guide overlay.
   const destination=skyOpening(w,[0,420,1370],2300,1250);(destination.material as T.MeshBasicMaterial).opacity=.18;
   const landing=island(w.root,[110,250,1100],105,22,'stone',2498);landing.material=new T.MeshStandardMaterial({color:'#859d91',roughness:1,metalness:0});
   surface(w.root,42,5,(u,v)=>[-380+u*800,245+Math.sin(u*Math.PI)*30,1010+v*125],new T.MeshStandardMaterial({color:'#c3cdc1',roughness:.94,side:T.DoubleSide}));

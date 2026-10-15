@@ -9,6 +9,7 @@ import {paintPrintWorld} from './graphic-worlds';
 import {heroClips} from './hero-clips';
 import {emotionAt} from './emotion-direction';
 import {paintMemoryLeaf} from './archive-art';
+import {drawSubtitles} from './subtitles';
 
 // NEW DAWN — an architectural film. All animation, camera paths, lighting,
 // typography and particles are evaluated from absolute music time.
@@ -385,13 +386,11 @@ function timedLyric(value:string,x:number,y:number,size:number,color:string,alig
 }
 // Current shot-library graphic pass. The legacy Canvas worlds above are kept
 // as source history, but never drawn by this composition.
-// Authored per lyric, rather than per arbitrary shot index. Chinese occupies
-// another axis; a large cropped glyph never replaces the complete sung line.
-const lyricLayouts=['space','passage','vertical','perspective','edge','mask','vertical','perspective','glyph','edge','mask','vertical','perspective','glyph','axis','farewell','axis','mask','vertical','perspective','glyph','axis','mask','vertical','perspective','edge','vertical','edge'];
-export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
- ctx=canvas.getContext('2d',{alpha:true})!;t=time;photoPlate=aiSelections.some(s=>t>=s.start&&t<s.end&&Boolean((aiAssets as Record<string,unknown>)[s.clipId]));ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
+// Artwork and title cards; sung text belongs exclusively to drawSubtitles.
+function paintShotArtwork(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
+ ctx=canvas.getContext('2d',{alpha:true})!;t=time;photoPlate=false;ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);
  const q=clamp((t-shot.start)/(shot.end-shot.start)),d=currentLyric();
- if(paintPrintWorld(ctx,time,shot,memories,d?.l.jp??''))return;
+ if(paintPrintWorld(ctx,time,shot,memories,''))return;
  if(shot.family==='insert-black'){fill('#000000');return;}
  if(t>=151.4){
   if(t<154){fill('#eaece4');const a=smooth(t,151.4,151.75);txt('PHIGROS',150,302,118,'#101b22','Display','left',a);txt('MAIN STORY',154,442,76,'#18252c','Text','left',a);txt('COMPLETE',145,634,176,'#101b22','Display','left',a);tracking('2019 — 2026',161,790,31,4,'#344951',a);tracking('THANK YOU FOR THE JOURNEY',162,885,23,3,'#344951',a);line(148,965,1770,965,'#44585f',2,a);return;}
@@ -435,45 +434,18 @@ export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:num
    if(dissolve>0&&loss>0){const travel=(t-148.35)*(.55+hash(i+27)),a=appear*loss*(1-smooth(t,150.25,151.1));glow(x-70+hash(i+9)*140+travel*26,y-85+i*6.5-travel*9,1.3,'#fff0d2',a*.8);}
   }
  }
- if(shot.family==='dawn'&&d){txt(d.l.jp,142,923,Math.min(55,1570/d.l.jp.length),'#e6eeeb','CJK','left',d.a);if(d.l.zh!=='//')txt(d.l.zh,149,985,26,'#e6eeeb','CJK','left',d.a*.88);return;}
  if(shot.family.startsWith('insert-')){
   if(['insert-circuit','insert-negative','insert-graphic'].includes(shot.family)){
    fill(shot.family==='insert-negative'?'#f1eee6':'#060c0e');const c=shot.family==='insert-negative'?'#152024':'#bddbd6';ctx.save();ctx.translate(960,540);ctx.rotate(-.18+q*.25);for(let i=0;i<7;i++){const y=(i-3)*120;line(-1200,y,-40,y,c,2);line(-40,y,180,y+70,c,2);line(180,y+70,1200,y+70,c,2)}line(-1400,-600+q*1200,1400,-600+q*1200,c,18);ctx.restore();
   }return;
  }
- if(t>=78.299&&t<98.076){
-  const l=lyrics.find(l=>Math.abs(l.time-78.299)<.001)!;
-  const a=smooth(t,78.299,79.15)*(1-smooth(t,87.6,91.8)),drift=smooth(t,83.5,92);
-  txt(l.jp,960+drift*12,858-drift*12,50-drift*4,'#484e66','CJK','center',a*.88);
-  txt(l.zh,960+drift*8,922-drift*9,25,'#697080','CJK','center',a*.72);
-  return;
- }
- if(t>=135.258&&t<151.4){
-  // The open sky is bright, while the island still carries dark detail.
-  // Warm ivory with a restrained navy keyline keeps both lyric languages
-  // readable without turning the quiet ending into a subtitle card.
-  if(d){txt(d.l.jp,960,923,Math.min(52,1630/d.l.jp.length),'#fff3d6','CJK','center',d.a*.92);if(d.l.zh!=='//')txt(d.l.zh,960,987,27,'#fff8e8','CJK','center',d.a*.88);}return;
- }
- // Each lyric owns a composition, with an independent translation annotation.
- if(d){
-  const mode=passage?'passage':lyricLayouts[d.i]??'edge',size=Math.min(62,1480/Math.max(1,d.l.jp.length));ctx.save();ctx.globalAlpha=d.a;
-  if(mode==='passage'){timedLyric(d.l.jp,120,920,size,color);if(d.l.zh!=='//')txt(d.l.zh,1780,136,23,color,'CJK','right',.82);}
-  else if(mode==='vertical'){
-   const chars=[...d.l.jp],sz=Math.min(48,800/chars.length);chars.forEach((ch,i)=>txt(ch,1705,120+i*sz,sz,color,'CJK','center'));if(d.l.zh!=='//'){ctx.save();ctx.translate(102,805);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,photoPlate?28:24,color,'CJK','left',photoPlate?1:.8);ctx.restore();}
-  }else if(mode==='perspective'){
-   const u=smooth(d.age,0,.5);ctx.save();ctx.translate(250-50*u,870);ctx.transform(1,-.16,.48,.83,0,0);timedLyric(d.l.jp,0,0,Math.min(87,1630/d.l.jp.length),color);ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,1770,210,23,color,'CJK','right',.8);
-  }else if(mode==='glyph'){
-   const ch=d.l.wordTiming[d.active]?.text.trim()||d.l.jp[0];ctx.save();ctx.beginPath();ctx.rect(0,0,475,H);ctx.clip();txt(ch,-95,950,600,color,'CJK','left',.35);ctx.restore();timedLyric(d.l.jp,1790,963,Math.min(57,1350/d.l.jp.length),color,'right');if(d.l.zh!=='//')txt(d.l.zh,1130,124,23,color,'CJK','center',.8);
-  }else if(mode==='mask'){
-   const sweep=smooth(d.age,0,.65),y=420;ctx.save();ctx.beginPath();ctx.rect(130,y-100,1630*sweep,130);ctx.clip();timedLyric(d.l.jp,170,y,Math.min(83,1550/d.l.jp.length),color);ctx.restore();line(130,y+23,130+1630*sweep,y+23,color,1.4,.8);if(d.l.zh!=='//')txt(d.l.zh,1740,941,24,color,'CJK','right',.8);
-  }else if(mode==='axis'||mode==='farewell'){
-   ctx.save();ctx.translate(1660,800);ctx.rotate(-.36);timedLyric(d.l.jp,0,0,Math.min(69,1350/d.l.jp.length),color,'right');ctx.restore();if(d.l.zh!=='//')txt(d.l.zh,850,165,22,color,'CJK','left',.8);
-  }else{
-   timedLyric(d.l.jp,1780,980,size,color,'right');if(d.l.zh!=='//'){ctx.save();ctx.translate(120,470);ctx.rotate(-Math.PI/2);txt(d.l.zh,0,0,24,color,'CJK','center',.8);ctx.restore();}
-  }
-  ctx.restore();
- }
-
  if(t>=66&&t<66.45)judgment(1080*(t-66)/.45,0,'#e9e5db',5);
  if(emotionAt(t).glitchAllowance>.18&&t>=105&&t<105+5/60){ctx.globalCompositeOperation='difference';fill('#e8ffff');ctx.globalCompositeOperation='source-over';if(Math.floor(t*60)%2===0)fill('#000000',.28);}
+}
+
+// Subtitle ownership is outside all early returns and graphic/scene switches.
+export function paintShotGraphics(canvas:HTMLCanvasElement,time:number,frame:number,fps:number,shot:{id:string;start:number;end:number;family:string}){
+ paintShotArtwork(canvas,time,frame,fps,shot);
+ const x=canvas.getContext('2d')!;x.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);
+ if(shot.family!=='insert-black'&&!(time>=135.258&&time<135.391334))drawSubtitles(x,time);
 }

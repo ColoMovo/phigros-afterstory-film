@@ -1,3 +1,6 @@
+import {CameraClearance} from './camera-clearance';
+import {finishScene,enforceSceneVisibility,SceneFinish} from './scene-finish';
+import {glassMemoryWorld} from './glass-memory-world';
 import * as T from 'three';
 import shots from './data/shots.json';
 import audio from './data/audio-analysis.json';
@@ -70,6 +73,7 @@ function rawWorld(family:string):World {if(family.startsWith('insert-'))return i
 // Color roles belong to each world as a whole, never alternating parts.
 function recolor(w:World,colors:Partial<Record<Mat,string>>){const replacements=new Map<T.Material,T.Material>();for(const [role,color] of Object.entries(colors)){const original=materials[role as Mat],m=original.clone();m.color.set(color!);replacements.set(original,m)}w.scene.traverse(o=>{if(o instanceof T.Mesh){o.material=Array.isArray(o.material)?o.material.map(m=>replacements.get(m)??m):replacements.get(o.material)??o.material}})}
 function makeWorld(family:string):World{
+ if(family==='engine')return glassMemoryWorld();
  const directed=directedWorld(family);if(directed)return directed;
  const w=rawWorld(family);
  directExistingWorld(w,family);
@@ -83,10 +87,10 @@ function makeWorld(family:string):World{
 // A single live scene avoids the old nine-world startup cost. Every frame derives
 // from absolute song time, so seeking, concurrent rendering and CI remain exact.
 export class ShotWorld{
- private renderer:T.WebGLRenderer;
+ private renderer:T.WebGLRenderer;private finish:SceneFinish;private clearance:CameraClearance|null=null;
  private camera=new T.PerspectiveCamera(90,16/9,.35,7200);
  private live:World|null=null;private family='';private env=reflectionSky();private emotionalPose:((time:number)=>void)|null=null;
- constructor(canvas:HTMLCanvasElement,private silhouette=false){this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(1);this.renderer.setSize(canvas.width,canvas.height,false);this.renderer.outputColorSpace=T.SRGBColorSpace;this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.1;this.renderer.localClippingEnabled=true;this.renderer.shadowMap.enabled=!silhouette;this.renderer.shadowMap.type=T.PCFSoftShadowMap;materials.energy.toneMapped=false;}
+ constructor(canvas:HTMLCanvasElement,private silhouette=false){this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(1);this.renderer.setSize(canvas.width,canvas.height,false);this.renderer.outputColorSpace=T.SRGBColorSpace;this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.1;this.renderer.localClippingEnabled=true;this.renderer.shadowMap.enabled=!silhouette;this.renderer.shadowMap.type=T.PCFSoftShadowMap;materials.energy.toneMapped=false;this.finish=new SceneFinish(this.renderer,this.camera);}
  private clear(){
   const geometries=new Set<T.BufferGeometry>(),textures=new Set<T.Texture>(),ownedMaterials=new Set<T.Material>();
   this.live?.scene.traverse(o=>{if(o instanceof T.Mesh||o instanceof T.Points||o instanceof T.Sprite){
@@ -98,12 +102,12 @@ export class ShotWorld{
   this.live=null;this.emotionalPose=null;this.renderer.renderLists.dispose();
  }
 
- render(time:number){setMusicTime(time);const shot=shotAt(time),passage=time<OPENING_PASSAGE_END,act=editorialAct(time),family=passage?'opening-passage':act??shot.family;if(this.family!==family){this.clear();this.live=passage?makeOpeningPassage():act?makeEditorialAct(act):makeWorld(shot.family);this.family=family;this.emotionalPose=makeEmotionRig(this.live,family);this.live.scene.environment=this.env;this.live.scene.environmentIntensity=this.live.scene.userData.environmentIntensity??.25;if(this.silhouette){this.live.scene.background=new T.Color('#e8eaeb');this.live.scene.fog=null;this.live.scene.overrideMaterial=new T.MeshBasicMaterial({color:'#0a0d11',side:T.DoubleSide});}}const w=this.live!,q=clamp((time-shot.start)/(shot.end-shot.start)),u=passage||act?time:lerp(shot.sourceStart,shot.sourceEnd,q),e=audio.majorTransients.findLast(e=>e.time<=time),hit=e?e.strength*Math.exp(-(time-e.time)*18):0;
- const pose=(at:number)=>{w.camera(at,this.camera);w.moving.forEach(f=>f(at,hit));if(!this.silhouette)this.emotionalPose?.(time);};this.renderer.setScissorTest(false);pose(u);this.renderer.render(w.scene,this.camera);
+ render(time:number){setMusicTime(time);const shot=shotAt(time),passage=time<OPENING_PASSAGE_END,act=editorialAct(time),family=passage?'opening-passage':act??shot.family;if(this.family!==family){this.clear();this.live=passage?makeOpeningPassage():act?makeEditorialAct(act):makeWorld(shot.family);finishScene(this.live.scene);this.clearance=new CameraClearance(this.live.scene);this.family=family;this.emotionalPose=makeEmotionRig(this.live,family);this.live.scene.environment=this.env;this.live.scene.environmentIntensity=this.live.scene.userData.environmentIntensity??.25;if(this.silhouette){this.live.scene.background=new T.Color('#e8eaeb');this.live.scene.fog=null;this.live.scene.overrideMaterial=new T.MeshBasicMaterial({color:'#0a0d11',side:T.DoubleSide});}}const w=this.live!,q=clamp((time-shot.start)/(shot.end-shot.start)),u=passage||act?time:lerp(shot.sourceStart,shot.sourceEnd,q),e=audio.majorTransients.findLast(e=>e.time<=time),hit=e?e.strength*Math.exp(-(time-e.time)*18):0;
+ const pose=(at:number)=>{w.camera(at,this.camera);w.moving.forEach(f=>f(at,hit));if(!this.silhouette)this.emotionalPose?.(time);enforceSceneVisibility(w.scene);this.clearance?.protect(w.scene,this.camera);};this.renderer.setScissorTest(false);pose(u);if(this.silhouette)this.renderer.render(w.scene,this.camera);else this.finish.render(w.scene);
  const tear=emotionAt(time).glitchAllowance>.18&&(glitchFrames(time)||(time>26.9&&time<78.299&&e&&time-e.time<2/60&&audio.majorTransients.indexOf(e)%9===0));
  if(tear){const width=this.renderer.domElement.width,height=this.renderer.domElement.height;this.renderer.setScissorTest(true);for(let i=0;i<3;i++){this.renderer.setScissor(0,Math.round(height*(.13+i*.26)),width,Math.round(height*(.045+i*.02)));pose(Math.max(passage||act?0:shot.sourceStart,u-(i+1)/60));this.camera.position.x+=(i%2?1:-1)*(5+hit*12);this.renderer.render(w.scene,this.camera)}this.renderer.setScissorTest(false);pose(u)}
  if(time>=66&&time<66.45){const cw=this.renderer.domElement.width,ch=this.renderer.domElement.height,cut=Math.round(ch*(time-66)/.45);this.renderer.setScissorTest(true);this.renderer.setScissor(0,ch-cut,cw,cut);w.root.scale.z=.035;this.renderer.render(w.scene,this.camera);w.root.scale.z=1;this.renderer.setScissorTest(false);}
 
  }
- dispose(){this.clear();this.env.dispose();this.renderer.dispose();}
+ dispose(){this.clear();this.finish.dispose();this.env.dispose();this.renderer.dispose();}
 }

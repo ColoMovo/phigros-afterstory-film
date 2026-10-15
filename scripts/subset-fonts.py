@@ -12,9 +12,10 @@ source='/usr/share/fonts/google-noto-sans-cjk-vf-fonts/NotoSansCJK-VF.ttc'
 font=TTFont(source,fontNumber=0)
 # Lock variable weight for reproducible static font file.
 from fontTools.varLib.instancer import instantiateVariableFont
-font=instantiateVariableFont(font,{'wght':400},inplace=True)
 opts=subset.Options();opts.flavor='woff2';opts.name_IDs=['*'];opts.name_legacy=True
 sub=subset.Subsetter(options=opts);sub.populate(text=chars);sub.subset(font)
+# Subset before instancing the large variable CJK collection.
+font=instantiateVariableFont(font,{'wght':400},inplace=True)
 font.flavor='woff2';font.save(root/'public/fonts/CJK.woff2')
 font.flavor=None;font.save(root/'public/fonts/CJK.ttf')
 for name,src in [('Display','/usr/share/fonts/rsms-inter-fonts/InterDisplay-Bold.ttf'),('Text','/usr/share/fonts/rsms-inter-fonts/InterDisplay-Regular.ttf')]:

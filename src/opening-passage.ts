@@ -14,7 +14,7 @@ export function makeOpeningPassage():World{
  const trace=beam(entry,[0,-85,-6],[0,84,-6],.06,.08,'energy');
  // A last warm light guides the opening; the shell is a passage, not a boot
  // warning. This material is private, so later cyan cores retain their identity.
- trace.material=new T.MeshBasicMaterial({color:'#efe0c4'});
+ trace.material=new T.MeshBasicMaterial({color:'#efe0c4'});trace.userData.essentialLine=true;
  const distantGlow=new T.PointLight('#ffe4c4',0,820,1.7);distantGlow.position.set(-140,-15,610);w.scene.add(distantGlow);
 
  // The back of the shell leads into an asymmetric, curved chamber. It shares

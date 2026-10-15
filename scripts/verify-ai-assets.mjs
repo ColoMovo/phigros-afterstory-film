@@ -23,6 +23,7 @@ for(const clip of manifest.clips){
   if(!clip.optional)throw Error(`Required AI input missing: ${clip.id}`);
   report.push({id:clip.id,status:'missing optional input',fallback:'original procedural world'});continue;
  }
+ if(!selections.some(s=>s.clipId===clip.id)){report.push({id:clip.id,status:'archived, not used in this revision',fallback:'authored native world'});continue;}
  if(clip.status!=='accepted'){report.push({id:clip.id,status:'not accepted for timeline',fallback:'original procedural world'});continue;}
  try{
  const bytes=fs.readFileSync(clip.localPath),head=bytes.subarray(0,512).toString().toLowerCase();

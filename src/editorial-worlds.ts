@@ -15,7 +15,7 @@ function skin(p:T.Object3D,n:number,m:number,at:(u:number,v:number)=>V,mat:T.Mat
 }
 function light(w:World,fill:number,key:string,power:number,rim:string,rimPower:number){
  w.scene.children.filter(o=>o instanceof T.Light).forEach(o=>w.scene.remove(o));w.scene.add(new T.HemisphereLight('#d7e4ec','#100c14',fill));
- const a=new T.DirectionalLight(key,power);a.position.set(-260,290,-130);w.scene.add(a);
+ const a=new T.DirectionalLight(key,power);a.position.set(-260,290,-130);a.castShadow=true;a.shadow.mapSize.set(1024,1024);Object.assign(a.shadow.camera,{left:-330,right:330,top:330,bottom:-330,near:1,far:1500});a.shadow.normalBias=.2;w.scene.add(a);
  const b=new T.DirectionalLight(rim,rimPower);b.position.set(110,80,520);w.scene.add(b);w.scene.userData.environmentIntensity=.035;
 }
 function gradient(w:World,colors:string[]){
@@ -150,7 +150,7 @@ export function convergenceWorld(){
   if(i%3===0){const keel=profile(flow,[[-25,-150],[-50,-75],[-38,160],[9,190],[32,60],[15,-140]],23,[-x,y,z+44],[.2,.3,a],'navy','silver');carry(keel,i)}
  }
  // Damped filament flow bends into the same vanishing point as the architecture.
- for(let i=0;i<27;i++){const a=i/27*TAU,r=180+hash(i)*120;cable(flow,[[Math.cos(a)*r,Math.sin(a)*r,-150],[Math.cos(a+.2)*r*.95,Math.sin(a+.2)*r*.8,650],[Math.cos(a+.35)*r*.6,Math.sin(a+.35)*r*.6,1500],[0,45,2570]],i%9===0?.6:.12,i%9===0?'gold':'silver')}
+ // Convergence is carried by solid silhouettes and motes, not 27 guide splines.
  const water=new T.ShaderMaterial({side:T.DoubleSide,uniforms:{time:{value:0}},vertexShader:'varying vec2 p;uniform float time;void main(){p=uv;vec3 v=position;v.y+=sin(v.z*.018+time*.65)*4.+sin(v.x*.035+time*.4)*2.;gl_Position=projectionMatrix*modelViewMatrix*vec4(v,1.);}',fragmentShader:'varying vec2 p;uniform float time;void main(){float f=sin(p.x*15.+sin(p.y*18.+time*.4)*1.4);float reflection=pow(.5+.5*sin(f*4.+p.y*30.-time*.6),8.);float dawn=smoothstep(.2,1.,p.y);gl_FragColor=vec4(vec3(.11,.19,.24)+reflection*vec3(.12,.22,.2)+dawn*vec3(.1,.08,.04),1.);}'});
  skin(flow,50,100,(u,v)=>[(u-.5)*900,-230+v*185,-100+v*2300],water);
  const motes=pollen(w,flow,1100,[620,420,2500],'#fff0cd',1.8,920);
@@ -214,11 +214,13 @@ export function evolvingDawn(){
  // the distance. It appears through air, rather than covering the film in a
  // sudden foreground bench. The camera remains outside the opening door.
  const home=waitingPlace(w.root,false);home.place.position.set(-60,-165,2130);
+ // A single inhabitable island persists from discovery to the final close pass.
+ home.place.add(life);life.position.set(.45,.02,-.8);life.scale.setScalar(.055);
  const lastLeaf=makeMemoryLeaf(home.place,.11);lastLeaf.position.set(-1.5,.57,.3);lastLeaf.rotation.set(1.05,0,-.24);
  const newStem=cable(home.place,[[.5,.015,-2.3],[.48,.31,-2.3],[.53,.65,-2.27]],.009,'navy');recolor(newStem,'#697f70');
  const newLeaf=makeMemoryLeaf(home.place,.32);newLeaf.position.set(.53,.68,-2.27);
- w.moving.push(t=>{const reveal=smooth(149.15,150.6,t),open=smooth(150.0,151.35,t),unfurl=smooth(149.2,151.25,t);home.place.visible=t>149.15;fade(home.place,reveal);if(home.door)home.door.rotation.y=-open*.87;lastLeaf.rotation.z=-.24+Math.sin(t*.8)*.025;lastLeaf.position.y=.57+Math.sin(t*.9)*.004;newLeaf.scale.set(.008+unfurl*.312,.15+unfurl*.17,.32);newLeaf.rotation.set(.35-unfurl*.47,1.1-unfurl*1.02,.12+Math.sin(t*.8)*.018);});
- w.moving.push(t=>{const reveal=smooth(139.6,142.4,t),lifeEvent=smooth(146,148.7,t),dissolve=smooth(149,151.1,t);layers.forEach((o,i)=>{o.position.x=(i%2?430:-410)+(t-135.258)*(i%2?1:-1)*(11-i*1.3);o.position.y=-80+i%3*135+Math.sin((t-135.258)*.2+i)*8;o.position.z=500+i*520-(t-135.258)*(26-i*3)});destination.visible=t>139.45&&!hasAiDawn;destination.position.y=-60+reveal*30+Math.sin((t-135.258)*.45)*.65;life.rotation.z=Math.sin((t-135.258)*.8)*.025;foliage[2].scale.setScalar(.01+lifeEvent*.99);foliage[2].rotation.y=-.9+lifeEvent*.9+Math.sin(t*.9)*.02;foliage[0].rotation.z=Math.sin(t*.9)*.055;foliage[1].rotation.z=-Math.sin(t*.9+.3)*.05;mark.visible=t<151.1;mm.opacity=1-dissolve;born.visible=t>149&&t<151.15;born.position.y=dissolve*45;born.position.x=dissolve*14;born.rotation.z=dissolve*.22;born.scale.setScalar(1+dissolve*.7);relics.forEach((o,i)=>{const age=smooth(141.8+i*.16,142.5+i*.22,t);o.visible=t>141.5&&age<1;fade(o,1-age);});scraps.forEach((o,i)=>{const out=smooth(137.5+i*.045,140.4,t);o.visible=out<1;fade(o,1-out);const travel=(t-135.258)*210;o.position.z=100+hash(i+23)*900+travel;o.position.x=(i%2?1:-1)*(90+hash(i)*170)*(1+travel/2000);});air.position.x=(t-135.258)*3;air.position.y=(t-135.258)*.6;horizon.position.y=smooth(135.258,140,t)*40;});
+ w.moving.push(t=>{const reveal=smooth(139.6,142.3,t),open=smooth(150.0,151.35,t),unfurl=smooth(149.2,151.25,t);home.place.visible=t>139.6;fade(home.place,reveal);if(home.door)home.door.rotation.y=-open*.87;lastLeaf.rotation.z=-.24+Math.sin(t*.8)*.025;lastLeaf.position.y=.57+Math.sin(t*.9)*.004;newLeaf.scale.set(.008+unfurl*.312,.15+unfurl*.17,.32);newLeaf.rotation.set(.35-unfurl*.47,1.1-unfurl*1.02,.12+Math.sin(t*.8)*.018);});
+ w.moving.push(t=>{const reveal=smooth(139.6,142.4,t),lifeEvent=smooth(146,148.7,t),dissolve=smooth(149,151.1,t);layers.forEach((o,i)=>{o.position.x=(i%2?430:-410)+(t-135.258)*(i%2?1:-1)*(11-i*1.3);o.position.y=-80+i%3*135+Math.sin((t-135.258)*.2+i)*8;o.position.z=500+i*520-(t-135.258)*(26-i*3)});destination.visible=false;destination.position.y=-60+reveal*30+Math.sin((t-135.258)*.45)*.65;life.rotation.z=Math.sin((t-135.258)*.8)*.025;foliage[2].scale.setScalar(.01+lifeEvent*.99);foliage[2].rotation.y=-.9+lifeEvent*.9+Math.sin(t*.9)*.02;foliage[0].rotation.z=Math.sin(t*.9)*.055;foliage[1].rotation.z=-Math.sin(t*.9+.3)*.05;mark.visible=false;mm.opacity=1-dissolve;born.visible=false;born.position.y=dissolve*45;born.position.x=dissolve*14;born.rotation.z=dissolve*.22;born.scale.setScalar(1+dissolve*.7);relics.forEach((o,i)=>{const age=smooth(141.8+i*.16,142.5+i*.22,t);o.visible=t>141.5&&age<1;fade(o,1-age);});scraps.forEach((o,i)=>{const out=smooth(137.5+i*.045,140.4,t);o.visible=out<1;fade(o,1-out);const travel=(t-135.258)*210;o.position.z=100+hash(i+23)*900+travel;o.position.x=(i%2?1:-1)*(90+hash(i)*170)*(1+travel/2000);});air.position.x=(t-135.258)*3;air.position.y=(t-135.258)*.6;horizon.position.y=smooth(135.258,140,t)*40;});
  w.camera=(t,c)=>{const rush=smooth(135.258,140,t),approach=smooth(140,149,t),homeward=smooth(149.1,151.4,t);look(c,[35-rush*26-approach*24-homeward*45,50-rush*18+approach*6-homeward*118,-200+rush*300+approach*900+homeward*600],[lerp(-15,-60,homeward),lerp(-4,-110,homeward),lerp(1280,2200,homeward)],78-rush*15-approach*17,0)};return w;
 }
 

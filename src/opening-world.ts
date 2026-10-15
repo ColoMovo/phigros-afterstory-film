@@ -1,9 +1,9 @@
 import * as T from 'three';
 import {TTFLoader} from 'three/addons/loaders/TTFLoader.js';
 import {FontLoader, type Font} from 'three/addons/loaders/FontLoader.js';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
 import {TextGeometry} from 'three/addons/geometries/TextGeometry.js';
 import audio from './data/audio-analysis.json';
-import lyrics from './data/lyrics.json';
 
 // These are depth-buffered worlds, not projected Canvas posters. The renderer
 // evaluates a complete scene from absolute music time, including temporal tears.
@@ -32,7 +32,7 @@ const materials={
  cyan:standard('#a4c9d0',.1,.61),gold:standard('#9c8b6c',.58,.63),red:standard('#8e4150',.12,.74),
  energy:new T.MeshBasicMaterial({color:'#00d4e5',side:T.DoubleSide}),
  glass:new T.MeshPhysicalMaterial({color:'#b5cbd3',metalness:.04,roughness:.48,transparent:true,opacity:.18,side:T.DoubleSide,depthWrite:false}),
- blackglass:standard('#182435',.42,.48),leaf:new T.MeshBasicMaterial({color:'#00c5d9',side:T.DoubleSide}),leafblue:new T.MeshBasicMaterial({color:'#146b9d',side:T.DoubleSide}),leafviolet:new T.MeshBasicMaterial({color:'#686b9e',side:T.DoubleSide}),
+ blackglass:standard('#182435',.42,.48),leaf:new T.MeshStandardMaterial({color:'#00aaa5',metalness:.04,roughness:.74,side:T.DoubleSide}),leafblue:new T.MeshStandardMaterial({color:'#1c607f',metalness:.04,roughness:.76,side:T.DoubleSide}),leafviolet:new T.MeshStandardMaterial({color:'#58667c',metalness:.04,roughness:.77,side:T.DoubleSide}),
  silver:standard('#a3adb5',.74,.52),obsidian:standard('#101a23',.6,.31),
  acrylic:new T.MeshPhysicalMaterial({color:'#7bc9d0',metalness:.05,roughness:.37,transparent:true,opacity:.24,side:T.DoubleSide,depthWrite:false}),
 };
@@ -41,7 +41,7 @@ function reflectionSky(){
  const sky=new T.CubeTexture(faces);sky.colorSpace=T.SRGBColorSpace;sky.needsUpdate=true;return sky;
 }
 export type Mat=keyof typeof materials;
-const boxGeo=new T.BoxGeometry(1,1,1),icoGeo=new T.IcosahedronGeometry(1,1),crystalGeo=new T.ConeGeometry(1,2,5,1),leafGeo=new T.OctahedronGeometry(1,0);
+const boxGeo=new RoundedBoxGeometry(1,1,1,2,.035),icoGeo=new T.IcosahedronGeometry(1,1),crystalGeo=new T.ConeGeometry(1,2,5,1),leafGeo=new T.SphereGeometry(1,10,6);
 function mesh(parent:T.Object3D,geometry:T.BufferGeometry,mat:Mat,pos:V=[0,0,0],scale:V=[1,1,1],rot:V=[0,0,0]){
  const o=new T.Mesh(geometry,materials[mat]);o.position.set(...pos);o.scale.set(...scale);o.rotation.set(...rot);o.castShadow=mat!=='glass'&&mat!=='energy';o.receiveShadow=true;parent.add(o);return o;
 }
@@ -49,27 +49,27 @@ function block(parent:T.Object3D,pos:V,size:V,mat:Mat='white',rot:V=[0,0,0]){ret
 // Authored profiles provide recognisable bodies. Repeated beams only support them.
 function profile(parent:T.Object3D,outline:[number,number][],depth:number,pos:V,rot:V,face:Mat='navy',edge:Mat='stone'){
  const shape=new T.Shape();outline.forEach((p,i)=>i?shape.lineTo(...p):shape.moveTo(...p));shape.closePath();
- const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:3});g.translate(0,0,-depth/2);
+ const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelThickness:Math.min(.8,depth*.07),bevelSize:Math.min(.65,depth*.055),bevelSegments:3,curveSegments:8});g.translate(0,0,-depth/2);
  const o=new T.Mesh(g,[materials[face],materials[edge]]);o.position.set(...pos);o.rotation.set(...rot);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
 }
 function beam(parent:T.Object3D,a:V,b:V,width:number,depth:number,mat:Mat='navy'){
  const p=new T.Vector3(...a),q=new T.Vector3(...b),o=block(parent,p.clone().add(q).multiplyScalar(.5).toArray() as V,[width,p.distanceTo(q),depth],mat);
- o.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),q.sub(p).normalize());return o;
+ o.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),q.sub(p).normalize());o.userData.guideBeam=width<.5&&depth<.5&&o.scale.y>50;return o;
 }
 function glyphPlane(parent:T.Object3D,value:string,size:number,pos:V,color='#e1e8e8'){
  const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d')!;x.font='100px CJK';x.textAlign='center';x.textBaseline='middle';x.fillStyle=color;x.fillText(value,64,70);
  const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;
  const mat=new T.MeshBasicMaterial({map:tx,transparent:true,alphaTest:.02,depthWrite:false,side:T.DoubleSide,toneMapped:false});
- const o=new T.Mesh(new T.PlaneGeometry(size,size),mat);o.position.set(...pos);o.rotation.y=Math.PI;parent.add(o);return o;
+ const o=new T.Mesh(new T.PlaneGeometry(size,size),mat);o.userData.graphicAnnotation=true;o.position.set(...pos);o.rotation.y=Math.PI;parent.add(o);return o;
 }
 function annotation(parent:T.Object3D,value:string,pos:V,width:number,rot:V=[0,Math.PI,0],color='#b8cad2'){
  const c=document.createElement('canvas');c.width=1024;c.height=128;const x=c.getContext('2d')!;x.font='45px Text, CJK';x.textAlign='center';x.textBaseline='middle';x.fillStyle=color;x.fillText(value,512,64);
  const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;const m=new T.MeshBasicMaterial({map:tx,transparent:true,alphaTest:.02,depthWrite:false,side:T.DoubleSide,toneMapped:false});
- const o=new T.Mesh(new T.PlaneGeometry(width,width/8),m);o.position.set(...pos);o.rotation.set(...rot);parent.add(o);return o;
+ const o=new T.Mesh(new T.PlaneGeometry(width,width/8),m);o.userData.graphicAnnotation=true;o.position.set(...pos);o.rotation.set(...rot);parent.add(o);return o;
 }
 function cable(parent:T.Object3D,points:V[],r:number,mat:Mat='cyan'){
  const path=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)));
- return mesh(parent,new T.TubeGeometry(path,Math.max(24,points.length*7),r,5,false),mat);
+ const o=mesh(parent,new T.TubeGeometry(path,Math.max(32,points.length*10),r,8,false),mat);o.userData.decorativeCable=true;o.userData.guideLike=['cyan','energy','silver'].includes(mat);o.userData.cableRadius=r;return o;
 }
 function ring(parent:T.Object3D,pos:V,r:number,tube:number,mat:Mat='white',rot:V=[0,0,0]){return mesh(parent,new T.TorusGeometry(r,tube,6,96),mat,pos,[1,1,1],rot)}
 function text(parent:T.Object3D,value:string,pos:V,size:number,mat:Mat='white',depth=8){
@@ -77,12 +77,12 @@ function text(parent:T.Object3D,value:string,pos:V,size:number,mat:Mat='white',d
  return mesh(parent,g,mat,pos,[1,1,1],[0,Math.PI,0]);
 }
 function island(parent:T.Object3D,pos:V,r:number,height:number,mat:Mat,seed:number){
- const N=14,v:number[]=[],ix:number[]=[];
- for(let j=0;j<4;j++)for(let i=0;i<N;i++){const a=i/N*TAU,s=[1,.93,.48,.11][j]*(.85+hash(i+j*29+seed)*.3);v.push(Math.cos(a)*r*s,-j*height/3+(hash(i+seed*9)-.5)*r*.08,Math.sin(a)*r*s)}
+ const N=48,v:number[]=[],ix:number[]=[];
+ for(let j=0;j<4;j++)for(let i=0;i<N;i++){const a=i/N*TAU,s=[1,.93,.48,.11][j]*(.94+.06*Math.sin(a*3+seed*.17)+.035*Math.cos(a*7+j*.8));v.push(Math.cos(a)*r*s,-j*height/3+(Math.sin(a*3+seed*.13)+Math.cos(a*5)*.5)*r*.018,Math.sin(a)*r*s)}
  v.push(0,0,0,0,-height*1.1,0);
  for(let i=0;i<N;i++){const q=(i+1)%N;ix.push(4*N,i,q);for(let j=0;j<3;j++){const a=j*N+i,b=j*N+q,c=(j+1)*N+i,d=(j+1)*N+q;ix.push(a,c,b,b,c,d)}ix.push(3*N+i,4*N+1,3*N+q)}
  for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];
- const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setIndex(ix);g.computeVertexNormals();const o=mesh(parent,g,mat,pos),m=(o.material as T.MeshStandardMaterial).clone();m.flatShading=true;if(mat==='stone'||mat==='navy'){m.metalness=.08;m.roughness=.8}o.material=m;return o;
+ const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setIndex(ix);g.computeVertexNormals();const o=mesh(parent,g,mat,pos),m=(o.material as T.MeshStandardMaterial).clone();m.flatShading=false;if(mat==='stone'||mat==='navy'){m.metalness=.08;m.roughness=.8}o.material=m;return o;
 }
 function ribbon(parent:T.Object3D,pos:V,r:number,width:number,twists:number,mat:Mat,seed=0){
  const v:number[]=[],uv:number[]=[],ix:number[]=[];const n=160;
@@ -281,15 +281,8 @@ function dawnEcology(w:World,attached:T.Group,firstLyricOnly=false){
  for(let i=0;i<4;i++)cable(w.root,[[73+i*9,-9+i*14,-32],[88+i*12,47+i*8,85],[64+i*5,89+i*6,225],[32+i*9,127,371]],.025,'cyan');
  w.moving.push(u=>{chips.position.y=Math.sin(u*.8)*.65;satelliteDrift(u)});
  const satelliteDrift=(u:number)=>{const q=smooth(7.3833,8.0,u+5.321);gate.rotation.z=-.13-q*.14;distant.rotation.z=.22-q*.11};
- // Exact supplied lyrics live on a bowed plane in front of the shell. Individual
- // glyphs have world depth and can disappear behind the satellite/foreground.
- for(const l of lyrics.slice(0,firstLyricOnly?1:2)){
-  const row=new T.Group();attached.add(row);const chars=[...l.jp],charTiming=l.wordTiming.flatMap(token=>[...token.text].map(()=>token.time));
-  const first=l.time===5.321;
-  const letters=chars.map((ch,i)=>{const s=i/Math.max(1,chars.length-1),p:V=first?[54-s*108,-41+Math.sin(s*Math.PI)*8,-39-Math.sin(s*Math.PI)*8]:[48-s*94,45+Math.sin(s*Math.PI)*12,98+Math.cos(s*Math.PI)*10];const o=glyphPlane(row,ch,first?6.4:7.2,p);o.rotation.y=Math.PI+(s-.5)*.38;o.userData.rest=o.position.clone();return o});
-  const note=annotation(row,l.zh,first?[30,-50,-31]:[0,32,111],first?65:83,[0,Math.PI+.14,0]);
-  w.moving.push(u=>{const time=musicTime,end=first?lyrics[1].time:lyrics[2].time,a=smooth(l.time,l.time+.18,time)*(1-smooth(end-.15,end,time)),pull=first?smooth(7.72,8.5,time):0;row.visible=a>0;letters.forEach((o,i)=>{const s=i/Math.max(1,chars.length-1),angle=s*Math.PI*1.65-.7;o.position.copy(o.userData.rest).lerp(new T.Vector3(8+Math.cos(angle)*27,-3+Math.sin(angle)*27,-18+Math.sin(angle)*14),pull);o.rotation.z=pull*(angle*.6-.5);(o.material as T.MeshBasicMaterial).opacity=a*(time>=(charTiming[i]??l.time)?1:.35)});(note.material as T.MeshBasicMaterial).opacity=a*.78});
- }
+ // Sung text is composited once, after all scene layers.
+
 }
 
 export function dawnWorld(firstLyricOnly=false){

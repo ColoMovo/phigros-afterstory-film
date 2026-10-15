@@ -18,6 +18,8 @@ for t,text in jp:
  w=[{'time':round(t+int(a)/1000,3),'duration':int(d)/1000,'text':c} for a,d,c in re.findall(r'<(\d+),(\d+)>([^<]+)',words.get(t,''))]
  lyrics.append({'time':t,'jp':text,'zh':zh.get(t,''),'wordTiming':w})
 (ROOT/'src/data/lyrics.json').write_text(json.dumps(lyrics,ensure_ascii=False,indent=2))
+# Restore reviewed display corrections after extracting the immutable source.
+subprocess.run(['python3',str(ROOT/'scripts/repair-lyrics.py')],check=True)
 # Decode sample-exact; MP3 container duration includes encoder padding.
 pcm=subprocess.check_output(['ffmpeg','-v','error','-i',str(mp3),'-f','f32le','-ac','1','-ar','22050','-'])
 y=np.frombuffer(pcm,dtype='<f4'); sr=22050; duration=len(y)/sr; rate=60

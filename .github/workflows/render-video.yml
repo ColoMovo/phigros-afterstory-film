@@ -208,7 +208,7 @@ jobs:
         run: |
           case "$TARGET" in
             opening|opening-review) python scripts/review-shots.py output/opening-review.mp4 && python scripts/review-anchors.py output/opening-review.mp4 ;;
-            hybrid-preview) python scripts/review-shots.py output/hybrid-preview.mp4 && python scripts/review-anchors.py output/hybrid-preview.mp4 && python scripts/review-editorial.py output/hybrid-preview.mp4 ;;
+            hybrid-preview) python scripts/review-shots.py output/hybrid-preview.mp4 && python scripts/review-anchors.py output/hybrid-preview.mp4 && python scripts/review-editorial.py output/hybrid-preview.mp4 && python scripts/review-repairs.py output/hybrid-preview.mp4 ;;
             revised-preview) python scripts/review-shots.py output/revised-preview.mp4 && python scripts/review-anchors.py output/revised-preview.mp4 && python scripts/review-editorial.py output/revised-preview.mp4 ;;
             preview) python scripts/review-shots.py output/preview.mp4 && python scripts/review-anchors.py output/preview.mp4 ;;
             final) python scripts/review-shots.py output/phigros-main-story-celebration.mp4 && python scripts/review-anchors.py output/phigros-main-story-celebration.mp4 && python scripts/review-editorial.py output/phigros-main-story-celebration.mp4 ;;
@@ -252,6 +252,7 @@ jobs:
             output/phigros-main-story-celebration.mp4
             output/contact-sheet.jpg
             output/film-keyframes/*.png
+            output/repair-review/**
             output/film-verification.json
             output/smoke.mp4
             output/smoke-verification.json

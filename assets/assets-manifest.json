@@ -15,7 +15,7 @@
     "title": "cjk",
     "source": "https://github.com/notofonts/noto-cjk",
     "localPath": "public/fonts/CJK.woff2",
-    "sha256": "20610062c2cd4b4854c11b0e8a078687c5ba7d76c7643b81ab7e912917fc0642",
+    "sha256": "24097ea324a1403ff549d933386ce36fe15c5dc50500a061c6f86b9356d9d4d3",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   },
@@ -25,7 +25,7 @@
     "title": "display",
     "source": "https://github.com/rsms/inter",
     "localPath": "public/fonts/Display.woff2",
-    "sha256": "8786ec801d8e7edec76c388303aa7663beead0d6b30cbf0024a169f82cad6f70",
+    "sha256": "272ce7458b9a341c1a7af65142541db8c85fbe7c723e9b6fa780fafc8c39bdb5",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   },
@@ -35,7 +35,7 @@
     "title": "text",
     "source": "https://github.com/rsms/inter",
     "localPath": "public/fonts/Text.woff2",
-    "sha256": "b4905f6ff426c96f9f0d11bc6e21b8b9e23543647fa19faa81dd66d253e9df01",
+    "sha256": "01323daa8580016da05aa9d8996f60893be6a398e70489823787ee18d738ac22",
     "license": "See SOURCES.md",
     "notes": "Bundled locally; no network during render"
   },
@@ -43,7 +43,7 @@
     "id": "noto-blender-font",
     "type": "ttf",
     "localPath": "public/fonts/CJK.ttf",
-    "sha256": "ea2aa724c67e46f683efe489a2a7a345943cb70fad876f2ea3223f25e202cb66",
+    "sha256": "2d27d3cf7aa5c282aaece717066ea087e78e8f99fbdcbe9417dc0eab026a36b2",
     "creator": "Adobe / Google / Noto contributors",
     "source": "Converted from bundled CJK.woff2; original source https://github.com/notofonts/noto-cjk",
     "license": "assets/Noto-LICENSE.txt"
