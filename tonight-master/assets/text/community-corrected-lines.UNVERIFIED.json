@@ -1,0 +1,366 @@
+[
+  {
+    "time": 5.321,
+    "jp": "夜明けに祈る　寂の拡がる空",
+    "zh": "向黎明祈愿，寂静铺展于天空",
+    "wordTiming": [
+      {
+        "time": 5.321,
+        "duration": 3.769,
+        "text": "夜明けに祈る　寂の拡がる空"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 9.09,
+    "jp": "無音が　幽かに喋りかけていた",
+    "zh": "无声正幽微地诉说",
+    "wordTiming": [
+      {
+        "time": 9.09,
+        "duration": 6.101000000000001,
+        "text": "無音が　幽かに喋りかけていた"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 15.191,
+    "jp": "忘れたくはない　“時間”の",
+    "zh": "不愿遗忘，那一天的时光",
+    "wordTiming": [
+      {
+        "time": 15.191,
+        "duration": 4.659999999999998,
+        "text": "忘れたくはない　“時間”の"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 19.851,
+    "jp": "約束に　渡わせた心",
+    "zh": "让约定颤动了心",
+    "wordTiming": [
+      {
+        "time": 19.851,
+        "duration": 7,
+        "text": "約束に　渡わせた心"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 33.84,
+    "jp": "過ぎた“時間”ばかり　想い馳せるばかり",
+    "zh": "总是追想逝去的时光",
+    "wordTiming": [
+      {
+        "time": 33.84,
+        "duration": 4.235999999999997,
+        "text": "過ぎた“時間”ばかり　想い馳せるばかり"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 38.076,
+    "jp": "溜息に埋もれそうな“時間”を　見失いそうになる",
+    "zh": "快被叹息掩埋，几乎迷失此刻",
+    "wordTiming": [
+      {
+        "time": 38.076,
+        "duration": 5.408000000000001,
+        "text": "溜息に埋もれそうな“時間”を　見失いそうになる"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 43.484,
+    "jp": "天柱1つ過ぐ　次へ次へ次いで行く",
+    "zh": "越过一根天柱，再向下一根前行",
+    "wordTiming": [
+      {
+        "time": 43.484,
+        "duration": 4.309999999999995,
+        "text": "天柱1つ過ぐ　次へ次へ次いで行く"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 47.794,
+    "jp": "もしもの（もしもの）",
+    "zh": "那些如果，那些如果",
+    "wordTiming": [
+      {
+        "time": 47.794,
+        "duration": 2.0660000000000025,
+        "text": "もしもの（もしもの）"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 49.86,
+    "jp": "意不の僕らが叫ぶよ",
+    "zh": "我们呼喊着，那些如果",
+    "wordTiming": [
+      {
+        "time": 49.86,
+        "duration": 4.045999999999999,
+        "text": "意不の僕らが叫ぶよ"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 53.906,
+    "jp": "変わらない　代われない　理解らない",
+    "zh": "无法改变，无法替代，无法理解",
+    "wordTiming": [
+      {
+        "time": 53.906,
+        "duration": 1.7710000000000008,
+        "text": "変わらない　代われない　理解らない"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 55.677,
+    "jp": "じゃあ空しくて",
+    "zh": "如此空虚",
+    "wordTiming": [
+      {
+        "time": 55.677,
+        "duration": 2.637999999999998,
+        "text": "じゃあ空しくて"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 58.315,
+    "jp": "天使の梯子を捜した",
+    "zh": "我寻找云隙中的光",
+    "wordTiming": [
+      {
+        "time": 58.315,
+        "duration": 4.222999999999999,
+        "text": "天使の梯子を捜した"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 62.538,
+    "jp": "しゃがれた声、揺れ上擦る",
+    "zh": "嘶哑的声音，颤抖着拔高",
+    "wordTiming": [
+      {
+        "time": 62.538,
+        "duration": 4.334000000000003,
+        "text": "しゃがれた声、揺れ上擦る"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 66.872,
+    "jp": "一方通行の道途で　解れ往くよすが",
+    "zh": "无法回头的路上，依凭渐渐松散",
+    "wordTiming": [
+      {
+        "time": 66.872,
+        "duration": 5.6299999999999955,
+        "text": "一方通行の道途で　解れ往くよすが"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 72.502,
+    "jp": "春風へ　奪われた言話",
+    "zh": "被春风带走的话语",
+    "wordTiming": [
+      {
+        "time": 72.502,
+        "duration": 3.436000000000007,
+        "text": "春風へ　奪われた言話"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 75.938,
+    "jp": "背中合わせ　伝えた言葉",
+    "zh": "背靠着背，传达的话语",
+    "wordTiming": [
+      {
+        "time": 75.938,
+        "duration": 2.361000000000004,
+        "text": "背中合わせ　伝えた言葉"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 78.299,
+    "jp": "「そしてまた、出会えますように」",
+    "zh": "「只愿我们还能再相遇」",
+    "wordTiming": [
+      {
+        "time": 78.299,
+        "duration": 7,
+        "text": "「そしてまた、出会えますように」"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 98.076,
+    "jp": "回答の無い訣道の前",
+    "zh": "没有答案的分岔路前",
+    "wordTiming": [
+      {
+        "time": 98.076,
+        "duration": 4.079000000000008,
+        "text": "回答の無い訣道の前"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 102.155,
+    "jp": "あの月の下に今もわからないままで",
+    "zh": "在那月光之下，至今仍不明白",
+    "wordTiming": [
+      {
+        "time": 102.155,
+        "duration": 6.394999999999996,
+        "text": "あの月の下に今もわからないままで"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 108.55,
+    "jp": "変わらない　代われない　理解らない",
+    "zh": "无法改变，无法替代，无法理解",
+    "wordTiming": [
+      {
+        "time": 108.55,
+        "duration": 1.9200000000000017,
+        "text": "変わらない　代われない　理解らない"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 110.47,
+    "jp": "じゃあいられなくて",
+    "zh": "却不能继续停留",
+    "wordTiming": [
+      {
+        "time": 110.47,
+        "duration": 2.628,
+        "text": "じゃあいられなくて"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 113.098,
+    "jp": "帰趨の行方を捜した",
+    "zh": "我寻找最终的归处",
+    "wordTiming": [
+      {
+        "time": 113.098,
+        "duration": 6.415000000000006,
+        "text": "帰趨の行方を捜した"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 119.513,
+    "jp": "“時間”を層積み上げ　重ねた悲と訃",
+    "zh": "层层堆叠的时光，悲伤与讣告",
+    "wordTiming": [
+      {
+        "time": 119.513,
+        "duration": 4.23299999999999,
+        "text": "“時間”を層積み上げ　重ねた悲と訃"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 123.746,
+    "jp": "君がもう知らない“世界”で",
+    "zh": "在你已不再知晓的世界",
+    "wordTiming": [
+      {
+        "time": 123.746,
+        "duration": 4.447000000000017,
+        "text": "君がもう知らない“世界”で"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 128.193,
+    "jp": "洪積星の1つに僕の哭働",
+    "zh": "在洪积星的一隅，我的心仍跳动",
+    "wordTiming": [
+      {
+        "time": 128.193,
+        "duration": 4.804000000000002,
+        "text": "洪積星の1つに僕の哭働"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 132.997,
+    "jp": "最期まで",
+    "zh": "直到最后",
+    "wordTiming": [
+      {
+        "time": 132.997,
+        "duration": 2.2609999999999957,
+        "text": "最期まで"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 135.258,
+    "jp": "残酷な“世界”で　幸福な結末を生きている",
+    "zh": "在残酷的世界里，活过幸福的结局",
+    "wordTiming": [
+      {
+        "time": 135.258,
+        "duration": 7,
+        "text": "残酷な“世界”で　幸福な結末を生きている"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  },
+  {
+    "time": 142.383,
+    "jp": "君を置き去りに",
+    "zh": "将你留在身后",
+    "wordTiming": [
+      {
+        "time": 142.383,
+        "duration": 6.61699999999999,
+        "text": "君を置き去りに"
+      }
+    ],
+    "timingScope": "supplied line onset; word timing intentionally disabled after text correction"
+  }
+]

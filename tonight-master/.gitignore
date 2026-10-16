@@ -1,0 +1,5 @@
+private/
+output/
+__pycache__/
+*.pyc
+*.blend1

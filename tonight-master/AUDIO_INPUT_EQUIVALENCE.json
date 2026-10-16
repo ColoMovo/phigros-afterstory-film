@@ -1,0 +1,9 @@
+{
+  "currentInputFileSHA256": "b9582f9bafab0ea969d0a71174c466e13f3a0931239cad90b4117d7968414e76",
+  "canonicalCipherClearFileSHA256": "0d94177a1ce9ff8579fff4ecc9ad6962138910c03adff5534acc30c7599627f3",
+  "decodedPCMFormat": "48000Hz stereo s16le",
+  "decodedPCMSamplesPerChannel": 7810822,
+  "bothDecodedPCMSHA256": "bf23bee77f9f1bf86eb0b0966e7331eb4bf27fbe6cda21de4de527087024bddf",
+  "identical": true,
+  "difference": "File metadata differs; decoded soundtrack is identical."
+}

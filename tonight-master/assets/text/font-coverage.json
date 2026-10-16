@@ -1,0 +1,14 @@
+{
+  "jp": {
+    "font": "Noto Sans CJK JP",
+    "uniqueGlyphs": 146,
+    "missingGlyphs": [],
+    "method": "Local fontconfig fc-query cmap charset inspection"
+  },
+  "zh": {
+    "font": "Noto Sans CJK SC",
+    "uniqueGlyphs": 169,
+    "missingGlyphs": [],
+    "method": "Local fontconfig fc-query cmap charset inspection"
+  }
+}

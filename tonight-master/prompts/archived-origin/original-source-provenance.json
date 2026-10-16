@@ -1,0 +1,84 @@
+{
+  "origin": "Existing project source manifest; preserved as evidence, not fresh approval",
+  "clips": [
+    {
+      "id": "glass-memory-v02-material",
+      "parentId": "glass-memory-v01",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/omni-tests/glass-material.txt",
+      "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V02_MATERIAL.mp4",
+      "generationDate": "2026-10-10",
+      "duration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "c8ccc4848f83c0ed08b6017d6ab59c915cb21d2eebf619c05deef4d0f150cfcc",
+      "status": "reference-only",
+      "world": "glass-memory",
+      "sourceDuration": 8.0,
+      "usageNotes": "Previously accepted parent material version; retained immutably for comparison. The existing glass interval now uses its reviewed V03 atmosphere edit.",
+      "optional": true,
+      "inputMode": "existing-video-edit",
+      "visualDecision": "Useful material layer improvement, clear foreground slab parallax and coherent source depth. Only 1.70–4.45 s selected."
+    },
+    {
+      "id": "glass-memory-v03-emotion",
+      "parentId": "glass-memory-v02-material",
+      "provider": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "assets/generated-ai/prompts/WORLD_GLASS_V03_EMOTION.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/glass-memory/WORLD_GLASS_V03_EMOTION.mp4",
+      "world": "glass-memory",
+      "usageNotes": "Accepted only for the existing 34–36.75s glass-memory selection after actual Actions before/after inspection 38061570017. Generated audio is discarded; provider watermark is retained.",
+      "status": "accepted",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "sha256": "8ff7093e65a98573ea35f01fdda6ddb04053f48152bfb4e3723a1935428c0e0e",
+      "inputMode": "existing-video-edit",
+      "referenceInput": null,
+      "sourceVideo": "glass-memory-v02-material",
+      "requestedLocked": [
+        "geometry",
+        "camera trajectory",
+        "lens",
+        "timing",
+        "duration",
+        "material"
+      ],
+      "requestedChanges": [
+        "distant dawn-light and reflected edge light",
+        "existing dust wind"
+      ],
+      "reviewRun": "38061570017",
+      "visualDecision": "Inspected CI synchronous V02/V03 movie and same-time decoded frames. Macro glass silhouette, aperture, foreground crossings and steady forward trajectory remain coherent in the mined 1.7–4.45s range; soft warm aperture/reflections are visible. Exact camera/geometry equivalence is not claimed; fine surface synthesis changes remain. Warm light supports memory, without proving audience emotion."
+    },
+    {
+      "id": "red-machine-v01",
+      "provider": "Google Flow",
+      "model": "Veo 3.1 - Quality",
+      "prompt": "assets/generated-ai/prompts/red-machine-text.txt",
+      "generationDate": "2026-10-10",
+      "localPath": "assets/generated-ai/red-machine/WORLD_RED_V01.mp4",
+      "world": "red-machine",
+      "usageNotes": "Accepted for the limited hybrid preview in the explicit mined intervals only, following Actions source/comparison review 38055119650. Generated audio discarded. No full source dropped as a single shot.",
+      "status": "accepted",
+      "optional": true,
+      "sourceDuration": 8.0,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sha256": "1d3a59e961dcb566441eece233808a37a33923973cf90e4143a04f8b474a4468",
+      "inputMode": "text-to-video",
+      "referenceInput": null,
+      "visualDecision": "Short source intervals retain coherent forward traversal. Omni camera edit was attempted and did not demonstrate a correction; keep higher-resolution V01, without claiming improved camera control."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+name: Tonight Master — Native Film
+on:
+  push:
+    branches: ['tonight-master-*']
+    paths: ['tonight-master/**', '.github/workflows/tonight-master.yml']
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Complete film review or 1920x1080 / 60 fps final
+        required: true
+        type: choice
+        default: review
+        options: [review, final]
+permissions:
+  contents: read
+concurrency:
+  group: tonight-master-${{ github.ref }}-${{ inputs.mode || (endsWith(github.ref_name, '-final') && 'final') || 'review' }}
+  cancel-in-progress: false
+jobs:
+  render-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      # Branch push needs no default-branch dispatcher registration: a -final
+      # suffix requests the final; other matching push branches run a review.
+      MODE: ${{ inputs.mode || (endsWith(github.ref_name, '-final') && 'final') || 'review' }}
+      PYTHONUNBUFFERED: '1'
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - name: Check out only the new film and its encrypted music input
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tonight-master/
+            /assets/private-input/music.enc
+            /assets/assets-manifest.json
+            /.github/workflows/tonight-master.yml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native rendering, portable fonts and verification dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fontconfig fonts-noto-cjk fonts-dejavu-core fonts-liberation
+          python -m pip install --disable-pip-version-check numpy==2.2.6 pillow==11.3.0 cryptography==45.0.7
+          ffmpeg -version | head -n 1
+          python -c 'import PIL,numpy,cryptography; print("Pillow",PIL.__version__,"NumPy",numpy.__version__,"cryptography",cryptography.__version__)'
+      - name: Check the independent entry points and encrypted input contract
+        run: |
+          case "$MODE" in review|final) ;; *) echo 'Unsupported mode' >&2; exit 1 ;; esac
+          test -f tonight-master/scripts/render.py
+          test -f tonight-master/scripts/verify.py
+          python -m py_compile tonight-master/scripts/render.py tonight-master/scripts/verify.py tonight-master/ci/decrypt-audio.py
+          python tonight-master/ci/decrypt-audio.py --check-contract
+      - name: Restore the authorized original music without exposing the key
+        env:
+          AUDIO_DECRYPTION_KEY: ${{ secrets.AUDIO_DECRYPTION_KEY }}
+        run: python tonight-master/ci/decrypt-audio.py
+      - name: Render the complete new film with FFmpeg and Python
+        run: python tonight-master/scripts/render.py --mode "$MODE"
+      - name: Verify the encoded film and generate actual-frame review evidence
+        run: python tonight-master/scripts/verify.py --mode "$MODE"
+      - name: Upload verified film, contact sheets and reports only
+        uses: actions/upload-artifact@v4
+        with:
+          name: tonight-master-${{ env.MODE }}-${{ github.sha }}
+          path: |
+            tonight-master/output/review.mp4
+            tonight-master/output/tonight-master.mp4
+            tonight-master/output/contact-sheet.jpg
+            tonight-master/output/blind-contact-sheet.jpg
+            tonight-master/output/render-manifest.json
+            tonight-master/output/verification.json
+          include-hidden-files: false
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+      - name: Always remove the decrypted input and any partial audio temporary file
+        if: always()
+        run: python -c 'import shutil; shutil.rmtree("tonight-master/private",ignore_errors=True)'

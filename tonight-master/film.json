@@ -1,0 +1,1017 @@
+{
+  "title": "Phigros · After the Last Page",
+  "designation": "UNOFFICIAL FAN TRIBUTE",
+  "version": "tonight-master-20261016-v01",
+  "fps": 60,
+  "width": 1920,
+  "height": 1080,
+  "duration": 162.72544217687076,
+  "assets": {
+    "threshold": {
+      "path": "assets/video/threshold-v01.mp4",
+      "duration": 8.0,
+      "sha256": "4ccfca9e095bd8042cb1dfc45034c5762da4654a10ccbf658c8f567cc0cb1011",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Veo 3.1 - Quality",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1920,
+      "height": 1080,
+      "sourceFps": "24/1"
+    },
+    "sky-stair": {
+      "path": "assets/video/sky-stair-v01.mp4",
+      "duration": 8.0,
+      "sha256": "16b996e9e10394369e074589f3bad6f2d1dfae5a0f82ded89558b985ad54e92d",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Veo 3.1 - Quality",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "open-horizon": {
+      "path": "assets/video/open-horizon-v01.mp4",
+      "duration": 8.0,
+      "sha256": "894f2bbc79225bc85f80df00b9fca3074c31f664fc265826fe4ac9a1271f031d",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Veo 3.1 - Quality",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "memory-room": {
+      "path": "assets/video/memory-room-v01.mp4",
+      "duration": 10.0,
+      "sha256": "17ce0fad7e62c036e4af3a93c20eb6976c1765ceb954a1e15043a2c7ed4d0e37",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "archive-vault": {
+      "path": "assets/video/archive-vault-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "folded-city": {
+      "path": "assets/video/folded-city-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "rain-window": {
+      "path": "assets/video/rain-window-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "mirror-sea": {
+      "path": "assets/video/mirror-sea-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "leaf-memory": {
+      "path": "assets/video/leaf-memory-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "broken-bridge": {
+      "path": "assets/video/broken-bridge-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "wind-garden": {
+      "path": "assets/video/wind-garden-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "separation": {
+      "path": "assets/video/separation-v01.mp4",
+      "duration": 10.0,
+      "sha256": "d04f632f815a8f1f1d2fc7f9b3a83c3a221b57c63fbc37eb5bbef73269583e83",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "empty-seat": {
+      "path": "assets/video/empty-seat-v01.mp4",
+      "duration": 10.0,
+      "sha256": "f56b8529869bafaddb3135a2dc7b1240076a966edc1ccfe2bee509ad5dd98581",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "unsent-memory": {
+      "path": "assets/video/unsent-memory-v01.mp4",
+      "duration": 10.0,
+      "sha256": "5bb3d4a8e05664178284eff9506f7981b1922885209b0f9b9ac9a6f799d3ba0c",
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "downloaded; phase selection based on source static review",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "moon-crossing": {
+      "path": "assets/video/moon-crossing-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "reconnection": {
+      "path": "assets/video/reconnection-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "gravity-cathedral": {
+      "path": "assets/video/gravity-cathedral-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "memory-stream": {
+      "path": "assets/video/memory-stream-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "convergence": {
+      "path": "assets/video/convergence-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "new-world": {
+      "path": "assets/video/new-world-v01.mp4",
+      "duration": 10,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "dew-answer": {
+      "path": "assets/video/dew-answer-v01.mp4",
+      "duration": 8,
+      "sha256": null,
+      "origin": "Original Google Flow generation from prompts/flow-shots.json",
+      "model": "Omni 1.1 Flash",
+      "status": "pending-source-download-and-QA",
+      "sourceAudio": "Discard all source audio; use only user song"
+    },
+    "glass-memory": {
+      "path": "assets/video/glass-memory-v01.mp4",
+      "duration": 8.0,
+      "sha256": "8ff7093e65a98573ea35f01fdda6ddb04053f48152bfb4e3723a1935428c0e0e",
+      "origin": "Existing project original Flow generation; preserved provenance in SOURCES.md",
+      "status": "downloaded; short pressure/memory insert only",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1280,
+      "height": 720,
+      "sourceFps": "24/1"
+    },
+    "red-machine": {
+      "path": "assets/video/red-machine-v01.mp4",
+      "duration": 8.0,
+      "sha256": "1d3a59e961dcb566441eece233808a37a33923973cf90e4143a04f8b474a4468",
+      "origin": "Existing project original Flow generation; preserved provenance in SOURCES.md",
+      "status": "downloaded; short pressure/memory insert only",
+      "sourceAudio": "Discard all source audio; use only user song",
+      "width": 1920,
+      "height": 1080,
+      "sourceFps": "24/1"
+    }
+  },
+  "shots": [
+    {
+      "id": "01-memory-room",
+      "start": 0.0,
+      "end": 3.1,
+      "asset": "memory-room",
+      "in": 0.3,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Sealed memory at human scale; emerge from black",
+      "chapter": "01",
+      "fadeIn": 0.5
+    },
+    {
+      "id": "02-unsent-memory",
+      "start": 3.1,
+      "end": 5.321,
+      "asset": "unsent-memory",
+      "in": 0.4,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Quiet glass trace before the world opens"
+    },
+    {
+      "id": "03-threshold",
+      "start": 5.321,
+      "end": 9.09,
+      "asset": "threshold",
+      "in": 0.3,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Enclosure separates into the first opening"
+    },
+    {
+      "id": "04-memory-room",
+      "start": 9.09,
+      "end": 12.49,
+      "asset": "memory-room",
+      "in": 6.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Return to the small leaf at the window"
+    },
+    {
+      "id": "05-unsent-memory",
+      "start": 12.49,
+      "end": 15.191,
+      "asset": "unsent-memory",
+      "in": 3.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Blank archive sheets lift: memory becomes movement before the threshold"
+    },
+    {
+      "id": "06-threshold",
+      "start": 15.191,
+      "end": 17.58,
+      "asset": "threshold",
+      "in": 4.8,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Pass through the established opening"
+    },
+    {
+      "id": "07-sky-stair",
+      "start": 17.58,
+      "end": 20.0,
+      "asset": "sky-stair",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "A first glimpse of the route upward beyond the opened threshold"
+    },
+    {
+      "id": "08-archive-vault",
+      "start": 20.0,
+      "end": 23.5,
+      "asset": "archive-vault",
+      "in": 3.6,
+      "speed": 1,
+      "transition": "line",
+      "intent": "Archive opens; old places become routes",
+      "chapter": "02"
+    },
+    {
+      "id": "09-folded-city",
+      "start": 23.5,
+      "end": 26.5,
+      "asset": "folded-city",
+      "in": 2.8,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "City planes fold into a new horizon"
+    },
+    {
+      "id": "10-rain-window",
+      "start": 26.5,
+      "end": 30.1,
+      "asset": "rain-window",
+      "in": 0.3,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Rain and separation at human scale"
+    },
+    {
+      "id": "11-mirror-sea",
+      "start": 30.1,
+      "end": 33.84,
+      "asset": "mirror-sea",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Low flight into reflective space"
+    },
+    {
+      "id": "12-broken-bridge",
+      "start": 33.84,
+      "end": 37.2,
+      "asset": "broken-bridge",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "The road resists onward motion",
+      "chapter": "03"
+    },
+    {
+      "id": "13-glass-memory",
+      "start": 37.2,
+      "end": 39.95,
+      "asset": "glass-memory",
+      "in": 1.7,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Brief tactile glass memory"
+    },
+    {
+      "id": "14-folded-city",
+      "start": 39.95,
+      "end": 41.95,
+      "asset": "folded-city",
+      "in": 5.8,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Compressed memory of the folded city"
+    },
+    {
+      "id": "15-rain-window",
+      "start": 41.95,
+      "end": 43.484,
+      "asset": "rain-window",
+      "in": 4.0,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "A near surface links memory to pressure"
+    },
+    {
+      "id": "16-red-machine",
+      "start": 43.484,
+      "end": 46.0,
+      "asset": "red-machine",
+      "in": 0.4,
+      "speed": 1,
+      "transition": "line",
+      "intent": "Brief interior pressure, not the emotional centre"
+    },
+    {
+      "id": "17-mirror-sea",
+      "start": 46.0,
+      "end": 47.794,
+      "asset": "mirror-sea",
+      "in": 4.0,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Changed gravity reveals another way"
+    },
+    {
+      "id": "18-gravity-cathedral",
+      "start": 47.794,
+      "end": 49.86,
+      "asset": "gravity-cathedral",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Cross an impossible threshold",
+      "chapter": "04"
+    },
+    {
+      "id": "19-broken-bridge",
+      "start": 49.86,
+      "end": 52.65,
+      "asset": "broken-bridge",
+      "in": 4.0,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Cross a safe opening while road fragments move"
+    },
+    {
+      "id": "20-red-machine",
+      "start": 52.65,
+      "end": 53.906,
+      "asset": "red-machine",
+      "in": 3.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Last concentrated pressure before release"
+    },
+    {
+      "id": "21-leaf-memory",
+      "start": 53.906,
+      "end": 55.677,
+      "asset": "leaf-memory",
+      "in": 2.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Intimate scale interrupts machinery"
+    },
+    {
+      "id": "22-wind-garden",
+      "start": 55.677,
+      "end": 58.315,
+      "asset": "wind-garden",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Wind creates a route upward"
+    },
+    {
+      "id": "23-sky-stair",
+      "start": 58.315,
+      "end": 62.538,
+      "asset": "sky-stair",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "line",
+      "intent": "Steps in foreground, immense sky beyond",
+      "chapter": "05"
+    },
+    {
+      "id": "24-sky-stair",
+      "start": 62.538,
+      "end": 64.8,
+      "asset": "sky-stair",
+      "in": 4.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Gate opens; viewpoint clears obstruction"
+    },
+    {
+      "id": "25-wind-garden",
+      "start": 64.8,
+      "end": 66.872,
+      "asset": "wind-garden",
+      "in": 3.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Wind carries the ascending energy"
+    },
+    {
+      "id": "26-moon-crossing",
+      "start": 66.872,
+      "end": 70.3,
+      "asset": "moon-crossing",
+      "in": 0.3,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "A route divides beneath one immense moon"
+    },
+    {
+      "id": "27-rain-window",
+      "start": 70.3,
+      "end": 72.502,
+      "asset": "rain-window",
+      "in": 5.534,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Last passing reflection of the former place"
+    },
+    {
+      "id": "28-wind-garden",
+      "start": 72.502,
+      "end": 75.938,
+      "asset": "wind-garden",
+      "in": 4.56,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Breeze carries away what cannot be retained"
+    },
+    {
+      "id": "29-leaf-memory",
+      "start": 75.938,
+      "end": 78.299,
+      "asset": "leaf-memory",
+      "in": 4.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "One fragile trace; let the frame breathe"
+    },
+    {
+      "id": "30-separation",
+      "start": 78.299,
+      "end": 82.6,
+      "asset": "separation",
+      "in": 0.5,
+      "speed": 1,
+      "transition": "dissolve",
+      "intent": "Two thresholds drift apart; stay with the event",
+      "chapter": "06"
+    },
+    {
+      "id": "31-separation",
+      "start": 82.6,
+      "end": 86.4,
+      "asset": "separation",
+      "in": 4.8,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "The leaf chooses a path; another remains behind"
+    },
+    {
+      "id": "32-empty-seat",
+      "start": 86.4,
+      "end": 94.4,
+      "asset": "empty-seat",
+      "in": 0.5,
+      "speed": 1,
+      "transition": "dissolve",
+      "intent": "Continuous absence; allow the seat to become empty"
+    },
+    {
+      "id": "33-unsent-memory",
+      "start": 94.4,
+      "end": 98.076,
+      "asset": "unsent-memory",
+      "in": 0.4,
+      "speed": 1,
+      "transition": "dissolve",
+      "intent": "Quiet archive after departure"
+    },
+    {
+      "id": "34-moon-crossing",
+      "start": 98.076,
+      "end": 102.155,
+      "asset": "moon-crossing",
+      "in": 3.9,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Motion resumes at the unanswered fork",
+      "chapter": "07"
+    },
+    {
+      "id": "35-reconnection",
+      "start": 102.155,
+      "end": 106.8,
+      "asset": "reconnection",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "The route responds to a small moving light"
+    },
+    {
+      "id": "36-reconnection",
+      "start": 106.8,
+      "end": 108.55,
+      "asset": "reconnection",
+      "in": 5.0,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Follow the newly coherent way"
+    },
+    {
+      "id": "37-gravity-cathedral",
+      "start": 108.55,
+      "end": 110.47,
+      "asset": "gravity-cathedral",
+      "in": 2.3,
+      "speed": 1,
+      "transition": "line",
+      "intent": "Water lifts and exposes a second room"
+    },
+    {
+      "id": "38-gravity-cathedral",
+      "start": 110.47,
+      "end": 113.098,
+      "asset": "gravity-cathedral",
+      "in": 4.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Cross from enclosure toward a larger world"
+    },
+    {
+      "id": "39-memory-stream",
+      "start": 113.098,
+      "end": 116.85,
+      "asset": "memory-stream",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Fragments become one river at several scales",
+      "chapter": "08"
+    },
+    {
+      "id": "40-memory-stream",
+      "start": 116.85,
+      "end": 119.513,
+      "asset": "memory-stream",
+      "in": 4.1,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "The stream parts to reveal paths"
+    },
+    {
+      "id": "41-convergence",
+      "start": 119.513,
+      "end": 123.746,
+      "asset": "convergence",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "line",
+      "intent": "Different worlds align toward the far light"
+    },
+    {
+      "id": "42-unsent-memory",
+      "start": 123.746,
+      "end": 126.7,
+      "asset": "unsent-memory",
+      "in": 4.3,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Remember the small room among vast structures"
+    },
+    {
+      "id": "43-leaf-memory",
+      "start": 126.7,
+      "end": 128.193,
+      "asset": "leaf-memory",
+      "in": 6.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "One surviving detail answers the memory"
+    },
+    {
+      "id": "44-convergence",
+      "start": 128.193,
+      "end": 130.85,
+      "asset": "convergence",
+      "in": 4.8,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "The aligned route is now traversable"
+    },
+    {
+      "id": "45-memory-stream",
+      "start": 130.85,
+      "end": 132.997,
+      "asset": "memory-stream",
+      "in": 6.0,
+      "speed": 0.9,
+      "transition": "cut",
+      "intent": "Gathered fragments yield to a clear direction"
+    },
+    {
+      "id": "46-open-horizon",
+      "start": 132.997,
+      "end": 137.8,
+      "asset": "open-horizon",
+      "in": 0.2,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Closed enclosure opens to sky and sea",
+      "chapter": "09"
+    },
+    {
+      "id": "47-new-world",
+      "start": 137.8,
+      "end": 142.383,
+      "asset": "new-world",
+      "in": 0.4,
+      "speed": 1,
+      "transition": "dissolve",
+      "intent": "Human scale returns to a continuing world"
+    },
+    {
+      "id": "48-new-world",
+      "start": 142.383,
+      "end": 146.883,
+      "asset": "new-world",
+      "in": 5.0,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Allow the camera to leave the living detail behind"
+    },
+    {
+      "id": "49-dew-answer",
+      "start": 146.883,
+      "end": 149.8,
+      "asset": "dew-answer",
+      "in": 0.4,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Dew falls; let the last lyric end"
+    },
+    {
+      "id": "50-dew-answer",
+      "start": 149.8,
+      "end": 153.8,
+      "asset": "dew-answer",
+      "in": 3.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Single ripple and the closing question"
+    },
+    {
+      "id": "51-empty-seat",
+      "start": 153.8,
+      "end": 162.72544217687076,
+      "asset": "empty-seat",
+      "in": 0.5,
+      "speed": 1,
+      "transition": "cut",
+      "intent": "Invisible source under black credits and pure black tail"
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 5.321,
+      "end": 9.09,
+      "jp": "夜明けに祈る　寂の拡がる空",
+      "zh": "向黎明祈愿，寂静铺展于天空"
+    },
+    {
+      "start": 9.09,
+      "end": 15.191,
+      "jp": "無音が　幽かに喋りかけていた",
+      "zh": "无声正幽微地诉说"
+    },
+    {
+      "start": 15.191,
+      "end": 19.851,
+      "jp": "忘れたくはない　“時間”の",
+      "zh": "不愿遗忘，那一天的时光"
+    },
+    {
+      "start": 19.851,
+      "end": 26.851,
+      "jp": "約束に　渡わせた心",
+      "zh": "让约定颤动了心"
+    },
+    {
+      "start": 33.84,
+      "end": 38.076,
+      "jp": "過ぎた“時間”ばかり　想い馳せるばかり",
+      "zh": "总是追想逝去的时光"
+    },
+    {
+      "start": 38.076,
+      "end": 43.484,
+      "jp": "溜息に埋もれそうな“時間”を　見失いそうになる",
+      "zh": "快被叹息掩埋，几乎迷失此刻"
+    },
+    {
+      "start": 43.484,
+      "end": 47.794,
+      "jp": "天柱1つ過ぐ　次へ次へ次いで行く",
+      "zh": "越过一根天柱，再向下一根前行"
+    },
+    {
+      "start": 47.794,
+      "end": 49.86,
+      "jp": "もしもの（もしもの）",
+      "zh": "那些如果，那些如果"
+    },
+    {
+      "start": 49.86,
+      "end": 53.906,
+      "jp": "意不の僕らが叫ぶよ",
+      "zh": "我们呼喊着，那些如果"
+    },
+    {
+      "start": 53.906,
+      "end": 55.677,
+      "jp": "変わらない　代われない　理解らない",
+      "zh": "无法改变，无法替代，无法理解"
+    },
+    {
+      "start": 55.677,
+      "end": 58.315,
+      "jp": "じゃあ空しくて",
+      "zh": "如此空虚"
+    },
+    {
+      "start": 58.315,
+      "end": 62.538,
+      "jp": "天使の梯子を捜した",
+      "zh": "我寻找云隙中的光"
+    },
+    {
+      "start": 62.538,
+      "end": 66.872,
+      "jp": "しゃがれた声、揺れ上擦る",
+      "zh": "嘶哑的声音，颤抖着拔高"
+    },
+    {
+      "start": 66.872,
+      "end": 72.502,
+      "jp": "一方通行の道途で　解れ往くよすが",
+      "zh": "无法回头的路上，依凭渐渐松散"
+    },
+    {
+      "start": 72.502,
+      "end": 75.938,
+      "jp": "春風へ　奪われた言話",
+      "zh": "被春风带走的话语"
+    },
+    {
+      "start": 75.938,
+      "end": 78.299,
+      "jp": "背中合わせ　伝えた言葉",
+      "zh": "背靠着背，传达的话语"
+    },
+    {
+      "start": 78.299,
+      "end": 85.299,
+      "jp": "「そしてまた、出会えますように」",
+      "zh": "「只愿我们还能再相遇」"
+    },
+    {
+      "start": 98.076,
+      "end": 102.155,
+      "jp": "回答の無い訣道の前",
+      "zh": "没有答案的分岔路前"
+    },
+    {
+      "start": 102.155,
+      "end": 108.55,
+      "jp": "あの月の下に今もわからないままで",
+      "zh": "在那月光之下，至今仍不明白"
+    },
+    {
+      "start": 108.55,
+      "end": 110.47,
+      "jp": "変わらない　代われない　理解らない",
+      "zh": "无法改变，无法替代，无法理解"
+    },
+    {
+      "start": 110.47,
+      "end": 113.098,
+      "jp": "じゃあいられなくて",
+      "zh": "却不能继续停留"
+    },
+    {
+      "start": 113.098,
+      "end": 119.513,
+      "jp": "帰趨の行方を捜した",
+      "zh": "我寻找最终的归处"
+    },
+    {
+      "start": 119.513,
+      "end": 123.746,
+      "jp": "“時間”を層積み上げ　重ねた悲と訃",
+      "zh": "层层堆叠的时光，悲伤与讣告"
+    },
+    {
+      "start": 123.746,
+      "end": 128.193,
+      "jp": "君がもう知らない“世界”で",
+      "zh": "在你已不再知晓的世界"
+    },
+    {
+      "start": 128.193,
+      "end": 132.997,
+      "jp": "洪積星の1つに僕の哭働",
+      "zh": "在洪积星的一隅，我的心仍跳动"
+    },
+    {
+      "start": 132.997,
+      "end": 135.258,
+      "jp": "最期まで",
+      "zh": "直到最后"
+    },
+    {
+      "start": 135.258,
+      "end": 142.258,
+      "jp": "残酷な“世界”で　幸福な結末を生きている",
+      "zh": "在残酷的世界里，活过幸福的结局"
+    },
+    {
+      "start": 142.383,
+      "end": 149.0,
+      "jp": "君を置き去りに",
+      "zh": "将你留在身后"
+    }
+  ],
+  "lyricProvenance": {
+    "status": "Community-corrected transcription, not an official lyric sheet; user-supplied Chinese fan adaptation",
+    "input": "assets/text/community-corrected-lines.UNVERIFIED.json",
+    "reference": "https://wikiwiki.jp/phigros/What%20do%20you%20want%20more%20than%20a%20Happy%20ending%3F",
+    "timing": "User-supplied line onsets only; word karaoke disabled; instrumental gaps remain text-free",
+    "preservedUnusualSpellings": [
+      "意不",
+      "渡わせた",
+      "悲と訃",
+      "洪積星",
+      "哭働"
+    ],
+    "warning": "These written forms are preserved from the supplied community transcription, not inferred by ASR or claimed as official verification"
+  },
+  "typography": {
+    "jpFont": "Noto Sans CJK JP",
+    "zhFont": "Noto Sans CJK SC"
+  },
+  "graphicBursts": [
+    {
+      "start": 19.851,
+      "end": 19.9843333333,
+      "label": "02"
+    },
+    {
+      "start": 43.484,
+      "end": 43.6173333333,
+      "label": "03"
+    },
+    {
+      "start": 55.677,
+      "end": 55.8103333333,
+      "label": "04"
+    },
+    {
+      "start": 98.076,
+      "end": 98.2093333333,
+      "label": "07"
+    },
+    {
+      "start": 113.098,
+      "end": 113.2313333333,
+      "label": "08"
+    },
+    {
+      "start": 128.193,
+      "end": 128.3263333333,
+      "label": "09"
+    }
+  ],
+  "endCard": {
+    "start": 149.8,
+    "end": 153.8,
+    "lines": [
+      "09",
+      "What do you want more than a Happy ending?",
+      "还有比幸福结局更想要的吗？"
+    ]
+  },
+  "credits": {
+    "start": 153.8,
+    "end": 160.4,
+    "black": true,
+    "lines": [
+      "PHIGROS · UNOFFICIAL FAN TRIBUTE",
+      "Thank you for the journey.",
+      "Music · What do you want more than a Happy ending?",
+      "Apo11o \"HALO\" program ft. 安月名莉子 × 大瀬良あい",
+      "Original visual generation · Google Flow / Veo / Omni",
+      "Fan subtitles · community transcription / unofficial Chinese adaptation",
+      "Independent fan work · no official affiliation or endorsement"
+    ]
+  },
+  "endBlackStart": 160.4,
+  "productionNotes": {
+    "formalRenderEnvironment": "GitHub Actions only",
+    "audio": "Full user original, sample-zero alignment; discard all generated source audio",
+    "sourceWatermarks": "Preserve visible provider marks; no cropping, masking or watermark removal",
+    "pendingSourcePolicy": "Missing sources explicitly pending; review can defer later assets; final requires all local paths",
+    "style": "Tactile stone, ceramic, frosted glass and controlled light; human-scale farewell among changing surreal worlds; no low-poly fallback",
+    "reviewRequired": "Technical verification does not imply visual acceptance. Inspect the encoded full movie."
+  }
+}
